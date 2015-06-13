@@ -5,6 +5,8 @@
 
 <img src='https://raw.githubusercontent.com/evgenyneu/GreatAuk/master/Graphics/Drawings/Great_auk_with_juvenile.jpg' width='400'>
 
+The great auk was a flightless bird that became extinct in the mid-19th century.
+[Read more](https://en.wikipedia.org/wiki/Great_auk).
 
 ## Credits
 
