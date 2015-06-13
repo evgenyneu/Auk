@@ -15,6 +15,11 @@
 		7E9013951B2CF6FB00DD4406 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E9013931B2CF6FB00DD4406 /* Main.storyboard */; };
 		7E9013971B2CF6FB00DD4406 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E9013961B2CF6FB00DD4406 /* Images.xcassets */; };
 		7E90139A1B2CF6FB00DD4406 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E9013981B2CF6FB00DD4406 /* LaunchScreen.xib */; };
+		7E9013AF1B2CF83B00DD4406 /* UIScrollView+theAukTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013AD1B2CF80D00DD4406 /* UIScrollView+theAukTests.swift */; };
+		7E9013B11B2CF89900DD4406 /* UIScrollView+theAuk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013B01B2CF89900DD4406 /* UIScrollView+theAuk.swift */; };
+		7E9013B31B2CF95800DD4406 /* TheAuk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013B21B2CF95800DD4406 /* TheAuk.swift */; };
+		7E9013B41B2CF96700DD4406 /* TheAuk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013B21B2CF95800DD4406 /* TheAuk.swift */; };
+		7E9013B51B2CF96900DD4406 /* UIScrollView+theAuk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013B01B2CF89900DD4406 /* UIScrollView+theAuk.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +46,9 @@
 		7E9013941B2CF6FB00DD4406 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E9013961B2CF6FB00DD4406 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7E9013991B2CF6FB00DD4406 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		7E9013AD1B2CF80D00DD4406 /* UIScrollView+theAukTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+theAukTests.swift"; sourceTree = "<group>"; };
+		7E9013B01B2CF89900DD4406 /* UIScrollView+theAuk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+theAuk.swift"; sourceTree = "<group>"; };
+		7E9013B21B2CF95800DD4406 /* TheAuk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheAuk.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +100,9 @@
 		7E5B5E201B2C2D3000B87E54 /* TheAuk */ = {
 			isa = PBXGroup;
 			children = (
+				7E9013B21B2CF95800DD4406 /* TheAuk.swift */,
 				7E5B5E231B2C2D3000B87E54 /* TheAuk.h */,
+				7E9013B01B2CF89900DD4406 /* UIScrollView+theAuk.swift */,
 				7E5B5E211B2C2D3000B87E54 /* Supporting Files */,
 			);
 			path = TheAuk;
@@ -110,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				7E5B5E301B2C2D3000B87E54 /* TheAukTests.swift */,
+				7E9013AD1B2CF80D00DD4406 /* UIScrollView+theAukTests.swift */,
 				7E5B5E2E1B2C2D3000B87E54 /* Supporting Files */,
 			);
 			name = TheGreatAukTests;
@@ -284,6 +295,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E9013B11B2CF89900DD4406 /* UIScrollView+theAuk.swift in Sources */,
+				7E9013B31B2CF95800DD4406 /* TheAuk.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +304,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E9013B41B2CF96700DD4406 /* TheAuk.swift in Sources */,
+				7E9013B51B2CF96900DD4406 /* UIScrollView+theAuk.swift in Sources */,
 				7E5B5E311B2C2D3000B87E54 /* TheAukTests.swift in Sources */,
+				7E9013AF1B2CF83B00DD4406 /* UIScrollView+theAukTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +442,7 @@
 		7E5B5E351B2C2D3000B87E54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -435,12 +452,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = TheAuk;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		7E5B5E361B2C2D3000B87E54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
