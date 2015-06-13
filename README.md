@@ -1,18 +1,18 @@
 🔨🔨🔨 This is work in progress 🔨🔨🔨
 
 
-# Great auk, a paged image scroll view for iOS / Swift
+# Great Auk, a paged image scroll view for iOS / Swift
 
 This is an iOS library that shows remote and local images in a scroll view with paging indicator.
 
 <img src='https://raw.githubusercontent.com/evgenyneu/GreatAuk/master/Graphics/Drawings/Great_auk_with_juvenile.jpg' width='400'>
 
-*The great auk was a flightless bird that became extinct in the mid-19th century.*
+*The great Auk was a flightless bird that became extinct in the mid-19th century.*
 Source: [Wikipedia](https://en.wikipedia.org/wiki/Great_auk).
 
 ## Usage
 
-Great auk extends UIScrollView class by creating a `greatAuk` property that you can use for showing images.
+Great Auk extends UIScrollView class by creating a `greatAuk` property that you can use for showing images.
 
 ```Swift
 // Show local image
@@ -46,4 +46,4 @@ scrollView.greatAuk.removeAll()
 
 ## License
 
-Great auk is released under the [MIT License](LICENSE).
+Great Auk is released under the [MIT License](LICENSE).
