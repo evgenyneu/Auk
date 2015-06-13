@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7E5B5E241B2C2D3000B87E54 /* GreatAuk.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E5B5E231B2C2D3000B87E54 /* GreatAuk.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7E5B5E2A1B2C2D3000B87E54 /* GreatAuk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5B5E1E1B2C2D3000B87E54 /* GreatAuk.framework */; };
+		7E5B5E2A1B2C2D3000B87E54 /* TheGreatAuk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5B5E1E1B2C2D3000B87E54 /* TheGreatAuk.framework */; };
 		7E5B5E311B2C2D3000B87E54 /* GreatAukTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5B5E301B2C2D3000B87E54 /* GreatAukTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,10 +23,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7E5B5E1E1B2C2D3000B87E54 /* GreatAuk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GreatAuk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E5B5E1E1B2C2D3000B87E54 /* TheGreatAuk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TheGreatAuk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E5B5E221B2C2D3000B87E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E5B5E231B2C2D3000B87E54 /* GreatAuk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GreatAuk.h; sourceTree = "<group>"; };
-		7E5B5E291B2C2D3000B87E54 /* GreatAukTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GreatAukTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E5B5E291B2C2D3000B87E54 /* TheGreatAukTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheGreatAukTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E5B5E2F1B2C2D3000B87E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E5B5E301B2C2D3000B87E54 /* GreatAukTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreatAukTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E5B5E2A1B2C2D3000B87E54 /* GreatAuk.framework in Frameworks */,
+				7E5B5E2A1B2C2D3000B87E54 /* TheGreatAuk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,8 +62,8 @@
 		7E5B5E1F1B2C2D3000B87E54 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7E5B5E1E1B2C2D3000B87E54 /* GreatAuk.framework */,
-				7E5B5E291B2C2D3000B87E54 /* GreatAukTests.xctest */,
+				7E5B5E1E1B2C2D3000B87E54 /* TheGreatAuk.framework */,
+				7E5B5E291B2C2D3000B87E54 /* TheGreatAukTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,9 +116,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		7E5B5E1D1B2C2D3000B87E54 /* GreatAuk */ = {
+		7E5B5E1D1B2C2D3000B87E54 /* TheGreatAuk */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7E5B5E341B2C2D3000B87E54 /* Build configuration list for PBXNativeTarget "GreatAuk" */;
+			buildConfigurationList = 7E5B5E341B2C2D3000B87E54 /* Build configuration list for PBXNativeTarget "TheGreatAuk" */;
 			buildPhases = (
 				7E5B5E191B2C2D3000B87E54 /* Sources */,
 				7E5B5E1A1B2C2D3000B87E54 /* Frameworks */,
@@ -129,14 +129,14 @@
 			);
 			dependencies = (
 			);
-			name = GreatAuk;
+			name = TheGreatAuk;
 			productName = GreatAuk;
-			productReference = 7E5B5E1E1B2C2D3000B87E54 /* GreatAuk.framework */;
+			productReference = 7E5B5E1E1B2C2D3000B87E54 /* TheGreatAuk.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7E5B5E281B2C2D3000B87E54 /* GreatAukTests */ = {
+		7E5B5E281B2C2D3000B87E54 /* TheGreatAukTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7E5B5E371B2C2D3000B87E54 /* Build configuration list for PBXNativeTarget "GreatAukTests" */;
+			buildConfigurationList = 7E5B5E371B2C2D3000B87E54 /* Build configuration list for PBXNativeTarget "TheGreatAukTests" */;
 			buildPhases = (
 				7E5B5E251B2C2D3000B87E54 /* Sources */,
 				7E5B5E261B2C2D3000B87E54 /* Frameworks */,
@@ -147,9 +147,9 @@
 			dependencies = (
 				7E5B5E2C1B2C2D3000B87E54 /* PBXTargetDependency */,
 			);
-			name = GreatAukTests;
+			name = TheGreatAukTests;
 			productName = GreatAukTests;
-			productReference = 7E5B5E291B2C2D3000B87E54 /* GreatAukTests.xctest */;
+			productReference = 7E5B5E291B2C2D3000B87E54 /* TheGreatAukTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -169,7 +169,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7E5B5E181B2C2D3000B87E54 /* Build configuration list for PBXProject "GreatAuk" */;
+			buildConfigurationList = 7E5B5E181B2C2D3000B87E54 /* Build configuration list for PBXProject "TheGreatAuk" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -181,8 +181,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7E5B5E1D1B2C2D3000B87E54 /* GreatAuk */,
-				7E5B5E281B2C2D3000B87E54 /* GreatAukTests */,
+				7E5B5E1D1B2C2D3000B87E54 /* TheGreatAuk */,
+				7E5B5E281B2C2D3000B87E54 /* TheGreatAukTests */,
 			);
 		};
 /* End PBXProject section */
@@ -225,7 +225,7 @@
 /* Begin PBXTargetDependency section */
 		7E5B5E2C1B2C2D3000B87E54 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7E5B5E1D1B2C2D3000B87E54 /* GreatAuk */;
+			target = 7E5B5E1D1B2C2D3000B87E54 /* TheGreatAuk */;
 			targetProxy = 7E5B5E2B1B2C2D3000B87E54 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -330,7 +330,7 @@
 				INFOPLIST_FILE = GreatAuk/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TheGreatAuk;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -345,7 +345,7 @@
 				INFOPLIST_FILE = GreatAuk/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TheGreatAuk;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -363,7 +363,7 @@
 				);
 				INFOPLIST_FILE = GreatAukTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TheGreatAukTests;
 			};
 			name = Debug;
 		};
@@ -376,14 +376,14 @@
 				);
 				INFOPLIST_FILE = GreatAukTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TheGreatAukTests;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7E5B5E181B2C2D3000B87E54 /* Build configuration list for PBXProject "GreatAuk" */ = {
+		7E5B5E181B2C2D3000B87E54 /* Build configuration list for PBXProject "TheGreatAuk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7E5B5E321B2C2D3000B87E54 /* Debug */,
@@ -392,21 +392,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7E5B5E341B2C2D3000B87E54 /* Build configuration list for PBXNativeTarget "GreatAuk" */ = {
+		7E5B5E341B2C2D3000B87E54 /* Build configuration list for PBXNativeTarget "TheGreatAuk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7E5B5E351B2C2D3000B87E54 /* Debug */,
 				7E5B5E361B2C2D3000B87E54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		7E5B5E371B2C2D3000B87E54 /* Build configuration list for PBXNativeTarget "GreatAukTests" */ = {
+		7E5B5E371B2C2D3000B87E54 /* Build configuration list for PBXNativeTarget "TheGreatAukTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7E5B5E381B2C2D3000B87E54 /* Debug */,
 				7E5B5E391B2C2D3000B87E54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

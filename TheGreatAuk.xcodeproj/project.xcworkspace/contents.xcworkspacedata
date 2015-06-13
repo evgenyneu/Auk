@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:GreatAuk.xcodeproj">
+      location = "self:/Users/evgenii/Developer/GithubDemos/TheGreatAuk/TheGreatAuk.xcodeproj">
    </FileRef>
 </Workspace>
