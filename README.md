@@ -3,7 +3,7 @@
 
 # Great Auk, a paged image scroll view for iOS / Swift
 
-<img src='https://raw.githubusercontent.com/evgenyneu/GreatAuk/master/Graphics/Drawings/John%20_James_Audubon_Great_Auk.jpg' alt='Great Auk drawing by John James Audubon' width='512'>
+<img src='https://raw.githubusercontent.com/evgenyneu/GreatAuk/master/Graphics/Drawings/Great_auk_with_juvenile.jpg' width='400'>
 
 
 ## Credits
