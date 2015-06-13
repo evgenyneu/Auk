@@ -1,7 +1,7 @@
 🔨🔨🔨 This is work in progress 🔨🔨🔨
 
 
-# Great Auk, a paged image scroll view for iOS / Swift
+# The Great Auk, a paged image scroll view for iOS / Swift
 
 This is an iOS library that shows remote and local images in a scroll view with paging indicator.
 
@@ -12,38 +12,38 @@ Source: [Wikipedia](https://en.wikipedia.org/wiki/Great_auk).
 
 ## Usage
 
-Great Auk extends UIScrollView class by creating a `greatAuk` property that you can use for showing images.
+Great Auk extends UIScrollView class by creating `theGreatAuk` property that you can use for showing images.
 
 ```Swift
 // Show local image
-scrollView.greatAuk.show(image: UIImage(named: "bird"))
+scrollView.theGreatAuk.show(image: UIImage(named: "bird"))
 
 // Show remote image
-scrollView.greatAuk.show(url: "http://site.com/bird.jpg")
+scrollView.theGreatAuk.show(url: "http://site.com/bird.jpg")
 
 // Scroll images automatically with the interval of 3 seconds
-scrollView.greatAuk.autoScroll(timeout: 3)
+scrollView.theGreatAuk.autoScroll(timeout: 3)
 
 // Stop auto-scrolling of the images
-scrollView.greatAuk.stopAutoScroll()
+scrollView.theGreatAuk.stopAutoScroll()
 
 // Scroll to the image with index 2
-scrollView.greatAuk.scrollTo(image: 2, animated: true)
+scrollView.theGreatAuk.scrollTo(image: 2, animated: true)
 
 // Remove image with index 2
-scrollView.greatAuk.remove(image: 2)
+scrollView.theGreatAuk.remove(image: 2)
 
 // Remove all images
-scrollView.greatAuk.removeAll()
+scrollView.theGreatAuk.removeAll()
 ```
 
 
 ## Credits
 
-* Great Auk drawing by John James Audubon, 1827-1838. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:341_Great_Auk.jpg).
-* Great Auks drawing by John Gerrard Keulemans, circa 1900. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Great_auk_with_juvenile.jpg).
+* The Ggreat Auk drawing by John James Audubon, 1827-1838. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:341_Great_Auk.jpg).
+* The Great Auks drawing by John Gerrard Keulemans, circa 1900. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Great_auk_with_juvenile.jpg).
 
 
 ## License
 
-Great Auk is released under the [MIT License](LICENSE).
+The Great Auk is released under the [MIT License](LICENSE).
