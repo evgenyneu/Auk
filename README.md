@@ -12,7 +12,7 @@ Source: [Wikipedia](https://en.wikipedia.org/wiki/Great_auk).
 
 ## Usage
 
-Great auk is an extension of UIScrollView class that creates a `greatAuk` property that you can use for showing images.
+Great auk extends UIScrollView class by creating a `greatAuk` property that you can use for showing images.
 
 ```Swift
 // Show local image
