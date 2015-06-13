@@ -1,4 +1,4 @@
-# Great Auk, an paged image scroll view for iOS / Swift
+# Great Auk, a paged image scroll view for iOS / Swift
 
 
 
