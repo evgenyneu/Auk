@@ -7,7 +7,7 @@ This is an iOS library that shows remote and local images in a scroll view with 
 
 <img src='https://raw.githubusercontent.com/evgenyneu/GreatAuk/master/Graphics/Drawings/Great_auk_with_juvenile.jpg' width='400'>
 
-*The great Auk was a flightless bird that became extinct in the mid-19th century.*
+*The great auk was a flightless bird that became extinct in the mid-19th century.*
 Source: [Wikipedia](https://en.wikipedia.org/wiki/Great_auk).
 
 ## Usage
