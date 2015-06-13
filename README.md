@@ -12,7 +12,7 @@ Source: [Wikipedia](https://en.wikipedia.org/wiki/Great_auk).
 
 ## Usage
 
-Great Auk extends UIScrollView class by creating `theGreatAuk` property that you can use for showing images.
+The Great Auk extends UIScrollView class by creating `theGreatAuk` property that you can use for showing images.
 
 ```Swift
 // Show local image
@@ -40,8 +40,8 @@ scrollView.theGreatAuk.removeAll()
 
 ## Credits
 
-* The Ggreat Auk drawing by John James Audubon, 1827-1838. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:341_Great_Auk.jpg).
-* The Great Auks drawing by John Gerrard Keulemans, circa 1900. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Great_auk_with_juvenile.jpg).
+* Great Auks drawing by John James Audubon, 1827-1838. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:341_Great_Auk.jpg).
+* Great Auks drawing by John Gerrard Keulemans, circa 1900. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Great_auk_with_juvenile.jpg).
 
 
 ## License
