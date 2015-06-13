@@ -24,10 +24,10 @@ scrollView.greatAuk.show(url: "http://site.com/bird.jpg")
 // Scroll images automatically with the interval of 3 seconds
 scrollView.greatAuk.autoScroll(timeout: 3)
 
-// Stop auto-scrolling of the images.
+// Stop auto-scrolling of the images
 scrollView.greatAuk.stopAutoScroll()
 
-// Scroll to the image with index 2.
+// Scroll to the image with index 2
 scrollView.greatAuk.scrollTo(image: 2, animated: true)
 
 // Remove image with index 2
