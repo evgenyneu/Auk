@@ -16,10 +16,10 @@ Great auk is an extension of UIScrollView class that creates a `greatAuk` proper
 
 ```Swift
 // Show local image
-scrollView.greatAuk.show(image: UIImage(named: "MyBird.png"))
+scrollView.greatAuk.show(image: UIImage(named: "bird.png"))
 
 // Show remote image
-scrollView.greatAuk.show(url: "http://site.com/MyBird.jpg")
+scrollView.greatAuk.show(url: "http://site.com/bird.jpg")
 
 // Scroll images automatically with the interval of 3 seconds
 scrollView.greatAuk.autoScroll(timeout: 3)
