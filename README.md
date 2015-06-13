@@ -42,3 +42,8 @@ scrollView.greatAuk.removeAll()
 
 * Great Auk drawing by John James Audubon, 1827-1838. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:341_Great_Auk.jpg).
 * Great Auks drawing by John Gerrard Keulemans, circa 1900. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Great_auk_with_juvenile.jpg).
+
+
+## License
+
+Great auk is released under the [MIT License](LICENSE).
