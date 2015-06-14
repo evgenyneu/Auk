@@ -1,7 +1,7 @@
 import UIKit
 import XCTest
 
-class UIScrollViewMoaExtensionTests: XCTestCase {
+class UIScrollViewAukExtensionTests: XCTestCase {
   func testGetCreatesAndStoresMoaInstance() {
     let scrollView = UIScrollView()
     let theAuk1 = scrollView.theAuk

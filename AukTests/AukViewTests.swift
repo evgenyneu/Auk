@@ -1,7 +1,7 @@
 import UIKit
 import XCTest
 
-class TheAukViewTests: XCTestCase {
+class AukViewTests: XCTestCase {
   
   var view: TheAukView!
   

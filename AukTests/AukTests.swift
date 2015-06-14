@@ -1,7 +1,7 @@
 import UIKit
 import XCTest
 
-class TheAukTests: XCTestCase {
+class AukTests: XCTestCase {
   
   var scrollView: UIScrollView!
   var theAuk: TheAuk!
