@@ -14,17 +14,17 @@ public extension UIScrollView {
   Call its `show` method to show an image in the scroll view.
   
   */
-  public var auk: TheAukInterface {
+  public var auk: AukInterface {
     get {
-      if let value = objc_getAssociatedObject(self, &xoAukAssociationKey) as? TheAukInterface {
+      if let value = objc_getAssociatedObject(self, &xoAukAssociationKey) as? AukInterface {
         return value
       } else {
-        let theAuk = Auk(scrollView: self)
+        let auk = Auk(scrollView: self)
         
-        objc_setAssociatedObject(self, &xoAukAssociationKey, theAuk,
+        objc_setAssociatedObject(self, &xoAukAssociationKey, auk,
           objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
         
-        return theAuk
+        return auk
       }
     }
     

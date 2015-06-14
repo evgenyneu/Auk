@@ -1,6 +1,6 @@
 import UIKit
 
-final class Auk: TheAukInterface {
+final class Auk: AukInterface {
   private weak var scrollView: UIScrollView?
   
   init(scrollView: UIScrollView) {

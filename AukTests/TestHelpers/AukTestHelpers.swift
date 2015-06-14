@@ -14,31 +14,31 @@ extension XCTestCase {
   
   /**
   
-  :returns: Array of TheAukView objects that are subviews of the given superview.
+  :returns: Array of AukView objects that are subviews of the given superview.
   
   */
-  func theAukViews(superview: UIView) -> [TheAukView] {
+  func aukViews(superview: UIView) -> [TheAukView] {
     return superview.subviews.filter { $0 is TheAukView }.map { $0 as! TheAukView }
   }
   
   /**
 
-  :returns: The the TheAukView with given index.
+  :returns: The the AukView with given index.
   
   */
-  func theAukView(superview: UIView, index: Int) -> TheAukView? {
-    let aukViews = theAukViews(superview)
-    if aukViews.count < index + 1 { return nil }
-    return aukViews[index]
+  func aukView(superview: UIView, index: Int) -> TheAukView? {
+    let views = aukViews(superview)
+    if views.count < index + 1 { return nil }
+    return views[index]
   }
   
   /**
   
-  :returns: The the first image view form the TheAukView with given index.
+  :returns: The the first image view form the AukView with given index.
   
   */
   func firstAukImageView(superview: UIView, index: Int) -> UIImageView? {
-    if let view =  theAukView(superview, index: index) {
+    if let view =  aukView(superview, index: index) {
       return view.subviews.filter { $0 is UIImageView }.map { $0 as! UIImageView }.first
     }
     

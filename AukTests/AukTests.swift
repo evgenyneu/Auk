@@ -17,7 +17,7 @@ class AukTests: XCTestCase {
     let image = uiImageFromFile("96px.png")
     auk.show(image: image)
     
-    XCTAssertEqual(1, theAukViews(scrollView).count)
+    XCTAssertEqual(1, aukViews(scrollView).count)
     XCTAssertEqual(96, firstAukImage(scrollView, index: 0)!.size.width)
   }
   
