@@ -28,6 +28,7 @@
 		7E9013C61B2CFCBF00DD4406 /* 96px.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E9013BC1B2CFC6A00DD4406 /* 96px.png */; };
 		7E9013C81B2CFE7D00DD4406 /* TheAukView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013C71B2CFE7D00DD4406 /* TheAukView.swift */; };
 		7E9013C91B2CFE8400DD4406 /* TheAukView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013C71B2CFE7D00DD4406 /* TheAukView.swift */; };
+		7E9013CC1B2D027200DD4406 /* TheAukViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013CA1B2D025700DD4406 /* TheAukViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		7E9013BC1B2CFC6A00DD4406 /* 96px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 96px.png; sourceTree = "<group>"; };
 		7E9013C11B2CFCA000DD4406 /* TheAukTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheAukTest.swift; sourceTree = "<group>"; };
 		7E9013C71B2CFE7D00DD4406 /* TheAukView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheAukView.swift; sourceTree = "<group>"; };
+		7E9013CA1B2D025700DD4406 /* TheAukViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheAukViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				7E9013B91B2CFC5800DD4406 /* Images */,
 				7E9013C01B2CFC9000DD4406 /* TestHelpers */,
 				7E5B5E301B2C2D3000B87E54 /* TheAukTests.swift */,
+				7E9013CA1B2D025700DD4406 /* TheAukViewTests.swift */,
 				7E9013AD1B2CF80D00DD4406 /* UIScrollView+theAukTests.swift */,
 				7E5B5E2E1B2C2D3000B87E54 /* Supporting Files */,
 			);
@@ -345,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E9013CC1B2D027200DD4406 /* TheAukViewTests.swift in Sources */,
 				7E9013B41B2CF96700DD4406 /* TheAuk.swift in Sources */,
 				7E9013B81B2CFB0500DD4406 /* TheAukInterface.swift in Sources */,
 				7E9013B51B2CF96900DD4406 /* UIScrollView+theAuk.swift in Sources */,

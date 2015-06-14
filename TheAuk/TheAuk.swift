@@ -10,6 +10,7 @@ final class TheAuk: TheAukInterface {
   func show(#image: UIImage) {
     let view = TheAukView()
     scrollView?.addSubview(view)
+    view.show(image: image)
   }
   
   func show(#url: String) {

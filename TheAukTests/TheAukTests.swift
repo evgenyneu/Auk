@@ -1,7 +1,7 @@
 import UIKit
 import XCTest
 
-class GreatAukTests: XCTestCase {
+class TheAukTests: XCTestCase {
   
   var scrollView: UIScrollView!
   var theAuk: TheAuk!
@@ -14,11 +14,11 @@ class GreatAukTests: XCTestCase {
   }
   
   func testShowLocalImage() {
-    let image = uiImageFromFile("67px.png")
+    let image = uiImageFromFile("96px.png")
     theAuk.show(image: image)
     
     XCTAssertEqual(1, theAukViews(scrollView).count)
-    XCTAssertEqual(81, firstAukImage(scrollView, index: 0)!.size.width)
+    XCTAssertEqual(96, firstAukImage(scrollView, index: 0)!.size.width)
   }
   
   func testShowRemoteImage() {
