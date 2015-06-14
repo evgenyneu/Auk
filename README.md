@@ -12,7 +12,7 @@ Source: [Wikipedia](https://en.wikipedia.org/wiki/Great_auk).
 
 ## Usage
 
-Auk extends UIScrollView class by creating `auk` property that you can use for showing images.
+Auk extends UIScrollView class by creating the `auk` property that you can use for showing images.
 
 ```Swift
 // Show local image
