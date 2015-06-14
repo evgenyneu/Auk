@@ -1,7 +1,7 @@
 🔨🔨🔨 This is work in progress 🔨🔨🔨
 
 
-# Auk, a paged image scroll view for iOS / Swift
+# Auk, an image scroll view for iOS / Swift
 
 This is an iOS library that shows remote and local images in a scroll view with paging indicator.
 
