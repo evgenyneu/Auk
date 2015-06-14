@@ -1,6 +1,6 @@
 import UIKit
 
-private var xoTheAukAssociationKey: UInt8 = 0
+private var xoAukAssociationKey: UInt8 = 0
 
 /**
 
@@ -14,14 +14,14 @@ public extension UIScrollView {
   Call its `show` method to show an image in the scroll view.
   
   */
-  public var theAuk: TheAukInterface {
+  public var auk: TheAukInterface {
     get {
-      if let value = objc_getAssociatedObject(self, &xoTheAukAssociationKey) as? TheAuk {
+      if let value = objc_getAssociatedObject(self, &xoAukAssociationKey) as? TheAukInterface {
         return value
       } else {
-        let theAuk = TheAuk(scrollView: self)
+        let theAuk = Auk(scrollView: self)
         
-        objc_setAssociatedObject(self, &xoTheAukAssociationKey, theAuk,
+        objc_setAssociatedObject(self, &xoAukAssociationKey, theAuk,
           objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
         
         return theAuk
@@ -29,7 +29,7 @@ public extension UIScrollView {
     }
     
     set {
-      objc_setAssociatedObject(self, &xoTheAukAssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
+      objc_setAssociatedObject(self, &xoAukAssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
     }
   }
 }

@@ -4,17 +4,17 @@ import XCTest
 class UIScrollViewAukExtensionTests: XCTestCase {
   func testGetCreatesAndStoresMoaInstance() {
     let scrollView = UIScrollView()
-    let theAuk1 = scrollView.theAuk
-    let theAuk2 = scrollView.theAuk
+    let auk1 = scrollView.auk
+    let auk2 = scrollView.auk
     
-    XCTAssert(theAuk1 === theAuk2)
+    XCTAssert(auk1 === auk1)
   }
   
   func testSet() {
     let scrollView = UIScrollView()
-    let theAuk = TheAuk(scrollView: scrollView)
-    scrollView.theAuk = theAuk
+    let auk = Auk(scrollView: scrollView)
+    scrollView.auk = auk
     
-    XCTAssert(scrollView.theAuk === theAuk)
+    XCTAssert(scrollView.auk === auk)
   }
 }
