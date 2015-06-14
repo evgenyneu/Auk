@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E5AEDF01B2D0C0500199C38 /* iiAutolayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AEDEF1B2D0C0500199C38 /* iiAutolayoutConstraints.swift */; };
+		7E5AEDF11B2D0C0F00199C38 /* iiAutolayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AEDEF1B2D0C0500199C38 /* iiAutolayoutConstraints.swift */; };
 		7E5B5E241B2C2D3000B87E54 /* Auk.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E5B5E231B2C2D3000B87E54 /* Auk.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E5B5E2A1B2C2D3000B87E54 /* Auk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5B5E1E1B2C2D3000B87E54 /* Auk.framework */; };
 		7E5B5E311B2C2D3000B87E54 /* AukTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5B5E301B2C2D3000B87E54 /* AukTests.swift */; };
@@ -42,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E5AEDEF1B2D0C0500199C38 /* iiAutolayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iiAutolayoutConstraints.swift; sourceTree = "<group>"; };
 		7E5B5E1E1B2C2D3000B87E54 /* Auk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Auk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E5B5E221B2C2D3000B87E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E5B5E231B2C2D3000B87E54 /* Auk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Auk.h; sourceTree = "<group>"; };
@@ -93,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E5AEDEE1B2D0C0000199C38 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7E5AEDEF1B2D0C0500199C38 /* iiAutolayoutConstraints.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		7E5B5E141B2C2D3000B87E54 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +127,7 @@
 		7E5B5E201B2C2D3000B87E54 /* TheAuk */ = {
 			isa = PBXGroup;
 			children = (
+				7E5AEDEE1B2D0C0000199C38 /* Utils */,
 				7E9013B21B2CF95800DD4406 /* Auk.swift */,
 				7E9013B61B2CFAE500DD4406 /* AukInterface.swift */,
 				7E9013C71B2CFE7D00DD4406 /* AukView.swift */,
@@ -341,6 +353,7 @@
 				7E9013B11B2CF89900DD4406 /* UIScrollView+Auk.swift in Sources */,
 				7E9013B71B2CFAE500DD4406 /* AukInterface.swift in Sources */,
 				7E9013B31B2CF95800DD4406 /* Auk.swift in Sources */,
+				7E5AEDF01B2D0C0500199C38 /* iiAutolayoutConstraints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +363,7 @@
 			files = (
 				7E9013CC1B2D027200DD4406 /* AukViewTests.swift in Sources */,
 				7E9013B41B2CF96700DD4406 /* Auk.swift in Sources */,
+				7E5AEDF11B2D0C0F00199C38 /* iiAutolayoutConstraints.swift in Sources */,
 				7E9013B81B2CFB0500DD4406 /* AukInterface.swift in Sources */,
 				7E9013B51B2CF96900DD4406 /* UIScrollView+Auk.swift in Sources */,
 				7E5B5E311B2C2D3000B87E54 /* AukTests.swift in Sources */,
@@ -613,6 +627,7 @@
 				7E9013A81B2CF6FC00DD4406 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
