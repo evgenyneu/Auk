@@ -14,11 +14,11 @@ extension XCTestCase {
   
   /**
   
-  :returns: Array of AukView objects that are subviews of the given superview.
+  :returns: Array of AukView objects that are subviews of the given scroll view.
   
   */
-  func aukViews(superview: UIView) -> [AukView] {
-    return superview.subviews.filter { $0 is AukView }.map { $0 as! AukView }
+  func aukViews(scrollView: UIScrollView) -> [AukView] {
+    return AukScrollViewContent.aukViews(scrollView)
   }
   
   /**
@@ -26,8 +26,8 @@ extension XCTestCase {
   :returns: The the AukView with given index.
   
   */
-  func aukView(superview: UIView, index: Int) -> AukView? {
-    let views = aukViews(superview)
+  func aukView(scrollView: UIScrollView, index: Int) -> AukView? {
+    let views = aukViews(scrollView)
     if views.count < index + 1 { return nil }
     return views[index]
   }
@@ -37,8 +37,8 @@ extension XCTestCase {
   :returns: The the first image view form the AukView with given index.
   
   */
-  func firstAukImageView(superview: UIView, index: Int) -> UIImageView? {
-    if let view =  aukView(superview, index: index) {
+  func firstAukImageView(scrollView: UIScrollView, index: Int) -> UIImageView? {
+    if let view =  aukView(scrollView, index: index) {
       return view.subviews.filter { $0 is UIImageView }.map { $0 as! UIImageView }.first
     }
     
@@ -50,7 +50,7 @@ extension XCTestCase {
   :returns: The the first image the TheAukView with given index.
   
   */
-  func firstAukImage(superview: UIView, index: Int) -> UIImage? {
+  func firstAukImage(superview: UIScrollView, index: Int) -> UIImage? {
     return firstAukImageView(superview, index: index)?.image
   }
 }
