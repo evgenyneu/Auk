@@ -17,8 +17,8 @@ extension XCTestCase {
   :returns: Array of AukView objects that are subviews of the given superview.
   
   */
-  func aukViews(superview: UIView) -> [TheAukView] {
-    return superview.subviews.filter { $0 is TheAukView }.map { $0 as! TheAukView }
+  func aukViews(superview: UIView) -> [AukView] {
+    return superview.subviews.filter { $0 is AukView }.map { $0 as! AukView }
   }
   
   /**
@@ -26,7 +26,7 @@ extension XCTestCase {
   :returns: The the AukView with given index.
   
   */
-  func aukView(superview: UIView, index: Int) -> TheAukView? {
+  func aukView(superview: UIView, index: Int) -> AukView? {
     let views = aukViews(superview)
     if views.count < index + 1 { return nil }
     return views[index]

@@ -3,12 +3,12 @@ import XCTest
 
 class AukViewTests: XCTestCase {
   
-  var view: TheAukView!
+  var view: AukView!
   
   override func setUp() {
     super.setUp()
     
-    view = TheAukView()
+    view = AukView()
   }
   
   func testShowImage() {
