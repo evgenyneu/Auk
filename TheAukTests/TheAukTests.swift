@@ -18,8 +18,8 @@ class GreatAukTests: XCTestCase {
     theAuk.show(image: image)
     
     XCTAssertEqual(1, theAukViews(scrollView).count)
+    XCTAssertEqual(81, firstAukImage(scrollView, index: 0)!.size.width)
   }
-  
   
   func testShowRemoteImage() {
     theAuk.show(url: "http://site.com/image.png")
