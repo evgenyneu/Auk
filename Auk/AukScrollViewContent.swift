@@ -23,6 +23,7 @@ struct AukScrollViewContent {
   */
   static func layout(scrollView: UIScrollView) {
     updateContentSize(scrollView)
+    positionSubviews(scrollView)
   }
   
   /**
@@ -51,10 +52,18 @@ struct AukScrollViewContent {
   
   /**
   
-  Positions all the AukViews inside the scroll view.
+  Positions all the AukView views inside the scroll view.
   
   */
-  static func positionSingleSubview(scrollView: UIScrollView) {
+  static func positionSubviews(scrollView: UIScrollView) {
+    let subviews = aukViews(scrollView)
     
+    var xOrigin: CGFloat = 0
+    
+    for subview in subviews {
+      let origin = CGPoint(x: xOrigin, y: 0)
+      positionSingleSubview(scrollView, subview: subview, origin: origin)
+      xOrigin += scrollView.bounds.width
+    }
   }
 }

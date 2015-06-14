@@ -9,8 +9,12 @@ final class Auk: AukInterface {
   
   func show(#image: UIImage) {
     let view = AukView()
-    scrollView?.addSubview(view)
-    view.show(image: image)
+    
+    if let scrollView = scrollView {
+      scrollView.addSubview(view)
+      AukScrollViewContent.layout(scrollView)
+      view.show(image: image)
+    }
   }
   
   func show(#url: String) {
