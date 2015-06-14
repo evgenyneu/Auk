@@ -12,7 +12,7 @@ class UIScrollViewMoaExtensionTests: XCTestCase {
   
   func testSet() {
     let scrollView = UIScrollView()
-    let theAuk = TheAuk()
+    let theAuk = TheAuk(scrollView: scrollView)
     scrollView.theAuk = theAuk
     
     XCTAssert(scrollView.theAuk === theAuk)

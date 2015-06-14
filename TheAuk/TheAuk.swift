@@ -1,11 +1,17 @@
 import UIKit
 
 final class TheAuk: TheAukInterface {
-  private var scrollView: UIScrollView?
+  private weak var scrollView: UIScrollView?
   
   init(scrollView: UIScrollView) {
     self.scrollView = scrollView
   }
   
-  init() { }
+  func show(#image: UIImage) {
+    
+  }
+  
+  func show(#url: String) {
+    
+  }
 }

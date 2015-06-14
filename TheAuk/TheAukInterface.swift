@@ -8,4 +8,9 @@ Call its `show` method to show an image in the scroll view.
 
 */
 public protocol TheAukInterface: class {
+  /// Adds an image to the scroll view.
+  func show(#image: UIImage)
+  
+  /// Downloads a remote image and adds it to the scroll view.
+  func show(#url: String)
 }
