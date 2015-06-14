@@ -48,4 +48,13 @@ struct AukScrollViewContent {
     subview.frame.origin = origin
     subview.frame.size = scrollView.bounds.size
   }
+  
+  /**
+  
+  Positions all the AukViews inside the scroll view.
+  
+  */
+  static func positionSingleSubview(scrollView: UIScrollView) {
+    
+  }
 }

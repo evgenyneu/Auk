@@ -48,4 +48,14 @@ class AukScrollViewContentTests: XCTestCase {
     XCTAssertEqual(CGPoint(x: 200, y: 0), aukView.frame.origin)
     XCTAssertEqual(CGSize(width: 100, height: 75), aukView.frame.size)
   }
+  
+  func testPositionSubviews() {
+    let aukView1 = AukView()
+    let aukView2 = AukView()
+    
+    scrollView.addSubview(aukView1)
+    scrollView.addSubview(aukView2)
+    
+    AukScrollViewContent.positionSingleSubview(scrollView)
+  }
 }
