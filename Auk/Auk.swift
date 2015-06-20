@@ -20,12 +20,39 @@ final class Auk: AukInterface {
     
     if let scrollView = scrollView {
       scrollView.addSubview(view)
-      AukScrollViewContent.layout(scrollView)
+      AukScrollViewContent.layout(scrollView, size: scrollView.bounds.size, pageNumber: pageNumber)
       view.show(image: image, settings: settings)
     }
   }
   
   func show(#url: String) {
     
+  }
+  
+  func relayout(size: CGSize) {
+    if let scrollView = scrollView {
+      AukScrollViewContent.layout(scrollView, size: size, pageNumber: pageNumber)
+    }
+  }
+  
+  var pageNumber: Int {
+    if let scrollView = scrollView {
+      return Int(scrollView.contentOffset.x / scrollView.bounds.size.width)
+    }
+    
+    return 0
+  }
+  
+  func hideAllViewsExceptCurrent() {
+    if let scrollView = scrollView {
+      AukScrollViewContent.hideAllViewsExceptCurrent(scrollView, pageNumber: pageNumber)
+    }
+  }
+  
+  func showViews() {
+    if let scrollView = scrollView {
+      AukScrollViewContent.showViews(scrollView)
+    }
+
   }
 }

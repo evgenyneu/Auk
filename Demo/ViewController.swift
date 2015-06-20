@@ -11,6 +11,24 @@ class ViewController: UIViewController {
     styleButtons([showLocalButton])
   }
   
+  override func viewWillTransitionToSize(size: CGSize,
+    withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+      
+    super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+      
+    coordinator.animateAlongsideTransition(nil) { [weak self] _ in
+      self?.scrollView.auk.showViews()
+    }
+      
+    updateScrollViewContent(size)
+  }
+  
+  private func updateScrollViewContent(newSize: CGSize) {
+    let size = CGSize(width: newSize.width, height: scrollView.bounds.size.height)
+    scrollView.auk.hideAllViewsExceptCurrent()
+    scrollView.auk.relayout(size)
+  }
+  
   private func styleButtons(buttons: [UIView]) {
     for button in buttons {
       button.layer.borderWidth = DemoConstants.button.borderWidth

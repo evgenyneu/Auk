@@ -19,4 +19,17 @@ public protocol AukInterface: class {
   
   /// Downloads a remote image and adds it to the scroll view.
   func show(#url: String)
+  
+  /**
+
+  Updates the size and position the content views inside the scroll view. It is called then the size of the scroll view changes (on orientation change, for example).
+
+  :param: size: The size of the scroll view.
+  
+  */
+  func relayout(size: CGSize)
+  
+  func hideAllViewsExceptCurrent()
+  
+  func showViews()
 }
