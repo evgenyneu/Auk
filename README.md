@@ -3,7 +3,7 @@
 
 # Auk, an image scroll view for iOS / Swift
 
-This is an iOS library that shows images in a scroll view with paging indicator.
+This is an iOS library that shows images in a scroll view with page indicator.
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Drawings/Great_auk_with_juvenile.jpg' width='400'>
 

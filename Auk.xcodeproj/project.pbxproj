@@ -40,6 +40,8 @@
 		7EBD03CF1B34E43F00957205 /* popular_science_monthly_the_great_auk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EBD03CB1B34E43F00957205 /* popular_science_monthly_the_great_auk.jpg */; };
 		7EBD03D01B34E43F00957205 /* Wormius_Great_Auk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EBD03CC1B34E43F00957205 /* Wormius_Great_Auk.jpg */; };
 		7EBD03D21B34E45700957205 /* DemoConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBD03D11B34E45700957205 /* DemoConstants.swift */; };
+		7EBD03D31B34E5BD00957205 /* Auk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5B5E1E1B2C2D3000B87E54 /* Auk.framework */; };
+		7EBD03D41B34E5BD00957205 /* Auk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5B5E1E1B2C2D3000B87E54 /* Auk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +52,28 @@
 			remoteGlobalIDString = 7E5B5E1D1B2C2D3000B87E54;
 			remoteInfo = GreatAuk;
 		};
+		7EBD03D51B34E5BD00957205 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E5B5E151B2C2D3000B87E54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E5B5E1D1B2C2D3000B87E54;
+			remoteInfo = Auk;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7EBD03D71B34E5BE00957205 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7EBD03D41B34E5BD00957205 /* Auk.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7E5AEDEF1B2D0C0500199C38 /* iiAutolayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iiAutolayoutConstraints.swift; sourceTree = "<group>"; };
@@ -107,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EBD03D31B34E5BD00957205 /* Auk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,7 +157,7 @@
 		7E5B5E141B2C2D3000B87E54 = {
 			isa = PBXGroup;
 			children = (
-				7E5B5E201B2C2D3000B87E54 /* TheAuk */,
+				7E5B5E201B2C2D3000B87E54 /* Auk */,
 				7E5B5E2D1B2C2D3000B87E54 /* AukTests */,
 				7E90138C1B2CF6FB00DD4406 /* Demo */,
 				7E5B5E1F1B2C2D3000B87E54 /* Products */,
@@ -150,7 +174,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7E5B5E201B2C2D3000B87E54 /* TheAuk */ = {
+		7E5B5E201B2C2D3000B87E54 /* Auk */ = {
 			isa = PBXGroup;
 			children = (
 				7E5AEDEE1B2D0C0000199C38 /* Utils */,
@@ -162,7 +186,6 @@
 				7E9013B01B2CF89900DD4406 /* UIScrollView+Auk.swift */,
 				7E5B5E211B2C2D3000B87E54 /* Supporting Files */,
 			);
-			name = TheAuk;
 			path = Auk;
 			sourceTree = "<group>";
 		};
@@ -305,10 +328,12 @@
 				7E9013871B2CF6FB00DD4406 /* Sources */,
 				7E9013881B2CF6FB00DD4406 /* Frameworks */,
 				7E9013891B2CF6FB00DD4406 /* Resources */,
+				7EBD03D71B34E5BE00957205 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7EBD03D61B34E5BD00957205 /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = Demo;
@@ -440,6 +465,11 @@
 			isa = PBXTargetDependency;
 			target = 7E5B5E1D1B2C2D3000B87E54 /* Auk */;
 			targetProxy = 7E5B5E2B1B2C2D3000B87E54 /* PBXContainerItemProxy */;
+		};
+		7EBD03D61B34E5BD00957205 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7E5B5E1D1B2C2D3000B87E54 /* Auk */;
+			targetProxy = 7EBD03D51B34E5BD00957205 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

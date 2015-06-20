@@ -4,13 +4,13 @@ private var xoAukAssociationKey: UInt8 = 0
 
 /**
 
-Scroll view extension for showing series of images with paging indicator.
+Scroll view extension for showing series of images with page indicator.
 
 */
 public extension UIScrollView {
   /**
   
-  Scroll view extension for showing series of images with paging indicator.
+  Scroll view extension for showing series of images with page indicator.
   Call its `show` method to show an image in the scroll view.
   
   */
