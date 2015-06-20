@@ -5,15 +5,16 @@ final class AukView: UIView {
   
   var imageView: UIImageView?
   
-  func show(#image: UIImage) {
-    setup()
+  func show(#image: UIImage, settings: AukSettings) {
+    setup(settings)
     imageView?.image = image
   }
   
-  private func setup() {
+  private func setup(settings: AukSettings) {
     if imageView != nil { return }
     
     let newImageView = UIImageView()
+    newImageView.contentMode = settings.contentMode
     addSubview(newImageView)
     imageView = newImageView
     

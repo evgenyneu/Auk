@@ -4,6 +4,7 @@ import XCTest
 class AukScrollViewContentTests: XCTestCase {
   
   var scrollView: UIScrollView!
+  let settings = AukSettings()
 
   override func setUp() {
     super.setUp()

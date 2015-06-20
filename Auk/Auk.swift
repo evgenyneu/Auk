@@ -8,12 +8,13 @@ final class Auk: AukInterface {
   }
   
   func show(#image: UIImage) {
+    let settings = AukSettings()
     let view = AukView()
     
     if let scrollView = scrollView {
       scrollView.addSubview(view)
       AukScrollViewContent.layout(scrollView)
-      view.show(image: image)
+      view.show(image: image, settings: settings)
     }
   }
   
