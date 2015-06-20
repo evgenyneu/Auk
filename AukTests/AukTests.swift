@@ -18,7 +18,24 @@ class AukTests: XCTestCase {
     auk = Auk(scrollView: scrollView)
   }
   
+  // MARK: - Setup
+  
+  func testSetup_doNotShowScrollIndicator() {
+    auk = Auk(scrollView: scrollView)
+    auk.setup()
+    
+    XCTAssertFalse(scrollView.showsHorizontalScrollIndicator)
+    XCTAssert(scrollView.pagingEnabled)
+  }
+  
   // MARK: - Show local image
+  
+  func testSetupIsCalled() {
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    
+    XCTAssertFalse(scrollView.showsHorizontalScrollIndicator)
+  }
   
   func testShowLocalImage() {
     let image = uiImageFromFile("96px.png")
@@ -60,4 +77,6 @@ class AukTests: XCTestCase {
   func testShowRemoteImage() {
     auk.show(url: "http://site.com/image.png")
   }
+  
+  
 }
