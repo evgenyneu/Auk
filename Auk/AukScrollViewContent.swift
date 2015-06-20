@@ -21,10 +21,10 @@ struct AukScrollViewContent {
   Positions the content views of the scroll view next to each other. The width of each subview equals the width of the scroll view.
   
   */
-  static func layout(scrollView: UIScrollView, size: CGSize, pageNumber: Int) {
+  static func layout(scrollView: UIScrollView, size: CGSize, pageIndex: Int) {
     updateContentSize(scrollView, size: size)
     positionSubviews(scrollView, size: size)
-    updateContentOffset(scrollView, size: size, pageNumber: pageNumber)
+    updateContentOffset(scrollView, size: size, pageIndex: pageIndex)
   }
   
   /**
@@ -70,15 +70,15 @@ struct AukScrollViewContent {
       subview.frame.size = size
   }
   
-  static func updateContentOffset(scrollView: UIScrollView, size: CGSize, pageNumber: Int) {
-    scrollView.contentOffset.x = CGFloat(pageNumber) * size.width
+  static func updateContentOffset(scrollView: UIScrollView, size: CGSize, pageIndex: Int) {
+    scrollView.contentOffset.x = CGFloat(pageIndex) * size.width
   }
   
-  static func hideAllViewsExceptCurrent(scrollView: UIScrollView, pageNumber: Int) {
+  static func hideAllViewsExceptCurrent(scrollView: UIScrollView, pageIndex: Int) {
     let subviews = aukViews(scrollView)
     
     for (index, subview) in enumerate(subviews) {
-      if index != pageNumber {
+      if index != pageIndex {
         subview.hidden = true
       }
     }
