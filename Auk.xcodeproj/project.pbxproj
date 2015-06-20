@@ -15,7 +15,6 @@
 		7E5B5E241B2C2D3000B87E54 /* Auk.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E5B5E231B2C2D3000B87E54 /* Auk.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E5B5E2A1B2C2D3000B87E54 /* Auk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5B5E1E1B2C2D3000B87E54 /* Auk.framework */; };
 		7E5B5E311B2C2D3000B87E54 /* AukTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5B5E301B2C2D3000B87E54 /* AukTests.swift */; };
-		7E8917441B3229A600729FF3 /* great_auk_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E8917431B3229A600729FF3 /* great_auk_logo.png */; };
 		7E9013901B2CF6FB00DD4406 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E90138F1B2CF6FB00DD4406 /* AppDelegate.swift */; };
 		7E9013921B2CF6FB00DD4406 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013911B2CF6FB00DD4406 /* ViewController.swift */; };
 		7E9013951B2CF6FB00DD4406 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E9013931B2CF6FB00DD4406 /* Main.storyboard */; };
@@ -35,6 +34,12 @@
 		7E9013C81B2CFE7D00DD4406 /* AukView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013C71B2CFE7D00DD4406 /* AukView.swift */; };
 		7E9013C91B2CFE8400DD4406 /* AukView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013C71B2CFE7D00DD4406 /* AukView.swift */; };
 		7E9013CC1B2D027200DD4406 /* AukViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013CA1B2D025700DD4406 /* AukViewTests.swift */; };
+		7E91683C1B34E406000028C3 /* great_auk_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E91683B1B34E406000028C3 /* great_auk_logo.png */; };
+		7EBD03CD1B34E43F00957205 /* John_James_Audubon_Great_Auk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EBD03C91B34E43F00957205 /* John_James_Audubon_Great_Auk.jpg */; };
+		7EBD03CE1B34E43F00957205 /* Pinguinus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EBD03CA1B34E43F00957205 /* Pinguinus.jpg */; };
+		7EBD03CF1B34E43F00957205 /* popular_science_monthly_the_great_auk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EBD03CB1B34E43F00957205 /* popular_science_monthly_the_great_auk.jpg */; };
+		7EBD03D01B34E43F00957205 /* Wormius_Great_Auk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EBD03CC1B34E43F00957205 /* Wormius_Great_Auk.jpg */; };
+		7EBD03D21B34E45700957205 /* DemoConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBD03D11B34E45700957205 /* DemoConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +62,6 @@
 		7E5B5E291B2C2D3000B87E54 /* AukTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AukTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E5B5E2F1B2C2D3000B87E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E5B5E301B2C2D3000B87E54 /* AukTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AukTests.swift; sourceTree = "<group>"; };
-		7E8917431B3229A600729FF3 /* great_auk_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = great_auk_logo.png; path = Graphics/Logo/great_auk_logo.png; sourceTree = SOURCE_ROOT; };
 		7E90138B1B2CF6FB00DD4406 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E90138E1B2CF6FB00DD4406 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E90138F1B2CF6FB00DD4406 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +79,12 @@
 		7E9013C11B2CFCA000DD4406 /* AukTestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukTestHelpers.swift; sourceTree = "<group>"; };
 		7E9013C71B2CFE7D00DD4406 /* AukView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukView.swift; sourceTree = "<group>"; };
 		7E9013CA1B2D025700DD4406 /* AukViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukViewTests.swift; sourceTree = "<group>"; };
+		7E91683B1B34E406000028C3 /* great_auk_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = great_auk_logo.png; sourceTree = "<group>"; };
+		7EBD03C91B34E43F00957205 /* John_James_Audubon_Great_Auk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_James_Audubon_Great_Auk.jpg; sourceTree = "<group>"; };
+		7EBD03CA1B34E43F00957205 /* Pinguinus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Pinguinus.jpg; sourceTree = "<group>"; };
+		7EBD03CB1B34E43F00957205 /* popular_science_monthly_the_great_auk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = popular_science_monthly_the_great_auk.jpg; sourceTree = "<group>"; };
+		7EBD03CC1B34E43F00957205 /* Wormius_Great_Auk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Wormius_Great_Auk.jpg; sourceTree = "<group>"; };
+		7EBD03D11B34E45700957205 /* DemoConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +113,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7E583D811B2F8721003ED240 /* Images */ = {
+		7E5A33201B34E3F700B6D2AC /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				7E8917431B3229A600729FF3 /* great_auk_logo.png */,
+				7EBD03C81B34E42A00957205 /* Drawings */,
+				7E91683B1B34E406000028C3 /* great_auk_logo.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -188,8 +199,9 @@
 		7E90138C1B2CF6FB00DD4406 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				7E583D811B2F8721003ED240 /* Images */,
+				7E5A33201B34E3F700B6D2AC /* Images */,
 				7E90138F1B2CF6FB00DD4406 /* AppDelegate.swift */,
+				7EBD03D11B34E45700957205 /* DemoConstants.swift */,
 				7E9013911B2CF6FB00DD4406 /* ViewController.swift */,
 				7E9013931B2CF6FB00DD4406 /* Main.storyboard */,
 				7E9013961B2CF6FB00DD4406 /* Images.xcassets */,
@@ -223,6 +235,17 @@
 				7E9013C11B2CFCA000DD4406 /* AukTestHelpers.swift */,
 			);
 			path = TestHelpers;
+			sourceTree = "<group>";
+		};
+		7EBD03C81B34E42A00957205 /* Drawings */ = {
+			isa = PBXGroup;
+			children = (
+				7EBD03C91B34E43F00957205 /* John_James_Audubon_Great_Auk.jpg */,
+				7EBD03CA1B34E43F00957205 /* Pinguinus.jpg */,
+				7EBD03CB1B34E43F00957205 /* popular_science_monthly_the_great_auk.jpg */,
+				7EBD03CC1B34E43F00957205 /* Wormius_Great_Auk.jpg */,
+			);
+			path = Drawings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,7 +378,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E8917441B3229A600729FF3 /* great_auk_logo.png in Resources */,
+				7EBD03CD1B34E43F00957205 /* John_James_Audubon_Great_Auk.jpg in Resources */,
+				7EBD03CF1B34E43F00957205 /* popular_science_monthly_the_great_auk.jpg in Resources */,
+				7E91683C1B34E406000028C3 /* great_auk_logo.png in Resources */,
+				7EBD03CE1B34E43F00957205 /* Pinguinus.jpg in Resources */,
+				7EBD03D01B34E43F00957205 /* Wormius_Great_Auk.jpg in Resources */,
 				7E9013951B2CF6FB00DD4406 /* Main.storyboard in Resources */,
 				7E90139A1B2CF6FB00DD4406 /* LaunchScreen.xib in Resources */,
 				7E9013971B2CF6FB00DD4406 /* Images.xcassets in Resources */,
@@ -400,6 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EBD03D21B34E45700957205 /* DemoConstants.swift in Sources */,
 				7E9013921B2CF6FB00DD4406 /* ViewController.swift in Sources */,
 				7E9013901B2CF6FB00DD4406 /* AppDelegate.swift in Sources */,
 			);
