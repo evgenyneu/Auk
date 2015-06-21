@@ -17,7 +17,13 @@ public protocol AukInterface: class {
   */
   func show(#image: UIImage)
   
-  /// Downloads a remote image and adds it to the scroll view.
+  /**
+
+  Downloads a remote image and adds it to the scroll view.
+
+  :param: url Url of the image to be shown.
+  
+  */
   func show(#url: String)  
   
   /**
@@ -35,6 +41,9 @@ public protocol AukInterface: class {
           self?.scrollView.auk.changePage(pageIndex, pageWidth: size.width)
         }, completion: nil)
       }
+  
+  :param: toPageIndex: Index of the page that will be made a current page.
+  :param: pageWidth: The new page width.
   
   */
   func changePage(toPageIndex: Int, pageWidth: CGFloat)
