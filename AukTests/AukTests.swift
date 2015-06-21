@@ -76,7 +76,42 @@ class AukTests: XCTestCase {
   
   // MARK: - Show remote image
   
-  func testShowRemoteImage() {
+  func testShowRemoteImage_setupIsCalled() {
     auk.show(url: "http://site.com/image.png")
+    
+    XCTAssertFalse(scrollView.showsHorizontalScrollIndicator)
+  }
+  
+  func testShowRemoteImage() {
+    auk.show(url: "http://site.com/image1.png")
+    
+    XCTAssertEqual(1, aukPages(scrollView).count)
+    XCTAssertEqual(96, firstAukImage(scrollView, index: 0)!.size.width)
+  }
+  
+  func testShowRemoteImage_layoutSubviews() {
+    auk.show(url: "http://site.com/image1.png")
+    auk.show(url: "http://site.com/image2.png")
+    
+    scrollView.layoutIfNeeded()
+    
+    // Check content size
+    // -------------
+    
+    XCTAssertEqual(CGSize(width: 240, height: 90), scrollView.contentSize)
+    
+    // View 1
+    // -------------
+    
+    let aukView1 = aukPages(scrollView)[0]
+    XCTAssertEqual(CGPoint(x: 0, y: 0), aukView1.frame.origin)
+    XCTAssertEqual(CGSize(width: 120, height: 90), aukView1.frame.size)
+    
+    // View 2
+    // -------------
+    
+    let aukView2 = aukPages(scrollView)[1]
+    XCTAssertEqual(CGPoint(x: 120, y: 0), aukView2.frame.origin)
+    XCTAssertEqual(CGSize(width: 120, height: 90), aukView2.frame.size)
   }
 }
