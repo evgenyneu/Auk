@@ -21,8 +21,7 @@ final class Auk: AukInterface {
     if let scrollView = scrollView {
       scrollView.addSubview(view)
       
-      AukScrollViewContent.layout(scrollView,
-        pageSize: scrollView.bounds.size, pageIndex: pageIndex)
+      AukScrollViewContent.layout(scrollView)
       
       view.show(image: image, settings: settings)
     }

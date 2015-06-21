@@ -21,7 +21,7 @@ struct AukScrollViewContent {
   Positions the content views of the scroll view next to each other. The width of each subview equals the width of the scroll view.
   
   */
-  static func layout(scrollView: UIScrollView, pageSize: CGSize, pageIndex: Int) {
+  static func layout(scrollView: UIScrollView) {
     let subviews = aukViews(scrollView)
 
     for (index, subview) in enumerate(subviews) {
