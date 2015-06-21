@@ -98,36 +98,4 @@ struct AukScrollViewContent {
   static func updateContentOffset(scrollView: UIScrollView, pageSize: CGSize, pageIndex: Int) {
     scrollView.contentOffset.x = CGFloat(pageIndex) * pageSize.width
   }
-  
-  /**
-  
-  Hides all the views except the view with given index. This function is called before the size change starts.
-  
-  */
-  static func hideAllViewsExceptOne(scrollView: UIScrollView, pageIndex: Int) {
-    let subviews = aukViews(scrollView)
-    
-    for (index, subview) in enumerate(subviews) {
-      if index != pageIndex {
-        subview.hidden = true
-      }
-    }
-  }
-  
-  /**
-  
-  Shows all the views. This function is called after the size change finishes.
-  
-  */
-  static func showViews(scrollView: UIScrollView) {
-    let subviews = aukViews(scrollView)
-    
-    for subview in subviews {
-      subview.hidden = false
-    }
-  }
-  
-  static func updateContentOffset(scrollView: UIScrollView, pageWidth: CGFloat, pageIndex: Int) {
-    scrollView.contentOffset.x = CGFloat(pageIndex) * pageWidth
-  }
 }

@@ -46,23 +46,8 @@ final class Auk: AukInterface {
     return 0
   }
   
-  func hideAllPagesExceptCurrent() {
-    if let scrollView = scrollView {
-      AukScrollViewContent.hideAllViewsExceptOne(scrollView, pageIndex: pageIndex)
-    }
-  }
-  
-  func showPages() {
-    if let scrollView = scrollView {
-      AukScrollViewContent.showViews(scrollView)
-    }
-  }
-  
   func changePage(toPageIndex: Int, pageWidth: CGFloat) {
     scrollView?.contentOffset.x = CGFloat(toPageIndex) * pageWidth
-//    if let scrollView = scrollView {
-//      AukScrollViewContent.updateContentOffset(scrollView, pageWidth: pageWidth, pageIndex: pageIndex)
-//    }
   }
 
 }
