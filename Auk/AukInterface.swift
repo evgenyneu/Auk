@@ -29,7 +29,17 @@ public protocol AukInterface: class {
   */
   func relayout(size: CGSize)
   
-  func hideAllViewsExceptCurrent()
+  /**
   
-  func showViews()
+  Hides all the pages except the current one. This function is used for animating the scroll view content during orientation change. It is called before the size change starts.
+  
+  */
+  func hideAllPagesExceptCurrent()
+  
+  /**
+  
+  Shows all the pages. This function is used for animating the scroll view content during orientation change. It is called after the size change finishes.
+  
+  */
+  func showPages()
 }

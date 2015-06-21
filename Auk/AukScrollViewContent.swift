@@ -21,10 +21,10 @@ struct AukScrollViewContent {
   Positions the content views of the scroll view next to each other. The width of each subview equals the width of the scroll view.
   
   */
-  static func layout(scrollView: UIScrollView, size: CGSize, pageIndex: Int) {
-    updateContentSize(scrollView, size: size)
-    positionSubviews(scrollView, size: size)
-    updateContentOffset(scrollView, size: size, pageIndex: pageIndex)
+  static func layout(scrollView: UIScrollView, pageSize: CGSize, pageIndex: Int) {
+    updateContentSize(scrollView, pageSize: pageSize)
+    positionSubviews(scrollView, pageSize: pageSize)
+    updateContentOffset(scrollView, pageSize: pageSize, pageIndex: pageIndex)
   }
   
   /**
@@ -32,11 +32,11 @@ struct AukScrollViewContent {
   Update content size of the scroll view so it can fit all the subviews.  The width of each subview equals the width of the scroll view.
   
   */
-  static func updateContentSize(scrollView: UIScrollView, size: CGSize) {
+  static func updateContentSize(scrollView: UIScrollView, pageSize: CGSize) {
     let subviews = aukViews(scrollView)
     
-    let contentWidth = CGFloat(subviews.count) * size.width
-    let contentHeight = size.height
+    let contentWidth = CGFloat(subviews.count) * pageSize.width
+    let contentHeight = pageSize.height
     
     scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
   }
@@ -46,15 +46,15 @@ struct AukScrollViewContent {
   Positions all the AukView views inside the scroll view.
   
   */
-  static func positionSubviews(scrollView: UIScrollView, size: CGSize) {
+  static func positionSubviews(scrollView: UIScrollView, pageSize: CGSize) {
     let subviews = aukViews(scrollView)
     
     var xOrigin: CGFloat = 0
     
     for subview in subviews {
       let origin = CGPoint(x: xOrigin, y: 0)
-      positionSingleSubview(scrollView, subview: subview, origin: origin, size: size)
-      xOrigin += size.width
+      positionSingleSubview(scrollView, subview: subview, origin: origin, pageSize: pageSize)
+      xOrigin += pageSize.width
     }
   }
   
@@ -64,17 +64,23 @@ struct AukScrollViewContent {
   
   */
   static func positionSingleSubview(scrollView: UIScrollView, subview: UIView,
-    origin: CGPoint, size: CGSize) {
+    origin: CGPoint, pageSize: CGSize) {
       
-      subview.frame.origin = origin
-      subview.frame.size = size
+    subview.frame.origin = origin
+    subview.frame.size = pageSize
   }
   
-  static func updateContentOffset(scrollView: UIScrollView, size: CGSize, pageIndex: Int) {
-    scrollView.contentOffset.x = CGFloat(pageIndex) * size.width
+  /// Updates the content offset based on the given size of the page and its index
+  static func updateContentOffset(scrollView: UIScrollView, pageSize: CGSize, pageIndex: Int) {
+    scrollView.contentOffset.x = CGFloat(pageIndex) * pageSize.width
   }
   
-  static func hideAllViewsExceptCurrent(scrollView: UIScrollView, pageIndex: Int) {
+  /**
+  
+  Hides all the views except the view with given index. This function is called before the size change starts.
+  
+  */
+  static func hideAllViewsExceptOne(scrollView: UIScrollView, pageIndex: Int) {
     let subviews = aukViews(scrollView)
     
     for (index, subview) in enumerate(subviews) {
@@ -84,6 +90,11 @@ struct AukScrollViewContent {
     }
   }
   
+  /**
+  
+  Shows all the views. This function is called after the size change finishes.
+  
+  */
   static func showViews(scrollView: UIScrollView) {
     let subviews = aukViews(scrollView)
     

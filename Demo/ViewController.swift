@@ -17,15 +17,15 @@ class ViewController: UIViewController {
     super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
       
     coordinator.animateAlongsideTransition(nil) { [weak self] _ in
-      self?.scrollView.auk.showViews()
+      self?.scrollView.auk.showPages()
     }
       
     updateScrollViewContent(size)
   }
   
   private func updateScrollViewContent(newSize: CGSize) {
+    scrollView.auk.hideAllPagesExceptCurrent()
     let size = CGSize(width: newSize.width, height: scrollView.bounds.size.height)
-    scrollView.auk.hideAllViewsExceptCurrent()
     scrollView.auk.relayout(size)
   }
   

@@ -34,7 +34,7 @@ class AukScrollViewContentTests: XCTestCase {
     scrollView.addSubview(aukView1)
     scrollView.addSubview(aukView2)
 
-    AukScrollViewContent.updateContentSize(scrollView, size: size)
+    AukScrollViewContent.updateContentSize(scrollView, pageSize: size)
     
     XCTAssertEqual(CGSize(width: 360, height: 120), scrollView.contentSize)
   }
@@ -46,7 +46,7 @@ class AukScrollViewContentTests: XCTestCase {
     let origin = CGPoint(x: 200, y: 0)
     
     AukScrollViewContent.positionSingleSubview(scrollView, subview: aukView,
-      origin: origin, size: size)
+      origin: origin, pageSize: size)
     
     XCTAssertEqual(CGPoint(x: 200, y: 0), aukView.frame.origin)
     XCTAssertEqual(CGSize(width: 180, height: 120), aukView.frame.size)
@@ -61,7 +61,7 @@ class AukScrollViewContentTests: XCTestCase {
     scrollView.addSubview(aukView1)
     scrollView.addSubview(aukView2)
     
-    AukScrollViewContent.positionSubviews(scrollView, size: size)
+    AukScrollViewContent.positionSubviews(scrollView, pageSize: size)
     
     // View 1
     // -------------
@@ -87,7 +87,7 @@ class AukScrollViewContentTests: XCTestCase {
     scrollView.addSubview(aukView2)
     scrollView.addSubview(aukView3)
     
-    AukScrollViewContent.layout(scrollView, size: size, pageIndex: 1)
+    AukScrollViewContent.layout(scrollView, pageSize: size, pageIndex: 1)
     
     // Check content size
     // -------------
@@ -112,9 +112,9 @@ class AukScrollViewContentTests: XCTestCase {
     XCTAssertEqual(CGPoint(x: 180, y: 0), scrollView.contentOffset)
   }
   
-  // MARK: - Hide all views except current
+  // MARK: - Hide all views except one
   
-  func testHideAllViewsExceptCurrent() {
+  func testHideAllViewsExceptOne() {
     let aukView1 = AukView()
     let aukView2 = AukView()
     let aukView3 = AukView()
@@ -123,10 +123,32 @@ class AukScrollViewContentTests: XCTestCase {
     scrollView.addSubview(aukView2)
     scrollView.addSubview(aukView3)
 
-    AukScrollViewContent.hideAllViewsExceptCurrent(scrollView, pageIndex: 1)
+    AukScrollViewContent.hideAllViewsExceptOne(scrollView, pageIndex: 1)
     
     XCTAssert(aukView1.hidden)
     XCTAssertFalse(aukView2.hidden)
     XCTAssert(aukView3.hidden)
+  }
+  
+  // MARK: - Show all views
+  
+  func testShowViews() {
+    let aukView1 = AukView()
+    let aukView2 = AukView()
+    let aukView3 = AukView()
+    
+    aukView1.hidden = true
+    aukView2.hidden = true
+    aukView3.hidden = true
+    
+    scrollView.addSubview(aukView1)
+    scrollView.addSubview(aukView2)
+    scrollView.addSubview(aukView3)
+    
+    AukScrollViewContent.showViews(scrollView)
+    
+    XCTAssertFalse(aukView1.hidden)
+    XCTAssertFalse(aukView2.hidden)
+    XCTAssertFalse(aukView3.hidden)
   }
 }
