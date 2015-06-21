@@ -9,11 +9,11 @@ struct AukScrollViewContent {
   
   /**
 
-  :returns: Array of AukView objects that are subviews of the given scroll view.
+  :returns: Array of scroll view pages.
   
   */
-  static func aukViews(scrollView: UIScrollView) -> [AukView] {
-    return scrollView.subviews.filter { $0 is AukView }.map { $0 as! AukView }
+  static func aukPages(scrollView: UIScrollView) -> [AukPage] {
+    return scrollView.subviews.filter { $0 is AukPage }.map { $0 as! AukPage }
   }
   
   /**
@@ -22,7 +22,7 @@ struct AukScrollViewContent {
   
   */
   static func layout(scrollView: UIScrollView) {
-    let subviews = aukViews(scrollView)
+    let subviews = aukPages(scrollView)
 
     for (index, subview) in enumerate(subviews) {
       

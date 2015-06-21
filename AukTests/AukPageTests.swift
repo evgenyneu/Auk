@@ -1,14 +1,14 @@
 import UIKit
 import XCTest
 
-class AukViewTests: XCTestCase {
+class AukPageTests: XCTestCase {
   
-  var view: AukView!
+  var view: AukPage!
   var settings = AukSettings()
   
   override func setUp() {
     super.setUp()
-    view = AukView()
+    view = AukPage()
   }
   
   func testShowImage() {

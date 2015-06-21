@@ -14,27 +14,27 @@ extension XCTestCase {
   
   /**
   
-  :returns: Array of AukView objects that are subviews of the given scroll view.
+  :returns: Array of scroll view pages.
   
   */
-  func aukViews(scrollView: UIScrollView) -> [AukView] {
-    return AukScrollViewContent.aukViews(scrollView)
+  func aukPages(scrollView: UIScrollView) -> [AukPage] {
+    return AukScrollViewContent.aukPages(scrollView)
   }
   
   /**
 
-  :returns: The the AukView with given index.
+  :returns: The the AukPage with given index.
   
   */
-  func aukView(scrollView: UIScrollView, index: Int) -> AukView? {
-    let views = aukViews(scrollView)
+  func aukView(scrollView: UIScrollView, index: Int) -> AukPage? {
+    let views = aukPages(scrollView)
     if views.count < index + 1 { return nil }
     return views[index]
   }
   
   /**
   
-  :returns: The the first image view form the AukView with given index.
+  :returns: The the first image view form the AukPage with given index.
   
   */
   func firstAukImageView(scrollView: UIScrollView, index: Int) -> UIImageView? {
@@ -47,7 +47,7 @@ extension XCTestCase {
   
   /**
   
-  :returns: The the first image the TheAukView with given index.
+  :returns: The the first image the TheAukPage with given index.
   
   */
   func firstAukImage(superview: UIScrollView, index: Int) -> UIImage? {

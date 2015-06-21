@@ -1,7 +1,7 @@
 import UIKit
 
-/// The view is added to the scroll view and contains image view.
-final class AukView: UIView {
+/// The view for an individual page of the scroll view containing an image.
+final class AukPage: UIView {
   
   var imageView: UIImageView?
   

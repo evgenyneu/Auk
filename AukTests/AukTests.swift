@@ -41,7 +41,7 @@ class AukTests: XCTestCase {
     let image = uiImageFromFile("96px.png")
     auk.show(image: image)
     
-    XCTAssertEqual(1, aukViews(scrollView).count)
+    XCTAssertEqual(1, aukPages(scrollView).count)
     XCTAssertEqual(96, firstAukImage(scrollView, index: 0)!.size.width)
   }
   
@@ -62,14 +62,14 @@ class AukTests: XCTestCase {
     // View 1
     // -------------
     
-    let aukView1 = aukViews(scrollView)[0]
+    let aukView1 = aukPages(scrollView)[0]
     XCTAssertEqual(CGPoint(x: 0, y: 0), aukView1.frame.origin)
     XCTAssertEqual(CGSize(width: 120, height: 90), aukView1.frame.size)
     
     // View 2
     // -------------
     
-    let aukView2 = aukViews(scrollView)[1]
+    let aukView2 = aukPages(scrollView)[1]
     XCTAssertEqual(CGPoint(x: 120, y: 0), aukView2.frame.origin)
     XCTAssertEqual(CGSize(width: 120, height: 90), aukView2.frame.size)
   }

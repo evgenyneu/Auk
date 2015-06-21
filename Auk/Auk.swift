@@ -16,14 +16,14 @@ final class Auk: AukInterface {
   func show(#image: UIImage) {
     setup()
     
-    let view = AukView()
+    let page = AukPage()
     
     if let scrollView = scrollView {
-      scrollView.addSubview(view)
+      scrollView.addSubview(page)
       
       AukScrollViewContent.layout(scrollView)
       
-      view.show(image: image, settings: settings)
+      page.show(image: image, settings: settings)
     }
   }
   

@@ -12,27 +12,27 @@ class AukScrollViewContentTests: XCTestCase {
     scrollView = UIScrollView()
   }
   
-  func testAukViews() {
-    let aukView1 = AukView()
-    let aukView2 = AukView()
+  func testAukPages() {
+    let aukView1 = AukPage()
+    let aukView2 = AukPage()
     
     scrollView.addSubview(aukView1)
     scrollView.addSubview(aukView2)
     
-    let views = AukScrollViewContent.aukViews(scrollView)
+    let pages = AukScrollViewContent.aukPages(scrollView)
     
-    XCTAssertEqual(2, views.count)
-    XCTAssert(views[0] === aukView1)
-    XCTAssert(views[1] === aukView2)
+    XCTAssertEqual(2, pages.count)
+    XCTAssert(pages[0] === aukView1)
+    XCTAssert(pages[1] === aukView2)
   }
   
   
   func testLayout() {
     scrollView.bounds.size = CGSize(width: 180, height: 120)
     
-    let aukView1 = AukView()
-    let aukView2 = AukView()
-    let aukView3 = AukView()
+    let aukView1 = AukPage()
+    let aukView2 = AukPage()
+    let aukView3 = AukPage()
 
     scrollView.addSubview(aukView1)
     scrollView.addSubview(aukView2)
