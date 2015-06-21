@@ -17,12 +17,9 @@ class ViewController: UIViewController {
     super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
       
     let pageIndex = scrollView.auk.pageIndex
-      
+    
     coordinator.animateAlongsideTransition({ [weak self] _ in
       self?.scrollView.auk.changePage(pageIndex, pageWidth: size.width)
-      
-//      self?.scrollView.contentOffset.x = size.width
-
     }, completion: nil)
   }
   
