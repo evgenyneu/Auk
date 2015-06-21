@@ -52,6 +52,8 @@ class AukTests: XCTestCase {
     let image2 = uiImageFromFile("67px.png")
     auk.show(image: image2)
     
+    scrollView.layoutIfNeeded()
+    
     // Check content size
     // -------------
     
@@ -77,6 +79,4 @@ class AukTests: XCTestCase {
   func testShowRemoteImage() {
     auk.show(url: "http://site.com/image.png")
   }
-  
-  
 }

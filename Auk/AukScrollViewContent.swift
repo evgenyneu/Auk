@@ -49,9 +49,4 @@ struct AukScrollViewContent {
     iiAutolayoutConstraints.viewsNextToEachOther(subviews, constraintContainer: scrollView,
       margin: 0, vertically: false)
   }
-  
-  /// Updates the content offset based on the given size of the page and its index
-  static func updateContentOffset(scrollView: UIScrollView, pageSize: CGSize, pageIndex: Int) {
-    scrollView.contentOffset.x = CGFloat(pageIndex) * pageSize.width
-  }
 }
