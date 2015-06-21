@@ -22,9 +22,33 @@ struct AukScrollViewContent {
   
   */
   static func layout(scrollView: UIScrollView, pageSize: CGSize, pageIndex: Int) {
-    updateContentSize(scrollView, pageSize: pageSize)
-    positionSubviews(scrollView, pageSize: pageSize)
-    updateContentOffset(scrollView, pageSize: pageSize, pageIndex: pageIndex)
+    let subviews = aukViews(scrollView)
+
+    for (index, subview) in enumerate(subviews) {
+      subview.removeFromSuperview()
+      scrollView.addSubview(subview)
+      subview.setTranslatesAutoresizingMaskIntoConstraints(false)
+      
+      iiAutolayoutConstraints.equalSize(subview, viewTwo: scrollView, constraintContainer: scrollView)
+      iiAutolayoutConstraints.fillParent(subview, parentView: scrollView, margin: 0, vertically: true)
+      
+      if index == 0 {
+        iiAutolayoutConstraints.alignSameAttributes(subview, toItem: scrollView,
+          constraintContainer: scrollView, attribute: NSLayoutAttribute.Left, margin: 0)
+      }
+      
+      if index == subviews.count - 1 {
+        iiAutolayoutConstraints.alignSameAttributes(subview, toItem: scrollView,
+          constraintContainer: scrollView, attribute: NSLayoutAttribute.Right, margin: 0)
+      }
+    }
+    
+    iiAutolayoutConstraints.viewsNextToEachOther(subviews, constraintContainer: scrollView,
+      margin: 0, vertically: false)
+    
+//    updateContentSize(scrollView, pageSize: pageSize)
+//    positionSubviews(scrollView, pageSize: pageSize)
+//    updateContentOffset(scrollView, pageSize: pageSize, pageIndex: pageIndex)
   }
   
   /**
