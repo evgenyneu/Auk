@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E0A9BD01B3660F300086393 /* moa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E0A9BCF1B3660F300086393 /* moa.framework */; };
+		7E0A9BD11B3661C800086393 /* moa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E0A9BCF1B3660F300086393 /* moa.framework */; };
+		7E0A9BD31B36625D00086393 /* AukRemoteImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0A9BD21B36625D00086393 /* AukRemoteImageTests.swift */; };
+		7E0A9BD61B36634300086393 /* moa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7E0A9BCF1B3660F300086393 /* moa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7E5AEDF01B2D0C0500199C38 /* iiAutolayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AEDEF1B2D0C0500199C38 /* iiAutolayoutConstraints.swift */; };
 		7E5AEDF31B2D0E6900199C38 /* AukScrollViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AEDF21B2D0E6900199C38 /* AukScrollViewContent.swift */; };
 		7E5AEDF51B2D0E7A00199C38 /* AukScrollViewContentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AEDF41B2D0E7A00199C38 /* AukScrollViewContentTests.swift */; };
@@ -66,6 +70,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		7E0A9BD51B36633B00086393 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7E0A9BD61B36634300086393 /* moa.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7EBD03D71B34E5BE00957205 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -80,6 +94,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7E0A9BCF1B3660F300086393 /* moa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = moa.framework; path = Carthage/Build/iOS/moa.framework; sourceTree = SOURCE_ROOT; };
+		7E0A9BD21B36625D00086393 /* AukRemoteImageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukRemoteImageTests.swift; sourceTree = "<group>"; };
 		7E5AEDEF1B2D0C0500199C38 /* iiAutolayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iiAutolayoutConstraints.swift; sourceTree = "<group>"; };
 		7E5AEDF21B2D0E6900199C38 /* AukScrollViewContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukScrollViewContent.swift; sourceTree = "<group>"; };
 		7E5AEDF41B2D0E7A00199C38 /* AukScrollViewContentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukScrollViewContentTests.swift; sourceTree = "<group>"; };
@@ -121,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E0A9BD01B3660F300086393 /* moa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E0A9BD11B3661C800086393 /* moa.framework in Frameworks */,
 				7E5B5E2A1B2C2D3000B87E54 /* Auk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,6 +161,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E0A9BCE1B3660EA00086393 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E0A9BCF1B3660F300086393 /* moa.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		7E5A33201B34E3F700B6D2AC /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +189,7 @@
 		7E5B5E141B2C2D3000B87E54 = {
 			isa = PBXGroup;
 			children = (
+				7E0A9BCE1B3660EA00086393 /* Frameworks */,
 				7E5B5E201B2C2D3000B87E54 /* Auk */,
 				7E5B5E2D1B2C2D3000B87E54 /* AukTests */,
 				7E90138C1B2CF6FB00DD4406 /* Demo */,
@@ -213,6 +240,7 @@
 				7E5AEDF41B2D0E7A00199C38 /* AukScrollViewContentTests.swift */,
 				7E5B5E301B2C2D3000B87E54 /* AukTests.swift */,
 				7E9013CA1B2D025700DD4406 /* AukPageTests.swift */,
+				7E0A9BD21B36625D00086393 /* AukRemoteImageTests.swift */,
 				7E9013AD1B2CF80D00DD4406 /* UIScrollView+AukTests.swift */,
 				7E5B5E2E1B2C2D3000B87E54 /* Supporting Files */,
 			);
@@ -318,6 +346,7 @@
 				7E5B5E251B2C2D3000B87E54 /* Sources */,
 				7E5B5E261B2C2D3000B87E54 /* Frameworks */,
 				7E5B5E271B2C2D3000B87E54 /* Resources */,
+				7E0A9BD51B36633B00086393 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -453,6 +482,7 @@
 				7EBD03DE1B34E9E400957205 /* AukPage.swift in Sources */,
 				7E9013AF1B2CF83B00DD4406 /* UIScrollView+AukTests.swift in Sources */,
 				7E7E317D1B3658F0004411EB /* AukRemoteImage.swift in Sources */,
+				7E0A9BD31B36625D00086393 /* AukRemoteImageTests.swift in Sources */,
 				7E5AEDF51B2D0E7A00199C38 /* AukScrollViewContentTests.swift in Sources */,
 				7E9013C31B2CFCAE00DD4406 /* AukTestHelpers.swift in Sources */,
 				7EBD03DC1B34E9E400957205 /* AukSettings.swift in Sources */,
@@ -602,6 +632,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Auk/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -619,6 +653,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Auk/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -633,6 +671,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -650,6 +689,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = AukTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

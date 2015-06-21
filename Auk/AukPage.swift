@@ -13,7 +13,11 @@ final class AukPage: UIView {
   
   func show(#url: String, settings: AukSettings) {
     setup(settings)
-    remoteImage = AukRemoteImage(url: url)
+    
+    if let imageView = imageView {
+      remoteImage = AukRemoteImage(url: url, imageView: imageView)
+      remoteImage?.downloadImage()
+    }
   }
   
   private func setup(settings: AukSettings) {

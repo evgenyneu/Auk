@@ -1,0 +1,10 @@
+framework module moa {
+  umbrella header "moa.h"
+
+  export *
+  module * { export * }
+}
+
+module moa.Swift {
+    header "moa-Swift.h"
+}
