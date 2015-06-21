@@ -41,5 +41,4 @@ class AukPageTests: XCTestCase {
     
     XCTAssert(view.imageView != nil)
   }
-
 }
