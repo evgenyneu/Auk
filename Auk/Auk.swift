@@ -32,12 +32,6 @@ final class Auk: AukInterface {
     
   }
   
-  func relayout(size: CGSize) {
-    if let scrollView = scrollView {
-      AukScrollViewContent.layout(scrollView, pageSize: size, pageIndex: pageIndex)
-    }
-  }
-  
   var pageIndex: Int {
     if let scrollView = scrollView {
       return Int(scrollView.contentOffset.x / scrollView.bounds.size.width)
@@ -49,5 +43,4 @@ final class Auk: AukInterface {
   func changePage(toPageIndex: Int, pageWidth: CGFloat) {
     scrollView?.contentOffset.x = CGFloat(toPageIndex) * pageWidth
   }
-
 }
