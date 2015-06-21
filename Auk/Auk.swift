@@ -57,4 +57,12 @@ final class Auk: AukInterface {
       AukScrollViewContent.showViews(scrollView)
     }
   }
+  
+  func changePage(toPageIndex: Int, pageWidth: CGFloat) {
+    scrollView?.contentOffset.x = CGFloat(toPageIndex) * pageWidth
+//    if let scrollView = scrollView {
+//      AukScrollViewContent.updateContentOffset(scrollView, pageWidth: pageWidth, pageIndex: pageIndex)
+//    }
+  }
+
 }

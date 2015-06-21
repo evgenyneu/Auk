@@ -126,4 +126,8 @@ struct AukScrollViewContent {
       subview.hidden = false
     }
   }
+  
+  static func updateContentOffset(scrollView: UIScrollView, pageWidth: CGFloat, pageIndex: Int) {
+    scrollView.contentOffset.x = CGFloat(pageIndex) * pageWidth
+  }
 }

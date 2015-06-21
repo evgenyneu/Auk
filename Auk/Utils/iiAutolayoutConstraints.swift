@@ -1,9 +1,6 @@
 //
 //  Collection of shortcuts to create autolayout constraints.
 //
-//  Created by Evgenii Neumerzhitckii on 27/10/2014.
-//  Copyright (c) 2014 Evgenii Neumerzhitckii. All rights reserved.
-//
 
 import UIKit
 
@@ -41,33 +38,6 @@ class iiAutolayoutConstraints {
       constant: margin)
     
     constraintContainer.addConstraint(constraint)
-    
-    return [constraint]
-  }
-
-  class func height(view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
-    return widthOrHeight(view, value: value, isWidth: false)
-  }
-  
-  class func width(view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
-    return widthOrHeight(view, value: value, isWidth: true)
-  }
-  
-  private class func widthOrHeight(view: UIView, value: CGFloat,
-    isWidth: Bool) -> [NSLayoutConstraint] {
-      
-    let attribute = isWidth ? NSLayoutAttribute.Width : NSLayoutAttribute.Height
-    
-    let constraint = NSLayoutConstraint(
-      item: view,
-      attribute: attribute,
-      relatedBy: NSLayoutRelation.Equal,
-      toItem: nil,
-      attribute: NSLayoutAttribute.NotAnAttribute,
-      multiplier: 1,
-      constant: value)
-    
-    view.addConstraint(constraint)
     
     return [constraint]
   }
@@ -112,7 +82,7 @@ class iiAutolayoutConstraints {
     return []
   }
   
-  // MARK: - Align next
+  // MARK: - Align view next to each other
   
   class func viewsNextToEachOther(views: [UIView],
     constraintContainer: UIView, margin: CGFloat = 0,

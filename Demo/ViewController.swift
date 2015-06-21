@@ -16,17 +16,14 @@ class ViewController: UIViewController {
       
     super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
       
-    coordinator.animateAlongsideTransition(nil) { [weak self] _ in
-//      self?.scrollView.auk.showPages()
-    }
+    let pageIndex = scrollView.auk.pageIndex
       
-    updateScrollViewContent(size)
-  }
-  
-  private func updateScrollViewContent(newSize: CGSize) {
-//    scrollView.auk.hideAllPagesExceptCurrent()
-    let size = CGSize(width: newSize.width, height: scrollView.bounds.size.height)
-//    scrollView.auk.relayout(size)
+    coordinator.animateAlongsideTransition({ [weak self] _ in
+      self?.scrollView.auk.changePage(pageIndex, pageWidth: size.width)
+      
+//      self?.scrollView.contentOffset.x = size.width
+
+    }, completion: nil)
   }
   
   private func styleButtons(buttons: [UIView]) {

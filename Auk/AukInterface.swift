@@ -42,4 +42,26 @@ public protocol AukInterface: class {
   
   */
   func showPages()
+  
+  
+  /**
+  
+  Update scroll view's content offset for the given page width. This function is used for animating the scroll view content during orientation change. It is called in viewWillTransitionToSize and inside animateAlongsideTransition animation block.
+  
+  
+      override func viewWillTransitionToSize(size: CGSize,
+        withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+      
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+      
+        coordinator.animateAlongsideTransition({ [weak self] _ in
+          self?.scrollView.auk.updateContentOffset(size.width)
+        }, completion: nil)
+      }
+  
+  */
+  func changePage(toPageIndex: Int, pageWidth: CGFloat)
+  
+  /// Returns the current page index.
+  var pageIndex: Int { get }
 }
