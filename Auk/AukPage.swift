@@ -20,7 +20,7 @@ final class AukPage: UIView {
   }
   
   func visibleNow() {
-    
+    remoteImage?.downloadImage()
   }
   
   func setup(settings: AukSettings) {

@@ -52,7 +52,16 @@ class AukPageTests: XCTestCase {
   // MARK: - visible now
   
   func testVisibleNow() {
-//    view.remoteImage = AukRemoteImage(url: 
+    let simulator = MoaSimulator.simulate("auk.jpg")
+    let imageView = UIImageView()
+    
+    view.remoteImage = AukRemoteImage(url: "http://site.com/auk.jpg", imageView: imageView)
+    
     view.visibleNow()
+    
+    let image = uiImageFromFile("35px.jpg")
+    simulator.respondWithImage(image)
+    
+    XCTAssertEqual(35, imageView.image!.size.width)
   }
 }
