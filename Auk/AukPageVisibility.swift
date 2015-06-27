@@ -17,8 +17,6 @@ struct AukPageVisibility {
   
   */
   static func isVisible(scrollView: UIScrollView, page: AukPage) -> Bool {
-    let bounds3 = scrollView.bounds
-    let frame3 = page.frame
     return CGRectIntersectsRect(scrollView.bounds, page.frame)
   }
   
