@@ -30,8 +30,7 @@ class AukRemoteImageTests: XCTestCase {
     XCTAssertEqual(1, simulator.downloaders.count)
     XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.first!.url)
     
-    let image = uiImageFromFile("96px.png")
-    simulator.respondWithImage(image)
+    simulator.respondWithImage(uiImageFromFile("96px.png"))
     
     XCTAssertEqual(96, imageView.image!.size.width)
   }
@@ -43,8 +42,7 @@ class AukRemoteImageTests: XCTestCase {
     obj.downloadImage()
     obj.downloadImage()
     
-    let image = uiImageFromFile("96px.png")
-    simulator.respondWithImage(image)
+    simulator.respondWithImage(uiImageFromFile("96px.png"))
     
     XCTAssertEqual(1, simulator.downloaders.count)
   }
@@ -76,9 +74,53 @@ class AukRemoteImageTests: XCTestCase {
     XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.last!.url)
     XCTAssertFalse(simulator.downloaders.last!.cancelled)
     
-    let image = uiImageFromFile("67px.png")
-    simulator.respondWithImage(image)
+    simulator.respondWithImage(uiImageFromFile("67px.png"))
     
     XCTAssertEqual(67, imageView.image!.size.width)
+  }
+  
+  func testDownloadImage_doNotDownloadImageThatHasBeenAlreadyDownloaded() {
+    let simulator = MoaSimulator.simulate("auk.jpg")
+    
+    obj.downloadImage()
+    
+    // Respond with image
+    simulator.respondWithImage(uiImageFromFile("96px.png"))
+    
+    // Call download again
+    obj.downloadImage()
+    
+    // Should not download the second time
+    XCTAssertEqual(1, simulator.downloaders.count)
+  }
+  
+  func testDownloadImage_doNotDownloadImageThatHasBeenAlreadyDownloadedAndCancelled() {
+    let simulator = MoaSimulator.simulate("auk.jpg")
+    
+    obj.downloadImage()
+    
+    // Respond with image
+    simulator.respondWithImage(uiImageFromFile("96px.png"))
+    
+    let didFinish = obj.didFinishDownload
+    
+    // Call cancelDownload (which does not actually cancel enything, because image has been already downloaded)
+    obj.cancelDownload()
+    
+    // Call download again
+    obj.downloadImage()
+    
+    // Should not download the second time
+    XCTAssertEqual(1, simulator.downloaders.count)
+  }
+  
+  // MARK: - Did receive image
+  
+  func testDidReceiveImage_markDownloadAsFinished() {
+    XCTAssertFalse(obj.didFinishDownload)
+    
+    obj.didReceiveImageAsync(UIImage())
+    
+    XCTAssert(obj.didFinishDownload)
   }
 }

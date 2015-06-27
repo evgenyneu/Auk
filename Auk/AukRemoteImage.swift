@@ -6,13 +6,27 @@ import moa
 Downloads and shows a single remote image.
 
 */
-struct AukRemoteImage {
+class AukRemoteImage {
   let url: String
   let imageView: UIImageView
+  
+  /// True when image has been successfully downloaded
+  var didFinishDownload = false
+  
+  init(url: String, imageView: UIImageView) {
+    self.url = url
+    self.imageView = imageView
+  }
   
   /// Sends image download HTTP request.
   func downloadImage() {
     if imageView.moa.url != nil { return } // Download has already started
+    if didFinishDownload { return } // Image has already been downloaded
+    
+    imageView.moa.onSuccessAsync = { [weak self] image in
+      self?.didReceiveImageAsync(image)
+      return image
+    }
     
     print("Downloading image \(url)")
     imageView.moa.url = url
@@ -22,5 +36,9 @@ struct AukRemoteImage {
   func cancelDownload() {
     // Cancel current download by setting url to nil
     imageView.moa.url = nil
+  }
+  
+  func didReceiveImageAsync(image: UIImage) {
+    didFinishDownload = true
   }
 }
