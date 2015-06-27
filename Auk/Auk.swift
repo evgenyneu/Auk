@@ -48,19 +48,4 @@ final class Auk: AukInterface {
   func changePage(toPageIndex: Int, pageWidth: CGFloat) {
     scrollView?.contentOffset.x = CGFloat(toPageIndex) * pageWidth
   }
-  
-  /**
-  
-  Check if the given page is currently visible to user.
-  
-  :returns: True if the page is visible to the user.
-  
-  */
-  func isPageVisible(page: AukPage) -> Bool {
-    if let scrollView = scrollView {
-      return CGRectIntersectsRect(scrollView.bounds, page.frame)
-    }
-    
-    return false
-  }
 }
