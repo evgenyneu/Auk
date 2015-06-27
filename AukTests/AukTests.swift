@@ -108,6 +108,18 @@ class AukTests: XCTestCase {
     XCTAssertEqual(67, firstAukImage(scrollView, index: 0)!.size.width)
   }
   
+  func testShowRemoteImage_showSecondImageWhenScrolled() {
+    let simulator = MoaSimulator.simulate("site.com")
+        
+    // Add two remote images
+    auk.show(url: "http://site.com/auk.png")
+    auk.show(url: "http://site.com/moa.png")
+
+    // The first image is requested at first
+    XCTAssertEqual(1, simulator.downloaders.count)
+    XCTAssertEqual("http://site.com/auk.png", simulator.downloaders.first!.url)    
+  }
+  
   func testShowRemoteImage_layoutSubviews() {
     MoaSimulator.simulate("site.com")
 

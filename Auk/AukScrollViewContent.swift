@@ -54,5 +54,7 @@ struct AukScrollViewContent {
     // Align page next to each other
     iiAutolayoutConstraints.viewsNextToEachOther(pages, constraintContainer: scrollView,
       margin: 0, vertically: false)
+    
+    scrollView.layoutIfNeeded()
   }
 }
