@@ -28,4 +28,10 @@ Settings for page control indicator, the one that indicates how many pages are i
 struct PageControl {
   /// Corner radius of page control container view.
   var cornerRadius: Double = 10
+  
+  /// Background color of the page control container view.
+  var backgroundColor = UIColor(red: 128/256, green: 128/256, blue: 128/256, alpha: 0.5)
+  
+  /// Distance between the bottom of the page control view and the bottom of the scroll view
+  var marginToScrollViewBottom: Double = 10
 }

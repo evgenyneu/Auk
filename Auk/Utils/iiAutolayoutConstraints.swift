@@ -131,4 +131,30 @@ class iiAutolayoutConstraints {
       
     return []
   }
+  
+  class func height(view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
+    return widthOrHeight(view, value: value, isHeight: true)
+  }
+  
+  class func width(view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
+    return widthOrHeight(view, value: value, isHeight: false)
+  }
+  
+  class func widthOrHeight(view: UIView, value: CGFloat, isHeight: Bool) -> [NSLayoutConstraint] {
+    
+    let layoutAttribute = isHeight ? NSLayoutAttribute.Height : NSLayoutAttribute.Width
+    
+    let constraint = NSLayoutConstraint(
+      item: view,
+      attribute: layoutAttribute,
+      relatedBy: NSLayoutRelation.Equal,
+      toItem: nil,
+      attribute: NSLayoutAttribute.NotAnAttribute,
+      multiplier: 1,
+      constant: value)
+    
+    view.addConstraint(constraint)
+    
+    return [constraint]
+  }
 }
