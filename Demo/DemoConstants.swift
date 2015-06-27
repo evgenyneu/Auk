@@ -9,6 +9,15 @@ struct DemoConstants {
     "popular_science_monthly_the_great_auk.jpg",
     "Wormius_Great_Auk.jpg"
   ]
+  
+  static let remoteImageBaseUrl = "http://evgenii.com/files/2015/06/auk_demo/"
+  
+  static let remoteImageNames = [
+    "Alca_Impennis_by_John_Gould.jpg",
+    "Great_Auk_Egg_Bent.jpg",
+    "Great_auk_with_juvenile.jpg",
+    "Keulemans-GreatAuk.jpg"
+  ]
 }
 
 struct DemoConstantsButton {

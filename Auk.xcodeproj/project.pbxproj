@@ -40,8 +40,6 @@
 		7EBD03CF1B34E43F00957205 /* popular_science_monthly_the_great_auk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EBD03CB1B34E43F00957205 /* popular_science_monthly_the_great_auk.jpg */; };
 		7EBD03D01B34E43F00957205 /* Wormius_Great_Auk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EBD03CC1B34E43F00957205 /* Wormius_Great_Auk.jpg */; };
 		7EBD03D21B34E45700957205 /* DemoConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBD03D11B34E45700957205 /* DemoConstants.swift */; };
-		7EBD03D31B34E5BD00957205 /* Auk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5B5E1E1B2C2D3000B87E54 /* Auk.framework */; };
-		7EBD03D41B34E5BD00957205 /* Auk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5B5E1E1B2C2D3000B87E54 /* Auk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7EBD03D91B34E76300957205 /* AukSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBD03D81B34E76300957205 /* AukSettings.swift */; };
 		7EBD03DA1B34E9E400957205 /* Auk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013B21B2CF95800DD4406 /* Auk.swift */; };
 		7EBD03DB1B34E9E400957205 /* AukInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013B61B2CFAE500DD4406 /* AukInterface.swift */; };
@@ -53,6 +51,10 @@
 		7EFEEDBF1B3E2FA00082488E /* AukPageVisibilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEEDBE1B3E2FA00082488E /* AukPageVisibilityTests.swift */; };
 		7EFEEDC11B3E32580082488E /* AukPageVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEEDC01B3E32580082488E /* AukPageVisibility.swift */; };
 		7EFEEDC21B3E328A0082488E /* AukPageVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEEDC01B3E32580082488E /* AukPageVisibility.swift */; };
+		7EFEEDC31B3E47EF0082488E /* Auk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5B5E1E1B2C2D3000B87E54 /* Auk.framework */; };
+		7EFEEDC41B3E47EF0082488E /* Auk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5B5E1E1B2C2D3000B87E54 /* Auk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7EFEEDC81B3E48130082488E /* moa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E0A9BCF1B3660F300086393 /* moa.framework */; };
+		7EFEEDC91B3E48130082488E /* moa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E0A9BCF1B3660F300086393 /* moa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +65,7 @@
 			remoteGlobalIDString = 7E5B5E1D1B2C2D3000B87E54;
 			remoteInfo = GreatAuk;
 		};
-		7EBD03D51B34E5BD00957205 /* PBXContainerItemProxy */ = {
+		7EFEEDC51B3E47EF0082488E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7E5B5E151B2C2D3000B87E54 /* Project object */;
 			proxyType = 1;
@@ -83,13 +85,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7EBD03D71B34E5BE00957205 /* Embed Frameworks */ = {
+		7EFEEDC71B3E47EF0082488E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7EBD03D41B34E5BD00957205 /* Auk.framework in Embed Frameworks */,
+				7EFEEDC91B3E48130082488E /* moa.framework in Embed Frameworks */,
+				7EFEEDC41B3E47EF0082488E /* Auk.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,7 +162,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EBD03D31B34E5BD00957205 /* Auk.framework in Frameworks */,
+				7EFEEDC81B3E48130082488E /* moa.framework in Frameworks */,
+				7EFEEDC31B3E47EF0082488E /* Auk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,12 +376,12 @@
 				7E9013871B2CF6FB00DD4406 /* Sources */,
 				7E9013881B2CF6FB00DD4406 /* Frameworks */,
 				7E9013891B2CF6FB00DD4406 /* Resources */,
-				7EBD03D71B34E5BE00957205 /* Embed Frameworks */,
+				7EFEEDC71B3E47EF0082488E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7EBD03D61B34E5BD00957205 /* PBXTargetDependency */,
+				7EFEEDC61B3E47EF0082488E /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = Demo;
@@ -518,10 +522,10 @@
 			target = 7E5B5E1D1B2C2D3000B87E54 /* Auk */;
 			targetProxy = 7E5B5E2B1B2C2D3000B87E54 /* PBXContainerItemProxy */;
 		};
-		7EBD03D61B34E5BD00957205 /* PBXTargetDependency */ = {
+		7EFEEDC61B3E47EF0082488E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7E5B5E1D1B2C2D3000B87E54 /* Auk */;
-			targetProxy = 7EBD03D51B34E5BD00957205 /* PBXContainerItemProxy */;
+			targetProxy = 7EFEEDC51B3E47EF0082488E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -711,6 +715,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -726,6 +734,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

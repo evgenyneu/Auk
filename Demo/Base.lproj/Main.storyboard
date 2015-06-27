@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dym-9D-I5G">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,41 +17,57 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SrW-bD-PlC">
-                                <rect key="frame" x="0.0" y="70" width="600" height="265"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="74" width="600" height="265"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="265" id="Or5-06-LRV"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUA-l4-QYq">
-                                <rect key="frame" x="208" y="355" width="184" height="56"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
-                                <state key="normal" title="Show local">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onShowLocalTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CKm-0p-bOW"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745098039217" green="0.76078431372549016" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="HUA-l4-QYq" secondAttribute="centerX" id="ij5-pB-e7B"/>
-                            <constraint firstItem="HUA-l4-QYq" firstAttribute="top" secondItem="SrW-bD-PlC" secondAttribute="bottom" constant="20" id="ong-VJ-C3L"/>
-                            <constraint firstItem="SrW-bD-PlC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="pW7-ei-LNP"/>
+                            <constraint firstItem="SrW-bD-PlC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="GMH-K7-yD4"/>
                             <constraint firstAttribute="trailing" secondItem="SrW-bD-PlC" secondAttribute="trailing" id="sMc-bW-CN2"/>
                             <constraint firstItem="SrW-bD-PlC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="x6O-nO-hVM"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Yub-14-TBn">
+                        <barButtonItem key="leftBarButtonItem" title="Show local" id="70P-QE-HQx">
+                            <connections>
+                                <action selector="onShowLocalTapped:" destination="BYZ-38-t0r" id="Eo3-ji-639"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Show remote" id="zjf-IE-rgY">
+                            <connections>
+                                <action selector="onShowRemoteTapped:" destination="BYZ-38-t0r" id="x3O-ZJ-6fa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="SrW-bD-PlC" id="MZy-wY-MWd"/>
-                        <outlet property="showLocalButton" destination="HUA-l4-QYq" id="YH7-rG-q0q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1152" y="-358"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ibB-gh-zwq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dym-9D-I5G" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Es4-ht-hMk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="uMK-td-ChJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RXi-Ad-OPR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="493" y="-358"/>
         </scene>
     </scenes>
 </document>
