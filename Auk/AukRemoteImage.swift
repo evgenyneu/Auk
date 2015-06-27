@@ -3,7 +3,7 @@ import moa
 
 /**
 
-Downloads and shows remote image.
+Downloads and shows a single remote image.
 
 */
 struct AukRemoteImage {
@@ -11,6 +11,7 @@ struct AukRemoteImage {
   let imageView: UIImageView
   
   func downloadImage() {
+    if imageView.moa.url != nil { return } // Download has already started
     imageView.moa.url = url
   }
 }

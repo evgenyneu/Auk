@@ -28,6 +28,21 @@ class AukRemoteImageTests: XCTestCase {
     let image = uiImageFromFile("96px.png")
     simulator.respondWithImage(image)
     
+    XCTAssertEqual(1, simulator.downloaders.count)
+    XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.first!.url)
     XCTAssertEqual(96, imageView.image!.size.width)
+  }
+  
+  func testDownloadImage_downloadOnlyOnce_whenCalledMultipleTimes() {
+    let simulator = MoaSimulator.simulate("auk.jpg")
+    
+    obj.downloadImage()
+    obj.downloadImage()
+    obj.downloadImage()
+    
+    let image = uiImageFromFile("96px.png")
+    simulator.respondWithImage(image)
+    
+    XCTAssertEqual(1, simulator.downloaders.count)
   }
 }
