@@ -23,8 +23,7 @@ final class AukPage: UIView {
   
   /**
 
-  Called when the page is currently visible to user. It is called frequently each time 
-  scroll view's content offset is changed.
+  Called when the page is currently visible to user which triggers the image download. The function is called frequently each time scroll view's content offset is changed.
   
   */
   func visibleNow() {
@@ -33,7 +32,7 @@ final class AukPage: UIView {
   
   /**
   
-  Called when the page is currently not visible to user. It happes when the view is scrolled out in the scroll view and not visible on screen. This method called frequently each time scroll view's content offset is changed.
+  Called when the page is currently not visible to user which cancels the image download. The method called frequently each time scroll view's content offset is changed and the page is out of sight.
   
   */
   func outOfSightNow() {

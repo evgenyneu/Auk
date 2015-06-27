@@ -10,7 +10,6 @@ struct AukRemoteImage {
   let url: String
   let imageView: UIImageView
   
-  
   /// Sends image download HTTP request.
   func downloadImage() {
     if imageView.moa.url != nil { return } // Download has already started

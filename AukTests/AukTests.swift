@@ -84,6 +84,8 @@ class AukTests: XCTestCase {
   // MARK: - Show remote image
   
   func testShowRemoteImage_setupIsCalled() {
+    MoaSimulator.simulate("site.com")
+    
     auk.show(url: "http://site.com/image.png")
     
     XCTAssertFalse(scrollView.showsHorizontalScrollIndicator)
@@ -91,16 +93,24 @@ class AukTests: XCTestCase {
   
   func testShowRemoteImage() {
     let simulator = MoaSimulator.simulate("auk.png")
+
     auk.show(url: "http://site.com/auk.png")
+    
+    XCTAssertEqual(1, simulator.downloaders.count)
+    XCTAssertEqual("http://site.com/auk.png", simulator.downloaders.first!.url)
+    
+    scrollView.layoutIfNeeded()
     
     let image = uiImageFromFile("67px.png")
     simulator.respondWithImage(image)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
-    XCTAssertEqual(96, firstAukImage(scrollView, index: 0)!.size.width)
+    XCTAssertEqual(67, firstAukImage(scrollView, index: 0)!.size.width)
   }
   
   func testShowRemoteImage_layoutSubviews() {
+    MoaSimulator.simulate("site.com")
+
     auk.show(url: "http://site.com/image1.png")
     auk.show(url: "http://site.com/image2.png")
     

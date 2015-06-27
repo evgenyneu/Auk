@@ -11,7 +11,7 @@ class AukRemoteImageTests: XCTestCase {
     super.setUp()
     
     imageView = UIImageView()
-    obj = AukRemoteImage(url: "http://site.com/auk.jpg", imageView: imageView)
+    obj = AukRemoteImage(url: "http://site.com/auk.jpg", imageView: imageView)    
   }
   
   override func tearDown() {

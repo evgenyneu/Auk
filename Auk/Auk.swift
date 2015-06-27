@@ -23,6 +23,10 @@ final class Auk: AukInterface {
     setup()
     let page = createPage()
     page.show(url: url, settings: settings)
+    
+    if let scrollView = scrollView {
+      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
+    }
   }
   
   /// Create a page, add it to the scroll view content and layout.

@@ -22,37 +22,37 @@ struct AukScrollViewContent {
   
   */
   static func layout(scrollView: UIScrollView) {
-    let subviews = aukPages(scrollView)
+    let pages = aukPages(scrollView)
 
-    for (index, subview) in enumerate(subviews) {
+    for (index, page) in enumerate(pages) {
       
       // Delete current constraints by removing the view and adding it back to its superview
-      subview.removeFromSuperview()
-      scrollView.addSubview(subview)
+      page.removeFromSuperview()
+      scrollView.addSubview(page)
       
-      subview.setTranslatesAutoresizingMaskIntoConstraints(false)
+      page.setTranslatesAutoresizingMaskIntoConstraints(false)
       
       // Make page size equal to the scroll view size
-      iiAutolayoutConstraints.equalSize(subview, viewTwo: scrollView, constraintContainer: scrollView)
+      iiAutolayoutConstraints.equalSize(page, viewTwo: scrollView, constraintContainer: scrollView)
       
       // Stretch the page vertically to fill the height of the scroll view
-      iiAutolayoutConstraints.fillParent(subview, parentView: scrollView, margin: 0, vertically: true)
+      iiAutolayoutConstraints.fillParent(page, parentView: scrollView, margin: 0, vertically: true)
       
       if index == 0 {
         // Align the left edge of the first page to the left edge of the scroll view.
-        iiAutolayoutConstraints.alignSameAttributes(subview, toItem: scrollView,
+        iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
           constraintContainer: scrollView, attribute: NSLayoutAttribute.Left, margin: 0)
       }
       
-      if index == subviews.count - 1 {
+      if index == pages.count - 1 {
         // Align the right edge of the last page to the right edge of the scroll view.
-        iiAutolayoutConstraints.alignSameAttributes(subview, toItem: scrollView,
+        iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
           constraintContainer: scrollView, attribute: NSLayoutAttribute.Right, margin: 0)
       }
     }
     
     // Align page next to each other
-    iiAutolayoutConstraints.viewsNextToEachOther(subviews, constraintContainer: scrollView,
+    iiAutolayoutConstraints.viewsNextToEachOther(pages, constraintContainer: scrollView,
       margin: 0, vertically: false)
   }
 }
