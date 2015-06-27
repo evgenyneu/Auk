@@ -15,4 +15,17 @@ struct AukSettings {
   
   /// Enable paging for the scroll view. When true the view automatically scroll to show the whole image.
   var pagingEnabled = true
+  
+  var pageControl = PageControl()
+}
+
+
+/**
+
+Settings for page control indicator, the one that indicates how many pages are in scroll view with nice little dots.
+
+*/
+struct PageControl {
+  /// Corner radius of page control container view.
+  var cornerRadius: Double = 10
 }

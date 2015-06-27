@@ -104,7 +104,7 @@ class AukRemoteImageTests: XCTestCase {
     
     let didFinish = obj.didFinishDownload
     
-    // Call cancelDownload (which does not actually cancel enything, because image has been already downloaded)
+    // Call cancelDownload (which does not actually cancel anything, because image has already been downloaded)
     obj.cancelDownload()
     
     // Call download again
