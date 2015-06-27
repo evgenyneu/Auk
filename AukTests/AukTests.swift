@@ -117,7 +117,25 @@ class AukTests: XCTestCase {
 
     // The first image is requested at first
     XCTAssertEqual(1, simulator.downloaders.count)
-    XCTAssertEqual("http://site.com/auk.png", simulator.downloaders.first!.url)    
+    XCTAssertEqual("http://site.com/auk.png", simulator.downloaders.first!.url)
+    XCTAssertFalse(simulator.downloaders.first!.cancelled)
+
+    
+    // Scroll to make the second image visible
+    scrollView.contentOffset.x = 10
+    scrollView.delegate?.scrollViewDidScroll?(scrollView)
+    
+    // The second image is requested
+    XCTAssertEqual(2, simulator.downloaders.count)
+    XCTAssertEqual("http://site.com/moa.png", simulator.downloaders.last!.url)
+    XCTAssertFalse(simulator.downloaders.last!.cancelled)
+    
+    // Scroll to hide the first image
+    scrollView.contentOffset.x = 120
+    scrollView.delegate?.scrollViewDidScroll?(scrollView)
+    
+    // Download of first image is cancelled
+    XCTAssert(simulator.downloaders.first!.cancelled)
   }
   
   func testShowRemoteImage_layoutSubviews() {

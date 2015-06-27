@@ -3,9 +3,17 @@ import UIKit
 final class Auk: AukInterface {
   private weak var scrollView: UIScrollView?
   var settings = AukSettings()
+  var scrollViewDelegate = AukScrollViewDelegate()
 
   init(scrollView: UIScrollView) {
     self.scrollView = scrollView
+    
+    scrollViewDelegate.onScroll = { [weak self] in
+      self?.onScroll()
+    }
+    
+    scrollViewDelegate.delegate = scrollView.delegate
+    scrollView.delegate = scrollViewDelegate
   }
   
   func setup() {
@@ -51,5 +59,11 @@ final class Auk: AukInterface {
   
   func changePage(toPageIndex: Int, pageWidth: CGFloat) {
     scrollView?.contentOffset.x = CGFloat(toPageIndex) * pageWidth
+  }
+  
+  func onScroll() {
+    if let scrollView = scrollView {
+      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
+    }
   }
 }

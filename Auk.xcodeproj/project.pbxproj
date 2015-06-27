@@ -49,6 +49,7 @@
 		7EBD03DE1B34E9E400957205 /* AukPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013C71B2CFE7D00DD4406 /* AukPage.swift */; };
 		7EBD03DF1B34E9E600957205 /* UIScrollView+Auk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013B01B2CF89900DD4406 /* UIScrollView+Auk.swift */; };
 		7EBD03E01B34E9E800957205 /* iiAutolayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AEDEF1B2D0C0500199C38 /* iiAutolayoutConstraints.swift */; };
+		7EFE6B9F1B3E7EF500E048F3 /* AukScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3E0A151B3E790900CD8CB4 /* AukScrollViewDelegate.swift */; };
 		7EFEEDBF1B3E2FA00082488E /* AukPageVisibilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEEDBE1B3E2FA00082488E /* AukPageVisibilityTests.swift */; };
 		7EFEEDC11B3E32580082488E /* AukPageVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEEDC01B3E32580082488E /* AukPageVisibility.swift */; };
 		7EFEEDC21B3E328A0082488E /* AukPageVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEEDC01B3E32580082488E /* AukPageVisibility.swift */; };
@@ -495,6 +496,7 @@
 				7EBD03DD1B34E9E400957205 /* AukScrollViewContent.swift in Sources */,
 				7EBD03DB1B34E9E400957205 /* AukInterface.swift in Sources */,
 				7EBD03E01B34E9E800957205 /* iiAutolayoutConstraints.swift in Sources */,
+				7EFE6B9F1B3E7EF500E048F3 /* AukScrollViewDelegate.swift in Sources */,
 				7EBD03DE1B34E9E400957205 /* AukPage.swift in Sources */,
 				7E9013AF1B2CF83B00DD4406 /* UIScrollView+AukTests.swift in Sources */,
 				7EFEEDC21B3E328A0082488E /* AukPageVisibility.swift in Sources */,

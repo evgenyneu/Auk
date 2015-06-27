@@ -1,15 +1,19 @@
 import UIKit
 
+/**
+
+This delegate detects the scrolling event which is used for loading remote images when their superview becomes visible on screen.
+
+*/
 final class AukScrollViewDelegate: NSObject, UIScrollViewDelegate {
+  /**
+  
+  If scroll view already has delegate it is preserved in this property and all the delegate calls are forwarded to it.
+  
+  */
   weak var delegate: UIScrollViewDelegate?
   
   var onScroll: (()->())?
-  
-  init(delegate: UIScrollViewDelegate) {
-    super.init()
-  
-    self.delegate = delegate
-  }
   
   func scrollViewDidScroll(scrollView: UIScrollView) {
     onScroll?()
