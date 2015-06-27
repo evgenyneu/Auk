@@ -7,12 +7,13 @@ final class AukPage: UIView {
   var remoteImage: AukRemoteImage?
   
   func show(#image: UIImage, settings: AukSettings) {
-    setup(settings)
+    createAndLayoutImageView(settings)
+    
     imageView?.image = image
   }
   
   func show(#url: String, settings: AukSettings) {
-    setup(settings)
+    createAndLayoutImageView(settings)
     
     if let imageView = imageView {
       remoteImage = AukRemoteImage(url: url, imageView: imageView)
@@ -39,7 +40,12 @@ final class AukPage: UIView {
     remoteImage?.cancelDownload()
   }
   
-  func setup(settings: AukSettings) {
+  /**
+  
+  Create and layout an image view.
+  
+  */
+  func createAndLayoutImageView(settings: AukSettings) {
     if imageView != nil { return }
     
     let newImageView = UIImageView()

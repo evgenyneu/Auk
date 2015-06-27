@@ -1,5 +1,6 @@
 import UIKit
 import XCTest
+import moa
 
 class AukTests: XCTestCase {
   
@@ -16,6 +17,12 @@ class AukTests: XCTestCase {
     scrollView.bounds = CGRect(origin: CGPoint(), size: size)
     
     auk = Auk(scrollView: scrollView)
+  }
+  
+  override func tearDown() {
+    super.tearDown()
+    
+    MoaSimulator.clear()
   }
   
   // MARK: - Setup
@@ -83,7 +90,11 @@ class AukTests: XCTestCase {
   }
   
   func testShowRemoteImage() {
-    auk.show(url: "http://site.com/image1.png")
+    let simulator = MoaSimulator.simulate("auk.png")
+    auk.show(url: "http://site.com/auk.png")
+    
+    let image = uiImageFromFile("67px.png")
+    simulator.respondWithImage(image)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
     XCTAssertEqual(96, firstAukImage(scrollView, index: 0)!.size.width)

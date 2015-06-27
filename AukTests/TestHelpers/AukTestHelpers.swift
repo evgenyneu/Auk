@@ -26,7 +26,7 @@ extension XCTestCase {
   :returns: The the AukPage with given index.
   
   */
-  func aukView(scrollView: UIScrollView, index: Int) -> AukPage? {
+  func aukPage(scrollView: UIScrollView, index: Int) -> AukPage? {
     let views = aukPages(scrollView)
     if views.count < index + 1 { return nil }
     return views[index]
@@ -38,7 +38,7 @@ extension XCTestCase {
   
   */
   func firstAukImageView(scrollView: UIScrollView, index: Int) -> UIImageView? {
-    if let view =  aukView(scrollView, index: index) {
+    if let view =  aukPage(scrollView, index: index) {
       return view.subviews.filter { $0 is UIImageView }.map { $0 as! UIImageView }.first
     }
     
