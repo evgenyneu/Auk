@@ -49,7 +49,7 @@ class AukPageTests: XCTestCase {
     XCTAssert(view.imageView != nil)
   }
   
-  // MARK: - visible now
+  // MARK: - Visible now
   
   func testVisibleNow() {
     let simulator = MoaSimulator.simulate("auk.jpg")
@@ -59,11 +59,12 @@ class AukPageTests: XCTestCase {
     
     view.visibleNow()
     
+    XCTAssertEqual(1, simulator.downloaders.count)
+    XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.first!.url)
+    
     let image = uiImageFromFile("35px.jpg")
     simulator.respondWithImage(image)
     
-    XCTAssertEqual(1, simulator.downloaders.count)
-    XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.first!.url)
     XCTAssertEqual(35, imageView.image!.size.width)
   }
   
@@ -81,5 +82,23 @@ class AukPageTests: XCTestCase {
     
     XCTAssertEqual(1, simulator.downloaders.count)
   }
+  
+  // MARK: - Out of sight now
+  
+  func testOutOfSightNow_cancelCurrentImageDownload() {
+    let simulator = MoaSimulator.simulate("auk.jpg")
+    let imageView = UIImageView()
+    view.remoteImage = AukRemoteImage(url: "http://site.com/auk.jpg", imageView: imageView)
+    imageView.moa.url = "http://site.com/auk.jpg"
+    
+    XCTAssertEqual(1, simulator.downloaders.count)
+    XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.first!.url)
+
+    view.outOfSightNow()
+    
+    XCTAssert(simulator.downloaders.first!.cancelled)
+    XCTAssert(imageView.moa.url == nil)
+  }
+
 
 }

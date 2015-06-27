@@ -14,4 +14,9 @@ struct AukRemoteImage {
     if imageView.moa.url != nil { return } // Download has already started
     imageView.moa.url = url
   }
+  
+  func cancelDownload() {
+    // Cancel current download by setting url to nil
+    imageView.moa.url = nil
+  }
 }

@@ -19,9 +19,26 @@ final class AukPage: UIView {
     }
   }
   
+  
+  /**
+
+  Called when the page is currently visible to user. It is called frequently each time 
+  scroll view's content offset is changed.
+  
+  */
   func visibleNow() {
     remoteImage?.downloadImage()
   }
+  
+  /**
+  
+  Called when the page is currently not visible to user. It happes when the view is scrolled out in the scroll view and not visible on screen. This method called frequently each time scroll view's content offset is changed.
+  
+  */
+  func outOfSightNow() {
+    remoteImage?.cancelDownload()
+  }
+
   
   func setup(settings: AukSettings) {
     if imageView != nil { return }
