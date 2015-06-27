@@ -1,5 +1,6 @@
 import UIKit
 import XCTest
+import moa
 
 class AukPageTests: XCTestCase {
   
@@ -9,6 +10,12 @@ class AukPageTests: XCTestCase {
   override func setUp() {
     super.setUp()
     view = AukPage()
+  }
+  
+  override func tearDown() {
+    super.tearDown()
+    
+    MoaSimulator.clear()
   }
   
   // MARK: - Show image
@@ -40,5 +47,12 @@ class AukPageTests: XCTestCase {
     view.show(url: "http://site.com/auk.jpg", settings: settings)
     
     XCTAssert(view.imageView != nil)
+  }
+  
+  // MARK: - visible now
+  
+  func testVisibleNow() {
+//    view.remoteImage = AukRemoteImage(url: 
+    view.visibleNow()
   }
 }

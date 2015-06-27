@@ -20,7 +20,7 @@ class AukRemoteImageTests: XCTestCase {
     MoaSimulator.clear()
   }
   
-  func testDownload() {
+  func testDownloadImage() {
     let simulator = MoaSimulator.simulate("auk.jpg")
     
     obj.downloadImage()

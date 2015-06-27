@@ -16,11 +16,14 @@ final class AukPage: UIView {
     
     if let imageView = imageView {
       remoteImage = AukRemoteImage(url: url, imageView: imageView)
-      remoteImage?.downloadImage()
     }
   }
   
-  private func setup(settings: AukSettings) {
+  func visibleNow() {
+    
+  }
+  
+  func setup(settings: AukSettings) {
     if imageView != nil { return }
     
     let newImageView = UIImageView()

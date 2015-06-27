@@ -1,7 +1,6 @@
 import UIKit
 import moa
 
-
 /**
 
 Downloads and shows remote image.
