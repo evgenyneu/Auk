@@ -20,16 +20,19 @@ class AukRemoteImageTests: XCTestCase {
     MoaSimulator.clear()
   }
   
+  // MARK: - Download image
+  
   func testDownloadImage() {
     let simulator = MoaSimulator.simulate("auk.jpg")
     
     obj.downloadImage()
     
+    XCTAssertEqual(1, simulator.downloaders.count)
+    XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.first!.url)
+    
     let image = uiImageFromFile("96px.png")
     simulator.respondWithImage(image)
     
-    XCTAssertEqual(1, simulator.downloaders.count)
-    XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.first!.url)
     XCTAssertEqual(96, imageView.image!.size.width)
   }
   
@@ -44,5 +47,38 @@ class AukRemoteImageTests: XCTestCase {
     simulator.respondWithImage(image)
     
     XCTAssertEqual(1, simulator.downloaders.count)
+  }
+  
+  // MARK: - Cancel image download
+  
+  func testCancelDownload() {
+    let simulator = MoaSimulator.simulate("auk.jpg")
+    
+    // Request image download
+    imageView.moa.url = "http://site.com/auk.jpg"
+    
+    obj.cancelDownload()
+    
+    XCTAssert(simulator.downloaders.first!.cancelled)
+    XCTAssert(imageView.moa.url == nil)
+  }
+  
+  func testCancelDownload_andStartAgain() {
+    let simulator = MoaSimulator.simulate("auk.jpg")
+    
+    // Request image download
+    imageView.moa.url = "http://site.com/auk.jpg"
+    
+    obj.cancelDownload()
+    obj.downloadImage()
+
+    XCTAssertEqual(2, simulator.downloaders.count)
+    XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.last!.url)
+    XCTAssertFalse(simulator.downloaders.last!.cancelled)
+    
+    let image = uiImageFromFile("67px.png")
+    simulator.respondWithImage(image)
+    
+    XCTAssertEqual(67, imageView.image!.size.width)
   }
 }

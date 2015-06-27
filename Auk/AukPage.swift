@@ -38,7 +38,6 @@ final class AukPage: UIView {
   func outOfSightNow() {
     remoteImage?.cancelDownload()
   }
-
   
   func setup(settings: AukSettings) {
     if imageView != nil { return }

@@ -89,6 +89,8 @@ class AukPageTests: XCTestCase {
     let simulator = MoaSimulator.simulate("auk.jpg")
     let imageView = UIImageView()
     view.remoteImage = AukRemoteImage(url: "http://site.com/auk.jpg", imageView: imageView)
+    
+    // Request image download
     imageView.moa.url = "http://site.com/auk.jpg"
     
     XCTAssertEqual(1, simulator.downloaders.count)
