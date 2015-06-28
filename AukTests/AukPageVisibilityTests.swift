@@ -101,7 +101,7 @@ class AukPageVisibilityTests: XCTestCase {
     XCTAssertFalse(simulate.downloaders.first!.cancelled)
   }
   
-  func testTellPagesAboutTheirVisibility_cancelTheDownloadOfFirstImage() {
+  func testTellPagesAboutTheirVisibility_startAndCancelImageDownloads() {
     let simulate = MoaSimulator.simulate("site.com")
     
     // Show first page with remote image
@@ -116,16 +116,61 @@ class AukPageVisibilityTests: XCTestCase {
     scrollView.addSubview(aukPage2)
     aukPage2.show(url: "http://site.com/image_two.jpg", settings: settings)
     
+    // Show third page with remote image
+    let aukPage3 = AukPage()
+    scrollView.addSubview(aukPage3)
+    aukPage3.show(url: "http://site.com/image_three.jpg", settings: settings)
+    
     AukScrollViewContent.layout(scrollView)
     scrollView.layoutIfNeeded()
     
-    // The second page is visible
-    scrollView.contentOffset.x = 290
+    // 1. Make the second page  visible
+    // ---------------------
     
-    // This will tell the first page that it is invisible, the page, in turn, cancels the download.
+    scrollView.contentOffset.x = 290
     AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
     
     XCTAssertEqual(2, simulate.downloaders.count)
+    
+    // Do not cancel the first image download just yet because it is still very close
+    XCTAssertFalse(simulate.downloaders.first!.cancelled)
+    
+    // 2. Scroll a little bit firther to cancel first image download and start the third image download
+    // ---------------------
+    
+    scrollView.contentOffset.x = 350
+    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
+    
+    // Download of third image is started
+    XCTAssertEqual(3, simulate.downloaders.count)
+    XCTAssertEqual("http://site.com/image_three.jpg", simulate.downloaders.last!.url)
+    XCTAssertFalse(simulate.downloaders.last!.cancelled)
+
+    // Now the download of first image is cancelled because it is scrolled way out of view
     XCTAssert(simulate.downloaders.first!.cancelled)
+    
+    // 3. Now scroll back to the second page
+    // ---------------------
+    
+    scrollView.contentOffset.x = 290
+    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
+    
+    XCTAssertEqual(3, simulate.downloaders.count)
+    
+    // Third image download is not cancelled yet because it is still close (even though it is not visible)
+    XCTAssertFalse(simulate.downloaders.last!.cancelled)
+    
+    // 4. Finally, scroll more towards the start to cancel download of third image
+    // ---------------------
+    
+    scrollView.contentOffset.x = 220
+    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
+    
+    XCTAssertEqual(4, simulate.downloaders.count)
+    let thirdImageDownloader = simulate.downloaders[2]
+    XCTAssertEqual("http://site.com/image_three.jpg", thirdImageDownloader.url)
+
+    // Third image download is cancelled as it is far away now
+    XCTAssert(thirdImageDownloader.cancelled)
   }
 }

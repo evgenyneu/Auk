@@ -5,7 +5,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView!
   
   override func viewDidLoad() {
-    super.viewDidLoad()    
+    super.viewDidLoad()
   }
   
   override func viewWillTransitionToSize(size: CGSize,

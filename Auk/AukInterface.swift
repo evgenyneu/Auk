@@ -8,6 +8,14 @@ Call its `show` method to display an image in the scroll view.
 
 */
 public protocol AukInterface: class {
+  
+  /**
+  
+  Settings that control appearance of the images and the page indicator.
+  
+  */
+  var settings: AukSettings { get set }
+  
   /**
 
   Shows the image in the scroll view.
