@@ -9,7 +9,7 @@ class iiAutolayoutConstraints {
     var marginFormat = ""
 
     if margin != 0 {
-      marginFormat = "-\(margin)-"
+      marginFormat = "-(\(margin))-"
     }
 
     var format = "|\(marginFormat)[view]\(marginFormat)|"
