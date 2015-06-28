@@ -16,6 +16,7 @@ class AukRemoteImage {
   var didFinishDownload = false
   
   func setup(url: String, imageView: UIImageView, settings: AukSettings) {
+      
     self.url = url
     self.imageView = imageView
     imageView.image = settings.placeholderImage
@@ -42,5 +43,26 @@ class AukRemoteImage {
   
   func didReceiveImageAsync(image: UIImage) {
     didFinishDownload = true
+    
+    dispatch_async(dispatch_get_main_queue()) { [weak self] in
+      self?.animateImageView(image)
+    }
+  }
+  
+  private func animateImageView(image: UIImage) {
+    self.imageView?.alpha = 0
+    
+    UIView.animateWithDuration(2,
+      delay: 0,
+      usingSpringWithDamping: 1,
+      initialSpringVelocity: 3,
+      options: nil,
+      animations: {
+        self.imageView?.alpha = 1
+      },
+      completion: { finished in
+        
+      }
+    )
   }
 }

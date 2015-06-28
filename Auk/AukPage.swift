@@ -3,8 +3,11 @@ import UIKit
 /// The view for an individual page of the scroll view containing an image.
 final class AukPage: UIView {
   
-  // Contain a local image.
+  // Image view for showing local image or a placeholder image
   weak var imageView: UIImageView?
+  
+  // Image view for showing the remote image
+  weak var remoteImageView: UIImageView?
   
   // Contains a URL for the remote image, if any.
   var remoteImage: AukRemoteImage?
@@ -33,10 +36,11 @@ final class AukPage: UIView {
   */
   func show(#url: String, settings: AukSettings) {
     createAndLayoutImageView(settings)
+    createAndLayoutRemoteImageView(settings)
     
-    if let imageView = imageView {
+    if let remoteImageView = remoteImageView {
       remoteImage = AukRemoteImage()
-      remoteImage?.setup(url, imageView: imageView, settings: settings)
+      remoteImage?.setup(url, imageView: remoteImageView, settings: settings)
     }
   }
   
@@ -69,12 +73,34 @@ final class AukPage: UIView {
   func createAndLayoutImageView(settings: AukSettings) {
     if imageView != nil { return }
     
-    let newImageView = UIImageView()
-    newImageView.contentMode = settings.contentMode
+    let newImageView = AukPage.createImageView(settings)
     addSubview(newImageView)
     imageView = newImageView
     
-    layoutImageView(newImageView)
+    AukPage.layoutImageView(newImageView, superview: self)
+  }
+  
+  /**
+  
+  Create and layout the remote image view.
+  
+  :param: settings: Auk settings.
+  
+  */
+  func createAndLayoutRemoteImageView(settings: AukSettings) {
+    if remoteImageView != nil { return }
+    
+    let newImageView = AukPage.createImageView(settings)
+    addSubview(newImageView)
+    remoteImageView = newImageView
+    
+    AukPage.layoutImageView(newImageView, superview: self)
+  }
+  
+  private static func createImageView(settings: AukSettings) -> UIImageView {
+    let newImageView = UIImageView()
+    newImageView.contentMode = settings.contentMode
+    return newImageView
   }
   
   /**
@@ -84,10 +110,10 @@ final class AukPage: UIView {
   :param: imageView: Image view that is used to create Auto Layout constraints.
   
   */
-  private func layoutImageView(imageView: UIImageView) {
+  private static func layoutImageView(imageView: UIImageView, superview: UIView) {
     imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
     
-    iiAutolayoutConstraints.fillParent(imageView, parentView: self, margin: 0, vertically: false)
-    iiAutolayoutConstraints.fillParent(imageView, parentView: self, margin: 0, vertically: true)
+    iiAutolayoutConstraints.fillParent(imageView, parentView: superview, margin: 0, vertically: false)
+    iiAutolayoutConstraints.fillParent(imageView, parentView: superview, margin: 0, vertically: true)
   }
 }
