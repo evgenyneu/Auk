@@ -42,6 +42,17 @@ class ViewController: UIViewController {
     var pageIndex = scrollView.auk.currentPageIndex + 1
     if pageIndex >= scrollView.auk.numberOfPages { pageIndex = 0 }
 
+    changePage(pageIndex)
+  }
+  
+  @IBAction func onPreviousPageTapped(sender: AnyObject) {
+    var pageIndex = scrollView.auk.currentPageIndex - 1
+    if pageIndex < 0 { pageIndex =  scrollView.auk.numberOfPages - 1 }
+    
+    changePage(pageIndex)
+  }
+  
+  private func changePage(pageIndex: Int) {
     scrollView.auk.changePage(pageIndex, animated: true)
   }
 }

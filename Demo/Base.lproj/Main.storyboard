@@ -25,20 +25,34 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ak0-JX-tQy">
-                                <rect key="frame" x="305" y="356" width="39" height="72"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <state key="normal" title="►">
+                                <rect key="frame" x="320" y="356" width="40" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="▶︎">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="onNextPageTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bHF-u5-29D"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkS-kK-gCM">
+                                <rect key="frame" x="240" y="356" width="40" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="◀︎">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onPreviousPageTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ahk-OH-APv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745098039217" green="0.76078431372549016" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Ak0-JX-tQy" secondAttribute="leading" constant="-5" id="5g9-3F-WUi"/>
+                            <constraint firstAttribute="centerX" secondItem="Ak0-JX-tQy" secondAttribute="leading" constant="-20" id="5g9-3F-WUi"/>
                             <constraint firstItem="SrW-bD-PlC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="GMH-K7-yD4"/>
+                            <constraint firstItem="xkS-kK-gCM" firstAttribute="centerY" secondItem="Ak0-JX-tQy" secondAttribute="centerY" id="LsT-hx-C56"/>
+                            <constraint firstItem="Ak0-JX-tQy" firstAttribute="leading" secondItem="xkS-kK-gCM" secondAttribute="trailing" constant="40" id="QPf-wi-pPb"/>
                             <constraint firstItem="Ak0-JX-tQy" firstAttribute="top" secondItem="SrW-bD-PlC" secondAttribute="bottom" constant="27" id="bc9-bb-x0c"/>
                             <constraint firstAttribute="trailing" secondItem="SrW-bD-PlC" secondAttribute="trailing" id="sMc-bW-CN2"/>
                             <constraint firstItem="SrW-bD-PlC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="x6O-nO-hVM"/>

@@ -19,7 +19,8 @@ class AukRemoteImage {
       
     self.url = url
     self.imageView = imageView
-    imageView.image = settings.placeholderImage
+    
+    setPlaceholderImage(settings)
   }
   
   /// Sends image download HTTP request.
@@ -45,12 +46,23 @@ class AukRemoteImage {
     didFinishDownload = true
     
     dispatch_async(dispatch_get_main_queue()) { [weak self] in
-      self?.animateImageView(image, settings: settings)
+      if let imageView = self?.imageView {
+        AukRemoteImage.animateImageView(imageView, settings: settings)
+      }
     }
   }
   
-  private func animateImageView(image: UIImage, settings: AukSettings) {
-    self.imageView?.alpha = 0
+  private func setPlaceholderImage(settings: AukSettings) {
+    if let placeholderImage = settings.placeholderImage,
+      imageView = imageView {
+        
+      imageView.image = placeholderImage
+      AukRemoteImage.animateImageView(imageView, settings: settings)
+    }
+  }
+  
+  private static func animateImageView(imageView: UIImageView, settings: AukSettings) {
+    imageView.alpha = 0
     let interval = NSTimeInterval(settings.remoteImageAnimationIntervalSeconds)
     
     UIView.animateWithDuration(interval,
@@ -59,7 +71,7 @@ class AukRemoteImage {
       initialSpringVelocity: 3,
       options: nil,
       animations: {
-        self.imageView?.alpha = 1
+        imageView.alpha = 1
       },
       completion: { finished in
         
