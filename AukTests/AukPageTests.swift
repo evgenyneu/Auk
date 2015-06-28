@@ -5,11 +5,12 @@ import moa
 class AukPageTests: XCTestCase {
   
   var view: AukPage!
-  var settings = AukSettings()
+  var settings: AukSettings!
   
   override func setUp() {
     super.setUp()
     view = AukPage()
+    settings = AukSettings()
   }
   
   override func tearDown() {
@@ -56,7 +57,7 @@ class AukPageTests: XCTestCase {
     let imageView = UIImageView()
     
     view.remoteImage = AukRemoteImage()
-    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView)
+    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     
     view.visibleNow()
     
@@ -74,7 +75,7 @@ class AukPageTests: XCTestCase {
     let imageView = UIImageView()
     
     view.remoteImage = AukRemoteImage()
-    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView)
+    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     
     view.visibleNow()
     view.visibleNow()
@@ -91,7 +92,7 @@ class AukPageTests: XCTestCase {
     let simulator = MoaSimulator.simulate("auk.jpg")
     let imageView = UIImageView()
     view.remoteImage = AukRemoteImage()
-    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView)
+    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     
     // Request image download
     imageView.moa.url = "http://site.com/auk.jpg"

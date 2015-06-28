@@ -15,7 +15,7 @@ class AukRemoteImage {
   /// True when image has been successfully downloaded
   var didFinishDownload = false
   
-  func setup(url: String, imageView: UIImageView) {
+  func setup(url: String, imageView: UIImageView, settings: AukSettings) {
     self.url = url
     self.imageView = imageView
   }

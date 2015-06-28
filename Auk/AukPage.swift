@@ -36,7 +36,7 @@ final class AukPage: UIView {
     
     if let imageView = imageView {
       remoteImage = AukRemoteImage()
-      remoteImage?.setup(url, imageView: imageView)
+      remoteImage?.setup(url, imageView: imageView, settings: settings)
     }
   }
   

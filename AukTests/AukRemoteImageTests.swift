@@ -6,12 +6,15 @@ class AukRemoteImageTests: XCTestCase {
   
   var obj: AukRemoteImage!
   var imageView: UIImageView!
+  var settings: AukSettings!
+
   
   override func setUp() {
     super.setUp()
     
     imageView = UIImageView()
     obj = AukRemoteImage()
+    settings = AukSettings()
   }
   
   override func tearDown() {
@@ -23,7 +26,7 @@ class AukRemoteImageTests: XCTestCase {
   // MARK: - Download image
   
   func testDownloadImage() {
-    obj.setup("http://site.com/auk.jpg", imageView: imageView)
+    obj.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
     obj.downloadImage()
@@ -37,7 +40,7 @@ class AukRemoteImageTests: XCTestCase {
   }
   
   func testDownloadImage_downloadOnlyOnce_whenCalledMultipleTimes() {
-    obj.setup("http://site.com/auk.jpg", imageView: imageView)
+    obj.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
     obj.downloadImage()
@@ -52,7 +55,7 @@ class AukRemoteImageTests: XCTestCase {
   // MARK: - Cancel image download
   
   func testCancelDownload() {
-    obj.setup("http://site.com/auk.jpg", imageView: imageView)
+    obj.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
     // Request image download
@@ -65,7 +68,7 @@ class AukRemoteImageTests: XCTestCase {
   }
   
   func testCancelDownload_andStartAgain() {
-    obj.setup("http://site.com/auk.jpg", imageView: imageView)
+    obj.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
     // Request image download
@@ -84,7 +87,7 @@ class AukRemoteImageTests: XCTestCase {
   }
   
   func testDownloadImage_doNotDownloadImageThatHasBeenAlreadyDownloaded() {
-    obj.setup("http://site.com/auk.jpg", imageView: imageView)
+    obj.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
     obj.downloadImage()
@@ -100,7 +103,7 @@ class AukRemoteImageTests: XCTestCase {
   }
   
   func testDownloadImage_doNotDownloadImageThatHasBeenAlreadyDownloadedAndCancelled() {
-    obj.setup("http://site.com/auk.jpg", imageView: imageView)
+    obj.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
     obj.downloadImage()
