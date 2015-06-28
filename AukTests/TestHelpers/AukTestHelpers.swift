@@ -26,10 +26,10 @@ extension XCTestCase {
   :returns: The the AukPage with given index.
   
   */
-  func aukPage(scrollView: UIScrollView, index: Int) -> AukPage? {
+  func aukPage(scrollView: UIScrollView, pageIndex: Int) -> AukPage? {
     let views = aukPages(scrollView)
-    if views.count < index + 1 { return nil }
-    return views[index]
+    if views.count < pageIndex + 1 { return nil }
+    return views[pageIndex]
   }
   
   /**
@@ -37,9 +37,22 @@ extension XCTestCase {
   :returns: The the first image view form the AukPage with given index.
   
   */
-  func firstAukImageView(scrollView: UIScrollView, index: Int) -> UIImageView? {
-    if let view =  aukPage(scrollView, index: index) {
+  func firstAukImageView(scrollView: UIScrollView, pageIndex: Int) -> UIImageView? {
+    if let view = aukPage(scrollView, pageIndex: pageIndex) {
       return view.subviews.filter { $0 is UIImageView }.map { $0 as! UIImageView }.first
+    }
+    
+    return nil
+  }
+  
+  /**
+  
+  :returns: The the second image view form the AukPage with given index.
+  
+  */
+  func secondAukImageView(scrollView: UIScrollView, pageIndex: Int) -> UIImageView? {
+    if let view =  aukPage(scrollView, pageIndex: pageIndex) {
+      return view.subviews.filter { $0 is UIImageView }.map { $0 as! UIImageView }[1]
     }
     
     return nil
@@ -50,7 +63,16 @@ extension XCTestCase {
   :returns: The the first image the TheAukPage with given index.
   
   */
-  func firstAukImage(superview: UIScrollView, index: Int) -> UIImage? {
-    return firstAukImageView(superview, index: index)?.image
+  func firstAukImage(superview: UIScrollView, pageIndex: Int) -> UIImage? {
+    return firstAukImageView(superview, pageIndex: pageIndex)?.image
+  }
+  
+  /**
+  
+  :returns: The the first image the TheAukPage with given index.
+  
+  */
+  func secondAukImage(superview: UIScrollView, pageIndex: Int) -> UIImage? {
+    return secondAukImageView(superview, pageIndex: pageIndex)?.image
   }
 }

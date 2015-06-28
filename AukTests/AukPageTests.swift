@@ -29,6 +29,17 @@ class AukPageTests: XCTestCase {
     XCTAssertEqual(67, view.imageView!.image!.size.width)
   }
   
+  func testShowImage_setup() {
+    let image = uiImageFromFile("67px.png")
+    
+    view.show(image: image, settings: settings)
+    
+    XCTAssert(view.imageView != nil)
+    
+    // Do not create remote image view when showing local image
+    XCTAssert(view.remoteImageView == nil)
+  }
+  
   func testShowImage_useContentMode() {
     settings.contentMode = UIViewContentMode.TopRight
     let image = uiImageFromFile("67px.png")
@@ -37,6 +48,12 @@ class AukPageTests: XCTestCase {
   }
   
   // MARK: - Show image by url
+  
+  func testShowUrl_useContentMode() {
+    settings.contentMode = UIViewContentMode.TopRight
+    view.show(url: "http://site.com/auk.jpg", settings: settings)
+    XCTAssertEqual(UIViewContentMode.TopRight.rawValue, view.remoteImageView!.contentMode.rawValue)
+  }
 
   func testShowUrl() {
     view.show(url: "http://site.com/auk.jpg", settings: settings)
@@ -48,6 +65,7 @@ class AukPageTests: XCTestCase {
     view.show(url: "http://site.com/auk.jpg", settings: settings)
     
     XCTAssert(view.imageView != nil)
+    XCTAssert(view.remoteImageView != nil)
   }
   
   // MARK: - Visible now

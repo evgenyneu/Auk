@@ -105,7 +105,7 @@ class AukTests: XCTestCase {
     auk.show(image: image)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
-    XCTAssertEqual(96, firstAukImage(scrollView, index: 0)!.size.width)
+    XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
   }
   
   func testShowLocalImage_layoutSubviews() {
@@ -161,7 +161,12 @@ class AukTests: XCTestCase {
     simulator.respondWithImage(image)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
-    XCTAssertEqual(67, firstAukImage(scrollView, index: 0)!.size.width)
+    
+    // First image view remains nil
+    XCTAssert(firstAukImage(scrollView, pageIndex: 0) == nil)
+    
+    // Loads image into the second image view
+    XCTAssertEqual(67, secondAukImage(scrollView, pageIndex: 0)!.size.width)
   }
   
   func testShowRemoteImage_showSecondImageWhenScrolled() {
