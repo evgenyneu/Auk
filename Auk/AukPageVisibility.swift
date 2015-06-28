@@ -42,12 +42,12 @@ struct AukPageVisibility {
   :param: scrollView: Scroll view with the pages.
 
   */
-  static func tellPagesAboutTheirVisibility(scrollView: UIScrollView) {
+  static func tellPagesAboutTheirVisibility(scrollView: UIScrollView, settings: AukSettings) {
     let pages = AukScrollViewContent.aukPages(scrollView)
 
     for page in pages {
       if isVisible(scrollView, page: page) {
-        page.visibleNow()
+        page.visibleNow(settings)
       } else {
         /*
         

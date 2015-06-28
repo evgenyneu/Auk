@@ -23,12 +23,12 @@ class AukRemoteImage {
   }
   
   /// Sends image download HTTP request.
-  func downloadImage() {
+  func downloadImage(settings: AukSettings) {
     if imageView?.moa.url != nil { return } // Download has already started
     if didFinishDownload { return } // Image has already been downloaded
     
     imageView?.moa.onSuccessAsync = { [weak self] image in
-      self?.didReceiveImageAsync(image)
+      self?.didReceiveImageAsync(image, settings: settings)
       return image
     }
     
@@ -41,18 +41,19 @@ class AukRemoteImage {
     imageView?.moa.url = nil
   }
   
-  func didReceiveImageAsync(image: UIImage) {
+  func didReceiveImageAsync(image: UIImage, settings: AukSettings) {
     didFinishDownload = true
     
     dispatch_async(dispatch_get_main_queue()) { [weak self] in
-      self?.animateImageView(image)
+      self?.animateImageView(image, settings: settings)
     }
   }
   
-  private func animateImageView(image: UIImage) {
+  private func animateImageView(image: UIImage, settings: AukSettings) {
     self.imageView?.alpha = 0
+    let interval = NSTimeInterval(settings.remoteImageAnimationIntervalSeconds)
     
-    UIView.animateWithDuration(2,
+    UIView.animateWithDuration(interval,
       delay: 0,
       usingSpringWithDamping: 1,
       initialSpringVelocity: 3,

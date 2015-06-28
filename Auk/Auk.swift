@@ -29,7 +29,7 @@ final class Auk: AukInterface {
     page.show(url: url, settings: settings)
     
     if let scrollView = scrollView {
-      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
+      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
     }
   }
   
@@ -79,7 +79,7 @@ final class Auk: AukInterface {
   
   func onScroll() {
     if let scrollView = scrollView {
-      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
+      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
       pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
     }
   }

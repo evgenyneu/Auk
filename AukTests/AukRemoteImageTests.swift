@@ -8,7 +8,6 @@ class AukRemoteImageTests: XCTestCase {
   var imageView: UIImageView!
   var settings: AukSettings!
 
-  
   override func setUp() {
     super.setUp()
     
@@ -29,7 +28,7 @@ class AukRemoteImageTests: XCTestCase {
     obj.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
-    obj.downloadImage()
+    obj.downloadImage(settings)
     
     XCTAssertEqual(1, simulator.downloaders.count)
     XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.first!.url)
@@ -43,9 +42,9 @@ class AukRemoteImageTests: XCTestCase {
     obj.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
-    obj.downloadImage()
-    obj.downloadImage()
-    obj.downloadImage()
+    obj.downloadImage(settings)
+    obj.downloadImage(settings)
+    obj.downloadImage(settings)
     
     simulator.respondWithImage(uiImageFromFile("96px.png"))
     
@@ -75,7 +74,7 @@ class AukRemoteImageTests: XCTestCase {
     imageView.moa.url = "http://site.com/auk.jpg"
     
     obj.cancelDownload()
-    obj.downloadImage()
+    obj.downloadImage(settings)
 
     XCTAssertEqual(2, simulator.downloaders.count)
     XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.last!.url)
@@ -90,13 +89,13 @@ class AukRemoteImageTests: XCTestCase {
     obj.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
-    obj.downloadImage()
+    obj.downloadImage(settings)
     
     // Respond with image
     simulator.respondWithImage(uiImageFromFile("96px.png"))
     
     // Call download again
-    obj.downloadImage()
+    obj.downloadImage(settings)
     
     // Should not download the second time
     XCTAssertEqual(1, simulator.downloaders.count)
@@ -106,7 +105,7 @@ class AukRemoteImageTests: XCTestCase {
     obj.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
-    obj.downloadImage()
+    obj.downloadImage(settings)
     
     // Respond with image
     simulator.respondWithImage(uiImageFromFile("96px.png"))
@@ -117,7 +116,7 @@ class AukRemoteImageTests: XCTestCase {
     obj.cancelDownload()
     
     // Call download again
-    obj.downloadImage()
+    obj.downloadImage(settings)
     
     // Should not download the second time
     XCTAssertEqual(1, simulator.downloaders.count)
@@ -128,7 +127,7 @@ class AukRemoteImageTests: XCTestCase {
   func testDidReceiveImage_markDownloadAsFinished() {
     XCTAssertFalse(obj.didFinishDownload)
     
-    obj.didReceiveImageAsync(UIImage())
+    obj.didReceiveImageAsync(UIImage(), settings: settings)
     
     XCTAssert(obj.didFinishDownload)
   }
@@ -145,7 +144,7 @@ class AukRemoteImageTests: XCTestCase {
     XCTAssertEqual(35, imageView.image!.size.width)
     
     // Request remote image
-    obj.downloadImage()
+    obj.downloadImage(settings)
     
     simulator.respondWithImage(uiImageFromFile("96px.png"))
     

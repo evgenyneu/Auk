@@ -50,8 +50,8 @@ final class AukPage: UIView {
   Called when the page is currently visible to user which triggers the image download. The function is called frequently each time scroll view's content offset is changed.
   
   */
-  func visibleNow() {
-    remoteImage?.downloadImage()
+  func visibleNow(settings: AukSettings) {
+    remoteImage?.downloadImage(settings)
   }
   
   /**

@@ -94,7 +94,7 @@ class AukPageVisibilityTests: XCTestCase {
     scrollView.contentOffset.x = 290
     
     // This will tell the second page that it is visible and it will start the download
-    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
+    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
     
     XCTAssertEqual(1, simulate.downloaders.count)
     XCTAssertEqual("http://site.com/image_two.jpg", simulate.downloaders.first!.url)
@@ -109,7 +109,7 @@ class AukPageVisibilityTests: XCTestCase {
     scrollView.addSubview(aukPage1)
     aukPage1.show(url: "http://site.com/image_one.jpg", settings: settings)
     
-    aukPage1.remoteImage?.downloadImage()
+    aukPage1.remoteImage?.downloadImage(settings)
     
     // Show second page with remote image
     let aukPage2 = AukPage()
@@ -128,7 +128,7 @@ class AukPageVisibilityTests: XCTestCase {
     // ---------------------
     
     scrollView.contentOffset.x = 290
-    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
+    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
     
     XCTAssertEqual(2, simulate.downloaders.count)
     
@@ -139,7 +139,7 @@ class AukPageVisibilityTests: XCTestCase {
     // ---------------------
     
     scrollView.contentOffset.x = 350
-    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
+    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
     
     // Download of third image is started
     XCTAssertEqual(3, simulate.downloaders.count)
@@ -153,7 +153,7 @@ class AukPageVisibilityTests: XCTestCase {
     // ---------------------
     
     scrollView.contentOffset.x = 290
-    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
+    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
     
     XCTAssertEqual(3, simulate.downloaders.count)
     
@@ -164,7 +164,7 @@ class AukPageVisibilityTests: XCTestCase {
     // ---------------------
     
     scrollView.contentOffset.x = 220
-    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
+    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
     
     XCTAssertEqual(4, simulate.downloaders.count)
     let thirdImageDownloader = simulate.downloaders[2]

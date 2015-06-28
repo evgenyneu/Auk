@@ -21,6 +21,9 @@ public struct AukSettings {
   
   /// Image to be displayed while the remote image is being downloaded.
   public var placeholderImage: UIImage?
+  
+  /// The length of the animation that is used to show the remote images.
+  public var remoteImageAnimationIntervalSeconds: Double = 1
 }
 
 /**

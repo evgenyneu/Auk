@@ -77,7 +77,7 @@ class AukPageTests: XCTestCase {
     view.remoteImage = AukRemoteImage()
     view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     
-    view.visibleNow()
+    view.visibleNow(settings)
     
     XCTAssertEqual(1, simulator.downloaders.count)
     XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.first!.url)
@@ -95,8 +95,8 @@ class AukPageTests: XCTestCase {
     view.remoteImage = AukRemoteImage()
     view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     
-    view.visibleNow()
-    view.visibleNow()
+    view.visibleNow(settings)
+    view.visibleNow(settings)
     
     let image = uiImageFromFile("35px.jpg")
     simulator.respondWithImage(image)
