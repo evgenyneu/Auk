@@ -40,7 +40,7 @@ class AukPageTests: XCTestCase {
   func testShowUrl() {
     view.show(url: "http://site.com/auk.jpg", settings: settings)
     
-    XCTAssertEqual("http://site.com/auk.jpg", view.remoteImage!.url)
+    XCTAssertEqual("http://site.com/auk.jpg", view.remoteImage!.url!)
   }
   
   func testShowUrl_setup() {
@@ -55,7 +55,8 @@ class AukPageTests: XCTestCase {
     let simulator = MoaSimulator.simulate("auk.jpg")
     let imageView = UIImageView()
     
-    view.remoteImage = AukRemoteImage(url: "http://site.com/auk.jpg", imageView: imageView)
+    view.remoteImage = AukRemoteImage()
+    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView)
     
     view.visibleNow()
     
@@ -72,7 +73,8 @@ class AukPageTests: XCTestCase {
     let simulator = MoaSimulator.simulate("auk.jpg")
     let imageView = UIImageView()
     
-    view.remoteImage = AukRemoteImage(url: "http://site.com/auk.jpg", imageView: imageView)
+    view.remoteImage = AukRemoteImage()
+    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView)
     
     view.visibleNow()
     view.visibleNow()
@@ -88,7 +90,8 @@ class AukPageTests: XCTestCase {
   func testOutOfSightNow_cancelCurrentImageDownload() {
     let simulator = MoaSimulator.simulate("auk.jpg")
     let imageView = UIImageView()
-    view.remoteImage = AukRemoteImage(url: "http://site.com/auk.jpg", imageView: imageView)
+    view.remoteImage = AukRemoteImage()
+    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView)
     
     // Request image download
     imageView.moa.url = "http://site.com/auk.jpg"

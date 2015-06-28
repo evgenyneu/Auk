@@ -11,7 +11,7 @@ class AukRemoteImageTests: XCTestCase {
     super.setUp()
     
     imageView = UIImageView()
-    obj = AukRemoteImage(url: "http://site.com/auk.jpg", imageView: imageView)    
+    obj = AukRemoteImage()
   }
   
   override func tearDown() {
@@ -23,6 +23,7 @@ class AukRemoteImageTests: XCTestCase {
   // MARK: - Download image
   
   func testDownloadImage() {
+    obj.setup("http://site.com/auk.jpg", imageView: imageView)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
     obj.downloadImage()
@@ -36,6 +37,7 @@ class AukRemoteImageTests: XCTestCase {
   }
   
   func testDownloadImage_downloadOnlyOnce_whenCalledMultipleTimes() {
+    obj.setup("http://site.com/auk.jpg", imageView: imageView)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
     obj.downloadImage()
@@ -50,6 +52,7 @@ class AukRemoteImageTests: XCTestCase {
   // MARK: - Cancel image download
   
   func testCancelDownload() {
+    obj.setup("http://site.com/auk.jpg", imageView: imageView)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
     // Request image download
@@ -62,6 +65,7 @@ class AukRemoteImageTests: XCTestCase {
   }
   
   func testCancelDownload_andStartAgain() {
+    obj.setup("http://site.com/auk.jpg", imageView: imageView)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
     // Request image download
@@ -80,6 +84,7 @@ class AukRemoteImageTests: XCTestCase {
   }
   
   func testDownloadImage_doNotDownloadImageThatHasBeenAlreadyDownloaded() {
+    obj.setup("http://site.com/auk.jpg", imageView: imageView)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
     obj.downloadImage()
@@ -95,6 +100,7 @@ class AukRemoteImageTests: XCTestCase {
   }
   
   func testDownloadImage_doNotDownloadImageThatHasBeenAlreadyDownloadedAndCancelled() {
+    obj.setup("http://site.com/auk.jpg", imageView: imageView)
     let simulator = MoaSimulator.simulate("auk.jpg")
     
     obj.downloadImage()
@@ -122,5 +128,11 @@ class AukRemoteImageTests: XCTestCase {
     obj.didReceiveImageAsync(UIImage())
     
     XCTAssert(obj.didFinishDownload)
+  }
+  
+  // MARK: - Show placeholder image before image is download
+  
+  func testShowPlaceholderImage() {
+    
   }
 }

@@ -4,7 +4,7 @@ import UIKit
 final class AukPage: UIView {
   
   // Contain a local image.
-  var imageView: UIImageView?
+  weak var imageView: UIImageView?
   
   // Contains a URL for the remote image, if any.
   var remoteImage: AukRemoteImage?
@@ -35,7 +35,8 @@ final class AukPage: UIView {
     createAndLayoutImageView(settings)
     
     if let imageView = imageView {
-      remoteImage = AukRemoteImage(url: url, imageView: imageView)
+      remoteImage = AukRemoteImage()
+      remoteImage?.setup(url, imageView: imageView)
     }
   }
   

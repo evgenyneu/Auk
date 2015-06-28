@@ -17,6 +17,22 @@ final class Auk: AukInterface {
     scrollView.delegate = scrollViewDelegate
   }
   
+  func show(#image: UIImage) {
+    setup()
+    let page = createPage()
+    page.show(image: image, settings: settings)
+  }
+  
+  func show(#url: String) {
+    setup()
+    let page = createPage()
+    page.show(url: url, settings: settings)
+    
+    if let scrollView = scrollView {
+      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
+    }
+  }
+  
   var numberOfPages: Int {
     if let scrollView = scrollView {
       return AukScrollViewContent.aukPages(scrollView).count
@@ -40,21 +56,6 @@ final class Auk: AukInterface {
     scrollView?.contentOffset.x = CGFloat(toPageIndex) * pageWidth
   }
   
-  func show(#image: UIImage) {
-    setup()
-    let page = createPage()
-    page.show(image: image, settings: settings)
-  }
-  
-  func show(#url: String) {
-    setup()
-    let page = createPage()
-    page.show(url: url, settings: settings)
-    
-    if let scrollView = scrollView {
-      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
-    }
-  }
   
   func setup() {
     createPageIdicator()
