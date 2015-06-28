@@ -4,6 +4,7 @@ final class Auk: AukInterface {
   private weak var scrollView: UIScrollView?
   var settings = AukSettings()
   var scrollViewDelegate = AukScrollViewDelegate()
+  var pageIndicatorContainer: AukPageIndicatorContainer?
 
   init(scrollView: UIScrollView) {
     self.scrollView = scrollView
@@ -17,6 +18,7 @@ final class Auk: AukInterface {
   }
   
   func setup() {
+    createPageIdicator()
     scrollView?.showsHorizontalScrollIndicator = settings.showsHorizontalScrollIndicator
     scrollView?.pagingEnabled = settings.pagingEnabled
   }
@@ -64,6 +66,19 @@ final class Auk: AukInterface {
   func onScroll() {
     if let scrollView = scrollView {
       AukPageVisibility.tellPagesAboutTheirVisibility(scrollView)
+    }
+  }
+  
+  private func createPageIdicator() {
+    if pageIndicatorContainer != nil { return } // Already created a page indicator container 
+    
+    if let scrollView = scrollView,
+      superview = scrollView.superview {
+        
+      let container = AukPageIndicatorContainer()
+      superview.addSubview(container)
+      pageIndicatorContainer = container
+      container.setup(settings, scrollView: scrollView)
     }
   }
 }

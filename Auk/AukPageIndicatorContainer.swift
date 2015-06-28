@@ -2,18 +2,14 @@ import UIKit
 
 /// View containing a UIPageControl object that shows the dots for present pages.
 final class AukPageIndicatorContainer: UIView {
-  weak var pageControl: UIPageControl? {
+  var pageControl: UIPageControl? {
     get {
       if subviews.count == 0 { return nil }
       return subviews[0] as? UIPageControl
     }
   }
   
-  func setup(settings: AukSettings, scrollView: UIScrollView) {
-    if let superview = scrollView.superview {
-      superview.addSubview(self)
-    }
-    
+  func setup(settings: AukSettings, scrollView: UIScrollView) {    
     styleContainer(settings)
     AukPageIndicatorContainer.layoutContainer(self, settings: settings, scrollView: scrollView)
     

@@ -27,7 +27,7 @@ class AukTests: XCTestCase {
   
   // MARK: - Setup
   
-  func testSetup_doNotShowScrollIndicator() {
+  func testSetup_style() {
     auk = Auk(scrollView: scrollView)
     auk.setup()
     
@@ -35,6 +35,62 @@ class AukTests: XCTestCase {
     XCTAssert(scrollView.pagingEnabled)
   }
   
+  func testSetup_createPageIndicator() {
+    // Layout scroll view
+    // ---------------
+    
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    scrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
+    superview.addSubview(scrollView)
+    
+    iiAutolayoutConstraints.height(scrollView, value: 100)
+    iiAutolayoutConstraints.width(scrollView, value: 100)
+    
+    iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
+      constraintContainer: superview, attribute: NSLayoutAttribute.Left, margin: 0)
+    
+    iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
+      constraintContainer: superview, attribute: NSLayoutAttribute.Top, margin: 0)
+
+    auk = Auk(scrollView: scrollView)
+    
+    // Setup the auk which will create the page view
+    // ---------------
+
+    auk.settings.pageControl.marginToScrollViewBottom = 11
+    auk.setup()
+    
+    superview.layoutIfNeeded()
+    
+    // Check the page indicator layout
+    // -----------
+    
+    XCTAssertEqual(89, auk.pageIndicatorContainer!.frame.maxY)
+  }
+  
+  func testSetup_createSinglePageIndicator() {
+    // Layout scroll view
+    // ---------------
+    
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    auk = Auk(scrollView: scrollView)
+    
+    // Call setup multiple times
+    // ---------------
+    
+    auk.setup()
+    auk.setup()
+    auk.setup()
+
+    // Verify that only one page indicator container has been created
+    // ---------------
+    
+    let indicators = superview.subviews.filter { $0 as? AukPageIndicatorContainer != nil }
+    XCTAssertEqual(1, indicators.count)
+  }
+
   // MARK: - Show local image
   
   func testSetupIsCalled() {
