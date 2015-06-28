@@ -52,6 +52,13 @@ final class Auk: AukInterface {
     return 0
   }
   
+  func changePage(toPageIndex: Int, animated: Bool) {
+    if let scrollView = scrollView {
+      let pageWidth = scrollView.bounds.size.width
+      changePage(toPageIndex, pageWidth: pageWidth, animated: animated)
+    }
+  }
+  
   func changePage(toPageIndex: Int, pageWidth: CGFloat, animated: Bool) {
     let offsetX = CGFloat(toPageIndex) * pageWidth
     let offset = CGPoint(x: offsetX, y: 0)

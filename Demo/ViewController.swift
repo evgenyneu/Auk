@@ -37,5 +37,12 @@ class ViewController: UIViewController {
       scrollView.auk.show(url: url)
     }
   }
+  
+  @IBAction func onNextPageTapped(sender: AnyObject) {
+    var pageIndex = scrollView.auk.currentPageIndex + 1
+    if pageIndex >= scrollView.auk.numberOfPages { pageIndex = 0 }
+
+    scrollView.auk.changePage(pageIndex, animated: true)
+  }
 }
 

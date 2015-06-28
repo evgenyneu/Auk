@@ -32,13 +32,23 @@ public protocol AukInterface: class {
   :param: url Url of the image to be shown.
   
   */
-  func show(#url: String)  
+  func show(#url: String)
   
   /**
   
   Change current page.
   
-  This function is also used for animating the scroll view content during orientation change. It is called in viewWillTransitionToSize and inside animateAlongsideTransition animation block.
+  :param: toPageIndex: Index of the page that will be made a current page.
+  :param: animated Use animation.
+  
+  */
+  func changePage(toPageIndex: Int, animated: Bool)
+  
+  /**
+  
+  Change current page.
+  
+  This function can be used for animating the scroll view content during orientation change. It is called in viewWillTransitionToSize and inside animateAlongsideTransition animation block.
   
       override func viewWillTransitionToSize(size: CGSize,
         withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
