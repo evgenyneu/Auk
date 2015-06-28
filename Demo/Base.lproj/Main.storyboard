@@ -17,8 +17,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SrW-bD-PlC">
-                                <rect key="frame" x="0.0" y="74" width="600" height="265"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="265"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="265" id="Or5-06-LRV"/>
                                 </constraints>
@@ -26,7 +26,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.16862745098039217" green="0.76078431372549016" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="SrW-bD-PlC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="GMH-K7-yD4"/>
+                            <constraint firstItem="SrW-bD-PlC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="GMH-K7-yD4"/>
                             <constraint firstAttribute="trailing" secondItem="SrW-bD-PlC" secondAttribute="trailing" id="sMc-bW-CN2"/>
                             <constraint firstItem="SrW-bD-PlC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="x6O-nO-hVM"/>
                         </constraints>

@@ -189,6 +189,13 @@ class AukTests: XCTestCase {
     scrollView.contentOffset.x = 120
     scrollView.delegate?.scrollViewDidScroll?(scrollView)
     
+    // Download of first image is NOT cancelled yet because it is close (though not visible)
+    XCTAssertFalse(simulator.downloaders.first!.cancelled)
+    
+    // Scroll more to cancel first image download
+    scrollView.contentOffset.x = 180
+    scrollView.delegate?.scrollViewDidScroll?(scrollView)
+    
     // Download of first image is cancelled
     XCTAssert(simulator.downloaders.first!.cancelled)
   }
