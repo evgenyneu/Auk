@@ -34,4 +34,7 @@ struct PageControl {
   
   /// Distance between the bottom of the page control view and the bottom of the scroll view
   var marginToScrollViewBottom: Double = 10
+  
+  /// Padding between page indicator and its container
+  var innerPadding = CGSize(width: 10, height: 5)
 }

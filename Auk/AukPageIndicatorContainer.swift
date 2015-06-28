@@ -16,6 +16,9 @@ final class AukPageIndicatorContainer: UIView {
     
     styleContainer(settings)
     AukPageIndicatorContainer.layoutContainer(self, settings: settings, scrollView: scrollView)
+    
+    let pageControl = createPageControl()
+    AukPageIndicatorContainer.layoutPageControl(pageControl, superview: self, settings: settings)
   }
   
   private func styleContainer(settings: AukSettings) {
@@ -29,9 +32,6 @@ final class AukPageIndicatorContainer: UIView {
     if let superview = pageIndicatorContainer.superview {
       pageIndicatorContainer.setTranslatesAutoresizingMaskIntoConstraints(false)
         
-      iiAutolayoutConstraints.width(pageIndicatorContainer, value: 30)
-      iiAutolayoutConstraints.height(pageIndicatorContainer, value: 30)
-      
       // Align bottom of the page view indicator with the bottom of the scroll view
       iiAutolayoutConstraints.alignSameAttributes(pageIndicatorContainer, toItem: scrollView,
         constraintContainer: superview, attribute: NSLayoutAttribute.Bottom,
@@ -41,5 +41,22 @@ final class AukPageIndicatorContainer: UIView {
       iiAutolayoutConstraints.alignSameAttributes(pageIndicatorContainer, toItem: scrollView,
         constraintContainer: superview, attribute: NSLayoutAttribute.CenterX, margin: 0)
     }
+  }
+  
+  private func createPageControl() -> UIPageControl {
+    let pageControl = UIPageControl()
+    pageControl.numberOfPages = 5
+    addSubview(pageControl)
+    return pageControl
+  }
+  
+  private static func layoutPageControl(pageControl: UIPageControl, superview: UIView, settings: AukSettings) {
+    pageControl.setTranslatesAutoresizingMaskIntoConstraints(false)
+    
+    iiAutolayoutConstraints.fillParent(pageControl, parentView: superview,
+      margin: settings.pageControl.innerPadding.width, vertically: false)
+    
+    iiAutolayoutConstraints.fillParent(pageControl, parentView: superview,
+      margin: settings.pageControl.innerPadding.height, vertically: true)
   }
 }
