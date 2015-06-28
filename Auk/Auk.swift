@@ -17,13 +17,13 @@ final class Auk: AukInterface {
     scrollView.delegate = scrollViewDelegate
   }
   
-  func show(#image: UIImage) {
+  func show(image image: UIImage) {
     setup()
     let page = createPage()
     page.show(image: image, settings: settings)
   }
   
-  func show(#url: String) {
+  func show(url url: String) {
     setup()
     let page = createPage()
     page.show(url: url, settings: settings)

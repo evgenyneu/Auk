@@ -16,11 +16,11 @@ final class AukPage: UIView {
   
   Shows an image.
   
-  :param: image: The image to be shown
-  :param: settings: Auk settings.
+  - parameter image:: The image to be shown
+  - parameter settings:: Auk settings.
   
   */
-  func show(#image: UIImage, settings: AukSettings) {
+  func show(image image: UIImage, settings: AukSettings) {
     createAndLayoutImageView(settings)
     
     imageView?.image = image
@@ -30,11 +30,11 @@ final class AukPage: UIView {
   
   Shows a remote image. The image download stars if/when the page becomes visible to the user.
   
-  :param: url: The URL to the image to be displayed.
-  :param: settings: Auk settings.
+  - parameter url:: The URL to the image to be displayed.
+  - parameter settings:: Auk settings.
   
   */
-  func show(#url: String, settings: AukSettings) {
+  func show(url url: String, settings: AukSettings) {
     createAndLayoutImageView(settings)
     createAndLayoutRemoteImageView(settings)
     
@@ -67,7 +67,7 @@ final class AukPage: UIView {
   
   Create and layout an image view.
   
-  :param: settings: Auk settings.
+  - parameter settings:: Auk settings.
   
   */
   func createAndLayoutImageView(settings: AukSettings) {
@@ -84,7 +84,7 @@ final class AukPage: UIView {
   
   Create and layout the remote image view.
   
-  :param: settings: Auk settings.
+  - parameter settings:: Auk settings.
   
   */
   func createAndLayoutRemoteImageView(settings: AukSettings) {
@@ -107,11 +107,11 @@ final class AukPage: UIView {
   
   Creates Auto Layout constrains for the image view.
   
-  :param: imageView: Image view that is used to create Auto Layout constraints.
+  - parameter imageView:: Image view that is used to create Auto Layout constraints.
   
   */
   private static func layoutImageView(imageView: UIImageView, superview: UIView) {
-    imageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+    imageView.translatesAutoresizingMaskIntoConstraints = false
     
     iiAutolayoutConstraints.fillParent(imageView, parentView: superview, margin: 0, vertically: false)
     iiAutolayoutConstraints.fillParent(imageView, parentView: superview, margin: 0, vertically: true)

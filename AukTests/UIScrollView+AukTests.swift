@@ -7,7 +7,7 @@ class UIScrollViewAukExtensionTests: XCTestCase {
     let auk1 = scrollView.auk
     let auk2 = scrollView.auk
     
-    XCTAssert(auk1 === auk1)
+    XCTAssert(auk1 === auk2)
   }
   
   func testSet() {

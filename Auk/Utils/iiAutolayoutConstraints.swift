@@ -19,7 +19,7 @@ class iiAutolayoutConstraints {
     }
 
     let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
-      options: nil, metrics: nil,
+      options: [], metrics: nil,
       views: ["view": view])
 
     parentView.addConstraints(constraints)
@@ -70,16 +70,13 @@ class iiAutolayoutConstraints {
     
     if isHeight { prefix = "V:" }
     
-    if let constraints = NSLayoutConstraint.constraintsWithVisualFormat("\(prefix)[viewOne(==viewTwo)]",
-      options: nil, metrics: nil,
-      views: ["viewOne": viewOne, "viewTwo": viewTwo]) as? [NSLayoutConstraint] {
+    let constraints = NSLayoutConstraint.constraintsWithVisualFormat("\(prefix)[viewOne(==viewTwo)]",
+      options: [], metrics: nil,
+      views: ["viewOne": viewOne, "viewTwo": viewTwo])
         
-      constraintContainer.addConstraints(constraints)
-      
-      return constraints
-    }
+    constraintContainer.addConstraints(constraints)
     
-    return []
+    return constraints
   }
   
   // MARK: - Align view next to each other
@@ -92,7 +89,7 @@ class iiAutolayoutConstraints {
     
     var constraints = [NSLayoutConstraint]()
     
-    for (index, view) in enumerate(views) {
+    for (index, view) in views.enumerate() {
       if index >= views.count - 1 { break }
       
       let viewTwo = views[index + 1]
@@ -120,16 +117,13 @@ class iiAutolayoutConstraints {
       format = "V:" + format
     }
     
-    if let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
-      options: nil, metrics: nil,
-      views: [ "viewOne": viewOne, "viewTwo": viewTwo ]) as? [NSLayoutConstraint] {
+    let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
+      options: [], metrics: nil,
+      views: [ "viewOne": viewOne, "viewTwo": viewTwo ])
     
-      constraintContainer.addConstraints(constraints)
-      
-      return constraints
-    }
-      
-    return []
+    constraintContainer.addConstraints(constraints)
+    
+    return constraints
   }
   
   class func height(view: UIView, value: CGFloat) -> [NSLayoutConstraint] {

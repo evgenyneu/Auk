@@ -110,8 +110,6 @@ class AukRemoteImageTests: XCTestCase {
     // Respond with image
     simulator.respondWithImage(uiImageFromFile("96px.png"))
     
-    let didFinish = obj.didFinishDownload
-    
     // Call cancelDownload (which does not actually cancel anything, because image has already been downloaded)
     obj.cancelDownload()
     
@@ -165,7 +163,7 @@ class AukRemoteImageTests: XCTestCase {
     // Request remote image
     obj.downloadImage(settings)
     
-    simulator.respondWithError(error: nil, response: nil)
+    simulator.respondWithError(nil, response: nil)
     
     iiQ.runAfterDelay(0.001) { errorExpectation.fulfill() }
     waitForExpectationsWithTimeout(1) { error in }

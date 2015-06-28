@@ -20,26 +20,26 @@ public protocol AukInterface: class {
 
   Shows the image in the scroll view.
 
-  :param: image Image to be shown in the scroll view.
+  - parameter image: Image to be shown in the scroll view.
   
   */
-  func show(#image: UIImage)
+  func show(image image: UIImage)
   
   /**
 
   Downloads a remote image and adds it to the scroll view.
 
-  :param: url Url of the image to be shown.
+  - parameter url: Url of the image to be shown.
   
   */
-  func show(#url: String)
+  func show(url url: String)
   
   /**
   
   Change current page.
   
-  :param: toPageIndex: Index of the page that will be made a current page.
-  :param: animated Use animation.
+  - parameter toPageIndex:: Index of the page that will be made a current page.
+  - parameter animated: Use animation.
   
   */
   func changePage(toPageIndex: Int, animated: Bool)
@@ -62,9 +62,9 @@ public protocol AukInterface: class {
         }, completion: nil)
       }
   
-  :param: toPageIndex: Index of the page that will be made a current page.
-  :param: pageWidth: The new page width.
-  :param: animated Use animation.
+  - parameter toPageIndex:: Index of the page that will be made a current page.
+  - parameter pageWidth:: The new page width.
+  - parameter animated: Use animation.
   
   */
   func changePage(toPageIndex: Int, pageWidth: CGFloat, animated: Bool)

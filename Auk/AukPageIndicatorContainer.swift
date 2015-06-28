@@ -37,7 +37,7 @@ final class AukPageIndicatorContainer: UIView {
     settings: AukSettings, scrollView: UIScrollView) {
       
     if let superview = pageIndicatorContainer.superview {
-      pageIndicatorContainer.setTranslatesAutoresizingMaskIntoConstraints(false)
+      pageIndicatorContainer.translatesAutoresizingMaskIntoConstraints = false
         
       // Align bottom of the page view indicator with the bottom of the scroll view
       iiAutolayoutConstraints.alignSameAttributes(pageIndicatorContainer, toItem: scrollView,
@@ -63,7 +63,7 @@ final class AukPageIndicatorContainer: UIView {
   private static func layoutPageControl(pageControl: UIPageControl, superview: UIView,
     settings: AukSettings) {
       
-    pageControl.setTranslatesAutoresizingMaskIntoConstraints(false)
+    pageControl.translatesAutoresizingMaskIntoConstraints = false
     
     iiAutolayoutConstraints.fillParent(pageControl, parentView: superview,
       margin: settings.pageControl.innerPadding.width, vertically: false)

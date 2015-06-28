@@ -42,7 +42,7 @@ class AukRemoteImage {
   
   private func onDownloadErrorAsync(settings: AukSettings) {
     if let errorImage = settings.errorImage {
-      iiQ.main { [weak self] in
+      iiQ.main {
         imageView?.image = errorImage
       }
       
@@ -83,7 +83,7 @@ class AukRemoteImage {
       delay: 0,
       usingSpringWithDamping: 1,
       initialSpringVelocity: 3,
-      options: nil,
+      options: [],
       animations: {
         imageView.alpha = 1
       },

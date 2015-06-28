@@ -53,11 +53,11 @@ final class AukScrollViewDelegate: NSObject, UIScrollViewDelegate {
     return delegate?.viewForZoomingInScrollView?(scrollView)
   }
   
-  func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView!) {
+  func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
     delegate?.scrollViewWillBeginZooming?(scrollView, withView: view)
   }
   
-  func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
+  func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
     delegate?.scrollViewDidEndZooming?(scrollView, withView: view, atScale: scale)
   }
   

@@ -22,14 +22,15 @@ public extension UIScrollView {
         let auk = Auk(scrollView: self)
         
         objc_setAssociatedObject(self, &xoAukAssociationKey, auk,
-          objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
+          objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
         
         return auk
       }
     }
     
     set {
-      objc_setAssociatedObject(self, &xoAukAssociationKey, newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN))
+      objc_setAssociatedObject(self, &xoAukAssociationKey, newValue,
+        objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
     }
   }
 }

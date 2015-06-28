@@ -9,7 +9,7 @@ struct AukScrollViewContent {
   
   /**
 
-  :returns: Array of scroll view pages.
+  - returns: Array of scroll view pages.
   
   */
   static func aukPages(scrollView: UIScrollView) -> [AukPage] {
@@ -24,13 +24,13 @@ struct AukScrollViewContent {
   static func layout(scrollView: UIScrollView) {
     let pages = aukPages(scrollView)
 
-    for (index, page) in enumerate(pages) {
+    for (index, page) in pages.enumerate() {
       
       // Delete current constraints by removing the view and adding it back to its superview
       page.removeFromSuperview()
       scrollView.addSubview(page)
       
-      page.setTranslatesAutoresizingMaskIntoConstraints(false)
+      page.translatesAutoresizingMaskIntoConstraints = false
       
       // Make page size equal to the scroll view size
       iiAutolayoutConstraints.equalSize(page, viewTwo: scrollView, constraintContainer: scrollView)
