@@ -28,15 +28,11 @@ class AukRemoteImage {
       return image
     }
     
-    println("Downloading image \(url)")
     imageView.moa.url = url
   }
   
   /// Cancel current image download HTTP request.
   func cancelDownload() {
-    if imageView.moa.url != nil {
-      println("cancelDownload")
-    }
     // Cancel current download by setting url to nil
     imageView.moa.url = nil
   }
