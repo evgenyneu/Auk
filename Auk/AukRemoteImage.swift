@@ -18,6 +18,7 @@ class AukRemoteImage {
   func setup(url: String, imageView: UIImageView, settings: AukSettings) {
     self.url = url
     self.imageView = imageView
+    imageView.image = settings.placeholderImage
   }
   
   /// Sends image download HTTP request.

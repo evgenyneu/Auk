@@ -1,11 +1,15 @@
 import UIKit
 import Auk
+import moa
 
 class ViewController: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    Moa.settings.cache.requestCachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData
+    scrollView.auk.settings.placeholderImage = UIImage(named: "great_auk_placeholder.png")
   }
   
   override func viewWillTransitionToSize(size: CGSize,

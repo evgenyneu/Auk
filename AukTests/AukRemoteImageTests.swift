@@ -136,6 +136,20 @@ class AukRemoteImageTests: XCTestCase {
   // MARK: - Show placeholder image before image is download
   
   func testShowPlaceholderImage() {
+    settings.placeholderImage = uiImageFromFile("35px.jpg")
+    let simulator = MoaSimulator.simulate("auk.jpg")
+
+    obj.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
     
+    // Show placeholder
+    XCTAssertEqual(35, imageView.image!.size.width)
+    
+    // Request remote image
+    obj.downloadImage()
+    
+    simulator.respondWithImage(uiImageFromFile("96px.png"))
+    
+    // Show the image from the network
+    XCTAssertEqual(96, imageView.image!.size.width)
   }
 }

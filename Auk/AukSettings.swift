@@ -16,12 +16,16 @@ public struct AukSettings {
   /// Enable paging for the scroll view. When true the view automatically scroll to show the whole image.
   public var pagingEnabled = true
   
+  /// Settings for styling the scroll view page indicator.
   public var pageControl = PageControl()
+  
+  /// Image to be displayed while the remote image is being downloaded.
+  public var placeholderImage: UIImage?
 }
 
 /**
 
-Settings for page control indicator, the one that indicates how many pages are in scroll view with nice little dots.
+Settings for page indicator.
 
 */
 public struct PageControl {
