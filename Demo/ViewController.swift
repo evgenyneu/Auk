@@ -8,6 +8,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    Moa.settings.cache.requestCachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData
     scrollView.auk.settings.placeholderImage = UIImage(named: "great_auk_placeholder.png")
   }
   
