@@ -9,12 +9,18 @@ final class AukPageIndicatorContainer: UIView {
     }
   }
   
+  // Layouts the view, creates and layouts the page control
   func setup(settings: AukSettings, scrollView: UIScrollView) {    
     styleContainer(settings)
     AukPageIndicatorContainer.layoutContainer(self, settings: settings, scrollView: scrollView)
     
     let pageControl = createPageControl()
     AukPageIndicatorContainer.layoutPageControl(pageControl, superview: self, settings: settings)
+  }
+  
+  // Update the number of pages showing in the page control
+  func updateNumberOfPages(numberOfPages: Int) {
+    pageControl?.numberOfPages = numberOfPages
   }
   
   private func styleContainer(settings: AukSettings) {

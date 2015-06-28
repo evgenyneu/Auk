@@ -68,6 +68,8 @@ final class Auk: AukInterface {
       AukScrollViewContent.layout(scrollView)
     }
     
+    pageIndicatorContainer?.updateNumberOfPages(numberOfPages)
+    
     return page
   }
   

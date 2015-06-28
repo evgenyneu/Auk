@@ -98,4 +98,14 @@ class AukPageIndicatorTests: XCTestCase {
     XCTAssertEqual(13 * 2, container.bounds.width - pageControl.bounds.width)
     XCTAssertEqual(18 * 2, container.bounds.height - pageControl.bounds.height)
   }
+  
+  // MARK: - Update number of pages
+  
+  func testUpdateNumberOfPages() {
+    container.setup(settings, scrollView: scrollView)
+    container.updateNumberOfPages(3)
+    
+    let pageControl = container.subviews[0] as! UIPageControl
+    XCTAssertEqual(3, pageControl.numberOfPages)
+  }
 }
