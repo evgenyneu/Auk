@@ -137,27 +137,6 @@ class AukTests: XCTestCase {
     XCTAssertEqual(CGSize(width: 120, height: 90), aukView2.frame.size)
   }
   
-  func testShowLocalImage_updatePageIndicator() {
-    // Layout scroll view
-    // ---------------
-    
-    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
-    superview.addSubview(scrollView)
-    
-    // Show 3 images
-    // -------------
-    
-    let image = uiImageFromFile("96px.png")
-    auk.show(image: image)
-    auk.show(image: image)
-    auk.show(image: image)
-
-    // Verify page indicator is showing three pages
-    // -------------
-    
-    XCTAssertEqual(3, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
-  }
-  
   // MARK: - Show remote image
   
   func testShowRemoteImage_setupIsCalled() {
@@ -197,7 +176,6 @@ class AukTests: XCTestCase {
     XCTAssertEqual("http://site.com/auk.png", simulator.downloaders.first!.url)
     XCTAssertFalse(simulator.downloaders.first!.cancelled)
 
-    
     // Scroll to make the second image visible
     scrollView.contentOffset.x = 10
     scrollView.delegate?.scrollViewDidScroll?(scrollView)
@@ -254,5 +232,81 @@ class AukTests: XCTestCase {
     auk.show(image: image)
     
     XCTAssertEqual(2, auk.numberOfPages)
-  }  
+  }
+  
+  // MARK: get current page index
+  
+  func testCurrentPageIndex() {
+    // Show 2 images
+    // -------------
+    
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    auk.show(image: image)
+    auk.show(image: image)
+    
+    XCTAssertEqual(0, auk.currentPageIndex)
+    
+    // Scroll to show more than the half of the second page
+    scrollView.contentOffset.x = 70
+    
+    XCTAssertEqual(1, auk.currentPageIndex)
+    
+    // Scroll to the second image
+    scrollView.contentOffset.x = 120
+    
+    XCTAssertEqual(1, auk.currentPageIndex)
+    
+    // Scroll to show the third page ALMOST entirely
+    scrollView.contentOffset.x = 230
+    
+    XCTAssertEqual(2, auk.currentPageIndex)
+  }
+  
+  // MARK: - Update page indicator
+  
+  func testPageIndicator_updateCurrentPage_updateNumberOfPages() {
+    // Layout scroll view
+    // ---------------
+    
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    // Show 3 images
+    // -------------
+    
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    auk.show(image: image)
+    auk.show(image: image)
+    
+    // Verify page indicator is showing three pages
+    // -------------
+    
+    XCTAssertEqual(3, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
+  }
+  
+  func testPageIndicator_updateCurrentPage() {
+    // Layout scroll view
+    // ---------------
+    
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    // Show 3 images
+    // -------------
+    
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    auk.show(image: image)
+    auk.show(image: image)
+    
+    // Scroll to the second image
+    scrollView.contentOffset.x = 120
+    
+    // Verify page indicator is showing three pages
+    // -------------
+    
+    XCTAssertEqual(3, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
+  }
 }

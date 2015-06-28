@@ -48,8 +48,12 @@ public protocol AukInterface: class {
   */
   func changePage(toPageIndex: Int, pageWidth: CGFloat)
   
-  /// Returns the current page index.
-  var pageIndex: Int { get }
+  /**
+
+  Returns the current page index. If pages are being scrolled and there are two of them on screen the page index will indicate the page that occupies bigger portion of the screen at the moment.
+
+  */
+  var currentPageIndex: Int { get }
   
   /// Return the current number of pages.
   var numberOfPages: Int { get }

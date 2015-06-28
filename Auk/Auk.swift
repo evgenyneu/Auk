@@ -25,9 +25,12 @@ final class Auk: AukInterface {
     return 0
   }
   
-  var pageIndex: Int {
+  var currentPageIndex: Int {
     if let scrollView = scrollView {
-      return Int(scrollView.contentOffset.x / scrollView.bounds.size.width)
+      let width = Double(scrollView.bounds.size.width)
+      let offset = Double(scrollView.contentOffset.x)
+      
+      return Int(round(offset / width))
     }
     
     return 0
