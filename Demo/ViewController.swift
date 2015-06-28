@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     let pageIndex = scrollView.auk.currentPageIndex
     
     coordinator.animateAlongsideTransition({ [weak self] _ in
-      self?.scrollView.auk.changePage(pageIndex, pageWidth: size.width)
+      self?.scrollView.auk.changePage(pageIndex, pageWidth: size.width, animated: false)
     }, completion: nil)
   }
   

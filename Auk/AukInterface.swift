@@ -36,7 +36,9 @@ public protocol AukInterface: class {
   
   /**
   
-  Change current page. This function is used for animating the scroll view content during orientation change. It is called in viewWillTransitionToSize and inside animateAlongsideTransition animation block.
+  Change current page.
+  
+  This function is also used for animating the scroll view content during orientation change. It is called in viewWillTransitionToSize and inside animateAlongsideTransition animation block.
   
       override func viewWillTransitionToSize(size: CGSize,
         withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -46,15 +48,16 @@ public protocol AukInterface: class {
         let pageIndex = scrollView.auk.pageIndex
         
         coordinator.animateAlongsideTransition({ [weak self] _ in
-          self?.scrollView.auk.changePage(pageIndex, pageWidth: size.width)
+          self?.scrollView.auk.changePage(pageIndex, pageWidth: size.width, animated: false)
         }, completion: nil)
       }
   
   :param: toPageIndex: Index of the page that will be made a current page.
   :param: pageWidth: The new page width.
+  :param: animated Use animation.
   
   */
-  func changePage(toPageIndex: Int, pageWidth: CGFloat)
+  func changePage(toPageIndex: Int, pageWidth: CGFloat, animated: Bool)
   
   /**
 
