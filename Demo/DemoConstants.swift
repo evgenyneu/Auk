@@ -16,7 +16,8 @@ struct DemoConstants {
     "Alca_Impennis_by_John_Gould.jpg",
     "Great_Auk_Egg_Bent.jpg",
     "Great_auk_with_juvenile.jpg",
-    "Keulemans-GreatAuk.jpg"
+    "Keulemans-GreatAuk.jpg",
+    "SimlulateNoImage.jpg"
   ]
 }
 

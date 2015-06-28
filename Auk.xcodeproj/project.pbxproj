@@ -15,6 +15,9 @@
 		7E11D47A1B3F541D0086F36F /* AukPageIndicatorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E11D4791B3F541D0086F36F /* AukPageIndicatorContainer.swift */; };
 		7E11D47B1B3F54250086F36F /* AukPageIndicatorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E11D4791B3F541D0086F36F /* AukPageIndicatorContainer.swift */; };
 		7E333BFB1B3FC44B001BBB57 /* great_auk_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E333BFA1B3FC44B001BBB57 /* great_auk_placeholder.png */; };
+		7E333C001B3FDDCE001BBB57 /* iiQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E333BFF1B3FDDCE001BBB57 /* iiQ.swift */; };
+		7E333C011B3FDDD3001BBB57 /* iiQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E333BFF1B3FDDCE001BBB57 /* iiQ.swift */; };
+		7E333C091B3FE14C001BBB57 /* error_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E333C081B3FE14C001BBB57 /* error_image.png */; };
 		7E3E0A161B3E790900CD8CB4 /* AukScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3E0A151B3E790900CD8CB4 /* AukScrollViewDelegate.swift */; };
 		7E5AEDF01B2D0C0500199C38 /* iiAutolayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AEDEF1B2D0C0500199C38 /* iiAutolayoutConstraints.swift */; };
 		7E5AEDF31B2D0E6900199C38 /* AukScrollViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AEDF21B2D0E6900199C38 /* AukScrollViewContent.swift */; };
@@ -111,6 +114,8 @@
 		7E11D4771B3F53E60086F36F /* AukPageIndicatorContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukPageIndicatorContainerTests.swift; sourceTree = "<group>"; };
 		7E11D4791B3F541D0086F36F /* AukPageIndicatorContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukPageIndicatorContainer.swift; sourceTree = "<group>"; };
 		7E333BFA1B3FC44B001BBB57 /* great_auk_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = great_auk_placeholder.png; sourceTree = "<group>"; };
+		7E333BFF1B3FDDCE001BBB57 /* iiQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iiQ.swift; sourceTree = "<group>"; };
+		7E333C081B3FE14C001BBB57 /* error_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error_image.png; sourceTree = "<group>"; };
 		7E3E0A151B3E790900CD8CB4 /* AukScrollViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukScrollViewDelegate.swift; sourceTree = "<group>"; };
 		7E5AEDEF1B2D0C0500199C38 /* iiAutolayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iiAutolayoutConstraints.swift; sourceTree = "<group>"; };
 		7E5AEDF21B2D0E6900199C38 /* AukScrollViewContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukScrollViewContent.swift; sourceTree = "<group>"; };
@@ -193,6 +198,7 @@
 			children = (
 				7EBD03C81B34E42A00957205 /* Drawings */,
 				7E91683B1B34E406000028C3 /* great_auk_logo.png */,
+				7E333C081B3FE14C001BBB57 /* error_image.png */,
 				7E333BFA1B3FC44B001BBB57 /* great_auk_placeholder.png */,
 			);
 			path = Images;
@@ -201,6 +207,7 @@
 		7E5AEDEE1B2D0C0000199C38 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7E333BFF1B3FDDCE001BBB57 /* iiQ.swift */,
 				7E5AEDEF1B2D0C0500199C38 /* iiAutolayoutConstraints.swift */,
 			);
 			path = Utils;
@@ -467,6 +474,7 @@
 			files = (
 				7EBD03CD1B34E43F00957205 /* John_James_Audubon_Great_Auk.jpg in Resources */,
 				7EBD03CF1B34E43F00957205 /* popular_science_monthly_the_great_auk.jpg in Resources */,
+				7E333C091B3FE14C001BBB57 /* error_image.png in Resources */,
 				7E91683C1B34E406000028C3 /* great_auk_logo.png in Resources */,
 				7EBD03CE1B34E43F00957205 /* Pinguinus.jpg in Resources */,
 				7EBD03D01B34E43F00957205 /* Wormius_Great_Auk.jpg in Resources */,
@@ -495,6 +503,7 @@
 				7EBD03D91B34E76300957205 /* AukSettings.swift in Sources */,
 				7E11D47A1B3F541D0086F36F /* AukPageIndicatorContainer.swift in Sources */,
 				7E7E317C1B3658BE004411EB /* AukRemoteImage.swift in Sources */,
+				7E333C001B3FDDCE001BBB57 /* iiQ.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +526,7 @@
 				7E7E317D1B3658F0004411EB /* AukRemoteImage.swift in Sources */,
 				7E0A9BD31B36625D00086393 /* AukRemoteImageTests.swift in Sources */,
 				7E5AEDF51B2D0E7A00199C38 /* AukScrollViewContentTests.swift in Sources */,
+				7E333C011B3FDDD3001BBB57 /* iiQ.swift in Sources */,
 				7E9013C31B2CFCAE00DD4406 /* AukTestHelpers.swift in Sources */,
 				7EFEEDBF1B3E2FA00082488E /* AukPageVisibilityTests.swift in Sources */,
 				7EBD03DC1B34E9E400957205 /* AukSettings.swift in Sources */,

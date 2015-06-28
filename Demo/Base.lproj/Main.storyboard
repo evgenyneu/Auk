@@ -24,8 +24,8 @@
                                     <constraint firstAttribute="height" constant="265" id="Or5-06-LRV"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ak0-JX-tQy">
-                                <rect key="frame" x="320" y="356" width="40" height="60"/>
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ak0-JX-tQy">
+                                <rect key="frame" x="322" y="356" width="40" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="▶︎">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -35,8 +35,8 @@
                                     <action selector="onNextPageTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bHF-u5-29D"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkS-kK-gCM">
-                                <rect key="frame" x="240" y="356" width="40" height="60"/>
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkS-kK-gCM">
+                                <rect key="frame" x="242" y="356" width="40" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="◀︎">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -49,7 +49,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.16862745098039217" green="0.76078431372549016" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Ak0-JX-tQy" secondAttribute="leading" constant="-20" id="5g9-3F-WUi"/>
+                            <constraint firstAttribute="centerX" secondItem="Ak0-JX-tQy" secondAttribute="leading" constant="-22" id="5g9-3F-WUi"/>
                             <constraint firstItem="SrW-bD-PlC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="GMH-K7-yD4"/>
                             <constraint firstItem="xkS-kK-gCM" firstAttribute="centerY" secondItem="Ak0-JX-tQy" secondAttribute="centerY" id="LsT-hx-C56"/>
                             <constraint firstItem="Ak0-JX-tQy" firstAttribute="leading" secondItem="xkS-kK-gCM" secondAttribute="trailing" constant="40" id="QPf-wi-pPb"/>

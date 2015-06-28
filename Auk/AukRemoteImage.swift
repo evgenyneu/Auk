@@ -33,7 +33,21 @@ class AukRemoteImage {
       return image
     }
     
+    imageView?.moa.onErrorAsync = { [weak self] _, _ in
+      self?.onDownloadErrorAsync(settings)
+    }
+    
     imageView?.moa.url = url
+  }
+  
+  private func onDownloadErrorAsync(settings: AukSettings) {
+    if let errorImage = settings.errorImage {
+      iiQ.main { [weak self] in
+        imageView?.image = errorImage
+      }
+      
+      didReceiveImageAsync(errorImage, settings: settings)
+    }
   }
   
   /// Cancel current image download HTTP request.
@@ -45,7 +59,7 @@ class AukRemoteImage {
   func didReceiveImageAsync(image: UIImage, settings: AukSettings) {
     didFinishDownload = true
     
-    dispatch_async(dispatch_get_main_queue()) { [weak self] in
+    iiQ.main { [weak self] in
       if let imageView = self?.imageView {
         AukRemoteImage.animateImageView(imageView, settings: settings)
       }

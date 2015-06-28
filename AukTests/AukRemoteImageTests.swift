@@ -151,4 +151,26 @@ class AukRemoteImageTests: XCTestCase {
     // Show the image from the network
     XCTAssertEqual(96, imageView.image!.size.width)
   }
+  
+  // MARK: - Show error image
+  
+  func testShowErrorImage() {
+    settings.errorImage = uiImageFromFile("35px.jpg")
+    let simulator = MoaSimulator.simulate("auk.jpg")
+    
+    let errorExpectation = expectationWithDescription("error expectation")
+    
+    obj.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
+    
+    // Request remote image
+    obj.downloadImage(settings)
+    
+    simulator.respondWithError(error: nil, response: nil)
+    
+    iiQ.runAfterDelay(0.001) { errorExpectation.fulfill() }
+    waitForExpectationsWithTimeout(1) { error in }
+    
+    // Show error image
+    XCTAssertEqual(35, imageView.image!.size.width)
+  }
 }
