@@ -41,7 +41,6 @@ final class AukPageIndicatorContainer: UIView {
   
   private func createPageControl() -> UIPageControl {
     let pageControl = UIPageControl()
-    pageControl.numberOfPages = 5
     addSubview(pageControl)
     return pageControl
   }

@@ -137,6 +137,27 @@ class AukTests: XCTestCase {
     XCTAssertEqual(CGSize(width: 120, height: 90), aukView2.frame.size)
   }
   
+  func testShowLocalImage_updatePageIndicator() {
+    // Layout scroll view
+    // ---------------
+    
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    // Show 3 images
+    // -------------
+    
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    auk.show(image: image)
+    auk.show(image: image)
+
+    // Verify page indicator is showing three pages
+    // -------------
+    
+    XCTAssertEqual(3, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
+  }
+  
   // MARK: - Show remote image
   
   func testShowRemoteImage_setupIsCalled() {
@@ -221,4 +242,17 @@ class AukTests: XCTestCase {
     XCTAssertEqual(CGPoint(x: 120, y: 0), aukView2.frame.origin)
     XCTAssertEqual(CGSize(width: 120, height: 90), aukView2.frame.size)
   }
+  
+  // MARK: get number of pages
+  
+  func testNumberOfPage() {
+    // Show 2 images
+    // -------------
+    
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    auk.show(image: image)
+    
+    XCTAssertEqual(2, auk.numberOfPages)
+  }  
 }

@@ -50,4 +50,7 @@ public protocol AukInterface: class {
   
   /// Returns the current page index.
   var pageIndex: Int { get }
+  
+  /// Return the current number of pages.
+  var numberOfPages: Int { get }
 }

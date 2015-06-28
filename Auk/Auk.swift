@@ -17,10 +17,24 @@ final class Auk: AukInterface {
     scrollView.delegate = scrollViewDelegate
   }
   
-  func setup() {
-    createPageIdicator()
-    scrollView?.showsHorizontalScrollIndicator = settings.showsHorizontalScrollIndicator
-    scrollView?.pagingEnabled = settings.pagingEnabled
+  var numberOfPages: Int {
+    if let scrollView = scrollView {
+      return AukScrollViewContent.aukPages(scrollView).count
+    }
+    
+    return 0
+  }
+  
+  var pageIndex: Int {
+    if let scrollView = scrollView {
+      return Int(scrollView.contentOffset.x / scrollView.bounds.size.width)
+    }
+    
+    return 0
+  }
+  
+  func changePage(toPageIndex: Int, pageWidth: CGFloat) {
+    scrollView?.contentOffset.x = CGFloat(toPageIndex) * pageWidth
   }
   
   func show(#image: UIImage) {
@@ -39,6 +53,12 @@ final class Auk: AukInterface {
     }
   }
   
+  func setup() {
+    createPageIdicator()
+    scrollView?.showsHorizontalScrollIndicator = settings.showsHorizontalScrollIndicator
+    scrollView?.pagingEnabled = settings.pagingEnabled
+  }
+  
   /// Create a page, add it to the scroll view content and layout.
   private func createPage() -> AukPage {
     let page = AukPage()
@@ -49,18 +69,6 @@ final class Auk: AukInterface {
     }
     
     return page
-  }
-  
-  var pageIndex: Int {
-    if let scrollView = scrollView {
-      return Int(scrollView.contentOffset.x / scrollView.bounds.size.width)
-    }
-    
-    return 0
-  }
-  
-  func changePage(toPageIndex: Int, pageWidth: CGFloat) {
-    scrollView?.contentOffset.x = CGFloat(toPageIndex) * pageWidth
   }
   
   func onScroll() {

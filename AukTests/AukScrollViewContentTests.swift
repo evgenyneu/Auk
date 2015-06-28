@@ -26,7 +26,6 @@ class AukScrollViewContentTests: XCTestCase {
     XCTAssert(pages[1] === aukView2)
   }
   
-  
   func testLayout() {
     scrollView.bounds.size = CGSize(width: 180, height: 120)
     
