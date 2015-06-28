@@ -23,6 +23,11 @@ final class AukPageIndicatorContainer: UIView {
     pageControl?.numberOfPages = numberOfPages
   }
   
+  // Update the current page in the page control
+  func updateCurrentPage(currentPageIndex: Int) {
+    pageControl?.currentPage = currentPageIndex
+  }
+  
   private func styleContainer(settings: AukSettings) {
     backgroundColor = settings.pageControl.backgroundColor
     layer.cornerRadius = CGFloat(settings.pageControl.cornerRadius)

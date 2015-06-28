@@ -108,4 +108,15 @@ class AukPageIndicatorTests: XCTestCase {
     let pageControl = container.subviews[0] as! UIPageControl
     XCTAssertEqual(3, pageControl.numberOfPages)
   }
+  
+  // MARK: - Update current page
+  
+  func testUpdateCurrentPage() {
+    container.setup(settings, scrollView: scrollView)
+    container.updateNumberOfPages(10)
+    container.updateCurrentPage(7)
+
+    let pageControl = container.subviews[0] as! UIPageControl
+    XCTAssertEqual(7, pageControl.currentPage)
+  }
 }

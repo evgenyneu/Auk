@@ -301,12 +301,18 @@ class AukTests: XCTestCase {
     auk.show(image: image)
     auk.show(image: image)
     
-    // Scroll to the second image
-    scrollView.contentOffset.x = 120
+    // Scroll to the first page
+    // ------------
     
-    // Verify page indicator is showing three pages
+    scrollView.contentOffset.x = 0
+    scrollView.delegate?.scrollViewDidScroll?(scrollView)
+    XCTAssertEqual(0, auk.pageIndicatorContainer!.pageControl!.currentPage)
+    
+    // Scroll to the second page
     // -------------
-    
-    XCTAssertEqual(3, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
+
+    scrollView.contentOffset.x = 120
+    scrollView.delegate?.scrollViewDidScroll?(scrollView)    
+    XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.currentPage)
   }
 }
