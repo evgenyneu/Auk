@@ -14,7 +14,7 @@ final class AukPageIndicatorContainer: UIView {
     styleContainer(settings)
     AukPageIndicatorContainer.layoutContainer(self, settings: settings, scrollView: scrollView)
     
-    let pageControl = createPageControl()
+    let pageControl = createPageControl(settings)
     AukPageIndicatorContainer.layoutPageControl(pageControl, superview: self, settings: settings)
   }
   
@@ -50,13 +50,19 @@ final class AukPageIndicatorContainer: UIView {
     }
   }
   
-  private func createPageControl() -> UIPageControl {
+  private func createPageControl(settings: AukSettings) -> UIPageControl {
     let pageControl = UIPageControl()
+    
+    pageControl.pageIndicatorTintColor = settings.pageControl.pageIndicatorTintColor
+    pageControl.currentPageIndicatorTintColor = settings.pageControl.currentPageIndicatorTintColor
+
     addSubview(pageControl)
     return pageControl
   }
   
-  private static func layoutPageControl(pageControl: UIPageControl, superview: UIView, settings: AukSettings) {
+  private static func layoutPageControl(pageControl: UIPageControl, superview: UIView,
+    settings: AukSettings) {
+      
     pageControl.setTranslatesAutoresizingMaskIntoConstraints(false)
     
     iiAutolayoutConstraints.fillParent(pageControl, parentView: superview,

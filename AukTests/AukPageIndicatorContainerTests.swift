@@ -63,6 +63,28 @@ class AukPageIndicatorTests: XCTestCase {
     XCTAssertEqual(50, container.frame.midX)
   }
   
+  func testSetup_stylePageControl() {
+    // Layout scroll view
+    // ---------------
+    
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    settings.pageControl.pageIndicatorTintColor = UIColor.blueColor()
+    settings.pageControl.currentPageIndicatorTintColor = UIColor.redColor()
+    
+    // Create the views
+    container.setup(settings, scrollView: scrollView)
+    
+    let pageControl = container.subviews[0] as! UIPageControl
+    
+    // Verify page control layout
+    // ---------------
+    
+    XCTAssertEqual(UIColor.blueColor(), pageControl.pageIndicatorTintColor!)
+    XCTAssertEqual(UIColor.redColor(), pageControl.currentPageIndicatorTintColor!)
+  }
+  
   func testSetup_layoutPageControl() {
     // Layout scroll view
     // ---------------

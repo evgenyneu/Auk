@@ -37,4 +37,10 @@ struct PageControl {
   
   /// Padding between page indicator and its container
   var innerPadding = CGSize(width: 10, height: -5)
+  
+  /// Color of the page indicator dot.
+  var pageIndicatorTintColor: UIColor? = nil
+  
+  /// Color of the dot representing for the current page.
+  var currentPageIndicatorTintColor: UIColor? = nil
 }
