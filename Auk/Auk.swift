@@ -33,6 +33,19 @@ final class Auk: AukInterface {
     }
   }
   
+  func removeAll() {
+    if let scrollView = scrollView {
+      let pages = AukScrollViewContent.aukPages(scrollView)
+      
+      for page in pages {
+        page.removeFromSuperview()
+      }
+    }
+    
+    pageIndicatorContainer?.updateNumberOfPages(numberOfPages)
+    pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
+  }
+  
   var numberOfPages: Int {
     if let scrollView = scrollView {
       return AukScrollViewContent.aukPages(scrollView).count

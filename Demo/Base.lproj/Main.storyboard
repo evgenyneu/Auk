@@ -59,11 +59,23 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Yub-14-TBn">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" title="Show local" id="70P-QE-HQx">
                             <connections>
                                 <action selector="onShowLocalTapped:" destination="BYZ-38-t0r" id="Eo3-ji-639"/>
                             </connections>
                         </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vWm-G7-wjO">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <state key="normal" title="✕">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="onDeleteButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="coe-9e-at0"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" title="Show remote" id="zjf-IE-rgY">
                             <connections>
                                 <action selector="onShowRemoteTapped:" destination="BYZ-38-t0r" id="x3O-ZJ-6fa"/>
