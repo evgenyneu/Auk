@@ -36,13 +36,13 @@ Settings for page indicator.
 */
 public struct PageControl {
   /// Corner radius of page control container view.
-  public var cornerRadius: Double = 15
+  public var cornerRadius: Double = 13
   
   /// Background color of the page control container view.
   public var backgroundColor = UIColor(red: 128/256, green: 128/256, blue: 128/256, alpha: 0.4)
   
   /// Distance between the bottom of the page control view and the bottom of the scroll view
-  public var marginToScrollViewBottom: Double = 5
+  public var marginToScrollViewBottom: Double = 8
   
   /// Padding between page indicator and its container
   public var innerPadding = CGSize(width: 10, height: -5)
