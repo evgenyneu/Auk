@@ -16,11 +16,14 @@ final class AukPageIndicatorContainer: UIView {
     
     let pageControl = createPageControl(settings)
     AukPageIndicatorContainer.layoutPageControl(pageControl, superview: self, settings: settings)
+    
+    updateVisibility()
   }
   
   // Update the number of pages showing in the page control
   func updateNumberOfPages(numberOfPages: Int) {
     pageControl?.numberOfPages = numberOfPages
+    updateVisibility()
   }
   
   // Update the current page in the page control
@@ -70,5 +73,9 @@ final class AukPageIndicatorContainer: UIView {
     
     iiAutolayoutConstraints.fillParent(pageControl, parentView: superview,
       margin: settings.pageControl.innerPadding.height, vertically: true)
+  }
+  
+  private func updateVisibility() {
+    self.hidden = pageControl?.numberOfPages < 2
   }
 }

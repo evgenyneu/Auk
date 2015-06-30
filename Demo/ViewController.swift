@@ -10,6 +10,7 @@ class ViewController: UIViewController {
     
     scrollView.auk.settings.placeholderImage = UIImage(named: "great_auk_placeholder.png")
     scrollView.auk.settings.errorImage = UIImage(named: "error_image.png")
+    loadFirstImage()
   }
   
   override func viewWillTransitionToSize(size: CGSize,
@@ -22,6 +23,12 @@ class ViewController: UIViewController {
     coordinator.animateAlongsideTransition({ [weak self] _ in
       self?.scrollView.auk.changePage(pageIndex, pageWidth: size.width, animated: false)
     }, completion: nil)
+  }
+  
+  func loadFirstImage() {
+    if let image = UIImage(named: DemoConstants.firstImageName) {
+      scrollView.auk.show(image: image)
+    }
   }
   
   @IBAction func onShowLocalTapped(sender: AnyObject) {

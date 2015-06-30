@@ -29,6 +29,7 @@ class AukPageIndicatorTests: XCTestCase {
     
     XCTAssertEqual(14, container.layer.cornerRadius)
     XCTAssertEqual(UIColor.purpleColor(), container.backgroundColor!)
+    XCTAssert(container.hidden)
   }
   
   func testSetup_layoutContainerView() {
@@ -140,5 +141,27 @@ class AukPageIndicatorTests: XCTestCase {
 
     let pageControl = container.subviews[0] as! UIPageControl
     XCTAssertEqual(7, pageControl.currentPage)
+  }
+  
+  // MARK: - Show / hide
+  
+  func testHiddenForOnePage() {
+    container.setup(settings, scrollView: scrollView)
+    container.updateNumberOfPages(1)
+    XCTAssert(container.hidden)
+  }
+  
+  func testVisibleForTwoPages() {
+    container.setup(settings, scrollView: scrollView)
+    container.updateNumberOfPages(2)
+    XCTAssertFalse(container.hidden)
+  }
+  
+  func testHideWhenNoPages() {
+    container.setup(settings, scrollView: scrollView)
+    container.updateNumberOfPages(2)
+    container.updateNumberOfPages(0)
+
+    XCTAssert(container.hidden)
   }
 }
