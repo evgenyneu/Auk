@@ -28,26 +28,14 @@ class AukRemoteImage {
     if imageView?.moa.url != nil { return } // Download has already started
     if didFinishDownload { return } // Image has already been downloaded
     
+    imageView?.moa.errorImage = settings.errorImage
+    
     imageView?.moa.onSuccessAsync = { [weak self] image in
       self?.didReceiveImageAsync(image, settings: settings)
       return image
     }
     
-    imageView?.moa.onErrorAsync = { [weak self] _, _ in
-      self?.onDownloadErrorAsync(settings)
-    }
-    
     imageView?.moa.url = url
-  }
-  
-  private func onDownloadErrorAsync(settings: AukSettings) {
-    if let errorImage = settings.errorImage {
-      iiQ.main {
-        imageView?.image = errorImage
-      }
-      
-      didReceiveImageAsync(errorImage, settings: settings)
-    }
   }
   
   /// Cancel current image download HTTP request.
