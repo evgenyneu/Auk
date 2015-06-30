@@ -36,6 +36,13 @@ public protocol AukInterface: class {
   
   /**
   
+  Removes all images from the scroll view.
+  
+  */
+  func removeAll()
+  
+  /**
+  
   Change current page.
   
   - parameter toPageIndex:: Index of the page that will be made a current page.

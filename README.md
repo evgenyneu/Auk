@@ -21,6 +21,9 @@ scrollView.auk.show(image: UIImage(named: "bird"))
 // Show remote image
 scrollView.auk.show(url: "http://site.com/bird.jpg")
 
+// Remove all images
+scrollView.auk.remoteAll()
+
 // Scroll images automatically with the interval of 3 seconds
 scrollView.auk.autoScroll(timeout: 3)
 

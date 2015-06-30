@@ -56,5 +56,9 @@ class ViewController: UIViewController {
   private func changePage(pageIndex: Int) {
     scrollView.auk.changePage(pageIndex, animated: true)
   }
+  
+  @IBAction func onDeleteButtonTapped(sender: AnyObject) {
+    scrollView.auk.removeAll()
+  }
 }
 
