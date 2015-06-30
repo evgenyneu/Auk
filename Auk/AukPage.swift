@@ -73,6 +73,8 @@ final class AukPage: UIView {
   func createAndLayoutImageView(settings: AukSettings) {
     if imageView != nil { return }
     
+    clipsToBounds = true // Hide image if it is out of page bounds
+    
     let newImageView = AukPage.createImageView(settings)
     addSubview(newImageView)
     imageView = newImageView
