@@ -21,18 +21,18 @@ There are three ways you can add Auk to your Xcode project.
 
 **Add source (iOS 7+)**
 
-Simply add [MoaDistrib.swift](https://github.com/evgenyneu/moa/blob/master/Distrib/MoaDistrib.swift) and [AukDistrib.swift](https://github.com/evgenyneu/Auk/blob/master/Distrib/AukDistrib.swift) files into your Xcode project.
+Simply add [MoaDistrib.swift](https://github.com/evgenyneu/moa/blob/master/Distrib/MoaDistrib.swift) and [AukDistrib.swift](https://github.com/evgenyneu/moa/blob/1.0.50/Distrib/MoaDistrib.swift) files into your Xcode project.
 
 **Setup with Carthage (iOS 8+)**
 
-Alternatively, add `github "evgenyneu/Auk" ~> 2.0` to your Cartfile and run `carthage update`.
+Alternatively, add `github "evgenyneu/Auk" ~> 1.0` to your Cartfile and run `carthage update`.
 
 **Setup with CocoaPods (iOS 8+)**
 
 If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
-    pod 'Auk', '~> 2.0'
+    pod 'Auk', '~> 1.0'
 
 
 #### Setup in Xcode 6
