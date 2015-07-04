@@ -15,6 +15,31 @@ This is an iOS library that shows images in a scroll view with page indicator.
 *Drawing of the great auk by John Gerrard Keulemans, circa 1900. Source: [Wikimedia Commons](https://en.wikipedia.org/wiki/Great_auk).*
 
 
+## Setup
+
+There are three ways you can add Auk to your Xcode project.
+
+**Add source (iOS 7+)**
+
+Simply add [AukDistrib.swift](https://github.com/evgenyneu/moa/blob/master/Distrib/MoaDistrib.swift) file into your Xcode project.
+
+**Setup with Carthage (iOS 8+)**
+
+Alternatively, add `github "evgenyneu/Auk" ~> 2.0` to your Cartfile and run `carthage update`.
+
+**Setup with CocoaPods (iOS 8+)**
+
+If you are using CocoaPods add this text to your Podfile and run `pod install`.
+
+    use_frameworks!
+    pod 'Auk', '~> 2.0'
+
+
+#### Setup in Xcode 6
+
+Auk is written in Swift 2 for Xcode 7. See [Swift 1.2 setup instuctions](https://github.com/evgenyneu/moa/wiki/Setup-with-Xcode-6-and-Swift-1.2) for Xcode 6 projects.
+
+
 ## Usage
 
 Auk extends UIScrollView class by creating the `auk` property that you can use for showing images.
