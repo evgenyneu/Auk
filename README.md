@@ -91,6 +91,24 @@ scrollView.auk.settings.pageControl.backgroundColor = UIColor.grayColor().colorW
 scrollView.auk.settings.placeholderImage = UIImage(named: "placeholder.jpg")
 ```
 
+## Adapt to orientation change
+
+Auk uses Auto Layout to position the scroll view content. Use the following code to smoothly transition the scroll view image to new size during orientation change.
+
+```Swift
+override func viewWillTransitionToSize(size: CGSize,
+  withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+
+  super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+
+  let pageIndex = scrollView.auk.currentPageIndex
+
+  coordinator.animateAlongsideTransition({ [weak self] _ in
+    self?.scrollView.auk.scrollTo(pageIndex, pageWidth: size.width, animated: false)
+  }, completion: nil)
+}
+```
+
 ## Credits
 
 * The Great Auk drawing by John James Audubon, 1827-1838. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:341_Great_Auk.jpg).
