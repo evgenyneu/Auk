@@ -19,6 +19,8 @@ class AukScrollToTests: XCTestCase {
     auk = Auk(scrollView: scrollView)
   }
   
+  // MARK: - Scroll to offset
+  
   func testScrollTo() {
     let image = uiImageFromFile("96px.png")
     auk.show(image: image)
@@ -54,5 +56,17 @@ class AukScrollToTests: XCTestCase {
     
     auk.scrollTo(-1, animated: false)
     XCTAssertEqual(0, scrollView.contentOffset.x)
+  }
+  
+  // MARK: - Scroll to offset with width
+  
+  func testScrollToWithWidth() {
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    auk.show(image: image)
+    auk.show(image: image)
+    
+    auk.scrollTo(2, pageWidth: 128, animated: false)
+    XCTAssertEqual(256, scrollView.contentOffset.x)
   }
 }
