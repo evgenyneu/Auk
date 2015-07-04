@@ -5,6 +5,7 @@ final class Auk: AukInterface {
   var settings = AukSettings()
   var scrollViewDelegate = AukScrollViewDelegate()
   var pageIndicatorContainer: AukPageIndicatorContainer?
+  var autoscrollTimer: MoaTimer?
 
   init(scrollView: UIScrollView) {
     self.scrollView = scrollView
@@ -31,6 +32,27 @@ final class Auk: AukInterface {
     if let scrollView = scrollView {
       AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
     }
+  }
+  
+  func scrollTo(pageIndex: Int, animated: Bool) {
+    if let scrollView = scrollView {
+      let pageWidth = scrollView.bounds.size.width
+      scrollTo(pageIndex, pageWidth: pageWidth, animated: animated)
+    }
+  }
+  
+  func scrollTo(pageIndex: Int, pageWidth: CGFloat, animated: Bool) {
+    let offsetX = CGFloat(pageIndex) * pageWidth
+    let offset = CGPoint(x: offsetX, y: 0)
+    scrollView?.setContentOffset(offset, animated: animated)
+  }
+  
+  func scrollToNextPage(cycle: Bool, animated: Bool) {
+    
+  }
+  
+  func scrollToPreviousPage(cycle: Bool, animated: Bool) {
+    
   }
   
   func removeAll() {
@@ -65,19 +87,11 @@ final class Auk: AukInterface {
     return 0
   }
   
-  func changePage(toPageIndex: Int, animated: Bool) {
-    if let scrollView = scrollView {
-      let pageWidth = scrollView.bounds.size.width
-      changePage(toPageIndex, pageWidth: pageWidth, animated: animated)
+  func startAutoScroll(#delaySeconds: Double) {
+    autoscrollTimer = MoaTimer.runAfter(delaySeconds, repeats: true) { timer in
+      
     }
   }
-  
-  func changePage(toPageIndex: Int, pageWidth: CGFloat, animated: Bool) {
-    let offsetX = CGFloat(toPageIndex) * pageWidth
-    let offset = CGPoint(x: offsetX, y: 0)
-    scrollView?.setContentOffset(offset, animated: animated)
-  }
-  
   
   func setup() {
     createPageIdicator()

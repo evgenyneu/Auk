@@ -21,23 +21,29 @@ scrollView.auk.show(image: UIImage(named: "bird"))
 // Show remote image
 scrollView.auk.show(url: "http://site.com/bird.jpg")
 
+// Scroll to page
+scrollView.auk.scrollTo(1)
+
+// Scroll to the next page
+scrollView.auk.scrollToNextPage()
+
+// Scroll to the previous page
+scrollView.auk.scrollToPreviousPage()
+
 // Remove all images
 scrollView.auk.remoteAll()
 
+// Get the index of the current page
+scrollView.auk.currentPageIndex
+
+// Return the number of pages in the scroll view
+scrollView.auk.numberOfPages
+
 // Scroll images automatically with the interval of 3 seconds
-scrollView.auk.autoScroll(timeout: 3)
+scrollView.auk.startAutoScroll(delaySeconds: 3)
 
 // Stop auto-scrolling of the images
 scrollView.auk.stopAutoScroll()
-
-// Scroll to the image with index 2
-scrollView.auk.scrollTo(image: 2, animated: true)
-
-// Remove image with index 2
-scrollView.auk.remove(image: 2)
-
-// Remove all images
-scrollView.auk.removeAll()
 ```
 
 

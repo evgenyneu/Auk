@@ -349,4 +349,27 @@ class AukTests: XCTestCase {
     XCTAssertEqual(0, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
     XCTAssertEqual(0, auk.pageIndicatorContainer!.pageControl!.currentPage)
   }
+  
+  // MARK: - 
+  
+  // MARK: - Start auto scroll
+  
+  func testStartAutoScroll() {
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    auk.show(image: image)
+    auk.show(image: image)
+    
+    let expectation = expectationWithDescription("change to new page")
+    
+    auk.startAutoScroll(delaySeconds: 0.1)
+    
+    iiQ.runAfterDelay(0.15) {
+      expectation.fulfill()
+    }
+    
+    waitForExpectationsWithTimeout(0.2) { _ in }
+    
+    XCTAssertEqual(1, auk.currentPageIndex)
+  }
 }

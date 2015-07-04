@@ -20,7 +20,7 @@ public protocol AukInterface: class {
 
   Shows the image in the scroll view.
 
-  :param: image Image to be shown in the scroll view.
+  :param: image: Image to be shown in the scroll view.
   
   */
   func show(#image: UIImage)
@@ -29,10 +29,40 @@ public protocol AukInterface: class {
 
   Downloads a remote image and adds it to the scroll view.
 
-  :param: url Url of the image to be shown.
+  :param: url: Url of the image to be shown.
   
   */
   func show(#url: String)
+  
+  /**
+  
+  Change current page.
+  
+  :param: pageIndex: Index of the page that will be made a current page.
+  :param: animated: Use animation.
+  
+  */
+  func scrollTo(pageIndex: Int, animated: Bool)
+  
+  /**
+
+  Scrolls to the next page.
+  
+  :param: cycle: If true it scroll to the first page from the last one. If false the scrolling stops at the last page.
+  :param: animated: Use animation.
+  
+  */
+  func scrollToNextPage(cycle: Bool, animated: Bool)
+  
+  /**
+  
+  Scrolls to the previous page.
+  
+  :param: cycle: If true it scroll to the last page from the first one. If false the scrolling stops at the first page.
+  :param: animated: Use animation.
+  
+  */
+  func scrollToPreviousPage(cycle: Bool, animated: Bool)
   
   /**
   
@@ -43,38 +73,37 @@ public protocol AukInterface: class {
   
   /**
   
-  Change current page.
+  Start auto scrolling the pages with the given delay in seconds.
   
-  :param: toPageIndex: Index of the page that will be made a current page.
-  :param: animated Use animation.
+  :param: delaySeconds: Amount of time in second each page is visible before scrolling to the next.
   
   */
-  func changePage(toPageIndex: Int, animated: Bool)
+  func startAutoScroll(#delaySeconds: Double)
   
   /**
   
-  Change current page.
+  Change current page and the page width.
   
   This function can be used for animating the scroll view content during orientation change. It is called in viewWillTransitionToSize and inside animateAlongsideTransition animation block.
   
-      override func viewWillTransitionToSize(size: CGSize,
-        withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-      
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-      
-        let pageIndex = scrollView.auk.pageIndex
-        
-        coordinator.animateAlongsideTransition({ [weak self] _ in
-          self?.scrollView.auk.changePage(pageIndex, pageWidth: size.width, animated: false)
-        }, completion: nil)
-      }
+  override func viewWillTransitionToSize(size: CGSize,
+  withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+  
+  super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+  
+  let pageIndex = scrollView.auk.pageIndex
+  
+  coordinator.animateAlongsideTransition({ [weak self] _ in
+  self?.scrollView.auk.changePage(pageIndex, pageWidth: size.width, animated: false)
+  }, completion: nil)
+  }
   
   :param: toPageIndex: Index of the page that will be made a current page.
   :param: pageWidth: The new page width.
-  :param: animated Use animation.
+  :param: animated: Use animation.
   
   */
-  func changePage(toPageIndex: Int, pageWidth: CGFloat, animated: Bool)
+  func scrollTo(pageIndex: Int, pageWidth: CGFloat, animated: Bool)
   
   /**
 
