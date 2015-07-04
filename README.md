@@ -93,7 +93,7 @@ scrollView.auk.settings.placeholderImage = UIImage(named: "placeholder.jpg")
 
 ## Size change animation
 
-Read [animate size change](https://github.com/evgenyneu/Auk/wiki/Animate-size-change) manual if you need to animate the scroll view during orientation change.
+Read [animate size change](https://github.com/evgenyneu/Auk/wiki/Animate-size-change) manual if you need to animate the scroll view during device orientation change.
 
 
 ## Credits
