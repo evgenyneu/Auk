@@ -2,7 +2,7 @@ import UIKit
 import XCTest
 import moa
 
-class AukScrollNextPreviousPageTests: XCTestCase {
+class AukInterfaceScrollNextPreviousPageTests: XCTestCase {
   
   var scrollView: UIScrollView!
   var auk: AukInterface!
