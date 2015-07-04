@@ -2,7 +2,7 @@ import UIKit
 
 /**
 
-Settings for tuning the appearance and function of the auk image scroll view.
+Appearance and behavior of the scroll view.
 
 */
 public struct AukSettings {
@@ -26,7 +26,7 @@ public struct AukSettings {
   public var errorImage: UIImage?
   
   /// The length of the animation that is used to show the remote images.
-  public var remoteImageAnimationIntervalSeconds: Double = 1
+  public var remoteImageAnimationIntervalSeconds: Double = 0.3
 }
 
 /**

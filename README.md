@@ -9,7 +9,6 @@ This is an iOS library that shows images in a scroll view with page indicator.
 * Remote images are automatically downloaded when they become visible in the scroll view.
 * Allows to specify placeholder and error images for remote sources.
 * Includes auto scrolling.
-* Allows to scroll to an image from code.
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_paged_image_scroller_ios.jpg' alt='Auk paged image scroll for iOS and Swift' width='382'>
 
@@ -52,6 +51,20 @@ scrollView.auk.startAutoScroll(delaySeconds: 3)
 scrollView.auk.stopAutoScroll()
 ```
 
+## Configuration
+
+Use the `auk.settings` property to configure behavior and appearance of the scroll view. See the [configuration manual]() for the complete list of configuration options.
+
+```Swift
+// Make the images fill entire page
+scrollView.auk.settings.contentMode = UIViewContentMode.ScaleAspectFill
+
+// Set background color of page indicator
+scrollView.auk.settings.pageControl.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.3)
+
+// Show placeholder image while remote image is being downloaded.
+scrollView.auk.settings.placeholderImage = UIImage(named: "placeholder.jpg")
+```
 
 ## Credits
 

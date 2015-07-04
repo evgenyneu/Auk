@@ -79,17 +79,8 @@ class AukRemoteImage {
     imageView.alpha = 0
     let interval = NSTimeInterval(settings.remoteImageAnimationIntervalSeconds)
     
-    UIView.animateWithDuration(interval,
-      delay: 0,
-      usingSpringWithDamping: 1,
-      initialSpringVelocity: 3,
-      options: nil,
-      animations: {
-        imageView.alpha = 1
-      },
-      completion: { finished in
-        
-      }
-    )
+    UIView.animateWithDuration(interval, animations: {
+      imageView.alpha = 1
+    })
   }
 }
