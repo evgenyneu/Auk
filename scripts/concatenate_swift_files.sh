@@ -1,12 +1,26 @@
 #!/bin/bash
 
 #
-#  Combines *.swift files into a single file.
+#  Combines *.swift files into a single file. Usually
 #
 #  Usage
 #  ------
 #
-#  ./combine_swift_files.sh source_dir destination_file [optional_header_text]
+#  ./combine_swift_files.sh source_dir destination_file [optional_header_text] [remove_line_text]
+#
+#
+#  Example
+#  --------
+#
+#  Use in external build tool in Xcode.
+#
+#  Build tool:
+#
+#    $PROJECT_DIR/scripts/concatenate_swift_files.sh
+#
+#  Arguments:
+#
+#    $PROJECT_DIR/MyProject $PROJECT_DIR/Distrib/MyDistrib.swift "// My header" "remove this line"
 #
 
 destination=$2

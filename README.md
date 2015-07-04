@@ -45,11 +45,11 @@ Auk is written in Swift 2 for Xcode 7. See [Swift 1.2 setup instuctions](https:/
 Auk extends UIScrollView class by creating the `auk` property that you can use for showing images.
 
 ```Swift
-// Show local image
-scrollView.auk.show(image: UIImage(named: "bird"))
-
 // Show remote image
 scrollView.auk.show(url: "http://site.com/bird.jpg")
+
+// Show local image
+scrollView.auk.show(image: UIImage(named: "bird"))
 
 // Scroll to page
 scrollView.auk.scrollTo(2, animated: true)
