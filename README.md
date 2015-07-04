@@ -93,21 +93,8 @@ scrollView.auk.settings.placeholderImage = UIImage(named: "placeholder.jpg")
 
 ## Adapt to orientation change
 
-Auk uses Auto Layout to position the scroll view content. Use the following code to smoothly transition the scroll view image to new size during orientation change.
+Auk uses Auto Layout to position the scroll view content. Read [animate size change](https://github.com/evgenyneu/Auk/wiki/Animate-size-change) manual if you need to animate the scroll view during orientation change.
 
-```Swift
-override func viewWillTransitionToSize(size: CGSize,
-  withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-
-  super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-
-  let pageIndex = scrollView.auk.currentPageIndex
-
-  coordinator.animateAlongsideTransition({ [weak self] _ in
-    self?.scrollView.auk.scrollTo(pageIndex, pageWidth: size.width, animated: false)
-  }, completion: nil)
-}
-```
 
 ## Credits
 
