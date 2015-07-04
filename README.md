@@ -7,8 +7,8 @@ This is an iOS library that shows images in a scroll view with page indicator.
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_paged_image_scroller_ios.jpg' alt='Auk paged image scroll for iOS and Swift' width='382'>
 
-*This library is dedicated to the great auk, a flightless bird that became extinct in the mid-19th century.*
-Source: [Wikipedia](https://en.wikipedia.org/wiki/Great_auk).
+*Drawing of the great aukby John Gerrard Keulemans, circa 1900. Source: [Wikimedia Commons](https://en.wikipedia.org/wiki/Great_auk).*
+
 
 ## Usage
 
