@@ -36,22 +36,29 @@ final class Auk: AukInterface {
   
   func scrollTo(pageIndex: Int, animated: Bool) {
     if let scrollView = scrollView {
-      let pageWidth = scrollView.bounds.size.width
-      scrollTo(pageIndex, pageWidth: pageWidth, animated: animated)
+      AukScrollTo.scrollTo(scrollView, pageIndex: pageIndex, animated: animated)
     }
   }
   
   func scrollTo(pageIndex: Int, pageWidth: CGFloat, animated: Bool) {
-    let offsetX = CGFloat(pageIndex) * pageWidth
-    let offset = CGPoint(x: offsetX, y: 0)
-    scrollView?.setContentOffset(offset, animated: animated)
+    if let scrollView = scrollView {
+      AukScrollTo.scrollTo(scrollView, pageIndex: pageIndex, pageWidth: pageWidth,
+        animated: animated)
+    }
+  }
+  
+  func scrollToNextPage() {
+    if let scrollView = scrollView {
+      AukScrollTo.scrollToNextPage(scrollView, cycle: true, animated: true,
+        currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
+    }
   }
   
   func scrollToNextPage(cycle: Bool, animated: Bool) {
     
   }
   
-  func scrollToPreviousPage(cycle: Bool, animated: Bool) {
+  func scrollToPreviousPage(_ cycle: Bool = true, animated: Bool = true) {
     
   }
   

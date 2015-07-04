@@ -44,6 +44,14 @@ public protocol AukInterface: class {
   */
   func scrollTo(pageIndex: Int, animated: Bool)
   
+  
+  /**
+  
+  Scrolls to the next page.
+  
+  */
+  func scrollToNextPage()
+  
   /**
 
   Scrolls to the next page.
