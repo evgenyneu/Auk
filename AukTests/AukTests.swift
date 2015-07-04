@@ -1,4 +1,3 @@
-import UIKit
 import XCTest
 import moa
 
@@ -184,28 +183,6 @@ class AukTests: XCTestCase {
     scrollView.contentOffset.x = 120
     scrollView.delegate?.scrollViewDidScroll?(scrollView)    
     XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.currentPage)
-  }
-  
-  // MARK: - Remove images
-  
-  func testRemoveImages() {
-    // Layout scroll view
-    // ---------------
-    
-    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
-    superview.addSubview(scrollView)
-    
-    let image = uiImageFromFile("96px.png")
-    auk.show(image: image)
-    auk.show(image: image)
-    auk.show(image: image)
-
-    auk.removeAll()
-    
-    XCTAssertEqual(0, aukPages(scrollView).count)
-    XCTAssertEqual(0, auk.numberOfPages)
-    XCTAssertEqual(0, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
-    XCTAssertEqual(0, auk.pageIndicatorContainer!.pageControl!.currentPage)
   }
   
   // MARK: - Start auto scroll

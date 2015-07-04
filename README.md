@@ -31,7 +31,7 @@ scrollView.auk.scrollToNextPage()
 scrollView.auk.scrollToPreviousPage()
 
 // Remove all images
-scrollView.auk.remoteAll()
+scrollView.auk.removeAll()
 
 // Get the index of the current page
 scrollView.auk.currentPageIndex
