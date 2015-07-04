@@ -60,7 +60,14 @@ public protocol AukInterface: class {
   :param: animated: Use animation.
   
   */
-  func scrollToNextPage(cycle: Bool, animated: Bool)
+  func scrollToNextPage(#cycle: Bool, animated: Bool)
+  
+  /**
+  
+  Scrolls to the previous page.
+  
+  */
+  func scrollToPreviousPage()
   
   /**
   
@@ -70,7 +77,7 @@ public protocol AukInterface: class {
   :param: animated: Use animation.
   
   */
-  func scrollToPreviousPage(cycle: Bool, animated: Bool)
+  func scrollToPreviousPage(#cycle: Bool, animated: Bool)
   
   /**
   

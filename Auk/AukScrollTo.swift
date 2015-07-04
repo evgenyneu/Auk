@@ -21,7 +21,14 @@ struct AukScrollTo {
     currentPageIndex: Int, numberOfPages: Int) {
       
     var pageIndex = currentPageIndex + 1
-    if pageIndex >= numberOfPages { pageIndex = 0 }
+      
+    if pageIndex >= numberOfPages {
+      if cycle {
+        pageIndex = 0
+      } else {
+        return
+      }
+    }
     
     scrollTo(scrollView, pageIndex: pageIndex, animated: true)
   }
@@ -29,5 +36,16 @@ struct AukScrollTo {
   static func scrollToPreviousPage(scrollView: UIScrollView, cycle: Bool, animated: Bool,
     currentPageIndex: Int, numberOfPages: Int) {
     
+    var pageIndex = currentPageIndex - 1
+      
+    if pageIndex < 0 {
+      if cycle {
+        pageIndex = numberOfPages - 1
+      } else {
+        return
+      }
+    }
+    
+    scrollTo(scrollView, pageIndex: pageIndex, animated: true)
   }
 }

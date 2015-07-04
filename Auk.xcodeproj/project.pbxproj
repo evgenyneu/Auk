@@ -48,7 +48,6 @@
 		7E98FD9D1B47732D00192AAF /* AukScrollNextPreviousPageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FD9C1B47732D00192AAF /* AukScrollNextPreviousPageTests.swift */; };
 		7E98FD9F1B4776D100192AAF /* AukScrollTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FD9E1B4776D100192AAF /* AukScrollTo.swift */; };
 		7E98FDA01B4776F700192AAF /* AukScrollTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FD9E1B4776D100192AAF /* AukScrollTo.swift */; };
-		7E98FDA21B47787200192AAF /* AukScrollToTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FDA11B47787200192AAF /* AukScrollToTests.swift */; };
 		7EBD03CD1B34E43F00957205 /* John_James_Audubon_Great_Auk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EBD03C91B34E43F00957205 /* John_James_Audubon_Great_Auk.jpg */; };
 		7EBD03CE1B34E43F00957205 /* Pinguinus.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EBD03CA1B34E43F00957205 /* Pinguinus.jpg */; };
 		7EBD03CF1B34E43F00957205 /* popular_science_monthly_the_great_auk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EBD03CB1B34E43F00957205 /* popular_science_monthly_the_great_auk.jpg */; };
@@ -154,7 +153,6 @@
 		7E98FD991B476DCE00192AAF /* MoaTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoaTimer.swift; sourceTree = "<group>"; };
 		7E98FD9C1B47732D00192AAF /* AukScrollNextPreviousPageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukScrollNextPreviousPageTests.swift; sourceTree = "<group>"; };
 		7E98FD9E1B4776D100192AAF /* AukScrollTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukScrollTo.swift; sourceTree = "<group>"; };
-		7E98FDA11B47787200192AAF /* AukScrollToTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukScrollToTests.swift; sourceTree = "<group>"; };
 		7EBD03C91B34E43F00957205 /* John_James_Audubon_Great_Auk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = John_James_Audubon_Great_Auk.jpg; sourceTree = "<group>"; };
 		7EBD03CA1B34E43F00957205 /* Pinguinus.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Pinguinus.jpg; sourceTree = "<group>"; };
 		7EBD03CB1B34E43F00957205 /* popular_science_monthly_the_great_auk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = popular_science_monthly_the_great_auk.jpg; sourceTree = "<group>"; };
@@ -282,7 +280,6 @@
 				7E5AEDF41B2D0E7A00199C38 /* AukScrollViewContentTests.swift */,
 				7E5B5E301B2C2D3000B87E54 /* AukTests.swift */,
 				7E9013CA1B2D025700DD4406 /* AukPageTests.swift */,
-				7E98FDA11B47787200192AAF /* AukScrollToTests.swift */,
 				7E11D4771B3F53E60086F36F /* AukPageIndicatorContainerTests.swift */,
 				7EFEEDBE1B3E2FA00082488E /* AukPageVisibilityTests.swift */,
 				7E98FD9C1B47732D00192AAF /* AukScrollNextPreviousPageTests.swift */,
@@ -534,7 +531,6 @@
 				7E98FD9D1B47732D00192AAF /* AukScrollNextPreviousPageTests.swift in Sources */,
 				7EBD03DF1B34E9E600957205 /* UIScrollView+Auk.swift in Sources */,
 				7EBD03DD1B34E9E400957205 /* AukScrollViewContent.swift in Sources */,
-				7E98FDA21B47787200192AAF /* AukScrollToTests.swift in Sources */,
 				7EBD03DB1B34E9E400957205 /* AukInterface.swift in Sources */,
 				7EBD03E01B34E9E800957205 /* iiAutolayoutConstraints.swift in Sources */,
 				7EFE6B9F1B3E7EF500E048F3 /* AukScrollViewDelegate.swift in Sources */,

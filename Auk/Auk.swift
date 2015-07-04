@@ -48,18 +48,25 @@ final class Auk: AukInterface {
   }
   
   func scrollToNextPage() {
+    scrollToNextPage(cycle: true, animated: true)
+  }
+  
+  func scrollToNextPage(#cycle: Bool, animated: Bool) {
     if let scrollView = scrollView {
-      AukScrollTo.scrollToNextPage(scrollView, cycle: true, animated: true,
+      AukScrollTo.scrollToNextPage(scrollView, cycle: cycle, animated: animated,
         currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
     }
   }
   
-  func scrollToNextPage(cycle: Bool, animated: Bool) {
-    
+  func scrollToPreviousPage() {
+    scrollToPreviousPage(cycle: true, animated: true)
   }
   
-  func scrollToPreviousPage(_ cycle: Bool = true, animated: Bool = true) {
-    
+  func scrollToPreviousPage(#cycle: Bool, animated: Bool) {
+    if let scrollView = scrollView {
+      AukScrollTo.scrollToPreviousPage(scrollView, cycle: cycle, animated: animated,
+        currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
+    }
   }
   
   func removeAll() {
