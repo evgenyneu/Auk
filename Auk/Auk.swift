@@ -152,6 +152,7 @@ final class Auk: AukInterface {
   }
   
   private func createPageIdicator() {
+    if !settings.pageControl.visible { return }
     if pageIndicatorContainer != nil { return } // Already created a page indicator container 
     
     if let scrollView = scrollView,

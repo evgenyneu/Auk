@@ -35,6 +35,9 @@ Settings for page indicator.
 
 */
 public struct PageControl {
+  /// Show page control.
+  public var visible = true
+  
   /// Corner radius of page control container view.
   public var cornerRadius: Double = 13
   

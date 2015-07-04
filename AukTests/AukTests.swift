@@ -28,6 +28,8 @@ class AukTests: XCTestCase {
     XCTAssert(scrollView.pagingEnabled)
   }
   
+  // MARK: Page indicator
+  
   func testSetup_createPageIndicator() {
     // Layout scroll view
     // ---------------
@@ -59,6 +61,39 @@ class AukTests: XCTestCase {
     // -----------
     
     XCTAssertEqual(89, auk.pageIndicatorContainer!.frame.maxY)
+  }
+  
+  func testSetup_doNotCreatePageIndicator() {
+    // Layout scroll view
+    // ---------------
+    
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    scrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
+    superview.addSubview(scrollView)
+    
+    iiAutolayoutConstraints.height(scrollView, value: 100)
+    iiAutolayoutConstraints.width(scrollView, value: 100)
+    
+    iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
+      constraintContainer: superview, attribute: NSLayoutAttribute.Left, margin: 0)
+    
+    iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
+      constraintContainer: superview, attribute: NSLayoutAttribute.Top, margin: 0)
+    
+    auk = Auk(scrollView: scrollView)
+    
+    // Setup the auk which will create the page view
+    // ---------------
+    
+    auk.settings.pageControl.visible = false
+    auk.setup()
+    
+    superview.layoutIfNeeded()
+    
+    // Check the page indicator layout
+    // -----------
+    
+    XCTAssert(auk.pageIndicatorContainer == nil)
   }
   
   func testSetup_createSinglePageIndicator() {
