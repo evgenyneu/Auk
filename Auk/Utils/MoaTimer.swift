@@ -16,7 +16,7 @@
 //   }
 //
 //
-//  Canceling the timer
+//  Cancel the timer
 //  --------------------
 //
 //  Timer is canceled automatically when it is deallocated. You can also cancel it manually:

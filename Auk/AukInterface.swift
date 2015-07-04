@@ -97,6 +97,13 @@ public protocol AukInterface: class {
   
   /**
   
+  Stop auto scrolling the pages.
+    
+  */
+  func stopAutoScroll()
+  
+  /**
+  
   Start auto scrolling the pages with the given delay in seconds.
   
   :param: delaySeconds: Amount of time in second each page is visible before scrolling to the next.

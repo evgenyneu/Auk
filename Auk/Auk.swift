@@ -116,6 +116,10 @@ final class Auk: AukInterface {
     }
   }
   
+  func stopAutoScroll() {
+    autoscroll.stopAutoScroll()
+  }
+  
   func setup() {
     createPageIdicator()
     scrollView?.showsHorizontalScrollIndicator = settings.showsHorizontalScrollIndicator
