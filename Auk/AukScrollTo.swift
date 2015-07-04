@@ -44,7 +44,7 @@ struct AukScrollTo {
       }
     }
     
-    scrollTo(scrollView, pageIndex: pageIndex, animated: true, numberOfPages: numberOfPages)
+    scrollTo(scrollView, pageIndex: pageIndex, animated: animated, numberOfPages: numberOfPages)
   }
   
   static func scrollToPreviousPage(scrollView: UIScrollView, cycle: Bool, animated: Bool,
@@ -60,6 +60,6 @@ struct AukScrollTo {
       }
     }
     
-    scrollTo(scrollView, pageIndex: pageIndex, animated: true, numberOfPages: numberOfPages)
+    scrollTo(scrollView, pageIndex: pageIndex, animated: animated, numberOfPages: numberOfPages)
   }
 }

@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     let pageIndex = scrollView.auk.currentPageIndex
     
     coordinator.animateAlongsideTransition({ [weak self] _ in
-      self?.scrollView.auk.changePage(pageIndex, pageWidth: size.width, animated: false)
+      self?.scrollView.auk.scrollTo(pageIndex, pageWidth: size.width, animated: false)
     }, completion: nil)
   }
   
@@ -40,21 +40,12 @@ class ViewController: UIViewController {
   }
   
   @IBAction func onNextPageTapped(sender: AnyObject) {
-    var pageIndex = scrollView.auk.currentPageIndex + 1
-    if pageIndex >= scrollView.auk.numberOfPages { pageIndex = 0 }
-
-    changePage(pageIndex)
+    scrollView.auk.scrollToNextPage()
   }
   
   @IBAction func onPreviousPageTapped(sender: AnyObject) {
-    var pageIndex = scrollView.auk.currentPageIndex - 1
-    if pageIndex < 0 { pageIndex =  scrollView.auk.numberOfPages - 1 }
-    
-    changePage(pageIndex)
-  }
-  
-  private func changePage(pageIndex: Int) {
-    scrollView.auk.changePage(pageIndex, animated: true)
+    scrollView.auk.scrollToPreviousPage()
+
   }
   
   @IBAction func onDeleteButtonTapped(sender: AnyObject) {
