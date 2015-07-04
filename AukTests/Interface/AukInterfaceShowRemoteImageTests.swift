@@ -17,6 +17,12 @@ class AukInterfaceShowRemoteImageTests: XCTestCase {
     
     auk = Auk(scrollView: scrollView)
   }
+  
+  override func tearDown() {
+    super.tearDown()
+    
+    MoaSimulator.clear()
+  }
     
   func testShowRemoteImage_setupIsCalled() {
     MoaSimulator.simulate("site.com")

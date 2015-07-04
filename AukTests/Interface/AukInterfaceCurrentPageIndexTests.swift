@@ -1,5 +1,5 @@
 import XCTest
-import moa
+import UIKit
 
 class AukInterfaceCurrentPageIndexTestsTests: XCTestCase {
   

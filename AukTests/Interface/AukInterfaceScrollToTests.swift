@@ -1,6 +1,6 @@
 import UIKit
 import XCTest
-import moa
+import UIKit
 
 class AukInterfaceScrollToTests: XCTestCase {
   

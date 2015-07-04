@@ -1,5 +1,5 @@
 import XCTest
-import moa
+import UIKit
 
 class AukTests: XCTestCase {
   
@@ -16,12 +16,6 @@ class AukTests: XCTestCase {
     scrollView.bounds = CGRect(origin: CGPoint(), size: size)
     
     auk = Auk(scrollView: scrollView)
-  }
-  
-  override func tearDown() {
-    super.tearDown()
-    
-    MoaSimulator.clear()
   }
   
   // MARK: - Setup
@@ -141,26 +135,5 @@ class AukTests: XCTestCase {
     scrollView.contentOffset.x = 120
     scrollView.delegate?.scrollViewDidScroll?(scrollView)    
     XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.currentPage)
-  }
-  
-  // MARK: - Start auto scroll
-  
-  func testStartAutoScroll() {
-//    let image = uiImageFromFile("96px.png")
-//    auk.show(image: image)
-//    auk.show(image: image)
-//    auk.show(image: image)
-//    
-//    let expectation = expectationWithDescription("change to new page")
-//    
-//    auk.startAutoScroll(delaySeconds: 0.1)
-//    
-//    iiQ.runAfterDelay(0.15) {
-//      expectation.fulfill()
-//    }
-//    
-//    waitForExpectationsWithTimeout(0.2) { _ in }
-//    
-//    XCTAssertEqual(1, auk.currentPageIndex)
   }
 }

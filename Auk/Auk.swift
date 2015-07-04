@@ -5,7 +5,7 @@ final class Auk: AukInterface {
   var settings = AukSettings()
   var scrollViewDelegate = AukScrollViewDelegate()
   var pageIndicatorContainer: AukPageIndicatorContainer?
-  var autoscrollTimer: MoaTimer?
+  var autoscroll = AukAutoscroll()
 
   init(scrollView: UIScrollView) {
     self.scrollView = scrollView
@@ -103,8 +103,16 @@ final class Auk: AukInterface {
   }
   
   func startAutoScroll(#delaySeconds: Double) {
-    autoscrollTimer = MoaTimer.runAfter(delaySeconds, repeats: true) { timer in
+    startAutoScroll(delaySeconds: delaySeconds, forward: true,
+      cycle: true, animated: true)
+  }
+  
+  func startAutoScroll(#delaySeconds: Double, forward: Bool,
+    cycle: Bool, animated: Bool) {
       
+    if let scrollView = scrollView {
+      autoscroll.startAutoScroll(scrollView, delaySeconds: delaySeconds,
+        forward: forward, cycle: cycle, animated: animated, auk: self)
     }
   }
   

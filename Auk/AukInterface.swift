@@ -56,7 +56,7 @@ public protocol AukInterface: class {
 
   Scrolls to the next page.
   
-  :param: cycle: If true it scroll to the first page from the last one. If false the scrolling stops at the last page.
+  :param: cycle: If true it scrolls to the first page from the last one. If false the scrolling stops at the last page.
   :param: animated: Use animation.
   
   */
@@ -73,7 +73,7 @@ public protocol AukInterface: class {
   
   Scrolls to the previous page.
   
-  :param: cycle: If true it scroll to the last page from the first one. If false the scrolling stops at the first page.
+  :param: cycle: If true it scrolls to the last page from the first one. If false the scrolling stops at the first page.
   :param: animated: Use animation.
   
   */
@@ -94,6 +94,18 @@ public protocol AukInterface: class {
   
   */
   func startAutoScroll(#delaySeconds: Double)
+  
+  /**
+  
+  Start auto scrolling the pages with the given delay in seconds.
+  
+  :param: delaySeconds: Amount of time in second each page is visible before scrolling to the next.
+  :param: forward: When true the scrolling is done from left to right direction.
+  :param: cycle: If true it scrolls to the first page from the last one. If false the scrolling stops at the last page.
+  :param: animated: If true the scrolling is done with animation.
+  
+  */
+  func startAutoScroll(#delaySeconds: Double, forward: Bool, cycle: Bool, animated: Bool)
   
   /**
   
