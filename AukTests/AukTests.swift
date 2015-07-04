@@ -90,19 +90,6 @@ class AukTests: XCTestCase {
     XCTAssertEqual(1, indicators.count)
   }
   
-  // MARK: get number of pages
-  
-  func testNumberOfPage() {
-    // Show 2 images
-    // -------------
-    
-    let image = uiImageFromFile("96px.png")
-    auk.show(image: image)
-    auk.show(image: image)
-    
-    XCTAssertEqual(2, auk.numberOfPages)
-  }
-  
   // MARK: get current page index
   
   func testCurrentPageIndex() {

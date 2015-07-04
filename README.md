@@ -33,11 +33,11 @@ scrollView.auk.scrollToPreviousPage()
 // Remove all images
 scrollView.auk.removeAll()
 
-// Get the index of the current page
-scrollView.auk.currentPageIndex
-
 // Return the number of pages in the scroll view
 scrollView.auk.numberOfPages
+
+// Get the index of the current page
+scrollView.auk.currentPageIndex
 
 // Scroll images automatically with the interval of 3 seconds
 scrollView.auk.startAutoScroll(delaySeconds: 3)
