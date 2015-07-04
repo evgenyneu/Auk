@@ -6,14 +6,28 @@ Scrolling code.
 
 */
 struct AukScrollTo {
-  static func scrollTo(scrollView: UIScrollView, pageIndex: Int, animated: Bool) {
+  static func scrollTo(scrollView: UIScrollView, pageIndex: Int, animated: Bool,
+    numberOfPages: Int) {
+      
     let pageWidth = scrollView.bounds.size.width
-    scrollTo(scrollView, pageIndex: pageIndex, pageWidth: pageWidth, animated: animated)
+    scrollTo(scrollView, pageIndex: pageIndex, pageWidth: pageWidth, animated: animated,
+      numberOfPages: numberOfPages)
   }
   
-  static func scrollTo(scrollView: UIScrollView, pageIndex: Int, pageWidth: CGFloat, animated: Bool) {
+  static func scrollTo(scrollView: UIScrollView, pageIndex: Int, pageWidth: CGFloat,
+    animated: Bool, numberOfPages: Int) {
+      
     let offsetX = CGFloat(pageIndex) * pageWidth
-    let offset = CGPoint(x: offsetX, y: 0)
+    var offset = CGPoint(x: offsetX, y: 0)
+      
+    let maxOffset = CGFloat(numberOfPages - 1) * pageWidth
+      
+    // Prevent overscrolling to the right
+    if offset.x > maxOffset { offset.x = maxOffset }
+      
+    // Prevent overscrolling to the left
+    if offset.x < 0 { offset.x = 0 }
+
     scrollView.setContentOffset(offset, animated: animated)
   }
   
@@ -30,7 +44,7 @@ struct AukScrollTo {
       }
     }
     
-    scrollTo(scrollView, pageIndex: pageIndex, animated: true)
+    scrollTo(scrollView, pageIndex: pageIndex, animated: true, numberOfPages: numberOfPages)
   }
   
   static func scrollToPreviousPage(scrollView: UIScrollView, cycle: Bool, animated: Bool,
@@ -46,6 +60,6 @@ struct AukScrollTo {
       }
     }
     
-    scrollTo(scrollView, pageIndex: pageIndex, animated: true)
+    scrollTo(scrollView, pageIndex: pageIndex, animated: true, numberOfPages: numberOfPages)
   }
 }

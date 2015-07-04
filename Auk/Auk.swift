@@ -36,14 +36,15 @@ final class Auk: AukInterface {
   
   func scrollTo(pageIndex: Int, animated: Bool) {
     if let scrollView = scrollView {
-      AukScrollTo.scrollTo(scrollView, pageIndex: pageIndex, animated: animated)
+      AukScrollTo.scrollTo(scrollView, pageIndex: pageIndex, animated: animated,
+        numberOfPages: numberOfPages)
     }
   }
   
   func scrollTo(pageIndex: Int, pageWidth: CGFloat, animated: Bool) {
     if let scrollView = scrollView {
       AukScrollTo.scrollTo(scrollView, pageIndex: pageIndex, pageWidth: pageWidth,
-        animated: animated)
+        animated: animated, numberOfPages: numberOfPages)
     }
   }
   
