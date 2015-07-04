@@ -14,6 +14,10 @@ final class Auk: AukInterface {
       self?.onScroll()
     }
     
+    scrollViewDelegate.onScrollByUser = { [weak self] in
+      self?.stopAutoScroll()
+    }
+    
     scrollViewDelegate.delegate = scrollView.delegate
     scrollView.delegate = scrollViewDelegate
   }

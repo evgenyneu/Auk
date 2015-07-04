@@ -14,6 +14,7 @@ final class AukScrollViewDelegate: NSObject, UIScrollViewDelegate {
   weak var delegate: UIScrollViewDelegate?
   
   var onScroll: (()->())?
+  var onScrollByUser: (()->())?
   
   func scrollViewDidScroll(scrollView: UIScrollView) {
     onScroll?()
@@ -26,6 +27,7 @@ final class AukScrollViewDelegate: NSObject, UIScrollViewDelegate {
   
   func scrollViewWillBeginDragging(scrollView: UIScrollView) {
     delegate?.scrollViewWillBeginDragging?(scrollView)
+    onScrollByUser?()
   }
   
   func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

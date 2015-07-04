@@ -187,4 +187,22 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
     XCTAssertEqual(0, auk.currentPageIndex)
   }
   
+  // MARK: - Cancel autoscroll when it is scrolled by user.
+  
+  func testStopAutoScrollWhenScrolledByUser() {
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    auk.show(image: image)
+    auk.show(image: image)
+    
+    auk.startAutoScroll(delaySeconds: 0.1)
+    
+    let aukInstance = auk as! Auk
+    aukInstance.scrollViewDelegate.scrollViewWillBeginDragging(scrollView)
+    
+    let expectation = expectationWithDescription("scroll")
+    iiQ.runAfterDelay(0.15) { expectation.fulfill() }
+    waitForExpectationsWithTimeout(1) { _ in }
+    XCTAssertEqual(0, auk.currentPageIndex)
+  }
 }
