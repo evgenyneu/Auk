@@ -51,5 +51,10 @@ class ViewController: UIViewController {
   @IBAction func onDeleteButtonTapped(sender: AnyObject) {
     scrollView.auk.removeAll()
   }
+  
+  @IBAction func onAutoscrollTapped(sender: AnyObject) {
+    
+    scrollView.auk.startAutoScroll(delaySeconds: 2)
+  }
 }
 

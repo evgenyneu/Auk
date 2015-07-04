@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dym-9D-I5G">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -25,9 +24,9 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ak0-JX-tQy">
-                                <rect key="frame" x="322" y="356" width="40" height="60"/>
+                                <rect key="frame" x="345" y="356" width="40" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="▶︎">
+                                <state key="normal" title="⏩">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -36,9 +35,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkS-kK-gCM">
-                                <rect key="frame" x="242" y="356" width="40" height="60"/>
+                                <rect key="frame" x="215" y="356" width="40" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="◀︎">
+                                <state key="normal" title="⏪">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -46,14 +45,27 @@
                                     <action selector="onPreviousPageTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ahk-OH-APv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cz-ix-YLV">
+                                <rect key="frame" x="280" y="356" width="40" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="🔁">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onAutoscrollTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l6A-hy-GLM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.16862745098039217" green="0.76078431372549016" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Ak0-JX-tQy" secondAttribute="leading" constant="-22" id="5g9-3F-WUi"/>
+                            <constraint firstItem="Ak0-JX-tQy" firstAttribute="leading" secondItem="6Cz-ix-YLV" secondAttribute="trailing" constant="25" id="65B-XU-SSC"/>
                             <constraint firstItem="SrW-bD-PlC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="GMH-K7-yD4"/>
                             <constraint firstItem="xkS-kK-gCM" firstAttribute="centerY" secondItem="Ak0-JX-tQy" secondAttribute="centerY" id="LsT-hx-C56"/>
-                            <constraint firstItem="Ak0-JX-tQy" firstAttribute="leading" secondItem="xkS-kK-gCM" secondAttribute="trailing" constant="40" id="QPf-wi-pPb"/>
+                            <constraint firstAttribute="centerX" secondItem="6Cz-ix-YLV" secondAttribute="centerX" id="OyA-8I-d4o"/>
                             <constraint firstItem="Ak0-JX-tQy" firstAttribute="top" secondItem="SrW-bD-PlC" secondAttribute="bottom" constant="27" id="bc9-bb-x0c"/>
+                            <constraint firstItem="Ak0-JX-tQy" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" id="fyT-5D-EJt"/>
+                            <constraint firstItem="6Cz-ix-YLV" firstAttribute="leading" secondItem="xkS-kK-gCM" secondAttribute="trailing" constant="25" id="sD1-m4-upy"/>
                             <constraint firstAttribute="trailing" secondItem="SrW-bD-PlC" secondAttribute="trailing" id="sMc-bW-CN2"/>
                             <constraint firstItem="SrW-bD-PlC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="x6O-nO-hVM"/>
                         </constraints>
