@@ -10,7 +10,7 @@ This is an iOS library that shows images in a scroll view with page indicator.
 * Allows to specify placeholder and error images for remote sources.
 * Includes auto scrolling.
 
-<img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_paged_image_scroller_ios.jpg' alt='Auk paged image scroll for iOS and Swift' width='382'>
+<img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_paged_image_scroller_ios.jpg' alt='Great Auks by John Gerrard Keulemans' width='382'>
 
 *Drawing of the great auk by John Gerrard Keulemans, circa 1900. Source: [Wikimedia Commons](https://en.wikipedia.org/wiki/Great_auk).*
 
