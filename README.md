@@ -91,7 +91,7 @@ scrollView.auk.settings.pageControl.backgroundColor = UIColor.grayColor().colorW
 scrollView.auk.settings.placeholderImage = UIImage(named: "placeholder.jpg")
 ```
 
-## Adapt to orientation change
+## Size change animation
 
 Auk uses Auto Layout to position the scroll view content. Read [animate size change](https://github.com/evgenyneu/Auk/wiki/Animate-size-change) manual if you need to animate the scroll view during orientation change.
 
