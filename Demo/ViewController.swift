@@ -66,5 +66,37 @@ class ViewController: UIViewController {
       scrollView.auk.show(image: image)
     }
   }
+  
+  func mytest() {
+    // Show local image
+    scrollView.auk.show(image: UIImage(named: "bird")!)
+    
+    // Show remote image
+    scrollView.auk.show(url: "http://site.com/bird.jpg")
+    
+    // Scroll to page
+    scrollView.auk.scrollTo(1, animated: true)
+    
+    // Scroll to the next page
+    scrollView.auk.scrollToNextPage()
+    
+    // Scroll to the previous page
+    scrollView.auk.scrollToPreviousPage()
+    
+    // Remove all images
+    scrollView.auk.removeAll()
+    
+    // Return the number of pages in the scroll view
+    scrollView.auk.numberOfPages
+    
+    // Get the index of the current page
+    scrollView.auk.currentPageIndex
+    
+    // Scroll images automatically with the interval of 3 seconds
+    scrollView.auk.startAutoScroll(delaySeconds: 3)
+    
+    // Stop auto-scrolling of the images
+    scrollView.auk.stopAutoScroll()
+  }
 }
 
