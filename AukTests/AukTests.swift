@@ -136,4 +136,36 @@ class AukTests: XCTestCase {
     scrollView.delegate?.scrollViewDidScroll?(scrollView)    
     XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.currentPage)
   }
+
+  // MARK: - Show / hide page indicator
+  
+  func testPageIndicator_showForTwoPages() {
+    // Layout scroll view
+    // ---------------
+    
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    auk.show(image: image)
+    
+    XCTAssertFalse(auk.pageIndicatorContainer!.hidden)
+  }
+  
+  func testPageIndicator_hideWhenPagesRemoved() {
+    // Layout scroll view
+    // ---------------
+    
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    auk.show(image: image)
+    auk.removeAll()
+    
+    XCTAssert(auk.pageIndicatorContainer!.hidden)
+  }
+
 }
