@@ -9,22 +9,8 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7E5B5E281B2C2D3000B87E54"
-               BuildableName = "AukTests.xctest"
-               BlueprintName = "AukTests"
-               ReferencedContainer = "container:Auk.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
@@ -42,26 +28,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7E5B5E281B2C2D3000B87E54"
-               BuildableName = "AukTests.xctest"
-               BlueprintName = "AukTests"
-               ReferencedContainer = "container:Auk.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7E5B5E281B2C2D3000B87E54"
-            BuildableName = "AukTests.xctest"
-            BlueprintName = "AukTests"
-            ReferencedContainer = "container:Auk.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -75,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7E5B5E281B2C2D3000B87E54"
-            BuildableName = "AukTests.xctest"
-            BlueprintName = "AukTests"
+            BlueprintIdentifier = "7E98FDC11B47C10300192AAF"
+            BuildableName = "ConcatenateSwiftFiles"
+            BlueprintName = "ConcatenateSwiftFiles"
             ReferencedContainer = "container:Auk.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -90,6 +57,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7E98FDC11B47C10300192AAF"
+            BuildableName = "ConcatenateSwiftFiles"
+            BlueprintName = "ConcatenateSwiftFiles"
+            ReferencedContainer = "container:Auk.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

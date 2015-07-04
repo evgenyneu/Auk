@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Auk.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7E98FDC11B47C10300192AAF"
+               BuildableName = "ConcatenateSwiftFiles"
+               BlueprintName = "ConcatenateSwiftFiles"
+               ReferencedContainer = "container:Auk.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

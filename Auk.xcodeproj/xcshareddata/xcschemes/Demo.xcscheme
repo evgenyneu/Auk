@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7E90139E1B2CF6FB00DD4406"
-               BuildableName = "DemoTests.xctest"
-               BlueprintName = "DemoTests"
+               BlueprintIdentifier = "7E98FDC11B47C10300192AAF"
+               BuildableName = "ConcatenateSwiftFiles"
+               BlueprintName = "ConcatenateSwiftFiles"
                ReferencedContainer = "container:Auk.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,16 +42,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7E90139E1B2CF6FB00DD4406"
-               BuildableName = "DemoTests.xctest"
-               BlueprintName = "DemoTests"
-               ReferencedContainer = "container:Auk.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
