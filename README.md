@@ -53,7 +53,7 @@ scrollView.auk.stopAutoScroll()
 
 ## Configuration
 
-Use the `auk.settings` property to configure behavior and appearance of the scroll view. See the [configuration manual]() for the complete list of configuration options.
+Use the `auk.settings` property to configure behavior and appearance of the scroll view. See the [configuration manual](https://github.com/evgenyneu/Auk/wiki/Configuration) for the complete list of configuration options.
 
 ```Swift
 // Make the images fill entire page
