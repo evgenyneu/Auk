@@ -6,7 +6,7 @@
 This is an iOS library that shows images in a scroll view that can be scrolled by the user.
 
 * Displays page indicator.
-* Displays local images and downloads remote ones from the network.
+* Shows local images and downloads remote ones from the network.
 * Allows to specify placeholder and error images for remote sources.
 * Supports image caching.
 * Includes auto scrolling.
