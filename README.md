@@ -61,7 +61,7 @@ scrollView.auk.numberOfPages
 scrollView.auk.currentPageIndex
 ```
 
-#### Scrolling code
+#### Scrolling from code
 
 ```Swift
 // Scroll to page
