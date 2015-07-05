@@ -6,7 +6,7 @@
 This is an iOS library that shows an image carousel with a page indicator. Users can scroll through local and remote images or watch them scroll automatically.
 
 * Allows to specify placeholder and error images for remote sources.
-* Include ability to supply fake remote images for easier unit testing.
+* Include ability to simulate and verify image network requests in unit tests.
 * Support animated transition during screen orientation change.
 * Supports image caching.
 
@@ -124,7 +124,7 @@ Moa.settings.cache.requestCachePolicy = .ReturnCacheDataElseLoad
 
 ## Remote image unit testing
 
-If you need to verify remote image download in your unit tests please refer to the [moa unit testing manual](https://github.com/evgenyneu/moa/wiki/Unit-testing-with-Moa).
+One can simulate and verify remote image download in your unit tests. Please refer to the [moa unit testing manual](https://github.com/evgenyneu/moa/wiki/Unit-testing-with-Moa) for more information.
 
 
 ```Swift
