@@ -113,6 +113,12 @@ Moa.settings.cache.requestCachePolicy = .ReturnCacheDataElseLoad
 
 If you need to verify remote image download in your unit tests please refer to the [moa unit testing manual](https://github.com/evgenyneu/moa/wiki/Unit-testing-with-Moa).
 
+
+```
+// Autorespond with the given image to all image requests
+MoaSimulator.autorespondWithImage("www.site.com", image: UIImage(named: "35px.jpg")!)
+```
+
 ## Demo app
 
 The project includes a demo iOS app.
