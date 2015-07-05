@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name        = "Auk"
-  s.version     = "2.0.2"
+  s.version     = "2.0.3"
   s.license     = { :type => "MIT" }
   s.homepage    = "https://github.com/evgenyneu/Auk"
-  s.summary     = "An image slide show for iOS written in Swift."
+  s.summary     = "An image slideshow for iOS written in Swift."
   s.description  = <<-DESC
                    This is an iOS library that shows an image carousel with a page indicator. Users can scroll through local and remote images or watch them scroll automatically.
 
