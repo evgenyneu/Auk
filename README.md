@@ -48,8 +48,6 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
 ## Usage
 
-import Auk
-
 Add `import Auk` to your source code if you used Carthage or CocoaPods setup methods. Auk extends UIScrollView class by creating the `auk` property that you can use for showing images.
 
 ```Swift
