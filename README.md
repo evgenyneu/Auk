@@ -55,7 +55,9 @@ Add `import Auk` to your source code if you used Carthage or CocoaPods setup met
 scrollView.auk.show(url: "http://site.com/bird.jpg")
 
 // Show local image
-scrollView.auk.show(image: UIImage(named: "bird"))
+if let image = UIImage(named: "bird.jpg") {
+  scrollView.auk.show(image: image)
+}
 
 // Remove all images
 scrollView.auk.removeAll()
