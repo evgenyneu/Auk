@@ -35,7 +35,7 @@ public class Auk {
 
   Shows a local image in the scroll view.
 
-  :param: image: Image to be shown in the scroll view.
+  - parameter image:: Image to be shown in the scroll view.
 
   */
   public func show(image image: UIImage) {
@@ -48,7 +48,7 @@ public class Auk {
 
   Downloads a remote image and adds it to the scroll view. Use `Moa.settings.cache` property to configure image caching.
 
-  :param: url: Url of the image to be shown.
+  - parameter url:: Url of the image to be shown.
 
   */
   public func show(url url: String) {
@@ -65,8 +65,8 @@ public class Auk {
 
   Changes the current page.
 
-  :param: pageIndex: Index of the page to show.
-  :param: animated: The page change will be animated when `true`.
+  - parameter pageIndex:: Index of the page to show.
+  - parameter animated:: The page change will be animated when `true`.
 
   */
   public func scrollTo(pageIndex: Int, animated: Bool) {
@@ -96,9 +96,9 @@ public class Auk {
 
   More information: https://github.com/evgenyneu/Auk/wiki/Size-animation
 
-  :param: toPageIndex: Index of the page that will be made a current page.
-  :param: pageWidth: The new page width.
-  :param: animated: The page change will be animated when `true`.
+  - parameter toPageIndex:: Index of the page that will be made a current page.
+  - parameter pageWidth:: The new page width.
+  - parameter animated:: The page change will be animated when `true`.
 
   */
   public func scrollTo(pageIndex: Int, pageWidth: CGFloat, animated: Bool) {
@@ -121,8 +121,8 @@ public class Auk {
 
   Scrolls to the next page.
 
-  :param: cycle: If `true` it scrolls to the first page from the last one. If `false` the scrolling stops at the last page.
-  :param: animated: The page change will be animated when `true`.
+  - parameter cycle:: If `true` it scrolls to the first page from the last one. If `false` the scrolling stops at the last page.
+  - parameter animated:: The page change will be animated when `true`.
 
   */
   public func scrollToNextPage(cycle cycle: Bool, animated: Bool) {
@@ -145,8 +145,8 @@ public class Auk {
 
   Scrolls to the previous page.
 
-  :param: cycle: If true it scrolls to the last page from the first one. If false the scrolling stops at the first page.
-  :param: animated: The page change will be animated when `true`.
+  - parameter cycle:: If true it scrolls to the last page from the first one. If false the scrolling stops at the first page.
+  - parameter animated:: The page change will be animated when `true`.
 
   */
   public func scrollToPreviousPage(cycle cycle: Bool, animated: Bool) {
@@ -203,7 +203,7 @@ public class Auk {
 
   Starts auto scrolling of the pages with the given delay in seconds.
 
-  :param: delaySeconds: Amount of time in second each page is visible before scrolling to the next.
+  - parameter delaySeconds:: Amount of time in second each page is visible before scrolling to the next.
 
   */
   public func startAutoScroll(delaySeconds delaySeconds: Double) {
@@ -215,10 +215,10 @@ public class Auk {
 
   Starts auto scrolling of the pages with the given delay in seconds.
 
-  :param: delaySeconds: Amount of time in second each page is visible before scrolling to the next.
-  :param: forward: When true the scrolling is done from left to right direction.
-  :param: cycle: If true it scrolls to the first page from the last one. If false the scrolling stops at the last page.
-  :param: animated: The page change will be animated when `true`.
+  - parameter delaySeconds:: Amount of time in second each page is visible before scrolling to the next.
+  - parameter forward:: When true the scrolling is done from left to right direction.
+  - parameter cycle:: If true it scrolls to the first page from the last one. If false the scrolling stops at the last page.
+  - parameter animated:: The page change will be animated when `true`.
 
   */
   public func startAutoScroll(delaySeconds delaySeconds: Double, forward: Bool,

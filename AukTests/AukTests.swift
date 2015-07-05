@@ -68,7 +68,7 @@ class AukTests: XCTestCase {
     // ---------------
     
     let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
-    scrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
+    scrollView.translatesAutoresizingMaskIntoConstraints = false
     superview.addSubview(scrollView)
     
     iiAutolayoutConstraints.height(scrollView, value: 100)

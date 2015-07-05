@@ -31,9 +31,7 @@ class AukInterfaceScrollToTests: XCTestCase {
     XCTAssertEqual(240, scrollView.contentOffset.x)
   }
   
-  func testScrollTo_noPages() {
-    let image = uiImageFromFile("96px.png")
-    
+  func testScrollTo_noPages() {    
     auk.scrollTo(0, animated: false)
     XCTAssertEqual(0, scrollView.contentOffset.x)
   }
