@@ -131,7 +131,7 @@ One can simulate and verify remote image download in your unit tests. Please ref
 
 
 ```Swift
-// Autorespond with the given image to all image requests
+// Autorespond with the given image
 MoaSimulator.autorespondWithImage("www.site.com", image: UIImage(named: "35px.jpg")!)
 ```
 
