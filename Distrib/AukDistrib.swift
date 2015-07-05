@@ -1,5 +1,5 @@
 //
-// An image scroll view with a page indicator for iOS / Swift.
+// An image slide show for iOS written in Swift.
 //
 // https://github.com/evgenyneu/Auk
 //
