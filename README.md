@@ -96,6 +96,23 @@ scrollView.auk.settings.placeholderImage = UIImage(named: "placeholder.jpg")
 Read [animate size change](https://github.com/evgenyneu/Auk/wiki/Animate-size-change) manual if you need to animate the scroll view during device orientation change.
 
 
+## Image caching
+
+Auk uses [moa image downloader](https://github.com/evgenyneu/moa) for getting remote images. You can configure its caching settings by settings the `Moa.settings.cache.requestCachePolicy` property.
+
+
+```Swift
+// By default images are cached according to their response HTTP headers.
+Moa.settings.cache.requestCachePolicy = .UseProtocolCachePolicy
+
+// Use local cache regardless of response HTTP headers.
+Moa.settings.cache.requestCachePolicy = .ReturnCacheDataElseLoad
+```
+
+## Remote image unit testing
+
+If you need to verify remote image download in your unit tests please refer to the [moa unit testing manual](https://github.com/evgenyneu/moa/wiki/Unit-testing-with-Moa).
+
 ## Demo app
 
 The project includes a demo iOS app.
