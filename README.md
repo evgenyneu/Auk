@@ -51,7 +51,7 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 1. Add `import Auk` to your source code if you used Carthage or CocoaPods setup methods.
 1. Add a scroll view to the storyboard and create an outlet property `scrollView` in your view controller.
 
-Auk extends UIScrollView class by creating the `auk` property that you can use.
+Auk extends UIScrollView class by creating the `auk` property.
 
 ```Swift
 // Show remote image
