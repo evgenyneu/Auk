@@ -1,7 +1,7 @@
 🔨🔨🔨 This is work in progress 🔨🔨🔨
 
 
-# Auk, an image scroll view for iOS / Swift
+# Auk, an image slide show for iOS / Swift
 
 This is an iOS library that shows images in a scroll view with page indicator.
 
@@ -9,6 +9,7 @@ This is an iOS library that shows images in a scroll view with page indicator.
 * Remote images are automatically downloaded when they become visible in the scroll view.
 * Allows to specify placeholder and error images for remote sources.
 * Includes auto scrolling.
+* Include ability to change caching settings for remote images.
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_paged_image_scroller_ios.jpg' alt='Great Auks by John Gerrard Keulemans' width='382'>
 
@@ -124,6 +125,16 @@ MoaSimulator.autorespondWithImage("www.site.com", image: UIImage(named: "35px.jp
 The project includes a demo iOS app.
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_demo_app.gif' width='300' alt='Auk pages scroll view demo iOS app'>
+
+## Alternative solutions
+
+Here is a list of other image slide show libraries for iOS.
+
+* [kimar/KIImagePager](https://github.com/kimar/KIImagePager)
+* [kirualex/KASlideShow](https://github.com/kirualex/KASlideShow)
+* [nicklockwood/iCarousel](https://github.com/nicklockwood/iCarousel)
+* [nicklockwood/SwipeView](https://github.com/nicklockwood/SwipeView)
+* [paritsohraval100/PJR-ScrollView-Slider](https://github.com/paritsohraval100/PJR-ScrollView-Slider)
 
 ## Credits
 
