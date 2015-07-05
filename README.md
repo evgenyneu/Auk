@@ -3,9 +3,8 @@
 
 # Auk, an image slide show for iOS / Swift
 
-This is an iOS library that shows images in a scroll view that can be scrolled by the user.
+This is an iOS library that shows images in a scroll view with a page indicator.
 
-* Displays page indicator.
 * Shows local images and downloads remote ones from the network.
 * Supports image caching.
 * Allows to specify placeholder and error images for remote sources.
