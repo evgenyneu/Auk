@@ -6,9 +6,9 @@
 This is an iOS library that shows an image carousel with a page indicator. Users can scroll through local and remote images or watch them scroll automatically.
 
 * Allows to specify placeholder and error images for remote sources.
-* Include ability to simulate and verify image network requests in unit tests.
-* Support animated transition during screen orientation change.
-* Supports image caching.
+* Includes ability to simulate and verify image download in unit tests.
+* Supports animated transition during screen orientation change.
+* Includes image caching.
 
 > This code is dedicated to the [great auk](https://en.wikipedia.org/wiki/Great_auk), a flightless bird that became extinct in the mid-19th century.
 
