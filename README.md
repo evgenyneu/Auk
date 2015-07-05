@@ -30,7 +30,7 @@ Simply add two files to your project:
 
 **Setup with Carthage (iOS 8+)**
 
-Alternatively, add `github "evgenyneu/Auk" ~> 1.0` to your Cartfile and run `carthage update`.
+Alternatively, add `github "evgenyneu/Auk" ~> 1.0` to your Cartfile, run `carthage update` and add `moa` and `Auk` frameworks into your project.
 
 **Setup with CocoaPods (iOS 8+)**
 
@@ -47,7 +47,9 @@ Auk is written in Swift 2 for Xcode 7. See [Swift 1.2 setup instuctions](https:/
 
 ## Usage
 
-Auk extends UIScrollView class by creating the `auk` property that you can use for showing images.
+import Auk
+
+Add `import Auk` to your source code if you used Carthage or CocoaPods setup methods. Auk extends UIScrollView class by creating the `auk` property that you can use for showing images.
 
 ```Swift
 // Show remote image
