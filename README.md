@@ -6,10 +6,9 @@
 This is an iOS library that shows images in a scroll view with page indicator.
 
 * Displays local and remote images.
-* Remote images are automatically downloaded when they become visible in the scroll view.
 * Allows to specify placeholder and error images for remote sources.
 * Includes auto scrolling.
-* Include ability to change caching settings for remote images.
+* Supports image caching.
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_paged_image_scroller_ios.jpg' alt='Great Auks by John Gerrard Keulemans' width='382'>
 
@@ -52,15 +51,6 @@ scrollView.auk.show(url: "http://site.com/bird.jpg")
 // Show local image
 scrollView.auk.show(image: UIImage(named: "bird"))
 
-// Scroll to page
-scrollView.auk.scrollTo(2, animated: true)
-
-// Scroll to the next page
-scrollView.auk.scrollToNextPage()
-
-// Scroll to the previous page
-scrollView.auk.scrollToPreviousPage()
-
 // Remove all images
 scrollView.auk.removeAll()
 
@@ -69,7 +59,24 @@ scrollView.auk.numberOfPages
 
 // Get the index of the current page
 scrollView.auk.currentPageIndex
+```
 
+#### Scrolling code
+
+```Swift
+// Scroll to page
+scrollView.auk.scrollTo(2, animated: true)
+
+// Scroll to the next page
+scrollView.auk.scrollToNextPage()
+
+// Scroll to the previous page
+scrollView.auk.scrollToPreviousPage()
+```
+
+#### Auto scrolling
+
+```Swift
 // Scroll images automatically with the interval of 3 seconds
 scrollView.auk.startAutoScroll(delaySeconds: 3)
 
