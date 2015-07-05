@@ -10,8 +10,8 @@ struct AukPageVisibility {
   
   Check if the given page is currently visible to user.
   
-  - parameter scrollView:: Scroll view containing the page.
-  - parameter page:: A scroll view page which visibility will be checked.
+  - parameter scrollView: Scroll view containing the page.
+  - parameter page: A scroll view page which visibility will be checked.
   
   - returns: True if the page is visible to the user.
   
@@ -24,8 +24,8 @@ struct AukPageVisibility {
   
   Tells if the page is way out of sight. This is done to prevent cancelling download of the image for the page that is not very far out of sight.
   
-  - parameter scrollView:: Scroll view containing the page.
-  - parameter page:: A scroll view page which visibility will be checked.
+  - parameter scrollView: Scroll view containing the page.
+  - parameter page: A scroll view page which visibility will be checked.
   
   - returns: True if the page is visible to the user.
   
@@ -39,7 +39,7 @@ struct AukPageVisibility {
   
   Goes through all the scroll view pages and tell them if they are visible or out of sight. The pages, in turn, if they are visible start the download of the image or cancel the download if they are out of sight.
   
-  - parameter scrollView:: Scroll view with the pages.
+  - parameter scrollView: Scroll view with the pages.
 
   */
   static func tellPagesAboutTheirVisibility(scrollView: UIScrollView, settings: AukSettings) {

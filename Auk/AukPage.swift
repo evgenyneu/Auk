@@ -16,8 +16,8 @@ final class AukPage: UIView {
   
   Shows an image.
   
-  - parameter image:: The image to be shown
-  - parameter settings:: Auk settings.
+  - parameter image: The image to be shown
+  - parameter settings: Auk settings.
   
   */
   func show(image image: UIImage, settings: AukSettings) {
@@ -30,8 +30,8 @@ final class AukPage: UIView {
   
   Shows a remote image. The image download stars if/when the page becomes visible to the user.
   
-  - parameter url:: The URL to the image to be displayed.
-  - parameter settings:: Auk settings.
+  - parameter url: The URL to the image to be displayed.
+  - parameter settings: Auk settings.
   
   */
   func show(url url: String, settings: AukSettings) {
@@ -67,7 +67,7 @@ final class AukPage: UIView {
   
   Create and layout an image view.
   
-  - parameter settings:: Auk settings.
+  - parameter settings: Auk settings.
   
   */
   func createAndLayoutImageView(settings: AukSettings) {
@@ -86,7 +86,7 @@ final class AukPage: UIView {
   
   Create and layout the remote image view.
   
-  - parameter settings:: Auk settings.
+  - parameter settings: Auk settings.
   
   */
   func createAndLayoutRemoteImageView(settings: AukSettings) {
@@ -109,7 +109,7 @@ final class AukPage: UIView {
   
   Creates Auto Layout constrains for the image view.
   
-  - parameter imageView:: Image view that is used to create Auto Layout constraints.
+  - parameter imageView: Image view that is used to create Auto Layout constraints.
   
   */
   private static func layoutImageView(imageView: UIImageView, superview: UIView) {

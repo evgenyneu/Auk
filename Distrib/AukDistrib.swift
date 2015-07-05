@@ -50,7 +50,7 @@ public class Auk {
 
   Shows a local image in the scroll view.
 
-  - parameter image:: Image to be shown in the scroll view.
+  - parameter image: Image to be shown in the scroll view.
 
   */
   public func show(image image: UIImage) {
@@ -63,7 +63,7 @@ public class Auk {
 
   Downloads a remote image and adds it to the scroll view. Use `Moa.settings.cache` property to configure image caching.
 
-  - parameter url:: Url of the image to be shown.
+  - parameter url: Url of the image to be shown.
 
   */
   public func show(url url: String) {
@@ -80,8 +80,8 @@ public class Auk {
 
   Changes the current page.
 
-  - parameter pageIndex:: Index of the page to show.
-  - parameter animated:: The page change will be animated when `true`.
+  - parameter pageIndex: Index of the page to show.
+  - parameter animated: The page change will be animated when `true`.
 
   */
   public func scrollTo(pageIndex: Int, animated: Bool) {
@@ -111,9 +111,9 @@ public class Auk {
 
   More information: https://github.com/evgenyneu/Auk/wiki/Size-animation
 
-  - parameter toPageIndex:: Index of the page that will be made a current page.
-  - parameter pageWidth:: The new page width.
-  - parameter animated:: The page change will be animated when `true`.
+  - parameter toPageIndex: Index of the page that will be made a current page.
+  - parameter pageWidth: The new page width.
+  - parameter animated: The page change will be animated when `true`.
 
   */
   public func scrollTo(pageIndex: Int, pageWidth: CGFloat, animated: Bool) {
@@ -136,8 +136,8 @@ public class Auk {
 
   Scrolls to the next page.
 
-  - parameter cycle:: If `true` it scrolls to the first page from the last one. If `false` the scrolling stops at the last page.
-  - parameter animated:: The page change will be animated when `true`.
+  - parameter cycle: If `true` it scrolls to the first page from the last one. If `false` the scrolling stops at the last page.
+  - parameter animated: The page change will be animated when `true`.
 
   */
   public func scrollToNextPage(cycle cycle: Bool, animated: Bool) {
@@ -160,8 +160,8 @@ public class Auk {
 
   Scrolls to the previous page.
 
-  - parameter cycle:: If true it scrolls to the last page from the first one. If false the scrolling stops at the first page.
-  - parameter animated:: The page change will be animated when `true`.
+  - parameter cycle: If true it scrolls to the last page from the first one. If false the scrolling stops at the first page.
+  - parameter animated: The page change will be animated when `true`.
 
   */
   public func scrollToPreviousPage(cycle cycle: Bool, animated: Bool) {
@@ -218,7 +218,7 @@ public class Auk {
 
   Starts auto scrolling of the pages with the given delay in seconds.
 
-  - parameter delaySeconds:: Amount of time in second each page is visible before scrolling to the next.
+  - parameter delaySeconds: Amount of time in second each page is visible before scrolling to the next.
 
   */
   public func startAutoScroll(delaySeconds delaySeconds: Double) {
@@ -230,10 +230,10 @@ public class Auk {
 
   Starts auto scrolling of the pages with the given delay in seconds.
 
-  - parameter delaySeconds:: Amount of time in second each page is visible before scrolling to the next.
-  - parameter forward:: When true the scrolling is done from left to right direction.
-  - parameter cycle:: If true it scrolls to the first page from the last one. If false the scrolling stops at the last page.
-  - parameter animated:: The page change will be animated when `true`.
+  - parameter delaySeconds: Amount of time in second each page is visible before scrolling to the next.
+  - parameter forward: When true the scrolling is done from left to right direction.
+  - parameter cycle: If true it scrolls to the first page from the last one. If false the scrolling stops at the last page.
+  - parameter animated: The page change will be animated when `true`.
 
   */
   public func startAutoScroll(delaySeconds delaySeconds: Double, forward: Bool,
@@ -388,8 +388,8 @@ final class AukPage: UIView {
   
   Shows an image.
   
-  - parameter image:: The image to be shown
-  - parameter settings:: Auk settings.
+  - parameter image: The image to be shown
+  - parameter settings: Auk settings.
   
   */
   func show(image image: UIImage, settings: AukSettings) {
@@ -402,8 +402,8 @@ final class AukPage: UIView {
   
   Shows a remote image. The image download stars if/when the page becomes visible to the user.
   
-  - parameter url:: The URL to the image to be displayed.
-  - parameter settings:: Auk settings.
+  - parameter url: The URL to the image to be displayed.
+  - parameter settings: Auk settings.
   
   */
   func show(url url: String, settings: AukSettings) {
@@ -439,7 +439,7 @@ final class AukPage: UIView {
   
   Create and layout an image view.
   
-  - parameter settings:: Auk settings.
+  - parameter settings: Auk settings.
   
   */
   func createAndLayoutImageView(settings: AukSettings) {
@@ -458,7 +458,7 @@ final class AukPage: UIView {
   
   Create and layout the remote image view.
   
-  - parameter settings:: Auk settings.
+  - parameter settings: Auk settings.
   
   */
   func createAndLayoutRemoteImageView(settings: AukSettings) {
@@ -481,7 +481,7 @@ final class AukPage: UIView {
   
   Creates Auto Layout constrains for the image view.
   
-  - parameter imageView:: Image view that is used to create Auto Layout constraints.
+  - parameter imageView: Image view that is used to create Auto Layout constraints.
   
   */
   private static func layoutImageView(imageView: UIImageView, superview: UIView) {
@@ -600,8 +600,8 @@ struct AukPageVisibility {
   
   Check if the given page is currently visible to user.
   
-  - parameter scrollView:: Scroll view containing the page.
-  - parameter page:: A scroll view page which visibility will be checked.
+  - parameter scrollView: Scroll view containing the page.
+  - parameter page: A scroll view page which visibility will be checked.
   
   - returns: True if the page is visible to the user.
   
@@ -614,8 +614,8 @@ struct AukPageVisibility {
   
   Tells if the page is way out of sight. This is done to prevent cancelling download of the image for the page that is not very far out of sight.
   
-  - parameter scrollView:: Scroll view containing the page.
-  - parameter page:: A scroll view page which visibility will be checked.
+  - parameter scrollView: Scroll view containing the page.
+  - parameter page: A scroll view page which visibility will be checked.
   
   - returns: True if the page is visible to the user.
   
@@ -629,7 +629,7 @@ struct AukPageVisibility {
   
   Goes through all the scroll view pages and tell them if they are visible or out of sight. The pages, in turn, if they are visible start the download of the image or cancel the download if they are out of sight.
   
-  - parameter scrollView:: Scroll view with the pages.
+  - parameter scrollView: Scroll view with the pages.
 
   */
   static func tellPagesAboutTheirVisibility(scrollView: UIScrollView, settings: AukSettings) {

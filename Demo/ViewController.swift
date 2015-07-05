@@ -7,7 +7,7 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
     scrollView.auk.settings.placeholderImage = UIImage(named: "great_auk_placeholder.png")
     scrollView.auk.settings.errorImage = UIImage(named: "error_image.png")
 
