@@ -29,12 +29,12 @@ There are three ways you can add Auk to your Xcode project.
 
 Simply add two files to your project:
 
-1. Moa image downloader [MoaDistrib.swift](https://github.com/evgenyneu/moa/blob/1.0.50/Distrib/MoaDistrib.swift).
+1. Moa image downloader [MoaDistrib.swift](https://github.com/evgenyneu/moa/blob/master/Distrib/MoaDistrib.swift).
 2. Auk image slideshow [AukDistrib.swift](https://github.com/evgenyneu/Auk/blob/master/Distrib/AukDistrib.swift).
 
 **Setup with Carthage (iOS 8+)**
 
-1. Add `github "evgenyneu/Auk" ~> 1.0` to your Cartfile.
+1. Add `github "evgenyneu/Auk" ~> 2.0` to your Cartfile.
 2. Run `carthage update`.
 3. Add `moa` and `Auk` frameworks into your project.
 
@@ -43,8 +43,11 @@ Simply add two files to your project:
 If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
-    pod 'Auk', '~> 1.0'
+    pod 'Auk', '~> 2.0'
 
+#### Setup in Xcode 6
+
+Auk is written in Swift 2.0 for Xcode 7. See [Swift 1.2 setup instuctions](https://github.com/evgenyneu/Auk/wiki/Setup-with-Xcode-6-and-Swift-1.2) for Xcode 6 projects.
 
 ## Usage
 
