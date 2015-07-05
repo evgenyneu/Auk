@@ -11,7 +11,9 @@ Usage:
     scrollView.auk.show(url: "http://site.com/bird.jpg")
 
     // Show local image
-    scrollView.auk.show(image: UIImage(named: "bird"))
+    if let image = UIImage(named: "bird.jpg") {
+      scrollView.auk.show(image: image)
+    }
 
 */
 public class Auk {
