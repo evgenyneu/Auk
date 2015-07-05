@@ -4,7 +4,7 @@ import UIKit
 class AukInterfaceRemoveAllTests: XCTestCase {
   
   var scrollView: UIScrollView!
-  var auk: AukInterface!
+  var auk: Auk!
   
   override func setUp() {
     super.setUp()
@@ -35,8 +35,7 @@ class AukInterfaceRemoveAllTests: XCTestCase {
     XCTAssertEqual(0, aukPages(scrollView).count)
     XCTAssertEqual(0, auk.numberOfPages)
     
-    let aukObj = auk as! Auk
-    XCTAssertEqual(0, aukObj.pageIndicatorContainer!.pageControl!.numberOfPages)
-    XCTAssertEqual(0, aukObj.pageIndicatorContainer!.pageControl!.currentPage)
+    XCTAssertEqual(0, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
+    XCTAssertEqual(0, auk.pageIndicatorContainer!.pageControl!.currentPage)
   }
 }

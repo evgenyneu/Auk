@@ -35,7 +35,6 @@
 		7E9013AF1B2CF83B00DD4406 /* UIScrollView+AukTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013AD1B2CF80D00DD4406 /* UIScrollView+AukTests.swift */; };
 		7E9013B11B2CF89900DD4406 /* UIScrollView+Auk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013B01B2CF89900DD4406 /* UIScrollView+Auk.swift */; };
 		7E9013B31B2CF95800DD4406 /* Auk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013B21B2CF95800DD4406 /* Auk.swift */; };
-		7E9013B71B2CFAE500DD4406 /* AukInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013B61B2CFAE500DD4406 /* AukInterface.swift */; };
 		7E9013C31B2CFCAE00DD4406 /* AukTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013C11B2CFCA000DD4406 /* AukTestHelpers.swift */; };
 		7E9013C41B2CFCB600DD4406 /* 35px.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7E9013BA1B2CFC6A00DD4406 /* 35px.jpg */; };
 		7E9013C51B2CFCBA00DD4406 /* 67px.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E9013BB1B2CFC6A00DD4406 /* 67px.png */; };
@@ -64,7 +63,6 @@
 		7EBD03D21B34E45700957205 /* DemoConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBD03D11B34E45700957205 /* DemoConstants.swift */; };
 		7EBD03D91B34E76300957205 /* AukSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBD03D81B34E76300957205 /* AukSettings.swift */; };
 		7EBD03DA1B34E9E400957205 /* Auk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013B21B2CF95800DD4406 /* Auk.swift */; };
-		7EBD03DB1B34E9E400957205 /* AukInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013B61B2CFAE500DD4406 /* AukInterface.swift */; };
 		7EBD03DC1B34E9E400957205 /* AukSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBD03D81B34E76300957205 /* AukSettings.swift */; };
 		7EBD03DD1B34E9E400957205 /* AukScrollViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AEDF21B2D0E6900199C38 /* AukScrollViewContent.swift */; };
 		7EBD03DE1B34E9E400957205 /* AukPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9013C71B2CFE7D00DD4406 /* AukPage.swift */; };
@@ -152,7 +150,6 @@
 		7E9013AD1B2CF80D00DD4406 /* UIScrollView+AukTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+AukTests.swift"; sourceTree = "<group>"; };
 		7E9013B01B2CF89900DD4406 /* UIScrollView+Auk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Auk.swift"; sourceTree = "<group>"; };
 		7E9013B21B2CF95800DD4406 /* Auk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auk.swift; sourceTree = "<group>"; };
-		7E9013B61B2CFAE500DD4406 /* AukInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukInterface.swift; sourceTree = "<group>"; };
 		7E9013BA1B2CFC6A00DD4406 /* 35px.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 35px.jpg; sourceTree = "<group>"; };
 		7E9013BB1B2CFC6A00DD4406 /* 67px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 67px.png; sourceTree = "<group>"; };
 		7E9013BC1B2CFC6A00DD4406 /* 96px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 96px.png; sourceTree = "<group>"; };
@@ -276,7 +273,6 @@
 				7E5AEDEE1B2D0C0000199C38 /* Utils */,
 				7E9013B21B2CF95800DD4406 /* Auk.swift */,
 				7E98FDBA1B47837D00192AAF /* AukAutoscroll.swift */,
-				7E9013B61B2CFAE500DD4406 /* AukInterface.swift */,
 				7EBD03D81B34E76300957205 /* AukSettings.swift */,
 				7E5AEDF21B2D0E6900199C38 /* AukScrollViewContent.swift */,
 				7E98FD9E1B4776D100192AAF /* AukScrollTo.swift */,
@@ -572,7 +568,6 @@
 				7E9013B11B2CF89900DD4406 /* UIScrollView+Auk.swift in Sources */,
 				7EFEEDC11B3E32580082488E /* AukPageVisibility.swift in Sources */,
 				7E3E0A161B3E790900CD8CB4 /* AukScrollViewDelegate.swift in Sources */,
-				7E9013B71B2CFAE500DD4406 /* AukInterface.swift in Sources */,
 				7E9013B31B2CF95800DD4406 /* Auk.swift in Sources */,
 				7E5AEDF01B2D0C0500199C38 /* iiAutolayoutConstraints.swift in Sources */,
 				7EBD03D91B34E76300957205 /* AukSettings.swift in Sources */,
@@ -598,7 +593,6 @@
 				7EBD03DF1B34E9E600957205 /* UIScrollView+Auk.swift in Sources */,
 				7E98FDB51B47820B00192AAF /* AukInterfaceNumberOfPagesTests.swift in Sources */,
 				7EBD03DD1B34E9E400957205 /* AukScrollViewContent.swift in Sources */,
-				7EBD03DB1B34E9E400957205 /* AukInterface.swift in Sources */,
 				7E98FDAF1B4780C000192AAF /* AukInterfaceScrollToTests.swift in Sources */,
 				7E98FDAE1B4780C000192AAF /* AukInterfaceScrollNextPreviousPageTests.swift in Sources */,
 				7EBD03E01B34E9E800957205 /* iiAutolayoutConstraints.swift in Sources */,

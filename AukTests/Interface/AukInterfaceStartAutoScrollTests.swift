@@ -4,7 +4,7 @@ import UIKit
 class AukInterfaceStartAutoScrollTests: XCTestCase {
   
   var scrollView: UIScrollView!
-  var auk: AukInterface!
+  var auk: Auk!
   
   override func setUp() {
     super.setUp()
@@ -197,8 +197,7 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
     
     auk.startAutoScroll(delaySeconds: 0.1)
     
-    let aukInstance = auk as! Auk
-    aukInstance.scrollViewDelegate.scrollViewWillBeginDragging(scrollView)
+    auk.scrollViewDelegate.scrollViewWillBeginDragging(scrollView)
     
     let expectation = expectationWithDescription("scroll")
     iiQ.runAfterDelay(0.15) { expectation.fulfill() }

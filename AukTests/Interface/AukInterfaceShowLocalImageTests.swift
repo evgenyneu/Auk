@@ -4,7 +4,7 @@ import UIKit
 class AukInterfaceShowLocalImageTests: XCTestCase {
   
   var scrollView: UIScrollView!
-  var auk: AukInterface!
+  var auk: Auk!
   
   override func setUp() {
     super.setUp()
