@@ -125,7 +125,7 @@ public class Auk {
   :param: animated: The page change will be animated when `true`.
 
   */
-  public func scrollToNextPage(#cycle: Bool, animated: Bool) {
+  public func scrollToNextPage(cycle cycle: Bool, animated: Bool) {
     if let scrollView = scrollView {
       AukScrollTo.scrollToNextPage(scrollView, cycle: cycle, animated: animated,
         currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
@@ -149,7 +149,7 @@ public class Auk {
   :param: animated: The page change will be animated when `true`.
 
   */
-  public func scrollToPreviousPage(#cycle: Bool, animated: Bool) {
+  public func scrollToPreviousPage(cycle cycle: Bool, animated: Bool) {
     if let scrollView = scrollView {
       AukScrollTo.scrollToPreviousPage(scrollView, cycle: cycle, animated: animated,
         currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
@@ -206,7 +206,7 @@ public class Auk {
   :param: delaySeconds: Amount of time in second each page is visible before scrolling to the next.
 
   */
-  public func startAutoScroll(#delaySeconds: Double) {
+  public func startAutoScroll(delaySeconds delaySeconds: Double) {
     startAutoScroll(delaySeconds: delaySeconds, forward: true,
       cycle: true, animated: true)
   }
@@ -221,7 +221,7 @@ public class Auk {
   :param: animated: The page change will be animated when `true`.
 
   */
-  public func startAutoScroll(#delaySeconds: Double, forward: Bool,
+  public func startAutoScroll(delaySeconds delaySeconds: Double, forward: Bool,
     cycle: Bool, animated: Bool) {
 
     if let scrollView = scrollView {
