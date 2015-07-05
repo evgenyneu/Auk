@@ -18,45 +18,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SrW-bD-PlC">
-                                <rect key="frame" x="0.0" y="64" width="600" height="265"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="265" id="Or5-06-LRV"/>
-                                </constraints>
-                            </scrollView>
-                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ak0-JX-tQy">
-                                <rect key="frame" x="322" y="356" width="40" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="▶︎">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onNextPageTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bHF-u5-29D"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkS-kK-gCM">
-                                <rect key="frame" x="242" y="356" width="40" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="◀︎">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onPreviousPageTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ahk-OH-APv"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wormius_Great_Auk.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="fhZ-KN-55y">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etc-ob-Utw">
+                                <rect key="frame" x="0.0" y="64" width="600" height="375"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Pv7-uD-0Sn">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="375"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cz-ix-YLV">
+                                            <rect key="frame" x="280" y="290" width="40" height="60"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                            <state key="normal" title="🔁">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onAutoscrollTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l6A-hy-GLM"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ak0-JX-tQy">
+                                            <rect key="frame" x="345" y="290" width="40" height="60"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                            <state key="normal" title="⏩">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onNextPageTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bHF-u5-29D"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkS-kK-gCM">
+                                            <rect key="frame" x="215" y="290" width="40" height="60"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                            <state key="normal" title="⏪">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onPreviousPageTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ahk-OH-APv"/>
+                                            </connections>
+                                        </button>
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SrW-bD-PlC">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="265"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="265" id="Or5-06-LRV"/>
+                                            </constraints>
+                                        </scrollView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="6Cz-ix-YLV" firstAttribute="top" secondItem="SrW-bD-PlC" secondAttribute="bottom" constant="25" id="5KP-QT-FmP"/>
+                                        <constraint firstItem="Ak0-JX-tQy" firstAttribute="leading" secondItem="6Cz-ix-YLV" secondAttribute="trailing" constant="25" id="9Jq-nT-yE4"/>
+                                        <constraint firstAttribute="centerX" secondItem="6Cz-ix-YLV" secondAttribute="centerX" id="FQ8-LT-xNH"/>
+                                        <constraint firstAttribute="bottom" secondItem="6Cz-ix-YLV" secondAttribute="bottom" constant="25" id="GHN-2l-Jvf"/>
+                                        <constraint firstItem="SrW-bD-PlC" firstAttribute="top" secondItem="Pv7-uD-0Sn" secondAttribute="top" id="LdL-xC-G4g"/>
+                                        <constraint firstItem="xkS-kK-gCM" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" id="eWN-Md-vSr"/>
+                                        <constraint firstItem="Ak0-JX-tQy" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" id="fQN-3g-uEM"/>
+                                        <constraint firstItem="SrW-bD-PlC" firstAttribute="leading" secondItem="Pv7-uD-0Sn" secondAttribute="leading" id="gJP-RQ-aXb"/>
+                                        <constraint firstItem="6Cz-ix-YLV" firstAttribute="leading" secondItem="xkS-kK-gCM" secondAttribute="trailing" constant="25" id="q3l-5A-d91"/>
+                                        <constraint firstAttribute="trailing" secondItem="SrW-bD-PlC" secondAttribute="trailing" id="sOh-c3-YgM"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" red="0.16862745098039217" green="0.76078431372549016" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Ak0-JX-tQy" secondAttribute="leading" constant="-22" id="5g9-3F-WUi"/>
-                            <constraint firstItem="SrW-bD-PlC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="GMH-K7-yD4"/>
-                            <constraint firstItem="xkS-kK-gCM" firstAttribute="centerY" secondItem="Ak0-JX-tQy" secondAttribute="centerY" id="LsT-hx-C56"/>
-                            <constraint firstItem="Ak0-JX-tQy" firstAttribute="leading" secondItem="xkS-kK-gCM" secondAttribute="trailing" constant="40" id="QPf-wi-pPb"/>
-                            <constraint firstItem="Ak0-JX-tQy" firstAttribute="top" secondItem="SrW-bD-PlC" secondAttribute="bottom" constant="27" id="bc9-bb-x0c"/>
-                            <constraint firstAttribute="trailing" secondItem="SrW-bD-PlC" secondAttribute="trailing" id="sMc-bW-CN2"/>
-                            <constraint firstItem="SrW-bD-PlC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="x6O-nO-hVM"/>
+                            <constraint firstAttribute="trailing" secondItem="fhZ-KN-55y" secondAttribute="trailing" id="1RH-SS-e7v"/>
+                            <constraint firstItem="fhZ-KN-55y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="64z-oj-ynX"/>
+                            <constraint firstItem="etc-ob-Utw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IjK-Yk-j8c"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fhZ-KN-55y" secondAttribute="bottom" id="LDi-5T-8SG"/>
+                            <constraint firstAttribute="trailing" secondItem="etc-ob-Utw" secondAttribute="trailing" id="TLl-IQ-6nR"/>
+                            <constraint firstItem="fhZ-KN-55y" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="top" id="kKU-X8-qh8"/>
+                            <constraint firstItem="etc-ob-Utw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="oxm-3M-7aE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Yub-14-TBn">
@@ -67,10 +101,10 @@
                             </connections>
                         </barButtonItem>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vWm-G7-wjO">
-                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <rect key="frame" x="180" y="2.5" width="240" height="39"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                            <state key="normal" title="✕">
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="Clear">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -110,4 +144,7 @@
             <point key="canvasLocation" x="493" y="-358"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Wormius_Great_Auk.jpg" width="659" height="1000"/>
+    </resources>
 </document>
