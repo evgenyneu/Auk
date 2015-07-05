@@ -18,6 +18,11 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
     auk = Auk(scrollView: scrollView)
   }
   
+  override func tearDown() {
+    super.tearDown()
+    auk.stopAutoScroll()
+  }
+  
   // MARK: - Start auto scroll
   
   func testStartAutoScroll_toPage1() {
@@ -26,10 +31,10 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
     auk.show(image: image)
     auk.show(image: image)
 
-    auk.startAutoScroll(delaySeconds: 0.1)
+    auk.startAutoScroll(delaySeconds: 0.2)
 
     let expectation = expectationWithDescription("scroll")
-    iiQ.runAfterDelay(0.15) { expectation.fulfill() }
+    iiQ.runAfterDelay(0.3) { expectation.fulfill() }
     waitForExpectationsWithTimeout(1) { _ in }
     XCTAssertEqual(1, auk.currentPageIndex)
   }
@@ -42,12 +47,12 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.startAutoScroll(delaySeconds: 0.1)
-    auk.startAutoScroll(delaySeconds: 0.1)
-    auk.startAutoScroll(delaySeconds: 0.1)
+    auk.startAutoScroll(delaySeconds: 0.2)
+    auk.startAutoScroll(delaySeconds: 0.2)
+    auk.startAutoScroll(delaySeconds: 0.2)
     
     let expectation = expectationWithDescription("scroll")
-    iiQ.runAfterDelay(0.15) { expectation.fulfill() }
+    iiQ.runAfterDelay(0.3) { expectation.fulfill() }
     waitForExpectationsWithTimeout(1) { _ in }
     XCTAssertEqual(1, auk.currentPageIndex)
   }
@@ -58,10 +63,10 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.startAutoScroll(delaySeconds: 0.1)
+    auk.startAutoScroll(delaySeconds: 0.2)
     
     let expectation = expectationWithDescription("scroll")
-    iiQ.runAfterDelay(0.25) { expectation.fulfill() }
+    iiQ.runAfterDelay(0.5) { expectation.fulfill() }
     waitForExpectationsWithTimeout(1) { _ in }
     XCTAssertEqual(2, auk.currentPageIndex)
   }
@@ -72,11 +77,11 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.startAutoScroll(delaySeconds: 0.1)
+    auk.startAutoScroll(delaySeconds: 0.2)
     
     let expectation = expectationWithDescription("scroll")
-    iiQ.runAfterDelay(0.35) { expectation.fulfill() }
-    waitForExpectationsWithTimeout(1) { _ in }
+    iiQ.runAfterDelay(0.7) { expectation.fulfill() }
+    waitForExpectationsWithTimeout(2) { _ in }
     XCTAssertEqual(0, auk.currentPageIndex)
   }
   
@@ -88,10 +93,10 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.startAutoScroll(delaySeconds: 0.1, forward: true, cycle: true, animated: false)
+    auk.startAutoScroll(delaySeconds: 0.2, forward: true, cycle: true, animated: false)
     
     let expectation = expectationWithDescription("scroll")
-    iiQ.runAfterDelay(0.15) { expectation.fulfill() }
+    iiQ.runAfterDelay(0.3) { expectation.fulfill() }
     waitForExpectationsWithTimeout(1) { _ in }
     XCTAssertEqual(1, auk.currentPageIndex)
   }
@@ -102,10 +107,10 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.startAutoScroll(delaySeconds: 0.1, forward: false, cycle: true, animated: false)
+    auk.startAutoScroll(delaySeconds: 0.2, forward: false, cycle: true, animated: false)
     
     let expectation = expectationWithDescription("scroll")
-    iiQ.runAfterDelay(0.15) { expectation.fulfill() }
+    iiQ.runAfterDelay(0.25) { expectation.fulfill() }
     waitForExpectationsWithTimeout(1) { _ in }
     XCTAssertEqual(2, auk.currentPageIndex)
   }
@@ -118,11 +123,11 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.startAutoScroll(delaySeconds: 0.1, forward: true, cycle: true, animated: false)
+    auk.startAutoScroll(delaySeconds: 0.2, forward: true, cycle: true, animated: false)
     
     let expectation = expectationWithDescription("scroll")
-    iiQ.runAfterDelay(0.35) { expectation.fulfill() }
-    waitForExpectationsWithTimeout(1) { _ in }
+    iiQ.runAfterDelay(0.7) { expectation.fulfill() }
+    waitForExpectationsWithTimeout(2) { _ in }
     XCTAssertEqual(0, auk.currentPageIndex)
   }
   
@@ -132,10 +137,10 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.startAutoScroll(delaySeconds: 0.1, forward: true, cycle: false, animated: false)
+    auk.startAutoScroll(delaySeconds: 0.2, forward: true, cycle: false, animated: false)
     
     let expectation = expectationWithDescription("scroll")
-    iiQ.runAfterDelay(0.35) { expectation.fulfill() }
+    iiQ.runAfterDelay(0.5) { expectation.fulfill() }
     waitForExpectationsWithTimeout(1) { _ in }
     XCTAssertEqual(2, auk.currentPageIndex)
   }
@@ -148,10 +153,10 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.startAutoScroll(delaySeconds: 0.1, forward: false, cycle: true, animated: false)
+    auk.startAutoScroll(delaySeconds: 0.2, forward: false, cycle: true, animated: false)
     
     let expectation = expectationWithDescription("scroll")
-    iiQ.runAfterDelay(0.15) { expectation.fulfill() }
+    iiQ.runAfterDelay(0.3) { expectation.fulfill() }
     waitForExpectationsWithTimeout(1) { _ in }
     XCTAssertEqual(2, auk.currentPageIndex)
   }
@@ -162,10 +167,10 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.startAutoScroll(delaySeconds: 0.1, forward: false, cycle: false, animated: false)
+    auk.startAutoScroll(delaySeconds: 0.2, forward: false, cycle: false, animated: false)
     
     let expectation = expectationWithDescription("scroll")
-    iiQ.runAfterDelay(0.35) { expectation.fulfill() }
+    iiQ.runAfterDelay(0.5) { expectation.fulfill() }
     waitForExpectationsWithTimeout(1) { _ in }
     XCTAssertEqual(0, auk.currentPageIndex)
   }
@@ -178,11 +183,11 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.startAutoScroll(delaySeconds: 0.1)
+    auk.startAutoScroll(delaySeconds: 0.2)
     auk.stopAutoScroll()
     
     let expectation = expectationWithDescription("scroll")
-    iiQ.runAfterDelay(0.15) { expectation.fulfill() }
+    iiQ.runAfterDelay(0.3) { expectation.fulfill() }
     waitForExpectationsWithTimeout(1) { _ in }
     XCTAssertEqual(0, auk.currentPageIndex)
   }
@@ -195,12 +200,12 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.startAutoScroll(delaySeconds: 0.1)
+    auk.startAutoScroll(delaySeconds: 0.2)
     
     auk.scrollViewDelegate.scrollViewWillBeginDragging(scrollView)
     
     let expectation = expectationWithDescription("scroll")
-    iiQ.runAfterDelay(0.15) { expectation.fulfill() }
+    iiQ.runAfterDelay(0.3) { expectation.fulfill() }
     waitForExpectationsWithTimeout(1) { _ in }
     XCTAssertEqual(0, auk.currentPageIndex)
   }
