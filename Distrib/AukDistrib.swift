@@ -1,5 +1,5 @@
 //
-// An image slide show for iOS written in Swift.
+// An image slideshow for iOS written in Swift.
 //
 // https://github.com/evgenyneu/Auk
 //

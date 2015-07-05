@@ -1,7 +1,11 @@
-🔨🔨🔨 This is work in progress 🔨🔨🔨
+# Auk, an image slideshow for iOS / Swift
 
-
-# Auk, an image slide show for iOS / Swift
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)][carthage]
+[![CocoaPods Version](https://img.shields.io/cocoapods/v/Auk.svg?style=flat)][cocoadocs]
+[![License](https://img.shields.io/cocoapods/l/Auk.svg?style=flat)](LICENSE)
+[![Platform](https://img.shields.io/cocoapods/p/Auk.svg?style=flat)][cocoadocs]
+[cocoadocs]: http://cocoadocs.org/docsets/Auk
+[carthage]: https://github.com/Carthage/Carthage
 
 This is an iOS library that shows an image carousel with a page indicator. Users can scroll through local and remote images or watch them scroll automatically.
 
@@ -26,11 +30,13 @@ There are three ways you can add Auk to your Xcode project.
 Simply add two files to your project:
 
 1. Moa image downloader [MoaDistrib.swift](https://github.com/evgenyneu/moa/blob/1.0.50/Distrib/MoaDistrib.swift).
-2. Auk image slide show [AukDistrib.swift](https://github.com/evgenyneu/Auk/blob/master/Distrib/AukDistrib.swift).
+2. Auk image slideshow [AukDistrib.swift](https://github.com/evgenyneu/Auk/blob/master/Distrib/AukDistrib.swift).
 
 **Setup with Carthage (iOS 8+)**
 
-Alternatively, add `github "evgenyneu/Auk" ~> 1.0` to your Cartfile, run `carthage update` and add `moa` and `Auk` frameworks into your project.
+1. Add `github "evgenyneu/Auk" ~> 1.0` to your Cartfile.
+2. Run `carthage update`.
+3. Add `moa` and `Auk` frameworks into your project.
 
 **Setup with CocoaPods (iOS 8+)**
 
@@ -142,7 +148,7 @@ The project includes a demo iOS app.
 
 ## Alternative solutions
 
-Here is a list of other image slide show libraries for iOS.
+Here is a list of other image slideshow libraries for iOS.
 
 * [kimar/KIImagePager](https://github.com/kimar/KIImagePager)
 * [kirualex/KASlideShow](https://github.com/kirualex/KASlideShow)
