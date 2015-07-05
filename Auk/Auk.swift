@@ -92,7 +92,7 @@ public class Auk {
         }, completion: nil)
       }
   
-  More information: https://github.com/evgenyneu/Auk/wiki/Animate-size-change
+  More information: https://github.com/evgenyneu/Auk/wiki/Size-animation
   
   :param: toPageIndex: Index of the page that will be made a current page.
   :param: pageWidth: The new page width.
