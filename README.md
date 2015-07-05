@@ -46,11 +46,6 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
     pod 'Auk', '~> 1.0'
 
 
-#### Setup in Xcode 6
-
-Auk is written in Swift 2 for Xcode 7. See [Swift 1.2 setup instuctions](https://github.com/evgenyneu/moa/wiki/Setup-with-Xcode-6-and-Swift-1.2) for Xcode 6 projects.
-
-
 ## Usage
 
 import Auk
