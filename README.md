@@ -120,7 +120,7 @@ Read [size animation](https://github.com/evgenyneu/Auk/wiki/Size-animation) manu
 
 ## Image caching
 
-Auk uses [moa image downloader](https://github.com/evgenyneu/moa) for getting remote images. You can configure its caching settings by settings the `Moa.settings.cache.requestCachePolicy` property. Add `import moa` to your source code if you used Carthage or CocoaPods setup methods.
+Auk uses [moa image downloader](https://github.com/evgenyneu/moa) for getting remote images. You can configure its caching settings by changing the `Moa.settings.cache.requestCachePolicy` property. Add `import moa` to your source code if you used Carthage or CocoaPods setup methods.
 
 
 ```Swift
