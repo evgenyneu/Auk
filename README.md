@@ -6,7 +6,7 @@
 This is an iOS library that shows an image carousel with a page indicator. Users can scroll through local and remote images or watch them scroll automatically.
 
 * Allows to specify placeholder and error images for remote sources.
-* Allows to supply fake remote images for easier unit testing.
+* Include ability to supply fake remote images for easier unit testing.
 * Support animated transition during screen orientation change.
 * Supports image caching.
 
