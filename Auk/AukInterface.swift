@@ -11,14 +11,14 @@ public protocol AukInterface: class {
   
   /**
   
-  Settings that control appearance of the images and the page indicator.
+  Settings that control appearance of the scroll view and the page indicator.
   
   */
   var settings: AukSettings { get set }
   
   /**
 
-  Shows the image in the scroll view.
+  Shows a local image in the scroll view.
 
   :param: image: Image to be shown in the scroll view.
   
@@ -146,6 +146,6 @@ public protocol AukInterface: class {
   */
   var currentPageIndex: Int { get }
   
-  /// Return the current number of pages.
+  /// Returns the current number of pages.
   var numberOfPages: Int { get }
 }

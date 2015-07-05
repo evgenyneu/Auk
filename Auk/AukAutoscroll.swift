@@ -9,7 +9,7 @@ struct AukAutoscroll {
   var autoscrollTimer: AutoCancellingTimer?
   
   mutating func startAutoScroll(scrollView: UIScrollView, delaySeconds: Double,
-    forward: Bool, cycle: Bool, animated: Bool, auk: AukInterface) {
+    forward: Bool, cycle: Bool, animated: Bool, auk: Auk) {
       
     // Assign the new instance of AutoCancellingTimer to autoscrollTimer
     // The previous instance deinitializes and cancels its timer.

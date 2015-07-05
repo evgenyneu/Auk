@@ -6,17 +6,33 @@ private var xoAukAssociationKey: UInt8 = 0
 
 Scroll view extension for showing series of images with page indicator.
 
+
+Usage:
+
+    // Show remote image
+    scrollView.auk.show(url: "http://site.com/bird.jpg")
+
+    // Show local image
+    scrollView.auk.show(image: UIImage(named: "bird"))
+
 */
 public extension UIScrollView {
   /**
   
   Scroll view extension for showing series of images with page indicator.
-  Call its `show` method to show an image in the scroll view.
+  
+  Usage:
+  
+      // Show remote image
+      scrollView.auk.show(url: "http://site.com/bird.jpg")
+      
+      // Show local image
+      scrollView.auk.show(image: UIImage(named: "bird"))
   
   */
-  public var auk: AukInterface {
+  public var auk: Auk {
     get {
-      if let value = objc_getAssociatedObject(self, &xoAukAssociationKey) as? AukInterface {
+      if let value = objc_getAssociatedObject(self, &xoAukAssociationKey) as? Auk {
         return value
       } else {
         let auk = Auk(scrollView: self)

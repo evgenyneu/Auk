@@ -6,9 +6,11 @@
 This is an iOS library that shows images in a scroll view with a page indicator.
 
 * Shows local images and downloads remote ones from the network.
-* Supports image caching.
 * Allows to specify placeholder and error images for remote sources.
+* Support animated transition during screen orientation change.
 * Includes auto scrolling.
+* Supports image caching.
+
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_paged_image_scroller_ios.jpg' alt='Great Auks by John Gerrard Keulemans' width='382'>
 
