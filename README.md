@@ -11,7 +11,7 @@ This is an iOS library that shows images in a scroll view with a page indicator.
 * Includes auto scrolling.
 * Supports image caching.
 
-> This repository is dedicated to the great auk, a flightless bird that became extinct in the mid-19th century.
+> This library is dedicated to the great auk, a flightless bird that became extinct in the mid-19th century.
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_paged_image_scroller_ios.jpg' alt='Great Auks by John Gerrard Keulemans' width='382'>
 
