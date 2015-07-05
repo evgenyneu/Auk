@@ -96,6 +96,12 @@ scrollView.auk.settings.placeholderImage = UIImage(named: "placeholder.jpg")
 Read [animate size change](https://github.com/evgenyneu/Auk/wiki/Animate-size-change) manual if you need to animate the scroll view during device orientation change.
 
 
+## Demo app
+
+The project includes a demo iOS app.
+
+<img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_demo_app.gif' width='230' alt='Auk pages scroll view demo iOS app'>
+
 ## Credits
 
 * The Great Auk drawing by John James Audubon, 1827-1838. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:341_Great_Auk.jpg).
