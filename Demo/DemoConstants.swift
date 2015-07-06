@@ -40,7 +40,7 @@ struct DemoConstants {
     ),
     (
       fileName: "SimlulateNoImage.jpg",
-      description: "Non existing image"
+      description: "No image test."
     )
   ]
 }
