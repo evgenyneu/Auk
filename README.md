@@ -100,7 +100,7 @@ scrollView.auk.stopAutoScroll()
 
 #### Accessibility
 
-One can pass an image description when calling the `show` methods. This description will be spoken by the device when in accessibility mode.
+One can pass an image description when calling the `show` methods. This description will be spoken by the device in accessibility mode.
 
 ```Swift
 // Show remote image
