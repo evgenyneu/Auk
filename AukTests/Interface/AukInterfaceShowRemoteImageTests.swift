@@ -117,4 +117,27 @@ class AukInterfaceShowRemoteImageTests: XCTestCase {
     XCTAssertEqual(CGPoint(x: 120, y: 0), aukView2.frame.origin)
     XCTAssertEqual(CGSize(width: 120, height: 90), aukView2.frame.size)
   }
+  
+  // MARK: - Accessibility
+  
+  func testCreateAccessiblePageView_withLabel() {    
+    auk.show(url: "http://site.com/image.png",
+      accessibilityLabel: "White knight riding a wooden horse on wheels.")
+    
+    let page = aukPage(scrollView, pageIndex: 0)!
+    
+    XCTAssert(page.isAccessibilityElement)
+    XCTAssertEqual(page.accessibilityTraits, UIAccessibilityTraitImage)
+    XCTAssertEqual("White knight riding a wooden horse on wheels.", page.accessibilityLabel!)
+  }
+  
+  func testCreateAccessiblePageView_withoutLabel() {
+    auk.show(url: "http://site.com/image.png")
+    
+    let page = aukPage(scrollView, pageIndex: 0)!
+    
+    XCTAssert(page.isAccessibilityElement)
+    XCTAssertEqual(page.accessibilityTraits, UIAccessibilityTraitImage)
+    XCTAssert(page.accessibilityLabel == nil)
+  }
 }

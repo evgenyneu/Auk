@@ -36,11 +36,12 @@ public class Auk {
   Shows a local image in the scroll view.
 
   - parameter image: Image to be shown in the scroll view.
+  - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode. For example: "Picture of a pony standing in a flower pot.".
 
   */
-  public func show(image image: UIImage) {
+  public func show(image image: UIImage, accessibilityLabel: String? = nil) {
     setup()
-    let page = createPage()
+    let page = createPage(accessibilityLabel)
     page.show(image: image, settings: settings)
   }
 
@@ -49,11 +50,12 @@ public class Auk {
   Downloads a remote image and adds it to the scroll view. Use `Moa.settings.cache` property to configure image caching.
 
   - parameter url: Url of the image to be shown.
+  - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode. For example: "Picture of a pony standing in a flower pot.".
 
   */
-  public func show(url url: String) {
+  public func show(url url: String, accessibilityLabel: String? = nil) {
     setup()
-    let page = createPage()
+    let page = createPage(accessibilityLabel)
     page.show(url: url, settings: settings)
 
     if let scrollView = scrollView {
@@ -272,8 +274,9 @@ public class Auk {
   }
 
   /// Create a page, add it to the scroll view content and layout.
-  private func createPage() -> AukPage {
+  private func createPage(accessibilityLabel: String? = nil) -> AukPage {
     let page = AukPage()
+    page.makeAccessible(accessibilityLabel)
 
     if let scrollView = scrollView {
       scrollView.addSubview(page)

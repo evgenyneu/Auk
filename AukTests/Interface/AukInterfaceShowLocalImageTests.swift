@@ -61,4 +61,28 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
     XCTAssertEqual(CGPoint(x: 120, y: 0), aukView2.frame.origin)
     XCTAssertEqual(CGSize(width: 120, height: 90), aukView2.frame.size)
   }
+  
+  // MARK: - Accessibility
+  
+  func testCreateAccessiblePageView_withLabel() {
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image, accessibilityLabel: "White knight riding a wooden horse on wheels.")
+    
+    let page = aukPage(scrollView, pageIndex: 0)!
+    
+    XCTAssert(page.isAccessibilityElement)
+    XCTAssertEqual(page.accessibilityTraits, UIAccessibilityTraitImage)
+    XCTAssertEqual("White knight riding a wooden horse on wheels.", page.accessibilityLabel!)
+  }
+  
+  func testCreateAccessiblePageView_withoutLabel() {
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    
+    let page = aukPage(scrollView, pageIndex: 0)!
+    
+    XCTAssert(page.isAccessibilityElement)
+    XCTAssertEqual(page.accessibilityTraits, UIAccessibilityTraitImage)
+    XCTAssert(page.accessibilityLabel == nil)
+  }
 }

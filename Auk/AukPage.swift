@@ -118,4 +118,10 @@ final class AukPage: UIView {
     iiAutolayoutConstraints.fillParent(imageView, parentView: superview, margin: 0, vertically: false)
     iiAutolayoutConstraints.fillParent(imageView, parentView: superview, margin: 0, vertically: true)
   }
+  
+  func makeAccessible(accessibilityLabel: String?) {
+    isAccessibilityElement = true
+    accessibilityTraits = UIAccessibilityTraitImage
+    self.accessibilityLabel = accessibilityLabel
+  }
 }

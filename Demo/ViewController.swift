@@ -46,18 +46,18 @@ class ViewController: UIViewController {
 
   @IBAction func onShowLocalTapped(sender: AnyObject) {
     scrollView.auk.stopAutoScroll()
-    for imageName in DemoConstants.localImageNames {
-      if let image = UIImage(named: imageName) {
-        scrollView.auk.show(image: image)
+    for localImage in DemoConstants.localImages {
+      if let image = UIImage(named: localImage.fileName) {
+        scrollView.auk.show(image: image, accessibilityLabel: localImage.description)
       }
     }
   }
 
   @IBAction func onShowRemoteTapped(sender: AnyObject) {
     scrollView.auk.stopAutoScroll()
-    for imageName in DemoConstants.remoteImageNames {
-      let url = "\(DemoConstants.remoteImageBaseUrl)\(imageName)"
-      scrollView.auk.show(url: url)
+    for remoteImage in DemoConstants.remoteImages {
+      let url = "\(DemoConstants.remoteImageBaseUrl)\(remoteImage.fileName)"
+      scrollView.auk.show(url: url, accessibilityLabel: remoteImage.description)
     }
   }
 
@@ -81,8 +81,9 @@ class ViewController: UIViewController {
   }
 
   private func showInitialImage() {
-    if let image = UIImage(named: DemoConstants.initialImagName) {
-      scrollView.auk.show(image: image)
+    if let image = UIImage(named: DemoConstants.initialImage.fileName) {
+      scrollView.auk.show(image: image,
+        accessibilityLabel: DemoConstants.initialImage.description)
     }
   }
 }
