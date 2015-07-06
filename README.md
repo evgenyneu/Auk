@@ -145,7 +145,7 @@ MoaSimulator.autorespondWithImage("www.site.com", image: UIImage(named: "35px.jp
 
 The project includes a demo iOS app.
 
-<img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_demo_app.gif' width='300' alt='Auk pages scroll view demo iOS app'>
+<img src='https://github.com/evgenyneu/Auk/blob/master/Graphics/Screenshots/auk_demo_ios_app.jpg' width='414' alt='Auk pages scroll view demo iOS app'>
 
 ## Alternative solutions
 
