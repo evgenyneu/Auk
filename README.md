@@ -103,7 +103,7 @@ scrollView.auk.stopAutoScroll()
 One can pass an image description when calling the `show` methods. This description will be spoken by the device in accessibility mode for the current image on screen.
 
 ```Swift
-// Show remote image
+// Supply accessibility label for the image
 scrollView.auk.show(url: "http://site.com/bird.jpg", accessibilityLabel: "Picture of a bird.")
 ```
 
