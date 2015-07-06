@@ -98,6 +98,15 @@ scrollView.auk.startAutoScroll(delaySeconds: 3)
 scrollView.auk.stopAutoScroll()
 ```
 
+#### Accessibility
+
+One can pass an image description when calling the `show` methods. This description will be spoken by the device when in accessibility mode.
+
+```Swift
+// Show remote image
+scrollView.auk.show(url: "http://site.com/bird.jpg", accessibilityLabel: "Picture of a bird.")
+```
+
 ## Configuration
 
 Use the `auk.settings` property to configure behavior and appearance of the scroll view before showing the images. See the [configuration manual](https://github.com/evgenyneu/Auk/wiki/Auk-configuration) for the complete list of configuration options.
@@ -140,6 +149,10 @@ One can simulate and verify remote image download in your unit tests. Please ref
 // Autorespond with the given image
 MoaSimulator.autorespondWithImage("www.site.com", image: UIImage(named: "35px.jpg")!)
 ```
+
+## Scroll view delegate
+
+If you need to assign a delegate to the scroll view please do so before accessing `scrollView.auk` property.
 
 ## Demo app
 
