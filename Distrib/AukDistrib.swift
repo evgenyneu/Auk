@@ -318,7 +318,7 @@ public class Auk {
       superview = scrollView.superview {
 
       let container = AukPageIndicatorContainer()
-      superview.addSubview(container)
+      superview.insertSubview(container, aboveSubview: scrollView)
       pageIndicatorContainer = container
       container.setup(settings, scrollView: scrollView)
     }
