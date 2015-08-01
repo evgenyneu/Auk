@@ -14,7 +14,6 @@ This is an iOS library that shows an image carousel with a page indicator. Users
 * Supports animated transition during screen orientation change.
 * Includes image caching.
 
-> This code is dedicated to the [great auk](https://en.wikipedia.org/wiki/Great_auk), a flightless bird that became extinct in the mid-19th century.
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_paged_image_scroller_ios.jpg' alt='Great Auks by John Gerrard Keulemans' width='382'>
 
@@ -182,7 +181,10 @@ Here is a list of other image slideshow libraries for iOS.
 * Great Auks in summer and winter plumage by John Gerrard Keulemans, before 1912. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Keulemans-GreatAuk.jpg).
 
 
-
 ## License
 
 Auk is released under the [MIT License](LICENSE).
+
+## 🌿
+
+This code is dedicated to the [great auk](https://en.wikipedia.org/wiki/Great_auk), a flightless bird that became extinct in the mid-19th century.
