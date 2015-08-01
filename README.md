@@ -158,7 +158,7 @@ If you need to assign a delegate to the scroll view please do so before accessin
 
 The project includes a demo iOS app.
 
-<img src='https://github.com/evgenyneu/Auk/blob/master/Graphics/Screenshots/auk_demo_ios_app.jpg' width='414' alt='Auk pages scroll view demo iOS app'>
+<img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_demo_ios_app_2.jpg' width='414' alt='Auk pages scroll view demo iOS app'>
 
 ## Alternative solutions
 
