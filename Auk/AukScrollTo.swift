@@ -17,17 +17,11 @@ struct AukScrollTo {
   static func scrollTo(scrollView: UIScrollView, pageIndex: Int, pageWidth: CGFloat,
     animated: Bool, numberOfPages: Int) {
       
-    let offsetX = CGFloat(pageIndex) * pageWidth
-    var offset = CGPoint(x: offsetX, y: 0)
-      
-    let maxOffset = CGFloat(numberOfPages - 1) * pageWidth
-      
-    // Prevent overscrolling to the right
-    if offset.x > maxOffset { offset.x = maxOffset }
-      
-    // Prevent overscrolling to the left
-    if offset.x < 0 { offset.x = 0 }
-
+    let offsetX = contentOffsetForPage(pageIndex, pageWidth: pageWidth,
+      numberOfPages: numberOfPages, scrollView: scrollView)
+    
+    let offset = CGPoint(x: offsetX, y: 0)
+  
     scrollView.setContentOffset(offset, animated: animated)
   }
   
