@@ -197,7 +197,7 @@ public class Auk {
       
       var value = Int(round(offset / width))
       
-      // Page #0 is the rightmost in the right-to-left language layout
+      // Page # 0 is the rightmost in the right-to-left language layout
       if RightToLeft.isRightToLeft(scrollView) {
         value = numberOfPages - value - 1
         if value < 0 { value = 0 }

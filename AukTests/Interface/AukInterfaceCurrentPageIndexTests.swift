@@ -45,7 +45,7 @@ class AukInterfaceCurrentPageIndexTestsTests: XCTestCase {
   
   func testCurrenPageIndex_rightToLeft() {
     if #available(iOS 9.0, *) {
-      scrollView.semanticContentAttribute = UISemanticContentAttribute.ForceRightToLeft
+      scrollView.semanticContentAttribute = .ForceRightToLeft
      
       // Show 2 images
       // -------------
