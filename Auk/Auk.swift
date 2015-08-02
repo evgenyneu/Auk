@@ -194,8 +194,11 @@ public class Auk {
     if let scrollView = scrollView {
       let width = Double(scrollView.bounds.size.width)
       let offset = Double(scrollView.contentOffset.x)
-
-      return Int(round(offset / width))
+      
+      var value = Int(round(offset / width))
+      
+      return value
+      
     }
 
     return 0
@@ -280,6 +283,11 @@ public class Auk {
 
     if let scrollView = scrollView {
       scrollView.addSubview(page)
+  
+      if RightToLeft.isRightToLeft(scrollView) {
+        scrollView.contentOffset.x += scrollView.bounds.size.width
+      }
+
       AukScrollViewContent.layout(scrollView)
     }
 
