@@ -62,35 +62,10 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
     XCTAssertEqual(CGSize(width: 120, height: 90), aukView2.frame.size)
   }
   
-  // MARK: - Accessibility
-  
-  func testCreateAccessiblePageView_withLabel() {
-    let image = uiImageFromFile("96px.png")
-    auk.show(image: image, accessibilityLabel: "White knight riding a wooden horse on wheels.")
-    
-    let page = aukPage(scrollView, pageIndex: 0)!
-    
-    XCTAssert(page.isAccessibilityElement)
-    XCTAssertEqual(page.accessibilityTraits, UIAccessibilityTraitImage)
-    XCTAssertEqual("White knight riding a wooden horse on wheels.", page.accessibilityLabel!)
-  }
-  
-  func testCreateAccessiblePageView_withoutLabel() {
-    let image = uiImageFromFile("96px.png")
-    auk.show(image: image)
-    
-    let page = aukPage(scrollView, pageIndex: 0)!
-    
-    XCTAssert(page.isAccessibilityElement)
-    XCTAssertEqual(page.accessibilityTraits, UIAccessibilityTraitImage)
-    XCTAssert(page.accessibilityLabel == nil)
-  }
-  
-  // MARK: - right-to-left language
   func testShowLocalImage_layoutSubviews_rightToLeft() {
     if #available(iOS 9.0, *) {
-      scrollView.semanticContentAttribute = UISemanticContentAttribute.ForceRightToLeft
-
+      scrollView.semanticContentAttribute = .ForceRightToLeft
+      
       let image1 = uiImageFromFile("96px.png")
       auk.show(image: image1)
       
@@ -119,7 +94,67 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
       XCTAssertEqual(CGPoint(x: 0, y: 0), aukView2.frame.origin)
       XCTAssertEqual(CGSize(width: 120, height: 90), aukView2.frame.size)
       XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 1)!.size.width)
-
+      
     }
   }
+  
+  func testShowLocalImage_contentOffset() {
+    XCTAssertEqual(0, scrollView.contentOffset.x)
+    
+    let image1 = uiImageFromFile("96px.png")
+    auk.show(image: image1)
+    
+    XCTAssertEqual(0, scrollView.contentOffset.x)
+    
+    let image2 = uiImageFromFile("67px.png")
+    auk.show(image: image2)
+    
+    XCTAssertEqual(0, scrollView.contentOffset.x)
+  }
+  
+  func testShowLocalImage_contentOffset_rightToLeft() {
+    if #available(iOS 9.0, *) {
+      scrollView.semanticContentAttribute = .ForceRightToLeft
+      
+      XCTAssertEqual(0, scrollView.contentOffset.x)
+      
+      let image1 = uiImageFromFile("96px.png")
+      auk.show(image: image1)
+      XCTAssertEqual(0, scrollView.contentOffset.x)
+      
+      let image2 = uiImageFromFile("67px.png")
+      auk.show(image: image2)
+      XCTAssertEqual(120, scrollView.contentOffset.x)
+      
+      let image3 = uiImageFromFile("35px.jpg")
+      auk.show(image: image3)
+      XCTAssertEqual(240, scrollView.contentOffset.x)
+    }
+  }
+  
+  // MARK: - Accessibility
+  
+  func testCreateAccessiblePageView_withLabel() {
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image, accessibilityLabel: "White knight riding a wooden horse on wheels.")
+    
+    let page = aukPage(scrollView, pageIndex: 0)!
+    
+    XCTAssert(page.isAccessibilityElement)
+    XCTAssertEqual(page.accessibilityTraits, UIAccessibilityTraitImage)
+    XCTAssertEqual("White knight riding a wooden horse on wheels.", page.accessibilityLabel!)
+  }
+  
+  func testCreateAccessiblePageView_withoutLabel() {
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    
+    let page = aukPage(scrollView, pageIndex: 0)!
+    
+    XCTAssert(page.isAccessibilityElement)
+    XCTAssertEqual(page.accessibilityTraits, UIAccessibilityTraitImage)
+    XCTAssert(page.accessibilityLabel == nil)
+  }
+  
+  
 }
