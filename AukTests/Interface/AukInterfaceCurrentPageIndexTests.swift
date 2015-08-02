@@ -31,17 +31,47 @@ class AukInterfaceCurrentPageIndexTestsTests: XCTestCase {
     
     // Scroll to show more than the half of the second page
     scrollView.contentOffset.x = 70
-    
     XCTAssertEqual(1, auk.currentPageIndex)
     
     // Scroll to the second image
     scrollView.contentOffset.x = 120
-    
     XCTAssertEqual(1, auk.currentPageIndex)
     
     // Scroll to show the third page ALMOST entirely
     scrollView.contentOffset.x = 230
-    
     XCTAssertEqual(2, auk.currentPageIndex)
+  }
+  
+  func testCurrenPageIndex_rightToLeft() {
+    if #available(iOS 9.0, *) {
+      scrollView.semanticContentAttribute = UISemanticContentAttribute.ForceRightToLeft
+     
+      // Show 2 images
+      // -------------
+      
+      let image = uiImageFromFile("96px.png")
+      auk.show(image: image)
+      auk.show(image: image)
+      auk.show(image: image)
+      
+      // Show first page by default
+      XCTAssertEqual(0, auk.currentPageIndex)
+      
+      // Scroll to third page explicitely
+      scrollView.contentOffset.x = 240
+      XCTAssertEqual(0, auk.currentPageIndex)
+      
+      // Scroll to show more than the half of the second page
+      scrollView.contentOffset.x = 140
+      XCTAssertEqual(1, auk.currentPageIndex)
+      
+      // Scroll to the second image
+      scrollView.contentOffset.x = 120
+      XCTAssertEqual(1, auk.currentPageIndex)
+      
+      // Scroll to show the third page ALMOST entirely
+      scrollView.contentOffset.x = 20
+      XCTAssertEqual(2, auk.currentPageIndex)
+    }
   }
 }

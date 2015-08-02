@@ -25,6 +25,8 @@
 		7E5B5E241B2C2D3000B87E54 /* Auk.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E5B5E231B2C2D3000B87E54 /* Auk.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E5B5E2A1B2C2D3000B87E54 /* Auk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5B5E1E1B2C2D3000B87E54 /* Auk.framework */; };
 		7E5B5E311B2C2D3000B87E54 /* AukTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5B5E301B2C2D3000B87E54 /* AukTests.swift */; };
+		7E5DCDBB1B6DE64500C288CA /* RightToLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCDBA1B6DE64500C288CA /* RightToLeft.swift */; };
+		7E5DCDBC1B6DE6E700C288CA /* RightToLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCDBA1B6DE64500C288CA /* RightToLeft.swift */; };
 		7E7E317C1B3658BE004411EB /* AukRemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E317B1B3658BE004411EB /* AukRemoteImage.swift */; };
 		7E7E317D1B3658F0004411EB /* AukRemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E317B1B3658BE004411EB /* AukRemoteImage.swift */; };
 		7E9013901B2CF6FB00DD4406 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E90138F1B2CF6FB00DD4406 /* AppDelegate.swift */; };
@@ -139,6 +141,7 @@
 		7E5B5E291B2C2D3000B87E54 /* AukTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AukTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E5B5E2F1B2C2D3000B87E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E5B5E301B2C2D3000B87E54 /* AukTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AukTests.swift; sourceTree = "<group>"; };
+		7E5DCDBA1B6DE64500C288CA /* RightToLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightToLeft.swift; sourceTree = "<group>"; };
 		7E7E317B1B3658BE004411EB /* AukRemoteImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukRemoteImage.swift; sourceTree = "<group>"; };
 		7E90138B1B2CF6FB00DD4406 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E90138E1B2CF6FB00DD4406 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -241,6 +244,7 @@
 				7E333BFF1B3FDDCE001BBB57 /* iiQ.swift */,
 				7E5AEDEF1B2D0C0500199C38 /* iiAutolayoutConstraints.swift */,
 				7E98FD991B476DCE00192AAF /* AutoCancellingTimer.swift */,
+				7E5DCDBA1B6DE64500C288CA /* RightToLeft.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -577,6 +581,7 @@
 				7E7E317C1B3658BE004411EB /* AukRemoteImage.swift in Sources */,
 				7E333C001B3FDDCE001BBB57 /* iiQ.swift in Sources */,
 				7E98FDBB1B47837D00192AAF /* AukAutoscroll.swift in Sources */,
+				7E5DCDBB1B6DE64500C288CA /* RightToLeft.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +602,7 @@
 				7E98FDAE1B4780C000192AAF /* AukInterfaceScrollNextPreviousPageTests.swift in Sources */,
 				7EBD03E01B34E9E800957205 /* iiAutolayoutConstraints.swift in Sources */,
 				7EFE6B9F1B3E7EF500E048F3 /* AukScrollViewDelegate.swift in Sources */,
+				7E5DCDBC1B6DE6E700C288CA /* RightToLeft.swift in Sources */,
 				7EBD03DE1B34E9E400957205 /* AukPage.swift in Sources */,
 				7E11D4781B3F53E60086F36F /* AukPageIndicatorContainerTests.swift in Sources */,
 				7E9013AF1B2CF83B00DD4406 /* UIScrollView+AukTests.swift in Sources */,

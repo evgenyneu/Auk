@@ -209,8 +209,16 @@ public class Auk {
     if let scrollView = scrollView {
       let width = Double(scrollView.bounds.size.width)
       let offset = Double(scrollView.contentOffset.x)
-
-      return Int(round(offset / width))
+      
+      var value = Int(round(offset / width))
+      
+      // Page #0 is the rightmost in the right-to-left language layout
+      if RightToLeft.isRightToLeft(scrollView) {
+        value = numberOfPages - value - 1
+        if value < 0 { value = 0 }
+      }
+      
+      return value
     }
 
     return 0
@@ -294,11 +302,21 @@ public class Auk {
     page.makeAccessible(accessibilityLabel)
 
     if let scrollView = scrollView {
+      // Pages are added to the left of the current page
+      // in the right-to-left language layout.
+      // So we need to increase content offset to keep the current page visible.
+      if RightToLeft.isRightToLeft(scrollView) && numberOfPages > 0 {
+        scrollView.contentOffset.x += scrollView.bounds.size.width
+      }
+      
       scrollView.addSubview(page)
+
       AukScrollViewContent.layout(scrollView)
     }
 
     pageIndicatorContainer?.updateNumberOfPages(numberOfPages)
+    pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
+    
 
     return page
   }
@@ -865,15 +883,15 @@ struct AukScrollViewContent {
       iiAutolayoutConstraints.fillParent(page, parentView: scrollView, margin: 0, vertically: true)
       
       if index == 0 {
-        // Align the left edge of the first page to the left edge of the scroll view.
+        // Align the leading edge of the first page to the leading edge of the scroll view.
         iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
-          constraintContainer: scrollView, attribute: NSLayoutAttribute.Left, margin: 0)
+          constraintContainer: scrollView, attribute: NSLayoutAttribute.Leading, margin: 0)
       }
       
       if index == pages.count - 1 {
-        // Align the right edge of the last page to the right edge of the scroll view.
+        // Align the trailing edge of the last page to the trailing edge of the scroll view.
         iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
-          constraintContainer: scrollView, attribute: NSLayoutAttribute.Right, margin: 0)
+          constraintContainer: scrollView, attribute: NSLayoutAttribute.Trailing, margin: 0)
       }
     }
     
@@ -1366,6 +1384,31 @@ class iiQ {
   class func runAfterDelay(delaySeconds: Double, block: ()->()) {
     let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delaySeconds * Double(NSEC_PER_SEC)))
     dispatch_after(time, dispatch_get_main_queue(), block)
+  }
+}
+
+
+// ----------------------------
+//
+// RightToLeft.swift
+//
+// ----------------------------
+
+import UIKit
+
+/**
+
+Helper functions for dealing with right-to-left languages.
+
+*/
+struct RightToLeft {
+  static func isRightToLeft(view: UIView) -> Bool {
+    if #available(iOS 9.0, *) {
+      return UIView.userInterfaceLayoutDirectionForSemanticContentAttribute(
+        view.semanticContentAttribute) == .RightToLeft
+    } else {
+      return UIApplication.sharedApplication().userInterfaceLayoutDirection == .RightToLeft
+    }
   }
 }
 

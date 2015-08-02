@@ -197,8 +197,13 @@ public class Auk {
       
       var value = Int(round(offset / width))
       
-      return value
+      // Page #0 is the rightmost in the right-to-left language layout
+      if RightToLeft.isRightToLeft(scrollView) {
+        value = numberOfPages - value - 1
+        if value < 0 { value = 0 }
+      }
       
+      return value
     }
 
     return 0
@@ -282,16 +287,21 @@ public class Auk {
     page.makeAccessible(accessibilityLabel)
 
     if let scrollView = scrollView {
-      scrollView.addSubview(page)
-  
-      if RightToLeft.isRightToLeft(scrollView) {
+      // Pages are added to the left of the current page
+      // in the right-to-left language layout.
+      // So we need to increase content offset to keep the current page visible.
+      if RightToLeft.isRightToLeft(scrollView) && numberOfPages > 0 {
         scrollView.contentOffset.x += scrollView.bounds.size.width
       }
+      
+      scrollView.addSubview(page)
 
       AukScrollViewContent.layout(scrollView)
     }
 
     pageIndicatorContainer?.updateNumberOfPages(numberOfPages)
+    pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
+    
 
     return page
   }

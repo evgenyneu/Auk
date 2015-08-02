@@ -1,5 +1,10 @@
 import UIKit
 
+/**
+
+Helper functions for dealing with right-to-left languages.
+
+*/
 struct RightToLeft {
   static func isRightToLeft(view: UIView) -> Bool {
     if #available(iOS 9.0, *) {
