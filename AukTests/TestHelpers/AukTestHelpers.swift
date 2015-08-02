@@ -1,5 +1,6 @@
 import UIKit
 import XCTest
+@testable import Auk
 
 /// Test helpers
 extension XCTestCase {

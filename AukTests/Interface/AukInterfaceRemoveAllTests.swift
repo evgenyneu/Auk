@@ -1,5 +1,6 @@
 import XCTest
 import UIKit
+@testable import Auk
 
 class AukInterfaceRemoveAllTests: XCTestCase {
   

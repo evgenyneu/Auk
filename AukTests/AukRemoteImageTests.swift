@@ -1,5 +1,6 @@
 import XCTest
 import moa
+@testable import Auk
 
 class AukRemoteImageTests: XCTestCase {
   

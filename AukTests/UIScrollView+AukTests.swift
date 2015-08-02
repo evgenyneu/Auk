@@ -1,5 +1,6 @@
 import UIKit
 import XCTest
+@testable import Auk
 
 class UIScrollViewAukExtensionTests: XCTestCase {
   func testGetCreatesAndStoresMoaInstance() {

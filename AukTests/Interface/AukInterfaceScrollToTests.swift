@@ -1,6 +1,6 @@
-import UIKit
 import XCTest
 import UIKit
+@testable import Auk
 
 class AukInterfaceScrollToTests: XCTestCase {
   

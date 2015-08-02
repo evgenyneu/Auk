@@ -1,5 +1,6 @@
 import XCTest
 import moa
+@testable import Auk
 
 class AukPageVisibilityTests: XCTestCase {
   var scrollView: UIScrollView!
