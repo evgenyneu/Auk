@@ -203,5 +203,19 @@ class AukTests: XCTestCase {
     
     XCTAssert(auk.pageIndicatorContainer!.hidden)
   }
+  
+  func testPageIndicator_scrollWhenPageIndicatorIsTapped() {
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    auk.show(image: image)
+        
+    auk.pageIndicatorContainer!.pageControl!.currentPage = 1
+    auk.pageIndicatorContainer?.didTapPageControl(auk.pageIndicatorContainer!.pageControl!)
+    
+    XCTAssertEqual(120, scrollView.contentOffset.x)
+  }
 
 }
