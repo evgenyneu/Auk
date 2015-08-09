@@ -3,6 +3,11 @@ import UIKit
 /// View containing a UIPageControl object that shows the dots for present pages.
 final class AukPageIndicatorContainer: UIView {
   
+  deinit {
+    pageControl?.removeTarget(self, action: Selector("didTapPageControl:"),
+      forControlEvents: UIControlEvents.ValueChanged)
+  }
+  
   var didTapPageControlCallback: ((Int)->())?
   
   var pageControl: UIPageControl? {

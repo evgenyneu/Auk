@@ -165,4 +165,21 @@ class AukPageIndicatorTests: XCTestCase {
 
     XCTAssert(container.hidden)
   }
+  
+  // MARK: Tap container
+  
+  func testTapContainer() {
+    var receivePageIndex: Int?
+    
+    container.didTapPageControlCallback = { pageIndex in
+      receivePageIndex = pageIndex
+    }
+    
+    container.setup(settings, scrollView: scrollView)
+    container.pageControl?.numberOfPages = 1000
+    container.pageControl?.currentPage = 312
+    container.didTapPageControl(container.pageControl!)
+    
+    XCTAssertEqual(312, receivePageIndex!)
+  }
 }
