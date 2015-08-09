@@ -74,14 +74,24 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     updateCurrentImageDescription()
   }
 
-  @IBAction func onNextPageTapped(sender: AnyObject) {
+  @IBAction func onShowRightButtonTapped(sender: AnyObject) {
     scrollView.auk.stopAutoScroll()
-    scrollView.auk.scrollToNextPage()
+    
+    if RightToLeft.isRightToLeft(view) {
+      scrollView.auk.scrollToPreviousPage()
+    } else {
+      scrollView.auk.scrollToNextPage()
+    }
   }
 
-  @IBAction func onPreviousPageTapped(sender: AnyObject) {
+  @IBAction func onShowLeftButtonTapped(sender: AnyObject) {
     scrollView.auk.stopAutoScroll()
-    scrollView.auk.scrollToPreviousPage()
+    
+    if RightToLeft.isRightToLeft(view) {
+      scrollView.auk.scrollToNextPage()
+    } else {
+      scrollView.auk.scrollToPreviousPage()
+    }
   }
 
   @IBAction func onDeleteButtonTapped(sender: AnyObject) {

@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/moa-Swift.h</key>
 		<data>
-		lfLqXUu4EwRLghLfnMo9TdkpRmk=
+		B+SZ8VuC/ObTmSmV8Q5rsFhN6z0=
 		</data>
 		<key>Headers/moa.h</key>
 		<data>
@@ -14,23 +14,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		jxFt6gAzy/EL3KPrbCeGivMOBQE=
+		wq/4nkrbZG6S86DfZT7CfIASJJk=
 		</data>
 		<key>Modules/moa.swiftmodule/arm.swiftdoc</key>
 		<data>
-		7esZX1gzBxmqKRg7+siGDUvWK/I=
+		dIpddNlB7VOjmWRhNUs30mlMxMA=
 		</data>
 		<key>Modules/moa.swiftmodule/arm.swiftmodule</key>
 		<data>
-		7VSI40ht8y3x8ycFUGaZ5QYLFpU=
+		dwIhCHkOLcwK6pGPzNZ4t8rtOdY=
 		</data>
 		<key>Modules/moa.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		iX001zhcaRpEeHBhlKhSrs69o30=
+		K2mJ1ov6mdR006osuvcU33EcEiQ=
 		</data>
 		<key>Modules/moa.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		vXIH7mQBA7Sv38ofZD/jRV0B3uU=
+		mCIfbKk5aMCk/qlL4G58mGBkZ2Y=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -41,7 +41,7 @@
 	<dict>
 		<key>Headers/moa-Swift.h</key>
 		<data>
-		lfLqXUu4EwRLghLfnMo9TdkpRmk=
+		B+SZ8VuC/ObTmSmV8Q5rsFhN6z0=
 		</data>
 		<key>Headers/moa.h</key>
 		<data>
@@ -49,19 +49,19 @@
 		</data>
 		<key>Modules/moa.swiftmodule/arm.swiftdoc</key>
 		<data>
-		7esZX1gzBxmqKRg7+siGDUvWK/I=
+		dIpddNlB7VOjmWRhNUs30mlMxMA=
 		</data>
 		<key>Modules/moa.swiftmodule/arm.swiftmodule</key>
 		<data>
-		7VSI40ht8y3x8ycFUGaZ5QYLFpU=
+		dwIhCHkOLcwK6pGPzNZ4t8rtOdY=
 		</data>
 		<key>Modules/moa.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		iX001zhcaRpEeHBhlKhSrs69o30=
+		K2mJ1ov6mdR006osuvcU33EcEiQ=
 		</data>
 		<key>Modules/moa.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		vXIH7mQBA7Sv38ofZD/jRV0B3uU=
+		mCIfbKk5aMCk/qlL4G58mGBkZ2Y=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
