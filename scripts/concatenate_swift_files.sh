@@ -1,7 +1,17 @@
 #!/bin/bash
 
 #
-#  Combines *.swift files into a single file. Usually
+#  Combines *.swift files into a single file. Used in Xcode to build a single swift distributive file.
+#
+#  Here is how to use it in Xcode:
+#
+#  1. Create an "External build system" target.
+#  2. Click "Info" tab in target settings.
+#  3. In "Build Tool" field specify the path to this script file, for example: $PROJECT_DIR/scripts/concatenate_swift_files.sh
+#  4. In "Arguments" field specify the arguments, for example $PROJECT_DIR/YourSubDir $PROJECT_DIR/Distrib/Distrib.swift "// Your header"
+#  5. Build the target and it will concatenate your swift files into a single swift file.
+#
+#  You can see an example of using the script in this project: https://github.com/evgenyneu/moa
 #
 #  Usage
 #  ------
@@ -22,6 +32,9 @@
 #
 #    $PROJECT_DIR/MyProject $PROJECT_DIR/Distrib/MyDistrib.swift "// My header" "remove this line"
 #
+
+# Handle paths with spaces (http://unix.stackexchange.com/a/9499)
+IFS=$'\n'
 
 destination=$2
 headermessage=$3
