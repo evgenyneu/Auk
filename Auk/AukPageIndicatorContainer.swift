@@ -2,6 +2,9 @@ import UIKit
 
 /// View containing a UIPageControl object that shows the dots for present pages.
 final class AukPageIndicatorContainer: UIView {
+  
+  var didTapPageControlCallback: ((Int)->())?
+  
   var pageControl: UIPageControl? {
     get {
       if subviews.count == 0 { return nil }
@@ -66,11 +69,20 @@ final class AukPageIndicatorContainer: UIView {
       }
     }
     
+    pageControl.addTarget(self, action: Selector("didTapPageControl:"),
+      forControlEvents: UIControlEvents.ValueChanged)
+    
     pageControl.pageIndicatorTintColor = settings.pageControl.pageIndicatorTintColor
     pageControl.currentPageIndicatorTintColor = settings.pageControl.currentPageIndicatorTintColor
 
     addSubview(pageControl)
     return pageControl
+  }
+  
+  func didTapPageControl(control: UIPageControl) {
+    if let currentPage = pageControl?.currentPage {
+      didTapPageControlCallback?(currentPage)
+    }
   }
   
   private static func layoutPageControl(pageControl: UIPageControl, superview: UIView,

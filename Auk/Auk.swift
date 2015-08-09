@@ -321,9 +321,14 @@ public class Auk {
       superview = scrollView.superview {
 
       let container = AukPageIndicatorContainer()
+      container.didTapPageControlCallback = didTapPageControl
       superview.insertSubview(container, aboveSubview: scrollView)
       pageIndicatorContainer = container
       container.setup(settings, scrollView: scrollView)
     }
+  }
+  
+  private func didTapPageControl(pageIndex: Int) {
+    scrollTo(pageIndex, animated: true)
   }
 }
