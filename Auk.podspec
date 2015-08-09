@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "Auk"
-  s.version     = "2.0.7"
+  s.version     = "2.0.8"
   s.license     = { :type => "MIT" }
   s.homepage    = "https://github.com/evgenyneu/Auk"
   s.summary     = "An image slideshow for iOS written in Swift."
@@ -11,6 +11,7 @@ Pod::Spec.new do |s|
                    * Includes ability to simulate and verify image download in unit tests.
                    * Supports animated transition during screen orientation change.
                    * Includes image caching.
+                   * Supports right-to-left languages.
                    DESC
   s.authors     = { "Evgenii Neumerzhitckii" => "sausageskin@gmail.com" }
   s.source      = { :git => "https://github.com/evgenyneu/Auk.git", :tag => s.version }
