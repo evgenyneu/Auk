@@ -66,10 +66,10 @@
                                             <constraints>
                                                 <constraint firstItem="xkS-kK-gCM" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" id="2It-gK-v0N"/>
                                                 <constraint firstItem="6Cz-ix-YLV" firstAttribute="centerX" secondItem="OaU-zQ-uCL" secondAttribute="centerX" id="6ml-UB-qkl"/>
-                                                <constraint firstItem="Ak0-JX-tQy" firstAttribute="leading" secondItem="6Cz-ix-YLV" secondAttribute="trailing" constant="25" id="Gbc-3w-dM7"/>
+                                                <constraint firstItem="Ak0-JX-tQy" firstAttribute="leading" secondItem="6Cz-ix-YLV" secondAttribute="trailing" constant="25" placeholder="YES" id="Gbc-3w-dM7"/>
                                                 <constraint firstAttribute="bottom" secondItem="6Cz-ix-YLV" secondAttribute="bottom" id="VCL-sB-T3f"/>
                                                 <constraint firstItem="6Cz-ix-YLV" firstAttribute="top" secondItem="OaU-zQ-uCL" secondAttribute="top" constant="15" id="oL2-AY-s29"/>
-                                                <constraint firstItem="6Cz-ix-YLV" firstAttribute="leading" secondItem="xkS-kK-gCM" secondAttribute="trailing" constant="25" id="q9C-6X-zPd"/>
+                                                <constraint firstItem="6Cz-ix-YLV" firstAttribute="leading" secondItem="xkS-kK-gCM" secondAttribute="trailing" constant="25" placeholder="YES" id="q9C-6X-zPd"/>
                                                 <constraint firstItem="Ak0-JX-tQy" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" id="sWd-U0-yfC"/>
                                             </constraints>
                                         </view>
@@ -139,7 +139,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="autoScrollButton" destination="6Cz-ix-YLV" id="j2H-G4-L6S"/>
                         <outlet property="imageDescriptionLabel" destination="aWz-f3-FnP" id="Xi0-p8-7FW"/>
+                        <outlet property="leftButton" destination="xkS-kK-gCM" id="kDx-W6-OJc"/>
+                        <outlet property="rightButton" destination="Ak0-JX-tQy" id="L8K-Uj-92y"/>
                         <outlet property="scrollView" destination="SrW-bD-PlC" id="MZy-wY-MWd"/>
                     </connections>
                 </viewController>

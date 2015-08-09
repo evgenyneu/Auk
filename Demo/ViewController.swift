@@ -8,9 +8,14 @@ class ViewController: UIViewController, UIScrollViewDelegate {
   var imageDescriptions = [String]()
   @IBOutlet weak var imageDescriptionLabel: UILabel!
   
+  @IBOutlet weak var leftButton: UIButton!
+  @IBOutlet weak var rightButton: UIButton!
+  @IBOutlet weak var autoScrollButton: UIButton!
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    layoutButtons()
     
     scrollView.delegate = self
     scrollView.auk.settings.placeholderImage = UIImage(named: "great_auk_placeholder.png")
@@ -19,7 +24,25 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     showInitialImage()
     updateCurrentImageDescription()
   }
-
+  
+  private func layoutButtons() {
+    layoutButtons(leftButton, secondView: autoScrollButton)
+    layoutButtons(autoScrollButton, secondView: rightButton)
+  }
+  
+  private func layoutButtons(firstView: UIView, secondView: UIView) {
+    let constraint = NSLayoutConstraint(
+      item: secondView,
+      attribute: NSLayoutAttribute.Left,
+      relatedBy: NSLayoutRelation.Equal,
+      toItem: firstView,
+      attribute: NSLayoutAttribute.Right,
+      multiplier: 1,
+      constant: 35)
+    
+    view.addConstraint(constraint)
+  }
+  
   /// Animate scroll view on orientation change
   override func viewWillTransitionToSize(size: CGSize,
     withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
