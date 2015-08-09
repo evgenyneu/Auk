@@ -26,53 +26,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" translatesAutoresizingMaskIntoConstraints="NO" id="OaU-zQ-uCL">
-                                            <rect key="frame" x="0.0" y="270" width="600" height="75"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkS-kK-gCM">
-                                                    <rect key="frame" x="215" y="15" width="40" height="60"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                    <state key="normal" title="⏪">
-                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="onShowLeftButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bnx-Yi-260"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ak0-JX-tQy">
-                                                    <rect key="frame" x="345" y="15" width="40" height="60"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                    <state key="normal" title="⏩">
-                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="onShowRightButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="85a-Zu-PFa"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cz-ix-YLV">
-                                                    <rect key="frame" x="280" y="15" width="40" height="60"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                    <state key="normal" title="🔁">
-                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="onAutoscrollTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l6A-hy-GLM"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="xkS-kK-gCM" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" id="2It-gK-v0N"/>
-                                                <constraint firstItem="6Cz-ix-YLV" firstAttribute="centerX" secondItem="OaU-zQ-uCL" secondAttribute="centerX" id="6ml-UB-qkl"/>
-                                                <constraint firstItem="Ak0-JX-tQy" firstAttribute="leading" secondItem="6Cz-ix-YLV" secondAttribute="trailing" constant="25" placeholder="YES" id="Gbc-3w-dM7"/>
-                                                <constraint firstAttribute="bottom" secondItem="6Cz-ix-YLV" secondAttribute="bottom" id="VCL-sB-T3f"/>
-                                                <constraint firstItem="6Cz-ix-YLV" firstAttribute="top" secondItem="OaU-zQ-uCL" secondAttribute="top" constant="15" id="oL2-AY-s29"/>
-                                                <constraint firstItem="6Cz-ix-YLV" firstAttribute="leading" secondItem="xkS-kK-gCM" secondAttribute="trailing" constant="25" placeholder="YES" id="q9C-6X-zPd"/>
-                                                <constraint firstItem="Ak0-JX-tQy" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" id="sWd-U0-yfC"/>
-                                            </constraints>
-                                        </view>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SrW-bD-PlC">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="265"/>
                                             <constraints>
@@ -80,24 +33,60 @@
                                             </constraints>
                                         </scrollView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWz-f3-FnP">
-                                            <rect key="frame" x="20" y="360" width="560" height="21.5"/>
+                                            <rect key="frame" x="20" y="353" width="560" height="21.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                             <color key="shadowColor" red="0.46947995580808077" green="0.46947995580808077" blue="0.46947995580808077" alpha="1" colorSpace="calibratedRGB"/>
                                             <size key="shadowOffset" width="1" height="1"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkS-kK-gCM">
+                                            <rect key="frame" x="205" y="285" width="40" height="60"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                            <state key="normal" title="⏪">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onShowLeftButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bnx-Yi-260"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cz-ix-YLV">
+                                            <rect key="frame" x="280" y="285" width="40" height="60"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                            <state key="normal" title="🔁">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onAutoscrollTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l6A-hy-GLM"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ak0-JX-tQy">
+                                            <rect key="frame" x="355" y="285" width="40" height="60"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                            <state key="normal" title="⏩">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onShowRightButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="85a-Zu-PFa"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Ak0-JX-tQy" firstAttribute="leading" secondItem="6Cz-ix-YLV" secondAttribute="trailing" constant="35" placeholder="YES" id="3lS-Na-IQr"/>
                                         <constraint firstAttribute="trailing" secondItem="aWz-f3-FnP" secondAttribute="trailing" constant="20" id="6xu-k3-nLM"/>
-                                        <constraint firstItem="OaU-zQ-uCL" firstAttribute="leading" secondItem="Pv7-uD-0Sn" secondAttribute="leading" id="AIj-7J-58V"/>
+                                        <constraint firstItem="6Cz-ix-YLV" firstAttribute="leading" secondItem="xkS-kK-gCM" secondAttribute="trailing" constant="35" placeholder="YES" id="7rR-dE-DM0"/>
                                         <constraint firstItem="aWz-f3-FnP" firstAttribute="leading" secondItem="Pv7-uD-0Sn" secondAttribute="leading" constant="20" id="Czh-Ye-7vO"/>
-                                        <constraint firstItem="OaU-zQ-uCL" firstAttribute="top" secondItem="SrW-bD-PlC" secondAttribute="bottom" constant="5" id="Fel-PT-5OJ"/>
+                                        <constraint firstItem="6Cz-ix-YLV" firstAttribute="top" secondItem="SrW-bD-PlC" secondAttribute="bottom" constant="20" id="Kta-IK-ESL"/>
                                         <constraint firstItem="SrW-bD-PlC" firstAttribute="top" secondItem="Pv7-uD-0Sn" secondAttribute="top" id="LdL-xC-G4g"/>
-                                        <constraint firstItem="aWz-f3-FnP" firstAttribute="top" secondItem="OaU-zQ-uCL" secondAttribute="bottom" constant="15" id="ZMO-M7-PoC"/>
-                                        <constraint firstAttribute="trailing" secondItem="OaU-zQ-uCL" secondAttribute="trailing" id="gCG-0V-6Pa"/>
+                                        <constraint firstItem="aWz-f3-FnP" firstAttribute="top" secondItem="6Cz-ix-YLV" secondAttribute="bottom" constant="8" id="Xkl-jc-0zt"/>
                                         <constraint firstItem="SrW-bD-PlC" firstAttribute="leading" secondItem="Pv7-uD-0Sn" secondAttribute="leading" id="gJP-RQ-aXb"/>
+                                        <constraint firstItem="6Cz-ix-YLV" firstAttribute="centerX" secondItem="Pv7-uD-0Sn" secondAttribute="centerX" id="n70-n0-2wZ"/>
                                         <constraint firstAttribute="trailing" secondItem="SrW-bD-PlC" secondAttribute="trailing" id="sOh-c3-YgM"/>
+                                        <constraint firstItem="Ak0-JX-tQy" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" id="vUc-5H-9uG"/>
+                                        <constraint firstItem="xkS-kK-gCM" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" id="xIQ-Nx-uo2"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="light"/>

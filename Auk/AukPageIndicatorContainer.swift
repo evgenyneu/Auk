@@ -59,9 +59,11 @@ final class AukPageIndicatorContainer: UIView {
     if #available(*, iOS 9.0) {
       // iOS 9+
     } else {
-      // Flip the page control horizontally in iOS 8 and earlier.
+      // When using right-to-left language, flip the page control horizontally in iOS 8 and earlier.
       // That will make it highlight the rightmost dot for the first page.
-      pageControl.transform = CGAffineTransformMakeScale(-1, 1)
+      if RightToLeft.isRightToLeft(self) {
+        pageControl.transform = CGAffineTransformMakeScale(-1, 1)
+      }
     }
     
     pageControl.pageIndicatorTintColor = settings.pageControl.pageIndicatorTintColor
