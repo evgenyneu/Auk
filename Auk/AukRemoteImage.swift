@@ -66,7 +66,7 @@ class AukRemoteImage {
   private static func animateImageView(imageView: UIImageView, settings: AukSettings) {
     imageView.alpha = 0
     let interval = NSTimeInterval(settings.remoteImageAnimationIntervalSeconds)
-
+    
     UIView.animateWithDuration(interval, animations: {
       imageView.alpha = 1
     })

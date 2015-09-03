@@ -23,7 +23,7 @@ public struct AukSettings {
   public var placeholderImage: UIImage?
   
   /// The duration of the animation that is used to show the remote images.
-  public var remoteImageAnimationIntervalSeconds: Double = 0.3
+  public var remoteImageAnimationIntervalSeconds: Double = 0.5
   
   /// Show horizontal scroll indicator.
   public var showsHorizontalScrollIndicator = false

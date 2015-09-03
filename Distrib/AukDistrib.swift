@@ -787,7 +787,7 @@ class AukRemoteImage {
   private static func animateImageView(imageView: UIImageView, settings: AukSettings) {
     imageView.alpha = 0
     let interval = NSTimeInterval(settings.remoteImageAnimationIntervalSeconds)
-
+    
     UIView.animateWithDuration(interval, animations: {
       imageView.alpha = 1
     })
@@ -1069,7 +1069,7 @@ public struct AukSettings {
   public var placeholderImage: UIImage?
   
   /// The duration of the animation that is used to show the remote images.
-  public var remoteImageAnimationIntervalSeconds: Double = 0.3
+  public var remoteImageAnimationIntervalSeconds: Double = 0.5
   
   /// Show horizontal scroll indicator.
   public var showsHorizontalScrollIndicator = false
