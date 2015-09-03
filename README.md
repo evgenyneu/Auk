@@ -53,6 +53,9 @@ Auk is written in Swift 2.0 for Xcode 7. See [Swift 1.2 setup instuctions](https
 
 1. Add `import Auk` to your source code if you used Carthage or CocoaPods setup methods.
 1. Add a scroll view to the storyboard and create an outlet property `scrollView` in your view controller.
+1. Clear the **Adjust Scroll View Insets** checkbox in the *Attribute Inspector* of your View Controller.
+
+<img src='https://raw.githubusercontent.com/exchangegroup/Cosmos/master/graphics/Screenshots/cosmos_customize_in_storyboard.png' width='480' alt='Clear "Adjust Scroll View Insets" in your View Controller.'>
 
 Auk extends UIScrollView class by creating the `auk` property.
 
