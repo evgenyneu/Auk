@@ -189,6 +189,10 @@ Here is a list of other image slideshow libraries for iOS.
 
 Auk is released under the [MIT License](LICENSE).
 
+## Feedback is welcome
+
+If you notice any issue, got stuck or just want to chat feel free to [create an issue](evgenyneu/Auk/issues/new). I will be happy to help you.
+
 ## •ᴥ•
 
 This code is dedicated to the [great auk](https://en.wikipedia.org/wiki/Great_auk), a flightless bird that became extinct in the mid-19th century.
