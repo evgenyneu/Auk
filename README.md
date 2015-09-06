@@ -191,7 +191,7 @@ Auk is released under the [MIT License](LICENSE).
 
 ## Feedback is welcome
 
-If you notice any issue, got stuck or just want to chat feel free to [create an issue](evgenyneu/Auk/issues/new). I will be happy to help you.
+If you notice any issue, got stuck or just want to chat feel free to [create an issue](/evgenyneu/Auk/issues/new). I will be happy to help you.
 
 ## •ᴥ•
 
