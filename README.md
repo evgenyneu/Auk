@@ -140,6 +140,10 @@ Auk uses [moa image downloader](https://github.com/evgenyneu/moa) for getting re
 
 
 ```Swift
+import moa
+
+// ...
+
 // By default images are cached according to their response HTTP headers.
 Moa.settings.cache.requestCachePolicy = .UseProtocolCachePolicy
 
