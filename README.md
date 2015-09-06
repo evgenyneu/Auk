@@ -151,6 +151,8 @@ Moa.settings.cache.requestCachePolicy = .UseProtocolCachePolicy
 Moa.settings.cache.requestCachePolicy = .ReturnCacheDataElseLoad
 ```
 
+Moa image downloader offers other features including request logging and settings, check [moa documentation](https://github.com/evgenyneu/moa) for more details.
+
 ## Remote image unit testing
 
 One can simulate and verify remote image download in your unit tests. Please refer to the [moa unit testing manual](https://github.com/evgenyneu/moa/wiki/Unit-testing-with-Moa) for more information. Add `import moa` to your source code if you used Carthage or CocoaPods setup methods.
