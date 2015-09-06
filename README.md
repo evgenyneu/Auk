@@ -151,7 +151,7 @@ Moa.settings.cache.requestCachePolicy = .UseProtocolCachePolicy
 Moa.settings.cache.requestCachePolicy = .ReturnCacheDataElseLoad
 ```
 
-Note: [moa image downloader](https://github.com/evgenyneu/moa) offers other features including request logging and settings.
+Note: [moa image downloader](https://github.com/evgenyneu/moa) offers other features including request logging and HTTP settings.
 
 ## Remote image unit testing
 
