@@ -101,10 +101,6 @@ scrollView.auk.startAutoScroll(delaySeconds: 3)
 scrollView.auk.stopAutoScroll()
 ```
 
-## Loading images from insecure HTTP hosts
-
-If your remote image URLs are not *https* you will need to [add an exception](http://evgenii.com/blog/loading-data-from-non-secure-hosts-in-ios9-with-nsurlsession/) to the **Info.plist** file. This will allow the App Transport Security to load the images from insecure HTTP hosts.
-
 #### Accessibility
 
 One can pass an image description when calling the `show` methods. This description will be spoken by the device in accessibility mode for the current image on screen.
@@ -113,6 +109,10 @@ One can pass an image description when calling the `show` methods. This descript
 // Supply accessibility label for the image
 scrollView.auk.show(url: "http://site.com/bird.jpg", accessibilityLabel: "Picture of a bird.")
 ```
+
+## Loading images from insecure HTTP hosts
+
+If your remote image URLs are not *https* you will need to [add an exception](http://evgenii.com/blog/loading-data-from-non-secure-hosts-in-ios9-with-nsurlsession/) to the **Info.plist** file. This will allow the App Transport Security to load the images from insecure HTTP hosts.
 
 ## Configuration
 
