@@ -76,6 +76,9 @@ scrollView.auk.numberOfPages
 
 // Get the index of the current page
 scrollView.auk.currentPageIndex
+
+// Return currently displayed images
+scrollView.auk.images
 ```
 
 #### Scrolling from code

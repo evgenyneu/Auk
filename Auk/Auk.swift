@@ -184,6 +184,20 @@ public class Auk {
 
     return 0
   }
+  
+  public var images: [UIImage] {
+    guard let scrollView = scrollView else { return [] }
+    
+    var images = [UIImage]()
+    
+    for page in AukScrollViewContent.aukPages(scrollView) {
+      if let image = page.imageView?.image {
+        images.append(image)
+      }
+    }
+    
+    return images
+  }
 
   /**
 

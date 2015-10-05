@@ -217,5 +217,29 @@ class AukTests: XCTestCase {
     
     XCTAssertEqual(120, scrollView.contentOffset.x)
   }
-
+  
+  // MARK: - Images
+  
+  func testPageIndicator_returnImages() {
+    // Layout scroll view
+    // ---------------
+    
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    // Show 3 images
+    // -------------
+    
+    auk.show(image: uiImageFromFile("96px.png"))
+    auk.show(image: uiImageFromFile("35px.jpg"))
+    auk.show(image: uiImageFromFile("67px.png"))
+    
+    // Verify page indicator is showing three pages
+    // -------------
+    
+    XCTAssertEqual(3, auk.images.count)
+    XCTAssertEqual(96, auk.images[0].size.width)
+    XCTAssertEqual(35, auk.images[1].size.width)
+    XCTAssertEqual(67, auk.images[2].size.width)
+  }
 }
