@@ -178,7 +178,7 @@ Here is what you need to do to add an image tap handler to the scroll view.
 1. Show assistant editor with your view controller code.
 1. Do the control-drag from the tap gesture recognizer in the storyboard into your view controller code.
 1. A dialog will appear, change the *Connection* to *action* and enter the name of the method.
-1. This method will be called when the scroll view is tapped. Use the `scrollView.auk.currentPageIndex` property to get the currently selected page index.
+1. This method will be called when the scroll view is tapped. Use the `auk.currentPageIndex` property of your scroll view to get the index of the current page.
 
 
 ## Demo app
