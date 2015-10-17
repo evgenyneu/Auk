@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dym-9D-I5G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dym-9D-I5G">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -19,6 +19,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wormius_Great_Auk.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="fhZ-KN-55y">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <animations/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etc-ob-Utw">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
@@ -28,12 +29,18 @@
                                     <subviews>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SrW-bD-PlC">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="265"/>
+                                            <animations/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="265" id="Or5-06-LRV"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="sDb-k7-dfn" appends="YES" id="Rmj-Ht-nWu"/>
+                                            </connections>
                                         </scrollView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWz-f3-FnP">
                                             <rect key="frame" x="20" y="353" width="560" height="21.5"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -42,6 +49,7 @@
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkS-kK-gCM">
                                             <rect key="frame" x="205" y="285" width="40" height="60"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <state key="normal" title="⏪">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -53,6 +61,7 @@
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cz-ix-YLV">
                                             <rect key="frame" x="280" y="285" width="40" height="60"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <state key="normal" title="🔁">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,6 +73,7 @@
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ak0-JX-tQy">
                                             <rect key="frame" x="355" y="285" width="40" height="60"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <state key="normal" title="⏩">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -74,6 +84,7 @@
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="Ak0-JX-tQy" firstAttribute="leading" secondItem="6Cz-ix-YLV" secondAttribute="trailing" constant="35" placeholder="YES" id="3lS-Na-IQr"/>
                                         <constraint firstAttribute="trailing" secondItem="aWz-f3-FnP" secondAttribute="trailing" constant="20" id="6xu-k3-nLM"/>
@@ -89,9 +100,11 @@
                                         <constraint firstItem="xkS-kK-gCM" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" id="xIQ-Nx-uo2"/>
                                     </constraints>
                                 </view>
+                                <animations/>
                                 <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
+                        <animations/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="fhZ-KN-55y" secondAttribute="trailing" id="1RH-SS-e7v"/>
                             <constraint firstItem="fhZ-KN-55y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="64z-oj-ynX"/>
@@ -113,6 +126,7 @@
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vWm-G7-wjO">
                             <rect key="frame" x="180" y="2.5" width="240" height="39"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" title="Clear">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -136,6 +150,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="sDb-k7-dfn">
+                    <connections>
+                        <action selector="onScrollViewTapped:" destination="BYZ-38-t0r" id="FJm-aU-Vlx"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1152" y="-358"/>
         </scene>
@@ -147,6 +166,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Es4-ht-hMk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

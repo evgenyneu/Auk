@@ -170,11 +170,23 @@ MoaSimulator.autorespondWithImage("www.site.com", image: UIImage(named: "35px.jp
 
 If you need to assign a delegate to the scroll view please do so before accessing `scrollView.auk` property.
 
+## Respond to image tap
+
+Here is what you need to do to add an image tap handler to the scroll view.
+
+1. In the Storyboard drag a *Tag Gesture Recognizer* into your scroll view.
+1. Show assistant editor with your view controller code.
+1. Do the control-drag from the tap gesture recognizer in the storyboard into your view controller code.
+1. A dialog will appear, change the *Connection* to *action* and enter the name of the method.
+1. This method will be called when the scroll view is tapped. Use the `scrollView.auk.currentPageIndex` property to get the currently selected page index.
+
+
 ## Demo app
 
 The project includes a demo iOS app.
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_demo_ios_app_2.jpg' width='414' alt='Auk pages scroll view demo iOS app'>
+
 
 ## Alternative solutions
 

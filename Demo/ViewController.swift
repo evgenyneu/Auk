@@ -127,6 +127,10 @@ class ViewController: UIViewController, UIScrollViewDelegate {
   @IBAction func onAutoscrollTapped(sender: AnyObject) {
     scrollView.auk.startAutoScroll(delaySeconds: 2)
   }
+  
+  @IBAction func onScrollViewTapped(sender: AnyObject) {
+    imageDescriptionLabel.text = "Tapped image #\(scrollView.auk.currentPageIndex)"
+  }
 
   private func showInitialImage() {
     if let image = UIImage(named: DemoConstants.initialImage.fileName) {
