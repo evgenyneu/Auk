@@ -193,6 +193,8 @@ public class Auk {
     for page in AukScrollViewContent.aukPages(scrollView) {
       if let image = page.imageView?.image {
         images.append(image)
+      } else if let image = page.remoteImageView?.image {
+        images.append(image)
       }
     }
     
