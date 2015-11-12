@@ -47,12 +47,6 @@ class AukPageTests: XCTestCase {
     XCTAssertEqual(UIViewContentMode.TopRight.rawValue, view.imageView!.contentMode.rawValue)
   }
   
-  func testShowImage_hideContentOutOfBounds() {
-    let image = uiImageFromFile("67px.png")
-    view.show(image: image, settings: settings)
-    XCTAssert(view.clipsToBounds)
-  }
-  
   func testShowImage_doNotcreatePlaceholderImage() {
     settings.placeholderImage = nil
     let image = uiImageFromFile("67px.png")

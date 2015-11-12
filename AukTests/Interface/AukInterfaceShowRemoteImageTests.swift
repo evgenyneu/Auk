@@ -48,8 +48,31 @@ class AukInterfaceShowRemoteImageTests: XCTestCase {
     
     XCTAssertEqual(1, aukPages(scrollView).count)
     
-    // Loads image into the second image view
+    // Loads image
     XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+  }
+  
+  func testShowRemoteImageWithPlaceholder() {
+    let simulator = MoaSimulator.simulate("auk.png")
+    
+    auk.settings.placeholderImage = uiImageFromFile("35px.jpg")
+    auk.show(url: "http://site.com/auk.png")
+    
+    XCTAssertEqual(1, simulator.downloaders.count)
+    XCTAssertEqual("http://site.com/auk.png", simulator.downloaders.first!.url)
+    
+    scrollView.layoutIfNeeded()
+    
+    // Show placeholder image
+    XCTAssertEqual(35, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    
+    let image = uiImageFromFile("67px.png")
+    simulator.respondWithImage(image)
+    
+    XCTAssertEqual(1, aukPages(scrollView).count)
+    
+    // Show image from network
+    XCTAssertEqual(67, secondAukImage(scrollView, pageIndex: 0)!.size.width)
   }
   
   func testShowRemoteImage_showSecondImageWhenScrolled() {
