@@ -22,6 +22,7 @@ class AukRemoteImage {
     self.url = url
     self.imageView = imageView
     self.placeholderImageView = placeholderImageView
+    setPlaceholderImage(settings)
   }
 
   /// Sends image download HTTP request.
@@ -66,5 +67,13 @@ class AukRemoteImage {
     UIView.animateWithDuration(interval, animations: {
       imageView.alpha = show ? 1: 0
     })
+  }
+  
+  private func setPlaceholderImage(settings: AukSettings) {
+    if let placeholderImage = settings.placeholderImage,
+      placeholderImageView = placeholderImageView {
+        
+      placeholderImageView.image = placeholderImage
+    }
   }
 }

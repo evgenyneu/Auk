@@ -34,22 +34,16 @@ final class AukPage: UIView {
   
   */
   func show(url url: String, settings: AukSettings) {
-    placeholderImageView = createAndLayoutImageView(settings)
+    if settings.placeholderImage != nil {
+      placeholderImageView = createAndLayoutImageView(settings)
+    }
+    
     imageView = createAndLayoutImageView(settings)
-    setPlaceholderImage(settings)
     
     if let imageView = imageView {
       remoteImage = AukRemoteImage()
       remoteImage?.setup(url, imageView: imageView, placeholderImageView: placeholderImageView,
         settings: settings)
-    }
-  }
-  
-  private func setPlaceholderImage(settings: AukSettings) {
-    if let placeholderImage = settings.placeholderImage,
-      placeholderImageView = placeholderImageView {
-        
-      placeholderImageView.image = placeholderImage
     }
   }
   

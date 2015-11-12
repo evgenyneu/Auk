@@ -448,9 +448,11 @@ final class AukPage: UIView {
   
   */
   func show(url url: String, settings: AukSettings) {
-    placeholderImageView = createAndLayoutImageView(settings)
+    if settings.placeholderImage != nil {
+      placeholderImageView = createAndLayoutImageView(settings)
+    }
+    
     imageView = createAndLayoutImageView(settings)
-    setPlaceholderImage(settings)
     
     if let imageView = imageView {
       remoteImage = AukRemoteImage()
@@ -458,15 +460,6 @@ final class AukPage: UIView {
         settings: settings)
     }
   }
-  
-  private func setPlaceholderImage(settings: AukSettings) {
-    if let placeholderImage = settings.placeholderImage,
-      placeholderImageView = placeholderImageView {
-        
-      placeholderImageView.image = placeholderImage
-    }
-  }
-  
   
   /**
 
@@ -746,6 +739,7 @@ class AukRemoteImage {
     self.url = url
     self.imageView = imageView
     self.placeholderImageView = placeholderImageView
+    setPlaceholderImage(settings)
   }
 
   /// Sends image download HTTP request.
@@ -790,6 +784,14 @@ class AukRemoteImage {
     UIView.animateWithDuration(interval, animations: {
       imageView.alpha = show ? 1: 0
     })
+  }
+  
+  private func setPlaceholderImage(settings: AukSettings) {
+    if let placeholderImage = settings.placeholderImage,
+      placeholderImageView = placeholderImageView {
+        
+      placeholderImageView.image = placeholderImage
+    }
   }
 }
 

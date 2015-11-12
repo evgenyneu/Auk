@@ -48,11 +48,8 @@ class AukInterfaceShowRemoteImageTests: XCTestCase {
     
     XCTAssertEqual(1, aukPages(scrollView).count)
     
-    // First image view remains nil
-    XCTAssert(firstAukImage(scrollView, pageIndex: 0) == nil)
-    
     // Loads image into the second image view
-    XCTAssertEqual(67, secondAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 0)!.size.width)
   }
   
   func testShowRemoteImage_showSecondImageWhenScrolled() {

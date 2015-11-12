@@ -36,8 +36,8 @@ class AukPageTests: XCTestCase {
     
     XCTAssert(view.imageView != nil)
     
-    // Do not create remote image view when showing local image
-    XCTAssert(view.remoteImageView == nil)
+    // Do not create placeholder image view when showing local image
+    XCTAssert(view.placeholderImageView == nil)
   }
   
   func testShowImage_useContentMode() {
@@ -53,12 +53,21 @@ class AukPageTests: XCTestCase {
     XCTAssert(view.clipsToBounds)
   }
   
+  func testShowImage_doNotcreatePlaceholderImage() {
+    settings.placeholderImage = nil
+    let image = uiImageFromFile("67px.png")
+    
+    view.show(image: image, settings: settings)
+    
+    XCTAssert(view.placeholderImageView == nil)
+  }
+  
   // MARK: - Show image by url
   
   func testShowUrl_useContentMode() {
     settings.contentMode = UIViewContentMode.TopRight
     view.show(url: "http://site.com/auk.jpg", settings: settings)
-    XCTAssertEqual(UIViewContentMode.TopRight.rawValue, view.remoteImageView!.contentMode.rawValue)
+    XCTAssertEqual(UIViewContentMode.TopRight.rawValue, view.imageView!.contentMode.rawValue)
   }
 
   func testShowUrl() {
@@ -71,7 +80,20 @@ class AukPageTests: XCTestCase {
     view.show(url: "http://site.com/auk.jpg", settings: settings)
     
     XCTAssert(view.imageView != nil)
-    XCTAssert(view.remoteImageView != nil)
+  }
+  
+  func testShowUrl_doNotcreatePlaceholderImage() {
+    settings.placeholderImage = nil
+    view.show(url: "http://site.com/auk.jpg", settings: settings)
+    
+    XCTAssert(view.placeholderImageView == nil)
+  }
+  
+  func testShowUrl_createPlaceholderImage() {
+    settings.placeholderImage = UIImage()
+    view.show(url: "http://site.com/auk.jpg", settings: settings)
+    
+    XCTAssert(view.placeholderImageView != nil)
   }
   
   // MARK: - Visible now
@@ -81,7 +103,8 @@ class AukPageTests: XCTestCase {
     let imageView = UIImageView()
     
     view.remoteImage = AukRemoteImage()
-    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
+    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView,
+      placeholderImageView: nil, settings: settings)
     
     view.visibleNow(settings)
     
@@ -99,7 +122,8 @@ class AukPageTests: XCTestCase {
     let imageView = UIImageView()
     
     view.remoteImage = AukRemoteImage()
-    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
+    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView,
+      placeholderImageView: nil, settings: settings)
     
     view.visibleNow(settings)
     view.visibleNow(settings)
@@ -116,7 +140,8 @@ class AukPageTests: XCTestCase {
     let simulator = MoaSimulator.simulate("auk.jpg")
     let imageView = UIImageView()
     view.remoteImage = AukRemoteImage()
-    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView, settings: settings)
+    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView,
+      placeholderImageView: nil, settings: settings)
     
     // Request image download
     imageView.moa.url = "http://site.com/auk.jpg"
