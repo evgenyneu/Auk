@@ -9,18 +9,19 @@ Downloads and shows a single remote image.
 class AukRemoteImage {
   var url: String?
   weak var imageView: UIImageView?
+  weak var placeholderImageView: UIImageView?
 
   init() { }
 
   /// True when image has been successfully downloaded
   var didFinishDownload = false
 
-  func setup(url: String, imageView: UIImageView, settings: AukSettings) {
+  func setup(url: String, imageView: UIImageView, placeholderImageView: UIImageView?,
+    settings: AukSettings) {
 
     self.url = url
     self.imageView = imageView
-
-    setPlaceholderImage(settings)
+    self.placeholderImageView = placeholderImageView
   }
 
   /// Sends image download HTTP request.
@@ -48,27 +49,22 @@ class AukRemoteImage {
     didFinishDownload = true
 
     iiQ.main { [weak self] in
-      if let imageView = self?.imageView {
-        AukRemoteImage.animateImageView(imageView, settings: settings)
+      if let imageView = self?.imageView,
+        placeholderImageView = self?.placeholderImageView {
+          
+        AukRemoteImage.animateImageView(imageView, show: true, settings: settings)
+        AukRemoteImage.animateImageView(placeholderImageView, show: false, settings: settings)
+
       }
     }
   }
 
-  private func setPlaceholderImage(settings: AukSettings) {
-    if let placeholderImage = settings.placeholderImage,
-      imageView = imageView {
-
-      imageView.image = placeholderImage
-      AukRemoteImage.animateImageView(imageView, settings: settings)
-    }
-  }
-
-  private static func animateImageView(imageView: UIImageView, settings: AukSettings) {
-    imageView.alpha = 0
+  private static func animateImageView(imageView: UIImageView, show: Bool, settings: AukSettings) {
+    imageView.alpha = show ? 0: 1
     let interval = NSTimeInterval(settings.remoteImageAnimationIntervalSeconds)
     
     UIView.animateWithDuration(interval, animations: {
-      imageView.alpha = 1
+      imageView.alpha = show ? 1: 0
     })
   }
 }

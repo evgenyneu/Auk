@@ -185,6 +185,7 @@ public class Auk {
     return 0
   }
   
+  /// Returns array of currently visible images. Placeholder images are not returned here.
   public var images: [UIImage] {
     guard let scrollView = scrollView else { return [] }
     
@@ -298,6 +299,7 @@ public class Auk {
   /// Create a page, add it to the scroll view content and layout.
   private func createPage(accessibilityLabel: String? = nil) -> AukPage {
     let page = AukPage()
+    page.clipsToBounds = true
     page.makeAccessible(accessibilityLabel)
 
     if let scrollView = scrollView {

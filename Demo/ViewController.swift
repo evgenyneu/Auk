@@ -15,6 +15,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    Moa.settings.cache.requestCachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+
+    
     layoutButtons()
     
     scrollView.delegate = self
@@ -23,6 +26,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 
     showInitialImage()
     updateCurrentImageDescription()
+    
   }
   
   private func layoutButtons() {

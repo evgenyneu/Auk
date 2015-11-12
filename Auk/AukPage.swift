@@ -3,11 +3,11 @@ import UIKit
 /// The view for an individual page of the scroll view containing an image.
 final class AukPage: UIView {
   
-  // Image view for showing local image or a placeholder image
+  // Image view for showing a placeholder image while remote image is being downloaded
+  weak var placeholderImageView: UIImageView?
+
+  // Image view for showing local and remote images
   weak var imageView: UIImageView?
-  
-  // Image view for showing the remote image
-  weak var remoteImageView: UIImageView?
   
   // Contains a URL for the remote image, if any.
   var remoteImage: AukRemoteImage?
@@ -21,8 +21,7 @@ final class AukPage: UIView {
   
   */
   func show(image image: UIImage, settings: AukSettings) {
-    createAndLayoutImageView(settings)
-    
+    imageView = createAndLayoutImageView(settings)
     imageView?.image = image
   }
   
@@ -35,15 +34,24 @@ final class AukPage: UIView {
   
   */
   func show(url url: String, settings: AukSettings) {
-    createAndLayoutImageView(settings)
-    createAndLayoutRemoteImageView(settings)
+    placeholderImageView = createAndLayoutImageView(settings)
+    imageView = createAndLayoutImageView(settings)
+    setPlaceholderImage(settings)
     
-    if let remoteImageView = remoteImageView {
+    if let imageView = imageView {
       remoteImage = AukRemoteImage()
-      remoteImage?.setup(url, imageView: remoteImageView, settings: settings)
+      remoteImage?.setup(url, imageView: imageView, placeholderImageView: placeholderImageView,
+        settings: settings)
     }
   }
   
+  private func setPlaceholderImage(settings: AukSettings) {
+    if let placeholderImage = settings.placeholderImage,
+      placeholderImageView = placeholderImageView {
+        
+      placeholderImageView.image = placeholderImage
+    }
+  }
   
   /**
 
@@ -65,38 +73,16 @@ final class AukPage: UIView {
   
   /**
   
-  Create and layout an image view.
-  
-  - parameter settings: Auk settings.
-  
-  */
-  func createAndLayoutImageView(settings: AukSettings) {
-    if imageView != nil { return }
-    
-    clipsToBounds = true // Hide image if it is out of page bounds
-    
-    let newImageView = AukPage.createImageView(settings)
-    addSubview(newImageView)
-    imageView = newImageView
-    
-    AukPage.layoutImageView(newImageView, superview: self)
-  }
-  
-  /**
-  
   Create and layout the remote image view.
   
   - parameter settings: Auk settings.
   
   */
-  func createAndLayoutRemoteImageView(settings: AukSettings) {
-    if remoteImageView != nil { return }
-    
+  func createAndLayoutImageView(settings: AukSettings) -> UIImageView {
     let newImageView = AukPage.createImageView(settings)
     addSubview(newImageView)
-    remoteImageView = newImageView
-    
     AukPage.layoutImageView(newImageView, superview: self)
+    return newImageView
   }
   
   private static func createImageView(settings: AukSettings) -> UIImageView {

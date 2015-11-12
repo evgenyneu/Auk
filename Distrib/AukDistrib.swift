@@ -200,6 +200,7 @@ public class Auk {
     return 0
   }
   
+  /// Returns array of currently visible images. Placeholder images are not returned here.
   public var images: [UIImage] {
     guard let scrollView = scrollView else { return [] }
     
@@ -313,6 +314,7 @@ public class Auk {
   /// Create a page, add it to the scroll view content and layout.
   private func createPage(accessibilityLabel: String? = nil) -> AukPage {
     let page = AukPage()
+    page.clipsToBounds = true
     page.makeAccessible(accessibilityLabel)
 
     if let scrollView = scrollView {
@@ -415,11 +417,11 @@ import UIKit
 /// The view for an individual page of the scroll view containing an image.
 final class AukPage: UIView {
   
-  // Image view for showing local image or a placeholder image
+  // Image view for showing a placeholder image while remote image is being downloaded
+  weak var placeholderImageView: UIImageView?
+
+  // Image view for showing local and remote images
   weak var imageView: UIImageView?
-  
-  // Image view for showing the remote image
-  weak var remoteImageView: UIImageView?
   
   // Contains a URL for the remote image, if any.
   var remoteImage: AukRemoteImage?
@@ -433,8 +435,7 @@ final class AukPage: UIView {
   
   */
   func show(image image: UIImage, settings: AukSettings) {
-    createAndLayoutImageView(settings)
-    
+    imageView = createAndLayoutImageView(settings)
     imageView?.image = image
   }
   
@@ -447,12 +448,22 @@ final class AukPage: UIView {
   
   */
   func show(url url: String, settings: AukSettings) {
-    createAndLayoutImageView(settings)
-    createAndLayoutRemoteImageView(settings)
+    placeholderImageView = createAndLayoutImageView(settings)
+    imageView = createAndLayoutImageView(settings)
+    setPlaceholderImage(settings)
     
-    if let remoteImageView = remoteImageView {
+    if let imageView = imageView {
       remoteImage = AukRemoteImage()
-      remoteImage?.setup(url, imageView: remoteImageView, settings: settings)
+      remoteImage?.setup(url, imageView: imageView, placeholderImageView: placeholderImageView,
+        settings: settings)
+    }
+  }
+  
+  private func setPlaceholderImage(settings: AukSettings) {
+    if let placeholderImage = settings.placeholderImage,
+      placeholderImageView = placeholderImageView {
+        
+      placeholderImageView.image = placeholderImage
     }
   }
   
@@ -477,38 +488,16 @@ final class AukPage: UIView {
   
   /**
   
-  Create and layout an image view.
-  
-  - parameter settings: Auk settings.
-  
-  */
-  func createAndLayoutImageView(settings: AukSettings) {
-    if imageView != nil { return }
-    
-    clipsToBounds = true // Hide image if it is out of page bounds
-    
-    let newImageView = AukPage.createImageView(settings)
-    addSubview(newImageView)
-    imageView = newImageView
-    
-    AukPage.layoutImageView(newImageView, superview: self)
-  }
-  
-  /**
-  
   Create and layout the remote image view.
   
   - parameter settings: Auk settings.
   
   */
-  func createAndLayoutRemoteImageView(settings: AukSettings) {
-    if remoteImageView != nil { return }
-    
+  func createAndLayoutImageView(settings: AukSettings) -> UIImageView {
     let newImageView = AukPage.createImageView(settings)
     addSubview(newImageView)
-    remoteImageView = newImageView
-    
     AukPage.layoutImageView(newImageView, superview: self)
+    return newImageView
   }
   
   private static func createImageView(settings: AukSettings) -> UIImageView {
@@ -744,18 +733,19 @@ Downloads and shows a single remote image.
 class AukRemoteImage {
   var url: String?
   weak var imageView: UIImageView?
+  weak var placeholderImageView: UIImageView?
 
   init() { }
 
   /// True when image has been successfully downloaded
   var didFinishDownload = false
 
-  func setup(url: String, imageView: UIImageView, settings: AukSettings) {
+  func setup(url: String, imageView: UIImageView, placeholderImageView: UIImageView?,
+    settings: AukSettings) {
 
     self.url = url
     self.imageView = imageView
-
-    setPlaceholderImage(settings)
+    self.placeholderImageView = placeholderImageView
   }
 
   /// Sends image download HTTP request.
@@ -783,27 +773,22 @@ class AukRemoteImage {
     didFinishDownload = true
 
     iiQ.main { [weak self] in
-      if let imageView = self?.imageView {
-        AukRemoteImage.animateImageView(imageView, settings: settings)
+      if let imageView = self?.imageView,
+        placeholderImageView = self?.placeholderImageView {
+          
+        AukRemoteImage.animateImageView(imageView, show: true, settings: settings)
+        AukRemoteImage.animateImageView(placeholderImageView, show: false, settings: settings)
+
       }
     }
   }
 
-  private func setPlaceholderImage(settings: AukSettings) {
-    if let placeholderImage = settings.placeholderImage,
-      imageView = imageView {
-
-      imageView.image = placeholderImage
-      AukRemoteImage.animateImageView(imageView, settings: settings)
-    }
-  }
-
-  private static func animateImageView(imageView: UIImageView, settings: AukSettings) {
-    imageView.alpha = 0
+  private static func animateImageView(imageView: UIImageView, show: Bool, settings: AukSettings) {
+    imageView.alpha = show ? 0: 1
     let interval = NSTimeInterval(settings.remoteImageAnimationIntervalSeconds)
     
     UIView.animateWithDuration(interval, animations: {
-      imageView.alpha = 1
+      imageView.alpha = show ? 1: 0
     })
   }
 }
