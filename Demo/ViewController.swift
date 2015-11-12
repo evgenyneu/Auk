@@ -14,10 +14,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    Moa.settings.cache.requestCachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-
-    
+        
     layoutButtons()
     
     scrollView.delegate = self

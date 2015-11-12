@@ -417,7 +417,8 @@ import UIKit
 /// The view for an individual page of the scroll view containing an image.
 final class AukPage: UIView {
   
-  // Image view for showing a placeholder image while remote image is being downloaded
+  // Image view for showing a placeholder image while remote image is being downloaded.
+  // The view is only created when a placeholder image is specified in settings.
   weak var placeholderImageView: UIImageView?
 
   // Image view for showing local and remote images
