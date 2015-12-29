@@ -119,7 +119,7 @@ If your remote image URLs are not *https* you will need to [add an exception](ht
 
 ## Configuration
 
-Use the `auk.settings` property to configure behavior and appearance of the scroll view before showing the images. See the [configuration manual](https://github.com/evgenyneu/Auk/wiki/Auk-configuration) for the complete list of configuration options.
+Use the `auk.settings` property to configure behavior and appearance of the scroll view **before showing the images**. See the [configuration manual](https://github.com/evgenyneu/Auk/wiki/Auk-configuration) for the complete list of configuration options.
 
 ```Swift
 // Make the images fill entire page
