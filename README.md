@@ -130,6 +130,9 @@ scrollView.auk.settings.pageControl.backgroundColor = UIColor.grayColor().colorW
 
 // Show placeholder image while remote image is being downloaded.
 scrollView.auk.settings.placeholderImage = UIImage(named: "placeholder.jpg")
+
+// Show an image after specifying the settings
+scrollView.auk.show(url: "http://site.com/bird.jpg")
 ```
 
 ## Size change animation
