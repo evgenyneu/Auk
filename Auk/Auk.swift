@@ -30,7 +30,47 @@ public class Auk {
 
   */
   public var settings = AukSettings()
+    
+  /**
+     
+  Shows a local image in the scroll view.
 
+  - parameter pageIndex: the index of the page to change.
+  - parameter image: Image to be shown in the scroll view.
+  - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode.
+     For example: "Picture of a pony standing in a flower pot.".
+     
+  */
+  public func update(pageIndex:Int, image: UIImage, accessibilityLabel: String? = nil) {
+    if let page = getPage(pageIndex) {
+      page.clearImages()
+      page.accessibilityLabel = accessibilityLabel
+      page.show(image: image, settings: settings)
+    }
+  }
+    
+  /**
+     
+  Shows a local image in the scroll view.
+     
+  - parameter pageIndex: the index of the page to change.
+  - parameter url: Url of the image to be shown.
+  - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode.
+     For example: "Picture of a pony standing in a flower pot.".
+     
+  */
+  public func update(pageIndex: Int, url: String, accessibilityLabel: String? = nil) {
+    if let page = getPage(pageIndex) {
+      page.clearImages()
+      page.accessibilityLabel = accessibilityLabel
+      page.show(url: url, settings: settings)
+            
+      if let scrollView = scrollView {
+        AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
+      }
+    }
+  }
+    
   /**
 
   Shows a local image in the scroll view.
@@ -295,7 +335,19 @@ public class Auk {
     scrollView?.showsHorizontalScrollIndicator = settings.showsHorizontalScrollIndicator
     scrollView?.pagingEnabled = settings.pagingEnabled
   }
-
+  
+  private func getPage(index: Int) -> AukPage? {
+    if let scrollView = scrollView {
+      let pages = AukScrollViewContent.aukPages(scrollView)
+        
+      if pages.count > index {
+        return pages[index]
+      }
+    }
+    
+    return nil
+  }
+    
   /// Create a page, add it to the scroll view content and layout.
   private func createPage(accessibilityLabel: String? = nil) -> AukPage {
     let page = AukPage()

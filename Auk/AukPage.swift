@@ -67,6 +67,15 @@ final class AukPage: UIView {
   }
   
   /**
+     
+  Called to clear old image views.
+     
+  */
+  func clearImages() {
+    let _ = self.subviews.map({ $0.removeFromSuperview() })
+  }
+    
+  /**
   
   Create and layout the remote image view.
   
