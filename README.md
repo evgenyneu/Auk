@@ -127,8 +127,8 @@ One can change a currently loaded image by calling `updateAt` methods and supply
 scrollView.auk.updateAt(0, url: "http://site.com/bird.jpg")
 
 // Update existing image with a local image
-if let image = updateAt(1, named: "bird.jpg") {
-  scrollView.auk.show(image: image)
+if let image = UIImage(named: "bird.jpg") {
+  scrollView.auk.updateAt(1, image: image)
 }
 ```
 
