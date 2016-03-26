@@ -5,6 +5,8 @@ import moa
 class ViewController: UIViewController, UIScrollViewDelegate {
   @IBOutlet weak var scrollView: UIScrollView!
   
+  @IBOutlet weak var contentScrollView: UIScrollView!
+  
   var imageDescriptions = [String]()
   @IBOutlet weak var imageDescriptionLabel: UILabel!
   
@@ -18,6 +20,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    Scrollable.createContentView(contentScrollView)
         
     layoutButtons()
     
@@ -29,6 +33,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     showCurrentImageDescription()
     showOrHideUpdateButtons()
     showOrHideScrollingButtons()
+    
+    updateWithLocalButton.layer.cornerRadius = 10
+    updateWithRemoteButton.layer.cornerRadius = 10
   }
   
   private func layoutButtons() {
@@ -61,7 +68,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
 
     super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
 
-    let pageIndex = scrollView.auk.currentPageIndex
+    guard let pageIndex = scrollView.auk.currentPageIndex else { return }
     let newScrollViewWidth = size.width // Assuming scroll view occupies 100% of the screen width
 
     coordinator.animateAlongsideTransition({ [weak self] _ in
@@ -81,7 +88,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
       screenWidth = UIScreen.mainScreen().bounds.width
     }
     
-    let pageIndex = scrollView.auk.currentPageIndex
+    guard let pageIndex = scrollView.auk.currentPageIndex else { return }
     scrollView.auk.scrollTo(pageIndex, pageWidth: screenWidth, animated: false)
   }
 
@@ -120,15 +127,18 @@ class ViewController: UIViewController, UIScrollViewDelegate {
   @IBAction func didTapUpdateCurrentImageLocal(sender: AnyObject) {
     guard let localImage = DemoConstants.localImages.last else { return }
     guard let image = UIImage(named: localImage.fileName) else { return }
+    guard let currentPageIndex = scrollView.auk.currentPageIndex else { return }
     
-    scrollView.auk.updateAt(scrollView.auk.currentPageIndex, image: image)
+    scrollView.auk.updateAt(currentPageIndex, image: image)
     changeCurrentImageDescription(localImage.description)
   }
 
   @IBAction func didTapUpdateCurrentImageRemote(sender: AnyObject) {
     guard let remoteImage = DemoConstants.remoteImages.first else { return }
+    guard let currentPageIndex = scrollView.auk.currentPageIndex else { return }
+
     let url = remoteImageUrl(remoteImage.fileName)
-    scrollView.auk.updateAt(scrollView.auk.currentPageIndex, url: url)
+    scrollView.auk.updateAt(currentPageIndex, url: url)
     changeCurrentImageDescription(remoteImage.description)
   }
   
@@ -192,19 +202,24 @@ class ViewController: UIViewController, UIScrollViewDelegate {
   }
   
   private func changeCurrentImageDescription(description: String) {
-    if scrollView.auk.currentPageIndex >= imageDescriptions.count {
+    guard let currentPageIndex = scrollView.auk.currentPageIndex else { return }
+
+    if currentPageIndex >= imageDescriptions.count {
       return
     }
-    imageDescriptions[scrollView.auk.currentPageIndex] = description
+    
+    imageDescriptions[currentPageIndex] = description
     showCurrentImageDescription()
   }
   
   private var currentImageDescription: String? {
-    if scrollView.auk.currentPageIndex >= imageDescriptions.count {
+    guard let currentPageIndex = scrollView.auk.currentPageIndex else { return nil }
+
+    if currentPageIndex >= imageDescriptions.count {
       return nil
     }
     
-    return imageDescriptions[scrollView.auk.currentPageIndex]
+    return imageDescriptions[currentPageIndex]
   }
   
   // MARK: - UIScrollViewDelegate

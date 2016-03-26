@@ -169,7 +169,7 @@ public class Auk {
 
   */
   public func scrollToNextPage(cycle cycle: Bool, animated: Bool) {
-    if let scrollView = scrollView {
+    if let scrollView = scrollView, currentPageIndex = currentPageIndex {
       AukScrollTo.scrollToNextPage(scrollView, cycle: cycle, animated: animated,
         currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
     }
@@ -193,7 +193,7 @@ public class Auk {
 
   */
   public func scrollToPreviousPage(cycle cycle: Bool, animated: Bool) {
-    if let scrollView = scrollView {
+    if let scrollView = scrollView, currentPageIndex = currentPageIndex {
       AukScrollTo.scrollToPreviousPage(scrollView, cycle: cycle, animated: animated,
         currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
     }
@@ -214,7 +214,10 @@ public class Auk {
     }
 
     pageIndicatorContainer?.updateNumberOfPages(numberOfPages)
-    pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
+    
+    if let currentPageIndex = currentPageIndex {
+      pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
+    }
   }
 
   /// Returns the current number of pages.
@@ -243,10 +246,12 @@ public class Auk {
 
   /**
 
-  Returns the current page index. If pages are being scrolled and there are two of them on screen the page index will indicate the page that occupies bigger portion of the screen at the moment. If scrolled way to the left or right it will return zero or the last index respectively.
+  Returns the current page index. If pages are being scrolled and there are two of them on screen the page index will indicate the page that occupies bigger portion of the screen at the moment. Returns nil if there are no pages. If scrolled way to the left or right beyond the pages it will return zero or the last index respectively.
 
   */
-  public var currentPageIndex: Int {
+  public var currentPageIndex: Int? {
+    if numberOfPages == 0 { return nil }
+    
     if let scrollView = scrollView {
       let width = Double(scrollView.bounds.size.width)
       let offset = Double(scrollView.contentOffset.x)
@@ -264,7 +269,7 @@ public class Auk {
       return value
     }
 
-    return 0
+    return nil
   }
 
   /**
@@ -371,8 +376,10 @@ public class Auk {
     }
 
     pageIndicatorContainer?.updateNumberOfPages(numberOfPages)
-    pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
     
+    if let currentPageIndex = currentPageIndex {
+      pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
+    }
 
     return page
   }
@@ -380,7 +387,10 @@ public class Auk {
   func onScroll() {
     if let scrollView = scrollView {
       AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
-      pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
+      
+      if let currentPageIndex = currentPageIndex {
+        pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
+      }
     }
   }
 
