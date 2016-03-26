@@ -125,10 +125,10 @@ scrollView.auk.show(url: "http://site.com/bird.jpg", accessibilityLabel: "Pictur
 One can change a currently loaded image by calling `updateAt` methods and supplying the index of the page to be updated.
 
 ```Swift
-// Replace an image on a given page with a remote image. The current image is replaced when the new image has finished downloading.
+// Replace the image on a given page with a remote image. The current image is replaced after the new image has finished downloading.
 scrollView.auk.updateAt(0, url: "http://site.com/bird.jpg")
 
-// Replace an image on a given page with a local image.
+// Replace the image on a given page with a local image.
 if let image = UIImage(named: "bird.jpg") {
   scrollView.auk.updateAt(1, image: image)
 }
