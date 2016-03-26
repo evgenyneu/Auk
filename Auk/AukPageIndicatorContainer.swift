@@ -4,7 +4,7 @@ import UIKit
 final class AukPageIndicatorContainer: UIView {
   
   deinit {
-    pageControl?.removeTarget(self, action: Selector("didTapPageControl:"),
+    pageControl?.removeTarget(self, action: #selector(AukPageIndicatorContainer.didTapPageControl(_:)),
       forControlEvents: UIControlEvents.ValueChanged)
   }
   
@@ -74,7 +74,7 @@ final class AukPageIndicatorContainer: UIView {
       }
     }
     
-    pageControl.addTarget(self, action: Selector("didTapPageControl:"),
+    pageControl.addTarget(self, action: #selector(AukPageIndicatorContainer.didTapPageControl(_:)),
       forControlEvents: UIControlEvents.ValueChanged)
     
     pageControl.pageIndicatorTintColor = settings.pageControl.pageIndicatorTintColor

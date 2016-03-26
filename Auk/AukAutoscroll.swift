@@ -15,13 +15,15 @@ struct AukAutoscroll {
     // The previous instance deinitializes and cancels its timer.
       
     autoscrollTimer = AutoCancellingTimer(interval: delaySeconds, repeats: true) {
+      guard let currentPageIndex = auk.currentPageIndex else { return }
+      
       if forward {
         AukScrollTo.scrollToNextPage(scrollView, cycle: cycle,
-          animated: animated, currentPageIndex: auk.currentPageIndex,
+          animated: animated, currentPageIndex: currentPageIndex,
           numberOfPages: auk.numberOfPages)
       } else {
         AukScrollTo.scrollToPreviousPage(scrollView, cycle: cycle,
-          animated: animated, currentPageIndex: auk.currentPageIndex,
+          animated: animated, currentPageIndex: currentPageIndex,
           numberOfPages: auk.numberOfPages)
       }
     }

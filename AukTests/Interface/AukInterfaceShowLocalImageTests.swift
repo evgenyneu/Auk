@@ -156,6 +156,4 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
     XCTAssertEqual(page.accessibilityTraits, UIAccessibilityTraitImage)
     XCTAssert(page.accessibilityLabel == nil)
   }
-  
-  
 }

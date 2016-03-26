@@ -43,6 +43,28 @@ class AukInterfaceCurrentPageIndexTestsTests: XCTestCase {
     XCTAssertEqual(2, auk.currentPageIndex)
   }
   
+  func testCurrentPageIndex_indexOutOfBounds() {
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    auk.show(image: image)
+    
+    // Scrolled to the right over the rightmost image
+    
+    scrollView.contentOffset.x = 180
+    XCTAssertEqual(1, auk.currentPageIndex)
+    
+    scrollView.contentOffset.x = 1800
+    XCTAssertEqual(1, auk.currentPageIndex)
+    
+    // Scrolled to the left over the leftmost image
+    scrollView.contentOffset.x = -70
+    XCTAssertEqual(0, auk.currentPageIndex)
+  }
+  
+  func testCurrentPageIndex_noImages() {
+    XCTAssertNil(auk.currentPageIndex)
+  }
+  
   func testCurrenPageIndex_rightToLeft() {
     if #available(iOS 9.0, *) {
       scrollView.semanticContentAttribute = .ForceRightToLeft

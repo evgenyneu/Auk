@@ -56,7 +56,7 @@ final class AutoCancellingTimerInstance: NSObject {
     super.init()
     
     timer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self,
-      selector: "timerFired:", userInfo: nil, repeats: repeats)
+      selector: #selector(AutoCancellingTimerInstance.timerFired(_:)), userInfo: nil, repeats: repeats)
   }
   
   func cancel() {
