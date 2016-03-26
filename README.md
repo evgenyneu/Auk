@@ -122,7 +122,7 @@ scrollView.auk.show(url: "http://site.com/bird.jpg", accessibilityLabel: "Pictur
 
 #### Changing an image
 
-One can change existing image by calling `updateAt` methods and supplying the index of the page to be updated.
+One can change existing image by calling `updateAt` methods and supplying the page index.
 
 ```Swift
 // Replace the image on a given page with a remote image. The current image is replaced after the new image has finished downloading.
