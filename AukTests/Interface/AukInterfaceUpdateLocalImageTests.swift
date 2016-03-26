@@ -29,6 +29,27 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
     XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 0)!.size.width)
   }
   
+  func testUpdateLocalImage_updateOnlyGivenSingePage() {
+    // Show two images
+    let image96px = uiImageFromFile("96px.png")
+    auk.show(image: image96px)
+    
+    let image35px = uiImageFromFile("35px.jpg")
+    auk.show(image: image35px)
+    
+    // Update image on the second page
+    let image67px = uiImageFromFile("67px.png")
+    auk.updateAt(1, image: image67px)
+    
+    XCTAssertEqual(2, aukPages(scrollView).count)
+    
+    // First page images remains unchanged
+    XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+
+    // Second page image is updated
+    XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 1)!.size.width)
+  }
+  
   func testUpdateLocalImage_indexLargerThanExist() {
     let image = uiImageFromFile("96px.png")
     auk.show(image: image)

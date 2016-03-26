@@ -40,8 +40,57 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     
     XCTAssertEqual(1, aukPages(scrollView).count)
     
-    // Loads image
-    XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    // Show a placeholder image and a remote image on top
+    XCTAssertEqual(2, numberOfImagesOnPage(scrollView, pageIndex: 0))
+    
+    // Uses previous image as placeholder
+    XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    
+    // Shows new image on top
+    XCTAssertEqual(67, secondAukImage(scrollView, pageIndex: 0)!.size.width)
+  }
+  
+  func testUpdateRemoteImage_updateOnlyGivenSingePage() {
+    // Show two images
+    let image96px = uiImageFromFile("96px.png")
+    auk.show(image: image96px)
+    
+    let image35px = uiImageFromFile("35px.jpg")
+    auk.show(image: image35px)
+    
+    let simulator = MoaSimulator.simulate("auk.png")
+    
+    // Update image on first page with remote image
+    auk.updateAt(0, url: "http://site.com/auk.png")
+    
+    XCTAssertEqual(1, simulator.downloaders.count)
+    XCTAssertEqual("http://site.com/auk.png", simulator.downloaders.first!.url)
+    
+    let image67px = uiImageFromFile("67px.png")
+    simulator.respondWithImage(image67px)
+    
+    XCTAssertEqual(2, aukPages(scrollView).count)
+    
+    // First page
+    // -------------
+    
+    // Show a placeholder image and a remote image on top
+    XCTAssertEqual(2, numberOfImagesOnPage(scrollView, pageIndex: 0))
+    
+    // Uses previous image as placeholder
+    XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    
+    // Shows new image on top
+    XCTAssertEqual(67, secondAukImage(scrollView, pageIndex: 0)!.size.width)
+    
+    // Second page
+    // -------------
+    
+    // Show a single image without placeholder
+    XCTAssertEqual(1, numberOfImagesOnPage(scrollView, pageIndex: 1))
+    
+    // Shows image
+    XCTAssertEqual(35, firstAukImage(scrollView, pageIndex: 1)!.size.width)
   }
   
   func testUpdateRemoteImage_overRemoteImage() {
@@ -63,9 +112,75 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     simulator.respondWithImage(image67px)
 
     XCTAssertEqual(1, aukPages(scrollView).count)
+    
+    // Show a remote image without placeholder image
+    XCTAssertEqual(1, numberOfImagesOnPage(scrollView, pageIndex: 0))
 
     // Loads image
     XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+  }
+  
+  func testUpdateRemoteImage_withPlaceholderImage() {
+    let simulator = MoaSimulator.simulate(".png")
+    
+    let image67px = uiImageFromFile("67px.png")
+    auk.settings.placeholderImage = image67px
+    
+    auk.show(url: "http://site.com/auk.png")
+    
+    auk.updateAt(0, url: "http://site.com/moa.png")
+    
+    let image96px = uiImageFromFile("96px.png")
+    simulator.respondWithImage(image96px)
+    
+    // Show a placeholder image and a remote image on top
+    XCTAssertEqual(2, numberOfImagesOnPage(scrollView, pageIndex: 0))
+    
+    // Shows placeholder image
+    XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    
+    // Shows remote image
+    XCTAssertEqual(96, secondAukImage(scrollView, pageIndex: 0)!.size.width)
+  }
+  
+  func testUpdateRemoteImage_showUpdatedRemoteImageWhenScrolled() {
+    let simulator = MoaSimulator.simulate("site.com")
+    
+    // Add two local images
+    let image96px = uiImageFromFile("96px.png")
+    auk.show(image: image96px)
+    
+    let image67px = uiImageFromFile("67px.png")
+    auk.show(image: image67px)
+    
+    // Update the second image with remote image
+    auk.updateAt(1, url: "http://site.com/moa.png")
+    
+    // The updated image download has not started yet because the page is not visible
+    XCTAssertEqual(0, simulator.downloaders.count)
+    
+    // Scroll to make the second page visible and start download
+    scrollView.contentOffset.x = 10
+    scrollView.delegate?.scrollViewDidScroll?(scrollView)
+
+    // The remote image is requested
+    XCTAssertEqual(1, simulator.downloaders.count)
+    XCTAssertEqual("http://site.com/moa.png", simulator.downloaders.last!.url)
+    
+    // Verify that remote image is loaded to a second page
+    // --------------
+    
+    let image35px = uiImageFromFile("35px.jpg")
+    simulator.respondWithImage(image35px)
+    
+    // Show a placeholder image and a remote image on top
+    XCTAssertEqual(2, numberOfImagesOnPage(scrollView, pageIndex: 1))
+    
+    // Shows placeholder image
+    XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 1)!.size.width)
+    
+    // Shows remote image
+    XCTAssertEqual(35, secondAukImage(scrollView, pageIndex: 1)!.size.width)
   }
   
   func testUpdateRemoteImage_indexLargerThanExist() {

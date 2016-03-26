@@ -34,8 +34,20 @@ extension XCTestCase {
   }
   
   /**
+   
+  - returns: The number of images on the given page. A page can show a placeholder image and a normal image on top.
+   
+  */
+  func numberOfImagesOnPage(scrollView: UIScrollView, pageIndex: Int) -> Int {
+    guard let view = aukPage(scrollView, pageIndex: pageIndex) else { return 123 }
+    let imgesViews = view.subviews.filter { $0 is UIImageView }.map { $0 as! UIImageView }
+    
+    return imgesViews.filter { $0.image != nil }.count
+  }
   
-  - returns: The the first image view form the AukPage with given index.
+  /**
+  
+  - returns: The first image view form the AukPage with given index. A page can show a placeholder image and a normal image on top.
   
   */
   func firstAukImageView(scrollView: UIScrollView, pageIndex: Int) -> UIImageView? {
@@ -48,7 +60,7 @@ extension XCTestCase {
   
   /**
   
-  - returns: The the second image view form the AukPage with given index.
+  - returns: The second image view form the AukPage with given index. A page can show a placeholder image and a normal image on top.
   
   */
   func secondAukImageView(scrollView: UIScrollView, pageIndex: Int) -> UIImageView? {
@@ -61,19 +73,19 @@ extension XCTestCase {
   
   /**
   
-  - returns: The the first image the TheAukPage with given index.
+  - returns: The first image the TheAukPage with given index. A page can show a placeholder image and a normal image on top.
   
   */
-  func firstAukImage(superview: UIScrollView, pageIndex: Int) -> UIImage? {
-    return firstAukImageView(superview, pageIndex: pageIndex)?.image
+  func firstAukImage(scrollView: UIScrollView, pageIndex: Int) -> UIImage? {
+    return firstAukImageView(scrollView, pageIndex: pageIndex)?.image
   }
   
   /**
   
-  - returns: The the first image the TheAukPage with given index.
+  - returns: The second image the TheAukPage with given index. A page can show a placeholder image and a normal image on top.
   
   */
-  func secondAukImage(superview: UIScrollView, pageIndex: Int) -> UIImage? {
-    return secondAukImageView(superview, pageIndex: pageIndex)?.image
+  func secondAukImage(scrollView: UIScrollView, pageIndex: Int) -> UIImage? {
+    return secondAukImageView(scrollView, pageIndex: pageIndex)?.image
   }
 }

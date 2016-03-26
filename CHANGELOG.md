@@ -1,5 +1,9 @@
 # Auk version history
 
+## 2.1.2 (2016-03-27)
+
+* When updating an image with a remote image the current image is replaced only after the new image has finished downloading. This creates a smoother transition from the current image to the new image.
+
 ## 2.1.1 (2016-03-26)
 
 * Fixed: fade-in animation was not used when showing remote images without placeholders.

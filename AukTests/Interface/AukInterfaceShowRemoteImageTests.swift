@@ -48,6 +48,9 @@ class AukInterfaceShowRemoteImageTests: XCTestCase {
     
     XCTAssertEqual(1, aukPages(scrollView).count)
     
+    // Show remote image without placeholder image
+    XCTAssertEqual(1, numberOfImagesOnPage(scrollView, pageIndex: 0))
+    
     // Loads image
     XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 0)!.size.width)
   }
@@ -71,7 +74,13 @@ class AukInterfaceShowRemoteImageTests: XCTestCase {
     
     XCTAssertEqual(1, aukPages(scrollView).count)
     
-    // Show image from network
+    // Shows a placeholder image and a remote image
+    XCTAssertEqual(2, numberOfImagesOnPage(scrollView, pageIndex: 0))
+    
+    // Show placeholder image
+    XCTAssertEqual(35, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    
+    // Show remote image
     XCTAssertEqual(67, secondAukImage(scrollView, pageIndex: 0)!.size.width)
   }
   

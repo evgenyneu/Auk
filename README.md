@@ -79,7 +79,7 @@ scrollView.auk.removeAll()
 // Return the number of pages in the scroll view
 scrollView.auk.numberOfPages
 
-// Get the index of the current page
+// Get the index of the current page or nil if there are no pages
 scrollView.auk.currentPageIndex
 
 // Return currently displayed images
@@ -108,6 +108,8 @@ scrollView.auk.startAutoScroll(delaySeconds: 3)
 // Stop auto-scrolling of the images
 scrollView.auk.stopAutoScroll()
 ```
+
+Note that auto scrolling stops when the user starts scrolling.
 
 #### Accessibility
 
