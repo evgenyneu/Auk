@@ -284,7 +284,7 @@ public class Auk {
 
   /**
 
-  Starts auto scrolling of the pages with the given delay in seconds. Auto scrolling stops when the user starts scrolling.
+  Starts auto scrolling of the pages with the given delay in seconds. Auto scrolling stops when the user starts scrolling manually.
 
   - parameter delaySeconds: Amount of time in second each page is visible before scrolling to the next.
 
