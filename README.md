@@ -120,7 +120,7 @@ One can pass an image description when calling the `show` methods. This descript
 scrollView.auk.show(url: "http://site.com/bird.jpg", accessibilityLabel: "Picture of a bird.")
 ```
 
-#### Changing an image
+#### Replacing existing image
 
 One can change existing image by calling `updateAt` methods and supplying the page index.
 
