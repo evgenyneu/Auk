@@ -109,7 +109,7 @@ scrollView.auk.startAutoScroll(delaySeconds: 3)
 scrollView.auk.stopAutoScroll()
 ```
 
-Note that auto scrolling stops when the user starts scrolling.
+Note that auto scrolling stops when the user starts scrolling manually.
 
 #### Accessibility
 
