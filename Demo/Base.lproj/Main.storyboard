@@ -31,11 +31,11 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhg-PX-ME1">
                                                     <rect key="frame" x="218" y="435" width="164" height="40"/>
-                                                    <color key="backgroundColor" red="0.92890860453210888" green="0.92968594274230032" blue="1" alpha="0.78485150709219853" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.92890860453210888" green="0.92968594274230032" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                                     <state key="normal" title="Update with remote">
-                                                        <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="didTapUpdateCurrentImageRemote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NfG-uH-9WR"/>
@@ -75,11 +75,11 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n77-OH-yAA">
                                                     <rect key="frame" x="218" y="380" width="164" height="40"/>
-                                                    <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="1" alpha="0.78485150709219853" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                                     <state key="normal" title="Update with local">
-                                                        <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="didTapUpdateCurrentImageLocal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sl2-1Q-UN4"/>

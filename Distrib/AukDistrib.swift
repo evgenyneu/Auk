@@ -81,9 +81,9 @@ public class Auk {
   
   /**
    
-   Updates existing image in the scroll view.
+   Replaces an image on a given page.
    
-   - parameter pageIndex: the index of the image to change.
+   - parameter pageIndex: the index of the image to change. Does nothing if the index is less than zero ir greater than the largest index.
    - parameter image: Image to be shown in the scroll view.
    - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode.
    For example: "Picture of a pony standing in a flower pot.".
@@ -101,9 +101,9 @@ public class Auk {
   
   /**
    
-   Downloads a remote image and updates the selected page in the scroll view. Use `Moa.settings.cache` property to configure image caching.
+   Downloads an image and uses it to replace an image on a given page. The current image is replaced when the new image has finished downloading. Use `Moa.settings.cache` property to configure image caching.
    
-   - parameter pageIndex: the index of the image to change.
+   - parameter pageIndex: the index of the image to change. Does nothing if the index is less than zero ir greater than the largest index.
    - parameter url: Url of the image to be shown.
    - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode.
    For example: "Picture of a pony standing in a flower pot.".
@@ -113,9 +113,17 @@ public class Auk {
     if let scrollView = scrollView,
       page = AukScrollViewContent.pageAt(pageIndex, scrollView: scrollView) {
       
+      var updateSettings = settings
+      
+      // Use current image as a placeholder in order to avoid abrupt change
+      // while the new one is being downloaded
+      if let currentImage = page.imageView?.image {
+          updateSettings.placeholderImage = currentImage
+      }
+      
       page.prepareForReuse()
       page.accessibilityLabel = accessibilityLabel
-      page.show(url: url, settings: settings)
+      page.show(url: url, settings: updateSettings)
       
       AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
     }
@@ -509,7 +517,7 @@ final class AukPage: UIView {
     if settings.placeholderImage != nil {
       placeholderImageView = createAndLayoutImageView(settings)
     }
-    
+        
     imageView = createAndLayoutImageView(settings)
     
     if let imageView = imageView {

@@ -38,7 +38,7 @@ final class AukPage: UIView {
     if settings.placeholderImage != nil {
       placeholderImageView = createAndLayoutImageView(settings)
     }
-    
+        
     imageView = createAndLayoutImageView(settings)
     
     if let imageView = imageView {
