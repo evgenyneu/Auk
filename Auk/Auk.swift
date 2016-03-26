@@ -33,7 +33,7 @@ public class Auk {
     
   /**
      
-  Shows a local image in the scroll view.
+  Updates a local image in the scroll view.
 
   - parameter pageIndex: the index of the page to change.
   - parameter image: Image to be shown in the scroll view.
@@ -41,7 +41,7 @@ public class Auk {
      For example: "Picture of a pony standing in a flower pot.".
      
   */
-  public func update(pageIndex:Int, image: UIImage, accessibilityLabel: String? = nil) {
+  public func updateAt(pageIndex:Int, image: UIImage, accessibilityLabel: String? = nil) {
     if let page = getPage(pageIndex) {
       page.clearImages()
       page.accessibilityLabel = accessibilityLabel
@@ -51,7 +51,7 @@ public class Auk {
     
   /**
      
-  Shows a local image in the scroll view.
+  Downloads a remote image and update the selected page in the scroll view. Use `Moa.settings.cache` property to configure image caching.
      
   - parameter pageIndex: the index of the page to change.
   - parameter url: Url of the image to be shown.
@@ -59,7 +59,7 @@ public class Auk {
      For example: "Picture of a pony standing in a flower pot.".
      
   */
-  public func update(pageIndex: Int, url: String, accessibilityLabel: String? = nil) {
+  public func updateAt(pageIndex: Int, url: String, accessibilityLabel: String? = nil) {
     if let page = getPage(pageIndex) {
       page.clearImages()
       page.accessibilityLabel = accessibilityLabel
