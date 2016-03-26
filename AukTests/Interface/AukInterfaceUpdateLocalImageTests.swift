@@ -40,7 +40,7 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
     XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
   }
   
-  func testUpdateLocalImage_indexSmallerThanExist() {
+  func testUpdateLocalImage_indexNegative() {
     let image = uiImageFromFile("96px.png")
     auk.show(image: image)
     

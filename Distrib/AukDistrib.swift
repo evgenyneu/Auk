@@ -536,12 +536,8 @@ final class AukPage: UIView {
   func outOfSightNow() {
     remoteImage?.cancelDownload()
   }
-  
-  /**
      
-  Removes image views.
-     
-  */
+  /// Removes image views.
   func removeImageViews() {
     placeholderImageView?.removeFromSuperview();
     placeholderImageView = nil
