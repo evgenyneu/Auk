@@ -50,12 +50,11 @@ class AukRemoteImage {
     didFinishDownload = true
 
     iiQ.main { [weak self] in
-      if let imageView = self?.imageView,
-        placeholderImageView = self?.placeholderImageView {
-          
-        AukRemoteImage.animateImageView(imageView, show: true, settings: settings)
+      guard let imageView = self?.imageView else { return }
+      AukRemoteImage.animateImageView(imageView, show: true, settings: settings)
+    
+      if let placeholderImageView = self?.placeholderImageView {
         AukRemoteImage.animateImageView(placeholderImageView, show: false, settings: settings)
-
       }
     }
   }

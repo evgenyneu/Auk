@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "Auk"
-  s.version     = "2.1.0"
+  s.version     = "2.1.1"
   s.license     = { :type => "MIT" }
   s.homepage    = "https://github.com/evgenyneu/Auk"
   s.summary     = "An image slideshow for iOS written in Swift."

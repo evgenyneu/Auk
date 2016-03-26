@@ -1,5 +1,9 @@
 # Auk version history
 
+## 2.1.1 (2016-03-26)
+
+* Fixed: fade-in animation was not used when showing remote images without placeholders.
+
 ## 2.1.0 (2016-03-26)
 
 * [eyaldar](https://github.com/eyaldar) added `updateAt` method that allows to update an existing image with a new one.
