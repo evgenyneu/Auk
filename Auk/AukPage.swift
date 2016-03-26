@@ -65,14 +65,25 @@ final class AukPage: UIView {
   func outOfSightNow() {
     remoteImage?.cancelDownload()
   }
+     
+  /// Removes image views.
+  func removeImageViews() {
+    placeholderImageView?.removeFromSuperview();
+    placeholderImageView = nil
+    
+    imageView?.removeFromSuperview()
+    imageView = nil
+  }
   
   /**
-     
-  Called to clear old image views.
-     
+  
+  Prepares the page view for reuse. Clears current content from the page and stops download.
+   
   */
-  func clearImages() {
-    let _ = self.subviews.map({ $0.removeFromSuperview() })
+  func prepareForReuse() {
+    removeImageViews()
+    remoteImage?.cancelDownload()
+    remoteImage = nil
   }
     
   /**

@@ -17,6 +17,18 @@ struct AukScrollViewContent {
   }
   
   /**
+ 
+  - returns: Page at index. Returns nil if index is out of bounds.
+ 
+  */
+  static func pageAt(index: Int, scrollView: UIScrollView) -> AukPage? {
+    let pages = aukPages(scrollView)
+    if index < 0 { return nil }
+    if index >= pages.count { return nil }
+    return pages[index]
+  }
+  
+  /**
   
   Creates Auto Layout constraints for positioning the page view inside the scroll view.
   

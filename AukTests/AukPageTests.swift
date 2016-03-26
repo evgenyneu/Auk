@@ -148,6 +148,55 @@ class AukPageTests: XCTestCase {
     XCTAssert(simulator.downloaders.first!.cancelled)
     XCTAssert(imageView.moa.url == nil)
   }
-
-
+  
+  // MARK: - Remove image views
+  
+  func testRemoveImage() {
+    let image = uiImageFromFile("67px.png")
+    view.show(image: image, settings: settings)
+    view.removeImageViews()
+    
+    XCTAssertNil(view.imageView)
+  }
+  
+  func testRemovePlaceholderImage() {
+    settings.placeholderImage = UIImage()
+    view.show(url: "http://site.com/auk.jpg", settings: settings)
+    view.removeImageViews()
+    
+    XCTAssertNil(view.placeholderImageView)
+  }
+  
+  // MARK: - Prepare for reuse
+  
+  func testPrepareForReuse_removesImageView() {
+    settings.placeholderImage = UIImage()
+    let image = uiImageFromFile("67px.png")
+    view.show(image: image, settings: settings)
+    
+    view.prepareForReuse()
+    
+    XCTAssertNil(view.imageView)
+    XCTAssertNil(view.placeholderImageView)
+  }
+  
+  func testPrepareForReuse_cancelCurrentDownload() {
+    let simulator = MoaSimulator.simulate("auk.jpg")
+    let imageView = UIImageView()
+    view.remoteImage = AukRemoteImage()
+    view.remoteImage?.setup("http://site.com/auk.jpg", imageView: imageView,
+                            placeholderImageView: nil, settings: settings)
+    
+    // Request image download
+    imageView.moa.url = "http://site.com/auk.jpg"
+    
+    XCTAssertEqual(1, simulator.downloaders.count)
+    XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.first!.url)
+    
+    view.prepareForReuse()
+    
+    XCTAssert(simulator.downloaders.first!.cancelled)
+    XCTAssert(imageView.moa.url == nil)
+    XCTAssertNil(view.remoteImage)
+  }
 }

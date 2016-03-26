@@ -65,4 +65,49 @@ class AukScrollViewContentTests: XCTestCase {
     XCTAssertEqual(CGPoint(x: 360, y: 0), aukView3.frame.origin)
     XCTAssertEqual(CGSize(width: 180, height: 120), aukView3.frame.size)
   }
+  
+  // MARK: - PageAt
+  // -----------------
+  
+  func testPageAt() {
+    let aukView1 = AukPage()
+    let aukView2 = AukPage()
+    
+    scrollView.addSubview(aukView1)
+    scrollView.addSubview(aukView2)
+    
+    var result = AukScrollViewContent.pageAt(0, scrollView: scrollView)
+    XCTAssert(result === aukView1)
+    
+    result = AukScrollViewContent.pageAt(1, scrollView: scrollView)
+    XCTAssert(result === aukView2)
+  }
+  
+  func testPageAt_noPages() {
+    let result = AukScrollViewContent.pageAt(0, scrollView: scrollView)
+    XCTAssertNil(result)
+  }
+  
+  func testPageAt_indexGreaterThanExist() {
+    let aukView1 = AukPage()
+    let aukView2 = AukPage()
+    
+    scrollView.addSubview(aukView1)
+    scrollView.addSubview(aukView2)
+    
+    let result = AukScrollViewContent.pageAt(2, scrollView: scrollView)
+    XCTAssertNil(result)
+  }
+  
+  func testPageAt_indexLessThanExist() {
+    let aukView1 = AukPage()
+    let aukView2 = AukPage()
+    
+    scrollView.addSubview(aukView1)
+    scrollView.addSubview(aukView2)
+    
+    let result = AukScrollViewContent.pageAt(-1, scrollView: scrollView)
+    XCTAssertNil(result)
+  }
+
 }

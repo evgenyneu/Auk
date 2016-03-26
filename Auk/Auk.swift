@@ -75,8 +75,10 @@ public class Auk {
    
    */
   public func updateAt(pageIndex:Int, image: UIImage, accessibilityLabel: String? = nil) {
-    if let page = getPage(pageIndex) {
-      page.clearImages()
+    if let scrollView = scrollView,
+      page = AukScrollViewContent.pageAt(pageIndex, scrollView: scrollView) {
+      
+      page.prepareForReuse()
       page.accessibilityLabel = accessibilityLabel
       page.show(image: image, settings: settings)
     }
@@ -93,14 +95,14 @@ public class Auk {
    
    */
   public func updateAt(pageIndex: Int, url: String, accessibilityLabel: String? = nil) {
-    if let page = getPage(pageIndex) {
-      page.clearImages()
+    if let scrollView = scrollView,
+      page = AukScrollViewContent.pageAt(pageIndex, scrollView: scrollView) {
+      
+      page.prepareForReuse()
       page.accessibilityLabel = accessibilityLabel
       page.show(url: url, settings: settings)
       
-      if let scrollView = scrollView {
-        AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
-      }
+      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
     }
   }
 
@@ -342,18 +344,6 @@ public class Auk {
     createPageIdicator()
     scrollView?.showsHorizontalScrollIndicator = settings.showsHorizontalScrollIndicator
     scrollView?.pagingEnabled = settings.pagingEnabled
-  }
-  
-  private func getPage(index: Int) -> AukPage? {
-    if let scrollView = scrollView {
-      let pages = AukScrollViewContent.aukPages(scrollView)
-        
-      if pages.count > index {
-        return pages[index]
-      }
-    }
-    
-    return nil
   }
     
   /// Create a page, add it to the scroll view content and layout.

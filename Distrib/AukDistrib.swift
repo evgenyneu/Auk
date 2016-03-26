@@ -90,8 +90,10 @@ public class Auk {
    
    */
   public func updateAt(pageIndex:Int, image: UIImage, accessibilityLabel: String? = nil) {
-    if let page = getPage(pageIndex) {
-      page.clearImages()
+    if let scrollView = scrollView,
+      page = AukScrollViewContent.pageAt(pageIndex, scrollView: scrollView) {
+      
+      page.prepareForReuse()
       page.accessibilityLabel = accessibilityLabel
       page.show(image: image, settings: settings)
     }
@@ -108,14 +110,14 @@ public class Auk {
    
    */
   public func updateAt(pageIndex: Int, url: String, accessibilityLabel: String? = nil) {
-    if let page = getPage(pageIndex) {
-      page.clearImages()
+    if let scrollView = scrollView,
+      page = AukScrollViewContent.pageAt(pageIndex, scrollView: scrollView) {
+      
+      page.prepareForReuse()
       page.accessibilityLabel = accessibilityLabel
       page.show(url: url, settings: settings)
       
-      if let scrollView = scrollView {
-        AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
-      }
+      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
     }
   }
 
@@ -358,18 +360,6 @@ public class Auk {
     scrollView?.showsHorizontalScrollIndicator = settings.showsHorizontalScrollIndicator
     scrollView?.pagingEnabled = settings.pagingEnabled
   }
-  
-  private func getPage(index: Int) -> AukPage? {
-    if let scrollView = scrollView {
-      let pages = AukScrollViewContent.aukPages(scrollView)
-        
-      if pages.count > index {
-        return pages[index]
-      }
-    }
-    
-    return nil
-  }
     
   /// Create a page, add it to the scroll view content and layout.
   private func createPage(accessibilityLabel: String? = nil) -> AukPage {
@@ -549,11 +539,26 @@ final class AukPage: UIView {
   
   /**
      
-  Called to clear old image views.
+  Removes image views.
      
   */
-  func clearImages() {
-    let _ = self.subviews.map({ $0.removeFromSuperview() })
+  func removeImageViews() {
+    placeholderImageView?.removeFromSuperview();
+    placeholderImageView = nil
+    
+    imageView?.removeFromSuperview()
+    imageView = nil
+  }
+  
+  /**
+  
+  Prepares the page view for reuse. Clears current content from the page and stops download.
+   
+  */
+  func prepareForReuse() {
+    removeImageViews()
+    remoteImage?.cancelDownload()
+    remoteImage = nil
   }
     
   /**
@@ -989,6 +994,18 @@ struct AukScrollViewContent {
   */
   static func aukPages(scrollView: UIScrollView) -> [AukPage] {
     return scrollView.subviews.filter { $0 is AukPage }.map { $0 as! AukPage }
+  }
+  
+  /**
+ 
+  - returns: Page at index. Returns nil if index is out of bounds.
+ 
+  */
+  static func pageAt(index: Int, scrollView: UIScrollView) -> AukPage? {
+    let pages = aukPages(scrollView)
+    if index < 0 { return nil }
+    if index >= pages.count { return nil }
+    return pages[index]
   }
   
   /**
