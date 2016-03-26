@@ -47,7 +47,8 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
 #### Setup in Xcode 7 prior ot Xcode 7.3
 
-Use `2.0` library version number for both Carthage and CocoaPods.
+If you can not run Swift 2.2 please use `2.0` library version number for both Carthage and CocoaPods
+or use the previous [AukDistrib](https://github.com/evgenyneu/Auk/blob/2.0.19/Distrib/AukDistrib.swift).
 
 #### Setup in Xcode 6
 
