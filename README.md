@@ -34,7 +34,7 @@ Simply add two files to your project:
 
 **Setup with Carthage (iOS 8+)**
 
-1. Add `github "evgenyneu/Auk" ~> 2.0` to your Cartfile.
+1. Add `github "evgenyneu/Auk" ~> 2.1` to your Cartfile.
 2. Run `carthage update`.
 3. Add `moa` and `Auk` frameworks into your project.
 
@@ -43,11 +43,15 @@ Simply add two files to your project:
 If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
-    pod 'Auk', '~> 2.0'
+    pod 'Auk', '~> 2.1'
+
+#### Setup in Xcode 7 prior ot Xcode 7.3
+
+Use `2.0` library version number for both Carthage and CocoaPods.
 
 #### Setup in Xcode 6
 
-Auk is written in Swift 2.0 for Xcode 7. See [Swift 1.2 setup instuctions](https://github.com/evgenyneu/Auk/wiki/Setup-with-Xcode-6-and-Swift-1.2) for Xcode 6 projects.
+Auk is written in Swift 2.2 for Xcode 7. See [Swift 1.2 setup instuctions](https://github.com/evgenyneu/Auk/wiki/Setup-with-Xcode-6-and-Swift-1.2) for Xcode 6 projects.
 
 ## Usage
 
@@ -111,6 +115,20 @@ One can pass an image description when calling the `show` methods. This descript
 ```Swift
 // Supply accessibility label for the image
 scrollView.auk.show(url: "http://site.com/bird.jpg", accessibilityLabel: "Picture of a bird.")
+```
+
+#### Updating existing image
+
+One can change a currently loaded image by calling `updateAt` methods and supplying the index of the page to be updated.
+
+```Swift
+// Update existing image with a remote image
+scrollView.auk.updateAt(0, url: "http://site.com/bird.jpg")
+
+// Update existing image with a local image
+if let image = updateAt(1, named: "bird.jpg") {
+  scrollView.auk.show(image: image)
+}
 ```
 
 ## Loading images from insecure HTTP hosts
@@ -201,7 +219,12 @@ Here is a list of other image slideshow libraries for iOS.
 * [nicklockwood/SwipeView](https://github.com/nicklockwood/SwipeView)
 * [paritsohraval100/PJR-ScrollView-Slider](https://github.com/paritsohraval100/PJR-ScrollView-Slider)
 
-## Credits
+
+## Thanks 👍
+
+* [eyaldar](https://github.com/eyaldar) added `updateAt` method.
+
+## Image credits
 
 * The Great Auk drawing by John James Audubon, 1827-1838. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:341_Great_Auk.jpg).
 * Great auk with juvenile drawing by John Gerrard Keulemans, circa 1900. Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Great_auk_with_juvenile.jpg).
