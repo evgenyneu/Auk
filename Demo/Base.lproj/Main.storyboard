@@ -37,7 +37,7 @@
                                             </connections>
                                         </scrollView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkS-kK-gCM">
-                                            <rect key="frame" x="205" y="270" width="40" height="60"/>
+                                            <rect key="frame" x="205" y="296.5" width="40" height="60"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <state key="normal" title="⏪">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -48,7 +48,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Cz-ix-YLV">
-                                            <rect key="frame" x="280" y="270" width="40" height="60"/>
+                                            <rect key="frame" x="280" y="296.5" width="40" height="60"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <state key="normal" title="🔁">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -59,7 +59,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ak0-JX-tQy">
-                                            <rect key="frame" x="355" y="270" width="40" height="60"/>
+                                            <rect key="frame" x="355" y="296.5" width="40" height="60"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <state key="normal" title="⏩">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -70,7 +70,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n77-OH-yAA">
-                                            <rect key="frame" x="218.5" y="330" width="164" height="40"/>
+                                            <rect key="frame" x="218.5" y="361.5" width="164" height="40"/>
                                             <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="1" alpha="0.78485150709219853" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -82,7 +82,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhg-PX-ME1">
-                                            <rect key="frame" x="218" y="380" width="164" height="40"/>
+                                            <rect key="frame" x="218" y="416.5" width="164" height="40"/>
                                             <color key="backgroundColor" red="0.92890860453210888" green="0.92968594274230032" blue="1" alpha="0.78485150709219853" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -94,7 +94,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWz-f3-FnP">
-                                            <rect key="frame" x="20" y="430" width="560" height="21.5"/>
+                                            <rect key="frame" x="20" y="270" width="560" height="21.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -104,21 +104,21 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="n77-OH-yAA" firstAttribute="centerX" secondItem="Pv7-uD-0Sn" secondAttribute="centerX" id="0UQ-nG-HTf"/>
-                                        <constraint firstItem="Mhg-PX-ME1" firstAttribute="top" secondItem="n77-OH-yAA" secondAttribute="bottom" constant="10" id="2O0-Ms-jBd"/>
+                                        <constraint firstItem="Mhg-PX-ME1" firstAttribute="top" secondItem="n77-OH-yAA" secondAttribute="bottom" constant="15" id="2O0-Ms-jBd"/>
                                         <constraint firstItem="Ak0-JX-tQy" firstAttribute="leading" secondItem="6Cz-ix-YLV" secondAttribute="trailing" constant="35" placeholder="YES" id="3lS-Na-IQr"/>
                                         <constraint firstAttribute="trailing" secondItem="aWz-f3-FnP" secondAttribute="trailing" constant="20" id="6xu-k3-nLM"/>
                                         <constraint firstItem="n77-OH-yAA" firstAttribute="width" secondItem="Mhg-PX-ME1" secondAttribute="width" id="7p1-uf-AOr"/>
                                         <constraint firstItem="6Cz-ix-YLV" firstAttribute="leading" secondItem="xkS-kK-gCM" secondAttribute="trailing" constant="35" placeholder="YES" id="7rR-dE-DM0"/>
+                                        <constraint firstItem="aWz-f3-FnP" firstAttribute="top" secondItem="SrW-bD-PlC" secondAttribute="bottom" constant="5" id="A7k-ty-3Tu"/>
                                         <constraint firstItem="aWz-f3-FnP" firstAttribute="leading" secondItem="Pv7-uD-0Sn" secondAttribute="leading" constant="20" id="Czh-Ye-7vO"/>
                                         <constraint firstItem="Mhg-PX-ME1" firstAttribute="centerX" secondItem="Pv7-uD-0Sn" secondAttribute="centerX" id="JsW-MH-YWv"/>
-                                        <constraint firstItem="6Cz-ix-YLV" firstAttribute="top" secondItem="SrW-bD-PlC" secondAttribute="bottom" constant="5" id="Kta-IK-ESL"/>
                                         <constraint firstItem="SrW-bD-PlC" firstAttribute="top" secondItem="Pv7-uD-0Sn" secondAttribute="top" id="LdL-xC-G4g"/>
-                                        <constraint firstItem="aWz-f3-FnP" firstAttribute="top" secondItem="Mhg-PX-ME1" secondAttribute="bottom" constant="10" id="R2I-JP-dJM"/>
-                                        <constraint firstItem="n77-OH-yAA" firstAttribute="top" secondItem="6Cz-ix-YLV" secondAttribute="bottom" id="fUY-ZZ-qoa"/>
+                                        <constraint firstItem="n77-OH-yAA" firstAttribute="top" secondItem="6Cz-ix-YLV" secondAttribute="bottom" constant="5" id="fUY-ZZ-qoa"/>
                                         <constraint firstItem="SrW-bD-PlC" firstAttribute="leading" secondItem="Pv7-uD-0Sn" secondAttribute="leading" id="gJP-RQ-aXb"/>
                                         <constraint firstItem="6Cz-ix-YLV" firstAttribute="centerX" secondItem="Pv7-uD-0Sn" secondAttribute="centerX" id="n70-n0-2wZ"/>
                                         <constraint firstAttribute="trailing" secondItem="SrW-bD-PlC" secondAttribute="trailing" id="sOh-c3-YgM"/>
                                         <constraint firstItem="Ak0-JX-tQy" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" id="vUc-5H-9uG"/>
+                                        <constraint firstItem="6Cz-ix-YLV" firstAttribute="top" secondItem="aWz-f3-FnP" secondAttribute="bottom" constant="5" id="wob-P0-pj5"/>
                                         <constraint firstItem="xkS-kK-gCM" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" id="xIQ-Nx-uo2"/>
                                     </constraints>
                                 </view>
