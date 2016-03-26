@@ -30,46 +30,7 @@ public class Auk {
 
   */
   public var settings = AukSettings()
-    
-  /**
-     
-  Updates a local image in the scroll view.
-
-  - parameter pageIndex: the index of the page to change.
-  - parameter image: Image to be shown in the scroll view.
-  - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode.
-     For example: "Picture of a pony standing in a flower pot.".
-     
-  */
-  public func updateAt(pageIndex:Int, image: UIImage, accessibilityLabel: String? = nil) {
-    if let page = getPage(pageIndex) {
-      page.clearImages()
-      page.accessibilityLabel = accessibilityLabel
-      page.show(image: image, settings: settings)
-    }
-  }
-    
-  /**
-     
-  Downloads a remote image and update the selected page in the scroll view. Use `Moa.settings.cache` property to configure image caching.
-     
-  - parameter pageIndex: the index of the page to change.
-  - parameter url: Url of the image to be shown.
-  - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode.
-     For example: "Picture of a pony standing in a flower pot.".
-     
-  */
-  public func updateAt(pageIndex: Int, url: String, accessibilityLabel: String? = nil) {
-    if let page = getPage(pageIndex) {
-      page.clearImages()
-      page.accessibilityLabel = accessibilityLabel
-      page.show(url: url, settings: settings)
-            
-      if let scrollView = scrollView {
-        AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
-      }
-    }
-  }
+  
     
   /**
 
@@ -102,6 +63,46 @@ public class Auk {
       AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
     }
   }
+  
+  /**
+   
+   Updates existing image in the scroll view.
+   
+   - parameter pageIndex: the index of the image to change.
+   - parameter image: Image to be shown in the scroll view.
+   - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode.
+   For example: "Picture of a pony standing in a flower pot.".
+   
+   */
+  public func updateAt(pageIndex:Int, image: UIImage, accessibilityLabel: String? = nil) {
+    if let page = getPage(pageIndex) {
+      page.clearImages()
+      page.accessibilityLabel = accessibilityLabel
+      page.show(image: image, settings: settings)
+    }
+  }
+  
+  /**
+   
+   Downloads a remote image and updates the selected page in the scroll view. Use `Moa.settings.cache` property to configure image caching.
+   
+   - parameter pageIndex: the index of the image to change.
+   - parameter url: Url of the image to be shown.
+   - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode.
+   For example: "Picture of a pony standing in a flower pot.".
+   
+   */
+  public func updateAt(pageIndex: Int, url: String, accessibilityLabel: String? = nil) {
+    if let page = getPage(pageIndex) {
+      page.clearImages()
+      page.accessibilityLabel = accessibilityLabel
+      page.show(url: url, settings: settings)
+      
+      if let scrollView = scrollView {
+        AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
+      }
+    }
+  }
 
   /**
 
@@ -125,7 +126,7 @@ public class Auk {
   This function can be used for animating the scroll view content during orientation change. It is called in viewWillTransitionToSize and inside animateAlongsideTransition animation block.
 
       override func viewWillTransitionToSize(size: CGSize,
-      withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
 
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
 
@@ -242,7 +243,7 @@ public class Auk {
 
   /**
 
-  Returns the current page index. If pages are being scrolled and there are two of them on screen the page index will indicate the page that occupies bigger portion of the screen at the moment.
+  Returns the current page index. If pages are being scrolled and there are two of them on screen the page index will indicate the page that occupies bigger portion of the screen at the moment. If scrolled way to the left or right it will return zero or the last index respectively.
 
   */
   public var currentPageIndex: Int {
@@ -255,8 +256,10 @@ public class Auk {
       // Page # 0 is the rightmost in the right-to-left language layout
       if RightToLeft.isRightToLeft(scrollView) {
         value = numberOfPages - value - 1
-        if value < 0 { value = 0 }
       }
+      
+      if value < 0 { value = 0 }
+      if value > numberOfPages - 1 { value = numberOfPages - 1 }
       
       return value
     }
