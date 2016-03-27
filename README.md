@@ -45,7 +45,7 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
     use_frameworks!
     pod 'Auk', '~> 2.1'
 
-#### Setup in Xcode 7 prior ot Xcode 7.3
+#### Setup in Xcode 7 prior to Xcode 7.3
 
 If you can not run Swift 2.2 please use `2.0` library version number for both Carthage and CocoaPods
 or use the previous [AukDistrib](https://github.com/evgenyneu/Auk/blob/2.0.19/Distrib/AukDistrib.swift).
