@@ -1,5 +1,9 @@
 # Auk version history
 
+## 2.1.3 (2016-03-30)
+
+* Fixed the crash occured when the scroll view had zero bounds width.
+
 ## 2.1.2 (2016-03-27)
 
 * When updating an image with a remote image the current image is replaced only after the new image has finished downloading. This creates a smoother transition from the current image to the new image.

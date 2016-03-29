@@ -97,4 +97,13 @@ class AukInterfaceCurrentPageIndexTestsTests: XCTestCase {
       XCTAssertEqual(2, auk.currentPageIndex)
     }
   }
+  
+  func testCurrentPageIndex_handleZeroWidth() {
+    scrollView.bounds = CGRect(origin: CGPoint(), size: CGSize())
+    
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    
+    XCTAssertNil(auk.currentPageIndex)
+  }
 }

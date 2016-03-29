@@ -281,6 +281,11 @@ public class Auk {
       let width = Double(scrollView.bounds.size.width)
       let offset = Double(scrollView.contentOffset.x)
       
+      if width == 0 {
+        print("Auk WARNING: scroll view has zero width.")
+        return nil
+      }
+      
       var value = Int(round(offset / width))
       
       // Page # 0 is the rightmost in the right-to-left language layout
