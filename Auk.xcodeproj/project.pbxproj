@@ -59,7 +59,6 @@
 		7EBD03D01B34E43F00957205 /* Wormius_Great_Auk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EBD03CC1B34E43F00957205 /* Wormius_Great_Auk.jpg */; };
 		7EBD03D21B34E45700957205 /* DemoConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBD03D11B34E45700957205 /* DemoConstants.swift */; };
 		7EBD03D91B34E76300957205 /* AukSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBD03D81B34E76300957205 /* AukSettings.swift */; };
-		7ECB40F71CA69BFF00E493E0 /* Scrollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECB40F61CA69BFF00E493E0 /* Scrollable.swift */; };
 		7ECB40F91CA6A3F700E493E0 /* AukInterfaceUpdateLocalImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECB40F81CA6A3F700E493E0 /* AukInterfaceUpdateLocalImageTests.swift */; };
 		7ECB40FB1CA6ACAC00E493E0 /* AukInterfaceUpdateRemoteImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECB40FA1CA6ACAC00E493E0 /* AukInterfaceUpdateRemoteImageTests.swift */; };
 		7ECF14001B76DE34007E407B /* RightToLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCDBA1B6DE64500C288CA /* RightToLeft.swift */; };
@@ -170,7 +169,6 @@
 		7EBD03CC1B34E43F00957205 /* Wormius_Great_Auk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Wormius_Great_Auk.jpg; sourceTree = "<group>"; };
 		7EBD03D11B34E45700957205 /* DemoConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoConstants.swift; sourceTree = "<group>"; };
 		7EBD03D81B34E76300957205 /* AukSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukSettings.swift; sourceTree = "<group>"; };
-		7ECB40F61CA69BFF00E493E0 /* Scrollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrollable.swift; sourceTree = "<group>"; };
 		7ECB40F81CA6A3F700E493E0 /* AukInterfaceUpdateLocalImageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukInterfaceUpdateLocalImageTests.swift; sourceTree = "<group>"; };
 		7ECB40FA1CA6ACAC00E493E0 /* AukInterfaceUpdateRemoteImageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukInterfaceUpdateRemoteImageTests.swift; sourceTree = "<group>"; };
 		7EFEEDBE1B3E2FA00082488E /* AukPageVisibilityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukPageVisibilityTests.swift; sourceTree = "<group>"; };
@@ -333,7 +331,6 @@
 				7E9013931B2CF6FB00DD4406 /* Main.storyboard */,
 				7E9013961B2CF6FB00DD4406 /* Images.xcassets */,
 				7E9013981B2CF6FB00DD4406 /* LaunchScreen.xib */,
-				7ECB40F61CA69BFF00E493E0 /* Scrollable.swift */,
 				7E90138D1B2CF6FB00DD4406 /* Supporting Files */,
 			);
 			path = Demo;
@@ -620,7 +617,6 @@
 				7ECF14001B76DE34007E407B /* RightToLeft.swift in Sources */,
 				7EBD03D21B34E45700957205 /* DemoConstants.swift in Sources */,
 				7E9013921B2CF6FB00DD4406 /* ViewController.swift in Sources */,
-				7ECB40F71CA69BFF00E493E0 /* Scrollable.swift in Sources */,
 				7E9013901B2CF6FB00DD4406 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
