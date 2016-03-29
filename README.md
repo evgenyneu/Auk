@@ -50,12 +50,6 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 If you can not run Swift 2.2 please use `2.0` library version number for both Carthage and CocoaPods
 or use the previous [AukDistrib](https://github.com/evgenyneu/Auk/blob/2.0.19/Distrib/AukDistrib.swift).
 
-If you want to run the demo in Xcode 7.2 please use the `2.0.19` tag.
-
-```
-git checkout -b xcode_7.2 2.0.19
-```
-
 #### Setup in Xcode 6
 
 Auk is written in Swift 2.2 for Xcode 7. See [Swift 1.2 setup instuctions](https://github.com/evgenyneu/Auk/wiki/Setup-with-Xcode-6-and-Swift-1.2) for Xcode 6 projects.
@@ -214,7 +208,12 @@ Here is what you need to do to add an image tap handler to the scroll view.
 
 ## Demo app
 
-The project includes a demo iOS app.
+The project includes a demo iOS app. If you are seeing the following build error it probably means you are running an older Xcode version.
+
+> Module file was created by an older version of the compiler; rebuild 'moa' and try again
+
+To fix it, install the laterst Xcode or [install Carthage](https://github.com/Carthage/Carthage) and run 'carthage update' command from the project root directory.
+
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_demo_ios_app_2.jpg' width='414' alt='Auk pages scroll view demo iOS app'>
 
