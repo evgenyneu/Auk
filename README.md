@@ -212,7 +212,7 @@ The project includes a demo iOS app. If you are seeing the following build error
 
 > Module file was created by an older version of the compiler; rebuild 'moa' and try again
 
-To fix it, install the latest Xcode or [install Carthage](https://github.com/Carthage/Carthage) and run 'carthage update' command from the project root directory.
+To fix it, install the latest Xcode or [install Carthage](https://github.com/Carthage/Carthage) and run `carthage update` command from the project root directory.
 
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_demo_ios_app_2.jpg' width='414' alt='Auk pages scroll view demo iOS app'>
