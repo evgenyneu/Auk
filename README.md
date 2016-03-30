@@ -45,14 +45,13 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
     use_frameworks!
     pod 'Auk', '~> 2.1'
 
-#### Setup in Xcode 7 prior to Xcode 7.3
 
-If you can not run Swift 2.2 please use `2.0` library version number for both Carthage and CocoaPods
-or use the previous [AukDistrib](https://github.com/evgenyneu/Auk/blob/2.0.19/Distrib/AukDistrib.swift).
+#### Previous versions
 
-#### Setup in Xcode 6
 
-Auk is written in Swift 2.2 for Xcode 7. See [Swift 1.2 setup instuctions](https://github.com/evgenyneu/Auk/wiki/Setup-with-Xcode-6-and-Swift-1.2) for Xcode 6 projects.
+Use the [previous versions of the library](https://github.com/evgenyneu/Auk/wiki/Previous-versions) if you need to run it in older Xcode.
+
+
 
 ## Usage
 
@@ -212,7 +211,7 @@ The project includes a demo iOS app. If you are seeing the following build error
 
 > Module file was created by an older version of the compiler; rebuild 'moa' and try again
 
-To fix it, install the latest Xcode or [install Carthage](https://github.com/Carthage/Carthage) and run `carthage update` command from the project root directory.
+To fix it, use the latest Xcode or [install Carthage](https://github.com/Carthage/Carthage) and run `carthage update` command from the project root directory.
 
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_demo_ios_app_2.jpg' width='414' alt='Auk pages scroll view demo iOS app'>
