@@ -204,6 +204,9 @@ Here is what you need to do to add an image tap handler to the scroll view.
 1. A dialog will appear, change the *Connection* to *action* and enter the name of the method.
 1. This method will be called when the scroll view is tapped. Use the `auk.currentPageIndex` property of your scroll view to get the index of the current page.
 
+## Detect page scrolling
+
+You can run some code when the scroll view is being scrolled by using `UIScrollViewDelegate`. See the [detect page scrolling manual](https://github.com/evgenyneu/Auk/wiki/Detect-page-scrolling) for details.
 
 ## Demo app
 
