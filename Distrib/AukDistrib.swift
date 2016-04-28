@@ -74,8 +74,11 @@ public class Auk {
     let page = createPage(accessibilityLabel)
     page.show(url: url, settings: settings)
 
-    if let scrollView = scrollView {
-      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
+    if let scrollView = scrollView,
+      currentPageIndex = currentPageIndex {
+      
+      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
+                                                      currentPageIndex: currentPageIndex)
     }
   }
   
@@ -125,7 +128,10 @@ public class Auk {
       page.accessibilityLabel = accessibilityLabel
       page.show(url: url, settings: updateSettings)
       
-      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
+      if let currentPageIndex = currentPageIndex {
+        AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
+                                                      currentPageIndex: currentPageIndex)
+      }
     }
   }
 
@@ -360,6 +366,7 @@ public class Auk {
       self?.onScroll()
     }
 
+    // We stop auto scrolling when the user starts scrolling manually
     scrollViewDelegate.onScrollByUser = { [weak self] in
       self?.stopAutoScroll()
     }
@@ -403,12 +410,12 @@ public class Auk {
   }
 
   func onScroll() {
-    if let scrollView = scrollView {
-      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
+    if let scrollView = scrollView,
+      currentPageIndex = currentPageIndex {
+      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
+                                                      currentPageIndex: currentPageIndex)
       
-      if let currentPageIndex = currentPageIndex {
-        pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
-      }
+      pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
     }
   }
 
@@ -778,22 +785,29 @@ struct AukPageVisibility {
   - parameter scrollView: Scroll view with the pages.
 
   */
-  static func tellPagesAboutTheirVisibility(scrollView: UIScrollView, settings: AukSettings) {
+  static func tellPagesAboutTheirVisibility(scrollView: UIScrollView,
+                                            settings: AukSettings,
+                                            currentPageIndex: Int) {
+    
     let pages = AukScrollViewContent.aukPages(scrollView)
 
-    for page in pages {
+    for (index, page) in pages.enumerate() {
       if isVisible(scrollView, page: page) {
         page.visibleNow(settings)
       } else {
-        /*
-        
-        Now, this is a bit nuanced so let me explain. When we scroll into a new page we sometimes see a little bit of the next page. The scroll view animation overshoots a little bit to show the next page and then slides back to the current page. This is probably done on purpose for more natural spring bouncing effect.
-        
-        When the scroll view overshoots and shows the next page, we call `isVisible` on it and it starts downloading its image. But because scroll view bounces back in a moment that page becomes invisible very soon. If we just call `outOfSightNow()` the next page download will be canceled even though it has just been started. That is probably not very efficient use of network, so we call `isFarOutOfSight` function to check if the next page is way out of sight (and not just a little bit). If the page is out of sight but just by a little margin we still let it download the image.
-        
-        */
-        if isFarOutOfSight(scrollView, page: page) {
-          page.outOfSightNow()
+        if abs(index - currentPageIndex) <= settings.nextPagesToPreload {
+          // Preload images for the pages around the current page
+          page.visibleNow(settings)
+        } else {
+          /*
+          Now, this is a bit nuanced so let me explain. When we scroll into a new page we sometimes see a little bit of the next page. The scroll view animation overshoots a little bit to show the next page and then slides back to the current page. This is probably done on purpose for more natural spring bouncing effect.
+
+          When the scroll view overshoots and shows the next page, we call `isVisible` on it and it starts downloading its image. But because scroll view bounces back in a moment the page becomes invisible again very soon. If we just call `outOfSightNow()` the next page download will be canceled even though it has just been started. That is probably not very efficient use of network, so we call `isFarOutOfSight` function to check if the next page is way out of sight (and not just a little bit). If the page is out of sight but just by a little margin we still let it download the image.
+
+          */
+          if isFarOutOfSight(scrollView, page: page) {
+            page.outOfSightNow()
+          }
         }
       }
     }
@@ -837,6 +851,10 @@ class AukRemoteImage {
   func downloadImage(settings: AukSettings) {
     if imageView?.moa.url != nil { return } // Download has already started
     if didFinishDownload { return } // Image has already been downloaded
+    
+    if let url = url {
+      print("Downloading \(url)")
+    }
 
     imageView?.moa.errorImage = settings.errorImage
 
@@ -851,6 +869,9 @@ class AukRemoteImage {
   /// Cancel current image download HTTP request.
   func cancelDownload() {
     // Cancel current download by setting url to nil
+    if let currentUrl = imageView?.moa.url where !didFinishDownload {
+      print("Canceling download \(currentUrl)")
+    }
     imageView?.moa.url = nil
   }
 
@@ -1161,6 +1182,9 @@ public struct AukSettings {
   
   /// Image to be displayed when remote image download fails.
   public var errorImage: UIImage?
+  
+  /// The number of remote images to preload. For example, if nextPagesToPreload = 2 and we are viewing the first image it will preload pages 2 and 3. If we are viewing 5th, then it will load 3, 4, 6 and 7 (unless they are already loaded). Default value is 0, it only loads the image for the currently visible page.
+  public var nextPagesToPreload = 0
   
   /// Settings for styling the scroll view page indicator.
   public var pageControl = PageControlSettings()

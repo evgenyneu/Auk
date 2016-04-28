@@ -42,22 +42,29 @@ struct AukPageVisibility {
   - parameter scrollView: Scroll view with the pages.
 
   */
-  static func tellPagesAboutTheirVisibility(scrollView: UIScrollView, settings: AukSettings) {
+  static func tellPagesAboutTheirVisibility(scrollView: UIScrollView,
+                                            settings: AukSettings,
+                                            currentPageIndex: Int) {
+    
     let pages = AukScrollViewContent.aukPages(scrollView)
 
-    for page in pages {
+    for (index, page) in pages.enumerate() {
       if isVisible(scrollView, page: page) {
         page.visibleNow(settings)
       } else {
-        /*
-        
-        Now, this is a bit nuanced so let me explain. When we scroll into a new page we sometimes see a little bit of the next page. The scroll view animation overshoots a little bit to show the next page and then slides back to the current page. This is probably done on purpose for more natural spring bouncing effect.
-        
-        When the scroll view overshoots and shows the next page, we call `isVisible` on it and it starts downloading its image. But because scroll view bounces back in a moment that page becomes invisible very soon. If we just call `outOfSightNow()` the next page download will be canceled even though it has just been started. That is probably not very efficient use of network, so we call `isFarOutOfSight` function to check if the next page is way out of sight (and not just a little bit). If the page is out of sight but just by a little margin we still let it download the image.
-        
-        */
-        if isFarOutOfSight(scrollView, page: page) {
-          page.outOfSightNow()
+        if abs(index - currentPageIndex) <= settings.nextPagesToPreload {
+          // Preload images for the pages around the current page
+          page.visibleNow(settings)
+        } else {
+          /*
+          Now, this is a bit nuanced so let me explain. When we scroll into a new page we sometimes see a little bit of the next page. The scroll view animation overshoots a little bit to show the next page and then slides back to the current page. This is probably done on purpose for more natural spring bouncing effect.
+
+          When the scroll view overshoots and shows the next page, we call `isVisible` on it and it starts downloading its image. But because scroll view bounces back in a moment the page becomes invisible again very soon. If we just call `outOfSightNow()` the next page download will be canceled even though it has just been started. That is probably not very efficient use of network, so we call `isFarOutOfSight` function to check if the next page is way out of sight (and not just a little bit). If the page is out of sight but just by a little margin we still let it download the image.
+
+          */
+          if isFarOutOfSight(scrollView, page: page) {
+            page.outOfSightNow()
+          }
         }
       }
     }
