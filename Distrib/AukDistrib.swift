@@ -852,6 +852,7 @@ class AukRemoteImage {
     if imageView?.moa.url != nil { return } // Download has already started
     if didFinishDownload { return } // Image has already been downloaded
     
+    // Remove THIS!!!!!!!!!!!!!!!!!!
     if let url = url {
       print("Downloading \(url)")
     }
@@ -869,9 +870,12 @@ class AukRemoteImage {
   /// Cancel current image download HTTP request.
   func cancelDownload() {
     // Cancel current download by setting url to nil
+    
+    // Remove THIS!!!!!!!!!!!!!!!!!!
     if let currentUrl = imageView?.moa.url where !didFinishDownload {
       print("Canceling download \(currentUrl)")
     }
+    
     imageView?.moa.url = nil
   }
 
