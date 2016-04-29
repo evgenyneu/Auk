@@ -168,7 +168,7 @@ scrollView.auk.settings.preloadRemoteImagesAround = 1
 scrollView.auk.show(url: "http://site.com/finch.jpg")
 scrollView.auk.show(url: "http://site.com/auk.jpg")
 
-// The third image will start loading when use scrolls to page number two.
+// The third image will start loading when the user scrolls to the second page.
 scrollView.auk.show(url: "http://site.com/moa.jpg")
 ```
 
