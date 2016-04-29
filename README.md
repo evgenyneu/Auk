@@ -158,7 +158,7 @@ scrollView.auk.show(url: "http://site.com/bird.jpg")
 
 ## Preloading remote images
 
-By default remote images are loaded when they become visible to user. One can ask the library to preload remote images  by setting the property `preloadRemoteImagesAround`.
+By default remote images are loaded only when they become visible to user. One can ask the library to preload remote images  by setting the property `preloadRemoteImagesAround`.
 
 ```Swift
 // Set the property before showing remote images
