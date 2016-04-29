@@ -156,6 +156,16 @@ scrollView.auk.settings.placeholderImage = UIImage(named: "placeholder.jpg")
 scrollView.auk.show(url: "http://site.com/bird.jpg")
 ```
 
+## Preloading remote images
+
+By default remote images are loaded when they become visible to user. One can preload remote images before the user sees them by changing the setting property `preloadRemoteImagesAround`. The property defines the number of remote images to preload around the current page.
+
+```Swift
+scrollView.auk.settings.preloadRemoteImagesAround = 1
+```
+
+For example, if `preloadRemoteImagesAround = 2` and we are viewing the first page it will preload images on the second and third pages. If we are viewing 5th page then it will preload images on pages 3, 4, 6 and 7 (unless they are already loaded). The default value is 0.
+
 ## Size change animation
 
 Read [size animation](https://github.com/evgenyneu/Auk/wiki/Size-animation) manual if you need to animate the scroll view during device orientation change.

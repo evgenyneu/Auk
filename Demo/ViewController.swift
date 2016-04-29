@@ -20,7 +20,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     scrollView.delegate = self
     scrollView.auk.settings.placeholderImage = UIImage(named: "great_auk_placeholder.png")
     scrollView.auk.settings.errorImage = UIImage(named: "error_image.png")
-
+    
     showInitialImage()
     showCurrentImageDescription()
   }

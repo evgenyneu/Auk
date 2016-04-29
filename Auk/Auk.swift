@@ -59,8 +59,11 @@ public class Auk {
     let page = createPage(accessibilityLabel)
     page.show(url: url, settings: settings)
 
-    if let scrollView = scrollView {
-      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
+    if let scrollView = scrollView,
+      currentPageIndex = currentPageIndex {
+      
+      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
+                                                      currentPageIndex: currentPageIndex)
     }
   }
   
@@ -110,7 +113,10 @@ public class Auk {
       page.accessibilityLabel = accessibilityLabel
       page.show(url: url, settings: updateSettings)
       
-      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
+      if let currentPageIndex = currentPageIndex {
+        AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
+                                                      currentPageIndex: currentPageIndex)
+      }
     }
   }
 
@@ -345,6 +351,7 @@ public class Auk {
       self?.onScroll()
     }
 
+    // We stop auto scrolling when the user starts scrolling manually
     scrollViewDelegate.onScrollByUser = { [weak self] in
       self?.stopAutoScroll()
     }
@@ -388,12 +395,12 @@ public class Auk {
   }
 
   func onScroll() {
-    if let scrollView = scrollView {
-      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings)
+    if let scrollView = scrollView,
+      currentPageIndex = currentPageIndex {
+      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
+                                                      currentPageIndex: currentPageIndex)
       
-      if let currentPageIndex = currentPageIndex {
-        pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
-      }
+      pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
     }
   }
 

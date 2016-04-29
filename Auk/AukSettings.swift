@@ -13,6 +13,9 @@ public struct AukSettings {
   /// Image to be displayed when remote image download fails.
   public var errorImage: UIImage?
   
+  /// The number of remote images to preload around the current page. For example, if preloadRemoteImagesAround = 2 and we are viewing the first page it will preload images on the second and third pages. If we are viewing 5th page then it will preload images on pages 3, 4, 6 and 7 (unless they are already loaded). The default value is 0, i.e. it only loads the image for the currently visible pages.
+  public var preloadRemoteImagesAround = 0
+  
   /// Settings for styling the scroll view page indicator.
   public var pageControl = PageControlSettings()
   
