@@ -164,7 +164,7 @@ By default remote images are loaded when they become visible to user. One can as
 // Set the property before showing remote images
 scrollView.auk.settings.preloadRemoteImagesAround = 1
 
-// Add remote images. First two images will stars loading simultaneously.
+// Add remote images. The first two images will start loading simultaneously.
 scrollView.auk.show(url: "http://site.com/finch.jpg")
 scrollView.auk.show(url: "http://site.com/auk.jpg")
 
