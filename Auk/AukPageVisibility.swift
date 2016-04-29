@@ -52,7 +52,7 @@ struct AukPageVisibility {
       if isVisible(scrollView, page: page) {
         page.visibleNow(settings)
       } else {
-        if abs(index - currentPageIndex) <= settings.nextPagesToPreload {
+        if abs(index - currentPageIndex) <= settings.preloadRemoteImagesAround {
           // Preload images for the pages around the current page
           page.visibleNow(settings)
         } else {

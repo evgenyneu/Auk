@@ -22,11 +22,11 @@ class AukPageVisibility_preloadImageTests: XCTestCase {
     super.tearDown()
     
     MoaSimulator.clear()
-    settings.nextPagesToPreload = 0
+    settings.preloadRemoteImagesAround = 0
   }
   
   func testTellPagesAboutTheirVisibility_doNotPreloadImages() {
-    settings.nextPagesToPreload = 0
+    settings.preloadRemoteImagesAround = 0
     let simulate = MoaSimulator.simulate("site.com")
     
     // Show first page with remote image
@@ -59,7 +59,7 @@ class AukPageVisibility_preloadImageTests: XCTestCase {
   }
   
   func testTellPagesAboutTheirVisibility_preloadOneImage() {
-    settings.nextPagesToPreload = 1
+    settings.preloadRemoteImagesAround = 1
     let simulate = MoaSimulator.simulate("site.com")
     
     // Show first page with remote image
@@ -101,7 +101,7 @@ class AukPageVisibility_preloadImageTests: XCTestCase {
   }
   
   func testTellPagesAboutTheirVisibility_preloadOneImage_scrolledToSecond() {
-    settings.nextPagesToPreload = 1
+    settings.preloadRemoteImagesAround = 1
     let simulate = MoaSimulator.simulate("site.com")
     
     // Show first page with remote image
@@ -218,7 +218,7 @@ class AukPageVisibility_preloadImageTests: XCTestCase {
   }
   
   func testTellPagesAboutTheirVisibility_preloadTwoImages() {
-    settings.nextPagesToPreload = 2
+    settings.preloadRemoteImagesAround = 2
     let simulate = MoaSimulator.simulate("site.com")
     
     // Show first page with remote image
