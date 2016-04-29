@@ -1,5 +1,9 @@
 # Auk version history
 
+## 2.1.4 (2016-04-29)
+
+* Added `settings.preloadRemoteImagesAround` property that controls the loading of remote images.
+
 ## 2.1.3 (2016-03-30)
 
 * Fixed the crash occured when the scroll view had zero bounds width.
