@@ -166,6 +166,8 @@ scrollView.auk.settings.preloadRemoteImagesAround = 1
 
 For example, if `preloadRemoteImagesAround = 2` and we are viewing the first page it will preload images on the second and third pages. If we are viewing 5th page then it will preload images on pages 3, 4, 6 and 7 (unless they are already loaded). The default value is 0.
 
+Note that images are loaded all at the same time, therefore, using large values for `preloadRemoteImagesAround` may result in the first image being delayed on slow networks because the limited bandwidth will be shared by many image downloads.
+
 ## Size change animation
 
 Read [size animation](https://github.com/evgenyneu/Auk/wiki/Size-animation) manual if you need to animate the scroll view during device orientation change.
