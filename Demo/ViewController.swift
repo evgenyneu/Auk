@@ -21,25 +21,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     scrollView.auk.settings.placeholderImage = UIImage(named: "great_auk_placeholder.png")
     scrollView.auk.settings.errorImage = UIImage(named: "error_image.png")
     
-    // Test Remove this !!!!!!!!!!!!!!
-    scrollView.auk.settings.preloadRemoteImagesAround = 1
-    Moa.settings.cache.requestCachePolicy = .ReloadIgnoringLocalCacheData
-    
-    Moa.logger = MoaConsoleLogger
-    
-    for remoteImage in DemoConstants.remoteImages {
-      let url =  "\(DemoConstants.remoteImageBaseUrl)\(remoteImage.fileName)"
-      scrollView.auk.show(url: url, accessibilityLabel: remoteImage.description)
-      
-      imageDescriptions.append(remoteImage.description)
-    }
-    showCurrentImageDescription()
-    scrollView.auk.scrollTo(2, animated: false)
-    scrollView.auk.startAutoScroll(delaySeconds: 1)
-    
-    // Test remove this !!!!!!!!!!!!!  END
-
-//    showInitialImage()
+    showInitialImage()
     showCurrentImageDescription()
   }
   
