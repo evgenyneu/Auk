@@ -64,7 +64,7 @@ Use the [previous versions of the library](https://github.com/evgenyneu/Auk/wiki
 Auk extends UIScrollView class by creating the `auk` property.
 
 ```Swift
-// Show remote image. The image starts loading when the page becomes visible to the user.
+// Show remote image.
 scrollView.auk.show(url: "http://site.com/bird.jpg")
 
 // Show local image
