@@ -43,6 +43,7 @@ Simply add two files to your project:
 If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
+    target 'Your target name'
     pod 'Auk', '~> 2.1'
 
 
