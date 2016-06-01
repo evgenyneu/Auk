@@ -1,5 +1,9 @@
 # Auk version history
 
+## 2.1.5 (2016-06-01)
+
+* Added support for loading remote images in GIF format and files with non-standard mime-type *image/jpg*.
+
 ## 2.1.4 (2016-04-29)
 
 * Added `settings.preloadRemoteImagesAround` property that controls the loading of remote images.
