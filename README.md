@@ -147,7 +147,7 @@ print(scrollView.superview) // should not be `nil`
 scrollView.auk.show(url: "http://site.com/bird.jpg")
 ```
 
-The page control is added to the superview of the scroll view when the `show` method is called. If scroll view has no superview the page control will not be added.
+The page control is added to the superview of the scroll view when the `show` method is called. That's why page control is not created when the scroll view has no superview.
 
 If `scrollView.superview` is `nil` then you may need to move that code that shows the images to the `viewDidAppear` method.
 
