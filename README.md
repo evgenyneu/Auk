@@ -149,6 +149,8 @@ scrollView.auk.show(url: "http://site.com/bird.jpg")
 
 The page control is added to the superview of the scroll view when the `show` method is called. If scroll view has no superview the page control will not be added.
 
+If `scrollView.superview` is `nil` then you may need to move that code that shows the images to the `viewDidAppear` method.
+
 ## Loading images from insecure HTTP hosts
 
 If your remote image URLs are not *https* you will need to [add an exception](http://evgenii.com/blog/loading-data-from-non-secure-hosts-in-ios9-with-nsurlsession/) to the **Info.plist** file. This will allow the App Transport Security to load the images from insecure HTTP hosts.
