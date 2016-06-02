@@ -86,6 +86,7 @@ scrollView.auk.currentPageIndex
 scrollView.auk.images
 ```
 
+
 #### Scrolling from code
 
 ```Swift
@@ -134,6 +135,19 @@ if let image = UIImage(named: "bird.jpg") {
   scrollView.auk.updateAt(1, image: image)
 }
 ```
+
+## Common problems
+
+### Page control is not visible
+
+Make sure the scrollView is added to the view tree *before* you call the `show` method. Otherwise the page control will not be created. Quick check:
+
+```Swift
+print(scrollView.superview) // should not be `nil`
+scrollView.auk.show(url: "http://site.com/bird.jpg")
+```
+
+The page control is added to the superview of the scroll view when the `show` method is called. If scroll view has no superview the page control will not be added.
 
 ## Loading images from insecure HTTP hosts
 
