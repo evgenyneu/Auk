@@ -261,11 +261,13 @@ To fix it, use the latest Xcode or [install Carthage](https://github.com/Carthag
 
 Here is a list of other image slideshow libraries for iOS.
 
+
 * [kimar/KIImagePager](https://github.com/kimar/KIImagePager)
 * [kirualex/KASlideShow](https://github.com/kirualex/KASlideShow)
 * [nicklockwood/iCarousel](https://github.com/nicklockwood/iCarousel)
 * [nicklockwood/SwipeView](https://github.com/nicklockwood/SwipeView)
 * [paritsohraval100/PJR-ScrollView-Slider](https://github.com/paritsohraval100/PJR-ScrollView-Slider)
+* [zvonicek/ImageSlideshow](https://github.com/zvonicek/ImageSlideshow)
 
 
 ## Thanks 👍
