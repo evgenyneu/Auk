@@ -26,7 +26,7 @@ class AukTests: XCTestCase {
     auk.setup()
     
     XCTAssertFalse(scrollView.showsHorizontalScrollIndicator)
-    XCTAssert(scrollView.pagingEnabled)
+    XCTAssert(scrollView.isPagingEnabled)
   }
   
   // MARK: Page indicator
@@ -43,10 +43,10 @@ class AukTests: XCTestCase {
     iiAutolayoutConstraints.width(scrollView, value: 100)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.Left, margin: 0)
+      constraintContainer: superview, attribute: NSLayoutAttribute.left, margin: 0)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.Top, margin: 0)
+      constraintContainer: superview, attribute: NSLayoutAttribute.top, margin: 0)
 
     auk = Auk(scrollView: scrollView)
     
@@ -76,10 +76,10 @@ class AukTests: XCTestCase {
     iiAutolayoutConstraints.width(scrollView, value: 100)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.Left, margin: 0)
+      constraintContainer: superview, attribute: NSLayoutAttribute.left, margin: 0)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.Top, margin: 0)
+      constraintContainer: superview, attribute: NSLayoutAttribute.top, margin: 0)
     
     auk = Auk(scrollView: scrollView)
     
@@ -186,7 +186,7 @@ class AukTests: XCTestCase {
     auk.show(image: image)
     auk.show(image: image)
     
-    XCTAssertFalse(auk.pageIndicatorContainer!.hidden)
+    XCTAssertFalse(auk.pageIndicatorContainer!.isHidden)
   }
   
   func testPageIndicator_hideWhenPagesRemoved() {
@@ -201,7 +201,7 @@ class AukTests: XCTestCase {
     auk.show(image: image)
     auk.removeAll()
     
-    XCTAssert(auk.pageIndicatorContainer!.hidden)
+    XCTAssert(auk.pageIndicatorContainer!.isHidden)
   }
   
   func testPageIndicator_scrollWhenPageIndicatorIsTapped() {

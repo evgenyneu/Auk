@@ -129,10 +129,12 @@ class iiAutolayoutConstraints {
     return constraints
   }
   
+  @discardableResult
   class func height(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
     return widthOrHeight(view, value: value, isHeight: true)
   }
   
+  @discardableResult
   class func width(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
     return widthOrHeight(view, value: value, isHeight: false)
   }

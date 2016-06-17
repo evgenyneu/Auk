@@ -497,6 +497,7 @@
 					};
 					7E5B5E281B2C2D3000B87E54 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0800;
 					};
 					7E90138A1B2CF6FB00DD4406 = {
 						CreatedOnToolsVersion = 6.4;

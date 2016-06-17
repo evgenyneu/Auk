@@ -24,13 +24,13 @@ class AukPageIndicatorTests: XCTestCase {
   
   func testSetup_stylePageContainer() {
     settings.pageControl.cornerRadius = 14
-    settings.pageControl.backgroundColor = UIColor.purpleColor()
+    settings.pageControl.backgroundColor = UIColor.purple()
     
     container.setup(settings, scrollView: scrollView)
     
     XCTAssertEqual(14, container.layer.cornerRadius)
-    XCTAssertEqual(UIColor.purpleColor(), container.backgroundColor!)
-    XCTAssert(container.hidden)
+    XCTAssertEqual(UIColor.purple(), container.backgroundColor!)
+    XCTAssert(container.isHidden)
   }
   
   func testSetup_layoutContainerView() {
@@ -46,10 +46,10 @@ class AukPageIndicatorTests: XCTestCase {
     iiAutolayoutConstraints.width(scrollView, value: 100)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.Left, margin: 0)
+      constraintContainer: superview, attribute: NSLayoutAttribute.left, margin: 0)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.Top, margin: 10)
+      constraintContainer: superview, attribute: NSLayoutAttribute.top, margin: 10)
     
     settings.pageControl.marginToScrollViewBottom = 13
     
@@ -72,8 +72,8 @@ class AukPageIndicatorTests: XCTestCase {
     let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
     superview.addSubview(scrollView)
     
-    settings.pageControl.pageIndicatorTintColor = UIColor.blueColor()
-    settings.pageControl.currentPageIndicatorTintColor = UIColor.redColor()
+    settings.pageControl.pageIndicatorTintColor = UIColor.blue()
+    settings.pageControl.currentPageIndicatorTintColor = UIColor.red()
     
     // Create the views
     container.setup(settings, scrollView: scrollView)
@@ -83,8 +83,8 @@ class AukPageIndicatorTests: XCTestCase {
     // Verify page control layout
     // ---------------
     
-    XCTAssertEqual(UIColor.blueColor(), pageControl.pageIndicatorTintColor!)
-    XCTAssertEqual(UIColor.redColor(), pageControl.currentPageIndicatorTintColor!)
+    XCTAssertEqual(UIColor.blue(), pageControl.pageIndicatorTintColor!)
+    XCTAssertEqual(UIColor.red(), pageControl.currentPageIndicatorTintColor!)
   }
   
   func testSetup_layoutPageControl() {
@@ -100,10 +100,10 @@ class AukPageIndicatorTests: XCTestCase {
     iiAutolayoutConstraints.width(scrollView, value: 100)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.Left, margin: 0)
+      constraintContainer: superview, attribute: NSLayoutAttribute.left, margin: 0)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.Top, margin: 10)
+      constraintContainer: superview, attribute: NSLayoutAttribute.top, margin: 10)
     
     settings.pageControl.innerPadding = CGSize(width: 13, height: 18)
     
@@ -149,13 +149,13 @@ class AukPageIndicatorTests: XCTestCase {
   func testHiddenForOnePage() {
     container.setup(settings, scrollView: scrollView)
     container.updateNumberOfPages(1)
-    XCTAssert(container.hidden)
+    XCTAssert(container.isHidden)
   }
   
   func testVisibleForTwoPages() {
     container.setup(settings, scrollView: scrollView)
     container.updateNumberOfPages(2)
-    XCTAssertFalse(container.hidden)
+    XCTAssertFalse(container.isHidden)
   }
   
   func testHideWhenNoPages() {
@@ -163,7 +163,7 @@ class AukPageIndicatorTests: XCTestCase {
     container.updateNumberOfPages(2)
     container.updateNumberOfPages(0)
 
-    XCTAssert(container.hidden)
+    XCTAssert(container.isHidden)
   }
   
   // MARK: Tap container

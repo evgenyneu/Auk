@@ -26,7 +26,7 @@ class AukInterfaceShowRemoteImageTests: XCTestCase {
   }
     
   func testShowRemoteImage_setupIsCalled() {
-    MoaSimulator.simulate("site.com")
+    _ = MoaSimulator.simulate("site.com")
     
     auk.show(url: "http://site.com/image.png")
     
@@ -121,7 +121,7 @@ class AukInterfaceShowRemoteImageTests: XCTestCase {
   }
   
   func testShowRemoteImage_layoutSubviews() {
-    MoaSimulator.simulate("site.com")
+    _ = MoaSimulator.simulate("site.com")
     
     auk.show(url: "http://site.com/image1.png")
     auk.show(url: "http://site.com/image2.png")
