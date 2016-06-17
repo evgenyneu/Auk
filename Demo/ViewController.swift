@@ -131,7 +131,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     coordinator.animate(alongsideTransition: { [weak self] _ in
       self?.scrollView.auk.scrollTo(pageIndex, pageWidth: newScrollViewWidth, animated: false)
-      }, completion: nil)
+    }, completion: nil)
   }
   
   /// Animate scroll view on orientation change
