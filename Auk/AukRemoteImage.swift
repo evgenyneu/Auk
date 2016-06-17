@@ -16,7 +16,7 @@ class AukRemoteImage {
   /// True when image has been successfully downloaded
   var didFinishDownload = false
 
-  func setup(url: String, imageView: UIImageView, placeholderImageView: UIImageView?,
+  func setup(_ url: String, imageView: UIImageView, placeholderImageView: UIImageView?,
     settings: AukSettings) {
 
     self.url = url
@@ -26,7 +26,7 @@ class AukRemoteImage {
   }
 
   /// Sends image download HTTP request.
-  func downloadImage(settings: AukSettings) {
+  func downloadImage(_ settings: AukSettings) {
     if imageView?.moa.url != nil { return } // Download has already started
     if didFinishDownload { return } // Image has already been downloaded
 
@@ -46,7 +46,7 @@ class AukRemoteImage {
     imageView?.moa.url = nil
   }
 
-  func didReceiveImageAsync(image: UIImage, settings: AukSettings) {
+  func didReceiveImageAsync(_ image: UIImage, settings: AukSettings) {
     didFinishDownload = true
 
     iiQ.main { [weak self] in
@@ -59,16 +59,16 @@ class AukRemoteImage {
     }
   }
 
-  private static func animateImageView(imageView: UIImageView, show: Bool, settings: AukSettings) {
+  private static func animateImageView(_ imageView: UIImageView, show: Bool, settings: AukSettings) {
     imageView.alpha = show ? 0: 1
-    let interval = NSTimeInterval(settings.remoteImageAnimationIntervalSeconds)
+    let interval = TimeInterval(settings.remoteImageAnimationIntervalSeconds)
     
-    UIView.animateWithDuration(interval, animations: {
+    UIView.animate(withDuration: interval, animations: {
       imageView.alpha = show ? 1: 0
     })
   }
   
-  private func setPlaceholderImage(settings: AukSettings) {
+  private func setPlaceholderImage(_ settings: AukSettings) {
     if let placeholderImage = settings.placeholderImage,
       placeholderImageView = placeholderImageView {
         

@@ -41,10 +41,10 @@ class AukPageTests: XCTestCase {
   }
   
   func testShowImage_useContentMode() {
-    settings.contentMode = UIViewContentMode.TopRight
+    settings.contentMode = UIViewContentMode.topRight
     let image = uiImageFromFile("67px.png")
     view.show(image: image, settings: settings)
-    XCTAssertEqual(UIViewContentMode.TopRight.rawValue, view.imageView!.contentMode.rawValue)
+    XCTAssertEqual(UIViewContentMode.topRight.rawValue, view.imageView!.contentMode.rawValue)
   }
   
   func testShowImage_doNotcreatePlaceholderImage() {
@@ -59,9 +59,9 @@ class AukPageTests: XCTestCase {
   // MARK: - Show image by url
   
   func testShowUrl_useContentMode() {
-    settings.contentMode = UIViewContentMode.TopRight
+    settings.contentMode = UIViewContentMode.topRight
     view.show(url: "http://site.com/auk.jpg", settings: settings)
-    XCTAssertEqual(UIViewContentMode.TopRight.rawValue, view.imageView!.contentMode.rawValue)
+    XCTAssertEqual(UIViewContentMode.topRight.rawValue, view.imageView!.contentMode.rawValue)
   }
 
   func testShowUrl() {

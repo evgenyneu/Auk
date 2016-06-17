@@ -31,7 +31,7 @@ import UIKit
 final class AutoCancellingTimer {
   private var timer: AutoCancellingTimerInstance?
   
-  init(interval: NSTimeInterval, repeats: Bool = false, callback: ()->()) {
+  init(interval: TimeInterval, repeats: Bool = false, callback: ()->()) {
     timer = AutoCancellingTimerInstance(interval: interval, repeats: repeats, callback: callback)
   }
   
@@ -46,16 +46,16 @@ final class AutoCancellingTimer {
 
 final class AutoCancellingTimerInstance: NSObject {
   private let repeats: Bool
-  private var timer: NSTimer?
+  private var timer: Timer?
   private var callback: ()->()
   
-  init(interval: NSTimeInterval, repeats: Bool = false, callback: ()->()) {
+  init(interval: TimeInterval, repeats: Bool = false, callback: ()->()) {
     self.repeats = repeats
     self.callback = callback
     
     super.init()
     
-    timer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self,
+    timer = Timer.scheduledTimer(timeInterval: interval, target: self,
       selector: #selector(AutoCancellingTimerInstance.timerFired(_:)), userInfo: nil, repeats: repeats)
   }
   
@@ -63,7 +63,7 @@ final class AutoCancellingTimerInstance: NSObject {
     timer?.invalidate()
   }
   
-  func timerFired(timer: NSTimer) {
+  func timerFired(_ timer: Timer) {
     self.callback()
     if !repeats { cancel() }
   }

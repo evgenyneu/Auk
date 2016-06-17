@@ -5,7 +5,7 @@ final class AukPageIndicatorContainer: UIView {
   
   deinit {
     pageControl?.removeTarget(self, action: #selector(AukPageIndicatorContainer.didTapPageControl(_:)),
-      forControlEvents: UIControlEvents.ValueChanged)
+      for: UIControlEvents.valueChanged)
   }
   
   var didTapPageControlCallback: ((Int)->())?
@@ -18,7 +18,7 @@ final class AukPageIndicatorContainer: UIView {
   }
   
   // Layouts the view, creates and layouts the page control
-  func setup(settings: AukSettings, scrollView: UIScrollView) {    
+  func setup(_ settings: AukSettings, scrollView: UIScrollView) {    
     styleContainer(settings)
     AukPageIndicatorContainer.layoutContainer(self, settings: settings, scrollView: scrollView)
     
@@ -29,22 +29,22 @@ final class AukPageIndicatorContainer: UIView {
   }
   
   // Update the number of pages showing in the page control
-  func updateNumberOfPages(numberOfPages: Int) {
+  func updateNumberOfPages(_ numberOfPages: Int) {
     pageControl?.numberOfPages = numberOfPages
     updateVisibility()
   }
   
   // Update the current page in the page control
-  func updateCurrentPage(currentPageIndex: Int) {
+  func updateCurrentPage(_ currentPageIndex: Int) {
     pageControl?.currentPage = currentPageIndex
   }
   
-  private func styleContainer(settings: AukSettings) {
+  private func styleContainer(_ settings: AukSettings) {
     backgroundColor = settings.pageControl.backgroundColor
     layer.cornerRadius = CGFloat(settings.pageControl.cornerRadius)
   }
   
-  private static func layoutContainer(pageIndicatorContainer: AukPageIndicatorContainer,
+  private static func layoutContainer(_ pageIndicatorContainer: AukPageIndicatorContainer,
     settings: AukSettings, scrollView: UIScrollView) {
       
     if let superview = pageIndicatorContainer.superview {
@@ -52,16 +52,16 @@ final class AukPageIndicatorContainer: UIView {
         
       // Align bottom of the page view indicator with the bottom of the scroll view
       iiAutolayoutConstraints.alignSameAttributes(pageIndicatorContainer, toItem: scrollView,
-        constraintContainer: superview, attribute: NSLayoutAttribute.Bottom,
+        constraintContainer: superview, attribute: NSLayoutAttribute.bottom,
         margin: CGFloat(-settings.pageControl.marginToScrollViewBottom))
       
       // Center the page view indicator horizontally in relation to the scroll view
       iiAutolayoutConstraints.alignSameAttributes(pageIndicatorContainer, toItem: scrollView,
-        constraintContainer: superview, attribute: NSLayoutAttribute.CenterX, margin: 0)
+        constraintContainer: superview, attribute: NSLayoutAttribute.centerX, margin: 0)
     }
   }
   
-  private func createPageControl(settings: AukSettings) -> UIPageControl {
+  private func createPageControl(_ settings: AukSettings) -> UIPageControl {
     let pageControl = UIPageControl()
     
     if #available(*, iOS 9.0) {
@@ -70,12 +70,12 @@ final class AukPageIndicatorContainer: UIView {
       // When using right-to-left language, flip the page control horizontally in iOS 8 and earlier.
       // That will make it highlight the rightmost dot for the first page.
       if RightToLeft.isRightToLeft(self) {
-        pageControl.transform = CGAffineTransformMakeScale(-1, 1)
+        pageControl.transform = CGAffineTransform(scaleX: -1, y: 1)
       }
     }
     
     pageControl.addTarget(self, action: #selector(AukPageIndicatorContainer.didTapPageControl(_:)),
-      forControlEvents: UIControlEvents.ValueChanged)
+      for: UIControlEvents.valueChanged)
     
     pageControl.pageIndicatorTintColor = settings.pageControl.pageIndicatorTintColor
     pageControl.currentPageIndicatorTintColor = settings.pageControl.currentPageIndicatorTintColor
@@ -84,13 +84,13 @@ final class AukPageIndicatorContainer: UIView {
     return pageControl
   }
   
-  func didTapPageControl(control: UIPageControl) {
+  func didTapPageControl(_ control: UIPageControl) {
     if let currentPage = pageControl?.currentPage {
       didTapPageControlCallback?(currentPage)
     }
   }
   
-  private static func layoutPageControl(pageControl: UIPageControl, superview: UIView,
+  private static func layoutPageControl(_ pageControl: UIPageControl, superview: UIView,
     settings: AukSettings) {
       
     pageControl.translatesAutoresizingMaskIntoConstraints = false
@@ -103,6 +103,6 @@ final class AukPageIndicatorContainer: UIView {
   }
   
   private func updateVisibility() {
-    self.hidden = pageControl?.numberOfPages < 2
+    self.isHidden = pageControl?.numberOfPages < 2
   }
 }

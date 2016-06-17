@@ -5,7 +5,7 @@
 import UIKit
 
 class iiAutolayoutConstraints {
-  class func fillParent(view: UIView, parentView: UIView, margin: CGFloat = 0, vertically: Bool = false) {
+  class func fillParent(_ view: UIView, parentView: UIView, margin: CGFloat = 0, vertically: Bool = false) {
     var marginFormat = ""
 
     if margin != 0 {
@@ -18,20 +18,21 @@ class iiAutolayoutConstraints {
       format = "V:" + format
     }
 
-    let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
       options: [], metrics: nil,
       views: ["view": view])
 
     parentView.addConstraints(constraints)
   }
   
-  class func alignSameAttributes(item: AnyObject, toItem: AnyObject,
+  @discardableResult
+  class func alignSameAttributes(_ item: AnyObject, toItem: AnyObject,
     constraintContainer: UIView, attribute: NSLayoutAttribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
       
     let constraint = NSLayoutConstraint(
       item: item,
       attribute: attribute,
-      relatedBy: NSLayoutRelation.Equal,
+      relatedBy: NSLayoutRelation.equal,
       toItem: toItem,
       attribute: attribute,
       multiplier: 1,
@@ -42,19 +43,20 @@ class iiAutolayoutConstraints {
     return [constraint]
   }
 
-  class func equalWidth(viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
+  class func equalWidth(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
     
     return equalWidthOrHeight(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, isHeight: false)
   }
   
   // MARK: - Equal height and width
   
-  class func equalHeight(viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
+  class func equalHeight(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
     
     return equalWidthOrHeight(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, isHeight: true)
   }
   
-  class func equalSize(viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
+  @discardableResult
+  class func equalSize(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
     
     var constraints = equalWidthOrHeight(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, isHeight: false)
     
@@ -63,14 +65,14 @@ class iiAutolayoutConstraints {
     return constraints
   }
   
-  class func equalWidthOrHeight(viewOne: UIView, viewTwo: UIView, constraintContainer: UIView,
+  class func equalWidthOrHeight(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView,
     isHeight: Bool) -> [NSLayoutConstraint] {
     
     var prefix = ""
     
     if isHeight { prefix = "V:" }
     
-    let constraints = NSLayoutConstraint.constraintsWithVisualFormat("\(prefix)[viewOne(==viewTwo)]",
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: "\(prefix)[viewOne(==viewTwo)]",
       options: [], metrics: nil,
       views: ["viewOne": viewOne, "viewTwo": viewTwo])
         
@@ -81,7 +83,8 @@ class iiAutolayoutConstraints {
   
   // MARK: - Align view next to each other
   
-  class func viewsNextToEachOther(views: [UIView],
+  @discardableResult
+  class func viewsNextToEachOther(_ views: [UIView],
     constraintContainer: UIView, margin: CGFloat = 0,
     vertically: Bool = false) -> [NSLayoutConstraint] {
       
@@ -89,7 +92,7 @@ class iiAutolayoutConstraints {
     
     var constraints = [NSLayoutConstraint]()
     
-    for (index, view) in views.enumerate() {
+    for (index, view) in views.enumerated() {
       if index >= views.count - 1 { break }
       
       let viewTwo = views[index + 1]
@@ -101,7 +104,7 @@ class iiAutolayoutConstraints {
     return constraints
   }
   
-  class func twoViewsNextToEachOther(viewOne: UIView, viewTwo: UIView,
+  class func twoViewsNextToEachOther(_ viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView, margin: CGFloat = 0,
     vertically: Bool = false) -> [NSLayoutConstraint] {
       
@@ -117,7 +120,7 @@ class iiAutolayoutConstraints {
       format = "V:" + format
     }
     
-    let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
       options: [], metrics: nil,
       views: [ "viewOne": viewOne, "viewTwo": viewTwo ])
     
@@ -126,24 +129,26 @@ class iiAutolayoutConstraints {
     return constraints
   }
   
-  class func height(view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
+  @discardableResult
+  class func height(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
     return widthOrHeight(view, value: value, isHeight: true)
   }
   
-  class func width(view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
+  @discardableResult
+  class func width(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
     return widthOrHeight(view, value: value, isHeight: false)
   }
   
-  class func widthOrHeight(view: UIView, value: CGFloat, isHeight: Bool) -> [NSLayoutConstraint] {
+  class func widthOrHeight(_ view: UIView, value: CGFloat, isHeight: Bool) -> [NSLayoutConstraint] {
     
-    let layoutAttribute = isHeight ? NSLayoutAttribute.Height : NSLayoutAttribute.Width
+    let layoutAttribute = isHeight ? NSLayoutAttribute.height : NSLayoutAttribute.width
     
     let constraint = NSLayoutConstraint(
       item: view,
       attribute: layoutAttribute,
-      relatedBy: NSLayoutRelation.Equal,
+      relatedBy: NSLayoutRelation.equal,
       toItem: nil,
-      attribute: NSLayoutAttribute.NotAnAttribute,
+      attribute: NSLayoutAttribute.notAnAttribute,
       multiplier: 1,
       constant: value)
     

@@ -45,7 +45,7 @@ class AukInterfaceImagesTests: XCTestCase {
   
   func testDoesNotReturnPlaceholderImage() {
     auk.settings.placeholderImage = uiImageFromFile("35px.jpg")
-    MoaSimulator.simulate("site.com")
+    _ = MoaSimulator.simulate("site.com")
     auk.show(url: "http://site.com/moa.png")
     
     XCTAssertEqual(0, auk.images.count)

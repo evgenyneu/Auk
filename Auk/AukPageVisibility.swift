@@ -16,8 +16,8 @@ struct AukPageVisibility {
   - returns: True if the page is visible to the user.
   
   */
-  static func isVisible(scrollView: UIScrollView, page: AukPage) -> Bool {
-    return CGRectIntersectsRect(scrollView.bounds, page.frame)
+  static func isVisible(_ scrollView: UIScrollView, page: AukPage) -> Bool {
+    return scrollView.bounds.intersects(page.frame)
   }
   
   /**
@@ -30,9 +30,9 @@ struct AukPageVisibility {
   - returns: True if the page is visible to the user.
   
   */
-  static func isFarOutOfSight(scrollView: UIScrollView, page: AukPage) -> Bool {
-    let parentRectWithIncreasedHorizontalBounds = CGRectInset(scrollView.bounds, -50, 0)
-    return !CGRectIntersectsRect(parentRectWithIncreasedHorizontalBounds, page.frame)
+  static func isFarOutOfSight(_ scrollView: UIScrollView, page: AukPage) -> Bool {
+    let parentRectWithIncreasedHorizontalBounds = scrollView.bounds.insetBy(dx: -50, dy: 0)
+    return !parentRectWithIncreasedHorizontalBounds.intersects(page.frame)
   }
   
   /**
@@ -42,13 +42,13 @@ struct AukPageVisibility {
   - parameter scrollView: Scroll view with the pages.
 
   */
-  static func tellPagesAboutTheirVisibility(scrollView: UIScrollView,
+  static func tellPagesAboutTheirVisibility(_ scrollView: UIScrollView,
                                             settings: AukSettings,
                                             currentPageIndex: Int) {
     
     let pages = AukScrollViewContent.aukPages(scrollView)
 
-    for (index, page) in pages.enumerate() {
+    for (index, page) in pages.enumerated() {
       if isVisible(scrollView, page: page) {
         page.visibleNow(settings)
       } else {

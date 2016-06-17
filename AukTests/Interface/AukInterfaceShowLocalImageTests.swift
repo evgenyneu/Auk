@@ -65,7 +65,7 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
   
   func testShowLocalImage_layoutSubviews_rightToLeft() {
     if #available(iOS 9.0, *) {
-      scrollView.semanticContentAttribute = .ForceRightToLeft
+      scrollView.semanticContentAttribute = .forceRightToLeft
       
       let image1 = uiImageFromFile("96px.png")
       auk.show(image: image1)
@@ -115,7 +115,7 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
   
   func testShowLocalImage_contentOffset_rightToLeft() {
     if #available(iOS 9.0, *) {
-      scrollView.semanticContentAttribute = .ForceRightToLeft
+      scrollView.semanticContentAttribute = .forceRightToLeft
       
       XCTAssertEqual(0, scrollView.contentOffset.x)
       

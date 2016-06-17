@@ -25,32 +25,32 @@ This is an iOS library that shows an image carousel with a page indicator. Users
 
 There are three ways you can add Auk to your Xcode project.
 
-**Add source (iOS 7+)**
+#### Add source (iOS 7+)
 
 Simply add two files to your project:
 
-1. Moa image downloader [MoaDistrib.swift](https://github.com/evgenyneu/moa/blob/3.0.0/Distrib/MoaDistrib.swift).
+1. Moa image downloader [MoaDistrib.swift](https://github.com/evgenyneu/moa/blob/master/Distrib/MoaDistrib.swift).
 2. Auk image slideshow [AukDistrib.swift](https://github.com/evgenyneu/Auk/blob/master/Distrib/AukDistrib.swift).
 
-**Setup with Carthage (iOS 8+)**
+#### Setup with Carthage (iOS 8+)
 
-1. Add `github "evgenyneu/Auk" ~> 2.1` to your Cartfile.
+1. Add `github "evgenyneu/Auk" ~> 3.0` to your Cartfile.
 2. Run `carthage update`.
 3. Add `moa` and `Auk` frameworks into your project.
 
-**Setup with CocoaPods (iOS 8+)**
+#### Setup with CocoaPods (iOS 8+)
 
 If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
     target 'Your target name'
-    pod 'Auk', '~> 2.1'
+    pod 'Auk', '~> 3.0'
 
 
-#### Previous versions
 
+#### Legacy Swift versions
 
-Use the [previous versions of the library](https://github.com/evgenyneu/Auk/wiki/Previous-versions) if you need to run it in older Xcode.
+Setup a [previous version](https://github.com/evgenyneu/Auk/wiki/Legacy-Swift-versions) of the library if you use an older version of Swift.
 
 
 
@@ -209,10 +209,10 @@ import moa
 // ...
 
 // By default images are cached according to their response HTTP headers.
-Moa.settings.cache.requestCachePolicy = .UseProtocolCachePolicy
+Moa.settings.cache.requestCachePolicy = .useProtocolCachePolicy
 
 // Use local cache regardless of response HTTP headers.
-Moa.settings.cache.requestCachePolicy = .ReturnCacheDataElseLoad
+Moa.settings.cache.requestCachePolicy = .returnCacheDataElseLoad
 ```
 
 Note: [moa image downloader](https://github.com/evgenyneu/moa) offers other features including request logging and HTTP settings.

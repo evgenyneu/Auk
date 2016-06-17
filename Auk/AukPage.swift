@@ -21,7 +21,7 @@ final class AukPage: UIView {
   - parameter settings: Auk settings.
   
   */
-  func show(image image: UIImage, settings: AukSettings) {
+  func show(image: UIImage, settings: AukSettings) {
     imageView = createAndLayoutImageView(settings)
     imageView?.image = image
   }
@@ -34,7 +34,7 @@ final class AukPage: UIView {
   - parameter settings: Auk settings.
   
   */
-  func show(url url: String, settings: AukSettings) {
+  func show(url: String, settings: AukSettings) {
     if settings.placeholderImage != nil {
       placeholderImageView = createAndLayoutImageView(settings)
     }
@@ -53,7 +53,7 @@ final class AukPage: UIView {
   Called when the page is currently visible to user which triggers the image download. The function is called frequently each time scroll view's content offset is changed.
   
   */
-  func visibleNow(settings: AukSettings) {
+  func visibleNow(_ settings: AukSettings) {
     remoteImage?.downloadImage(settings)
   }
   
@@ -93,14 +93,14 @@ final class AukPage: UIView {
   - parameter settings: Auk settings.
   
   */
-  func createAndLayoutImageView(settings: AukSettings) -> UIImageView {
+  func createAndLayoutImageView(_ settings: AukSettings) -> UIImageView {
     let newImageView = AukPage.createImageView(settings)
     addSubview(newImageView)
     AukPage.layoutImageView(newImageView, superview: self)
     return newImageView
   }
   
-  private static func createImageView(settings: AukSettings) -> UIImageView {
+  private static func createImageView(_ settings: AukSettings) -> UIImageView {
     let newImageView = UIImageView()
     newImageView.contentMode = settings.contentMode
     return newImageView
@@ -113,14 +113,14 @@ final class AukPage: UIView {
   - parameter imageView: Image view that is used to create Auto Layout constraints.
   
   */
-  private static func layoutImageView(imageView: UIImageView, superview: UIView) {
+  private static func layoutImageView(_ imageView: UIImageView, superview: UIView) {
     imageView.translatesAutoresizingMaskIntoConstraints = false
     
     iiAutolayoutConstraints.fillParent(imageView, parentView: superview, margin: 0, vertically: false)
     iiAutolayoutConstraints.fillParent(imageView, parentView: superview, margin: 0, vertically: true)
   }
   
-  func makeAccessible(accessibilityLabel: String?) {
+  func makeAccessible(_ accessibilityLabel: String?) {
     isAccessibilityElement = true
     accessibilityTraits = UIAccessibilityTraitImage
     self.accessibilityLabel = accessibilityLabel

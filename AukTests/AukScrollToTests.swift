@@ -49,7 +49,7 @@ class AukScrollToTests: XCTestCase {
   
   func testContentOffsetForPage_rightToLeft() {
     if #available(iOS 9.0, *) {
-      scrollView.semanticContentAttribute = .ForceRightToLeft
+      scrollView.semanticContentAttribute = .forceRightToLeft
 
       var result = AukScrollTo.contentOffsetForPage(0, pageWidth: 120, numberOfPages: 3,
         scrollView: scrollView)
@@ -81,7 +81,7 @@ class AukScrollToTests: XCTestCase {
   
   func testContentOffsetForPage_OverscrolledToRight_rightToLeft() {
     if #available(iOS 9.0, *) {
-      scrollView.semanticContentAttribute = .ForceRightToLeft
+      scrollView.semanticContentAttribute = .forceRightToLeft
       
       let result = AukScrollTo.contentOffsetForPage(3, pageWidth: 120, numberOfPages: 3,
         scrollView: scrollView)
@@ -92,7 +92,7 @@ class AukScrollToTests: XCTestCase {
   
   func testContentOffsetForPage_OverscrolledToLeft_rightToLeft() {
     if #available(iOS 9.0, *) {
-      scrollView.semanticContentAttribute = .ForceRightToLeft
+      scrollView.semanticContentAttribute = .forceRightToLeft
       
       let result = AukScrollTo.contentOffsetForPage(-1, pageWidth: 120, numberOfPages: 2,
         scrollView: scrollView)
@@ -111,7 +111,7 @@ class AukScrollToTests: XCTestCase {
   
   func testScrollTo_rightToLeft() {
     if #available(iOS 9.0, *) {
-      scrollView.semanticContentAttribute = .ForceRightToLeft
+      scrollView.semanticContentAttribute = .forceRightToLeft
       
       AukScrollTo.scrollTo(scrollView, pageIndex: 1, pageWidth: 120, animated: false, numberOfPages: 2)
       

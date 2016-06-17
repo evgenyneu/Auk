@@ -161,7 +161,7 @@ class AukRemoteImageTests: XCTestCase {
     settings.errorImage = uiImageFromFile("35px.jpg")
     let simulator = MoaSimulator.simulate("auk.jpg")
     
-    let errorExpectation = expectationWithDescription("error expectation")
+    let errorExpectation = expectation(withDescription: "error expectation")
     
     obj.setup("http://site.com/auk.jpg", imageView: imageView, placeholderImageView: nil,
       settings: settings)
@@ -172,7 +172,7 @@ class AukRemoteImageTests: XCTestCase {
     simulator.respondWithError(nil, response: nil)
     
     iiQ.runAfterDelay(0.001) { errorExpectation.fulfill() }
-    waitForExpectationsWithTimeout(1) { error in }
+    waitForExpectations(withTimeout: 1) { error in }
     
     // Show error image
     XCTAssertEqual(35, imageView.image!.size.width)

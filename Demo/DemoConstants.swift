@@ -48,5 +48,5 @@ struct DemoConstants {
 struct DemoConstantsButton {
   let borderWidth: CGFloat = 2
   let cornerRadius: CGFloat = 20
-  let borderColor = UIColor.whiteColor()
+  let borderColor = UIColor.white()
 }
