@@ -29,7 +29,7 @@ There are three ways you can add Auk to your Xcode project.
 
 Simply add two files to your project:
 
-1. Moa image downloader [MoaDistrib.swift](https://github.com/evgenyneu/moa/blob/master/Distrib/MoaDistrib.swift).
+1. Moa image downloader [MoaDistrib.swift](https://github.com/evgenyneu/moa/blob/3.0.0/Distrib/MoaDistrib.swift).
 2. Auk image slideshow [AukDistrib.swift](https://github.com/evgenyneu/Auk/blob/master/Distrib/AukDistrib.swift).
 
 **Setup with Carthage (iOS 8+)**
