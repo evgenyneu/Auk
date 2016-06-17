@@ -161,7 +161,7 @@ Use the `auk.settings` property to configure behavior and appearance of the scro
 
 ```Swift
 // Make the images fill entire page
-scrollView.auk.settings.contentMode = UIViewContentMode.scaleAspectFill
+scrollView.auk.settings.contentMode = .scaleAspectFill
 
 // Set background color of page indicator
 scrollView.auk.settings.pageControl.backgroundColor = UIColor.gray().withAlphaComponent(0.3)
