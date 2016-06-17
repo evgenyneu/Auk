@@ -12,7 +12,7 @@ struct AukScrollViewContent {
   - returns: Array of scroll view pages.
   
   */
-  static func aukPages(scrollView: UIScrollView) -> [AukPage] {
+  static func aukPages(_ scrollView: UIScrollView) -> [AukPage] {
     return scrollView.subviews.filter { $0 is AukPage }.map { $0 as! AukPage }
   }
   
@@ -21,7 +21,7 @@ struct AukScrollViewContent {
   - returns: Page at index. Returns nil if index is out of bounds.
  
   */
-  static func pageAt(index: Int, scrollView: UIScrollView) -> AukPage? {
+  static func pageAt(_ index: Int, scrollView: UIScrollView) -> AukPage? {
     let pages = aukPages(scrollView)
     if index < 0 { return nil }
     if index >= pages.count { return nil }
@@ -33,10 +33,10 @@ struct AukScrollViewContent {
   Creates Auto Layout constraints for positioning the page view inside the scroll view.
   
   */
-  static func layout(scrollView: UIScrollView) {
+  static func layout(_ scrollView: UIScrollView) {
     let pages = aukPages(scrollView)
 
-    for (index, page) in pages.enumerate() {
+    for (index, page) in pages.enumerated() {
       
       // Delete current constraints by removing the view and adding it back to its superview
       page.removeFromSuperview()
@@ -53,13 +53,13 @@ struct AukScrollViewContent {
       if index == 0 {
         // Align the leading edge of the first page to the leading edge of the scroll view.
         iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
-          constraintContainer: scrollView, attribute: NSLayoutAttribute.Leading, margin: 0)
+          constraintContainer: scrollView, attribute: NSLayoutAttribute.leading, margin: 0)
       }
       
       if index == pages.count - 1 {
         // Align the trailing edge of the last page to the trailing edge of the scroll view.
         iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
-          constraintContainer: scrollView, attribute: NSLayoutAttribute.Trailing, margin: 0)
+          constraintContainer: scrollView, attribute: NSLayoutAttribute.trailing, margin: 0)
       }
     }
     

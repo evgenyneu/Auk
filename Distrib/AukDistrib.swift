@@ -55,7 +55,7 @@ public class Auk {
   - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode. For example: "Picture of a pony standing in a flower pot.".
 
   */
-  public func show(image image: UIImage, accessibilityLabel: String? = nil) {
+  public func show(image: UIImage, accessibilityLabel: String? = nil) {
     setup()
     let page = createPage(accessibilityLabel)
     page.show(image: image, settings: settings)
@@ -69,7 +69,7 @@ public class Auk {
   - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode. For example: "Picture of a pony standing in a flower pot.".
 
   */
-  public func show(url url: String, accessibilityLabel: String? = nil) {
+  public func show(url: String, accessibilityLabel: String? = nil) {
     setup()
     let page = createPage(accessibilityLabel)
     page.show(url: url, settings: settings)
@@ -92,7 +92,7 @@ public class Auk {
    For example: "Picture of a pony standing in a flower pot.".
    
    */
-  public func updateAt(pageIndex:Int, image: UIImage, accessibilityLabel: String? = nil) {
+  public func updateAt(_ pageIndex:Int, image: UIImage, accessibilityLabel: String? = nil) {
     if let scrollView = scrollView,
       page = AukScrollViewContent.pageAt(pageIndex, scrollView: scrollView) {
       
@@ -112,7 +112,7 @@ public class Auk {
    For example: "Picture of a pony standing in a flower pot.".
    
    */
-  public func updateAt(pageIndex: Int, url: String, accessibilityLabel: String? = nil) {
+  public func updateAt(_ pageIndex: Int, url: String, accessibilityLabel: String? = nil) {
     if let scrollView = scrollView,
       page = AukScrollViewContent.pageAt(pageIndex, scrollView: scrollView) {
       
@@ -143,7 +143,7 @@ public class Auk {
   - parameter animated: The page change will be animated when `true`.
 
   */
-  public func scrollTo(pageIndex: Int, animated: Bool) {
+  public func scrollTo(_ pageIndex: Int, animated: Bool) {
     if let scrollView = scrollView {
       AukScrollTo.scrollTo(scrollView, pageIndex: pageIndex, animated: animated,
         numberOfPages: numberOfPages)
@@ -175,7 +175,7 @@ public class Auk {
   - parameter animated: The page change will be animated when `true`.
 
   */
-  public func scrollTo(pageIndex: Int, pageWidth: CGFloat, animated: Bool) {
+  public func scrollTo(_ pageIndex: Int, pageWidth: CGFloat, animated: Bool) {
     if let scrollView = scrollView {
       AukScrollTo.scrollTo(scrollView, pageIndex: pageIndex, pageWidth: pageWidth,
         animated: animated, numberOfPages: numberOfPages)
@@ -199,7 +199,7 @@ public class Auk {
   - parameter animated: The page change will be animated when `true`.
 
   */
-  public func scrollToNextPage(cycle cycle: Bool, animated: Bool) {
+  public func scrollToNextPage(cycle: Bool, animated: Bool) {
     if let scrollView = scrollView, currentPageIndex = currentPageIndex {
       AukScrollTo.scrollToNextPage(scrollView, cycle: cycle, animated: animated,
         currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
@@ -223,7 +223,7 @@ public class Auk {
   - parameter animated: The page change will be animated when `true`.
 
   */
-  public func scrollToPreviousPage(cycle cycle: Bool, animated: Bool) {
+  public func scrollToPreviousPage(cycle: Bool, animated: Bool) {
     if let scrollView = scrollView, currentPageIndex = currentPageIndex {
       AukScrollTo.scrollToPreviousPage(scrollView, cycle: cycle, animated: animated,
         currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
@@ -315,7 +315,7 @@ public class Auk {
   - parameter delaySeconds: Amount of time in second each page is visible before scrolling to the next.
 
   */
-  public func startAutoScroll(delaySeconds delaySeconds: Double) {
+  public func startAutoScroll(delaySeconds: Double) {
     startAutoScroll(delaySeconds: delaySeconds, forward: true,
       cycle: true, animated: true)
   }
@@ -330,7 +330,7 @@ public class Auk {
   - parameter animated: The page change will be animated when `true`.
 
   */
-  public func startAutoScroll(delaySeconds delaySeconds: Double, forward: Bool,
+  public func startAutoScroll(delaySeconds: Double, forward: Bool,
     cycle: Bool, animated: Bool) {
 
     if let scrollView = scrollView {
@@ -378,11 +378,11 @@ public class Auk {
   func setup() {
     createPageIdicator()
     scrollView?.showsHorizontalScrollIndicator = settings.showsHorizontalScrollIndicator
-    scrollView?.pagingEnabled = settings.pagingEnabled
+    scrollView?.isPagingEnabled = settings.pagingEnabled
   }
     
   /// Create a page, add it to the scroll view content and layout.
-  private func createPage(accessibilityLabel: String? = nil) -> AukPage {
+  private func createPage(_ accessibilityLabel: String? = nil) -> AukPage {
     let page = AukPage()
     page.clipsToBounds = true
     page.makeAccessible(accessibilityLabel)
@@ -434,7 +434,7 @@ public class Auk {
     }
   }
   
-  private func didTapPageControl(pageIndex: Int) {
+  private func didTapPageControl(_ pageIndex: Int) {
     scrollTo(pageIndex, animated: true)
   }
 }
@@ -456,7 +456,7 @@ Starts and cancels the auto scrolling.
 struct AukAutoscroll {
   var autoscrollTimer: AutoCancellingTimer?
   
-  mutating func startAutoScroll(scrollView: UIScrollView, delaySeconds: Double,
+  mutating func startAutoScroll(_ scrollView: UIScrollView, delaySeconds: Double,
     forward: Bool, cycle: Bool, animated: Bool, auk: Auk) {
       
     // Assign the new instance of AutoCancellingTimer to autoscrollTimer
@@ -512,7 +512,7 @@ final class AukPage: UIView {
   - parameter settings: Auk settings.
   
   */
-  func show(image image: UIImage, settings: AukSettings) {
+  func show(image: UIImage, settings: AukSettings) {
     imageView = createAndLayoutImageView(settings)
     imageView?.image = image
   }
@@ -525,7 +525,7 @@ final class AukPage: UIView {
   - parameter settings: Auk settings.
   
   */
-  func show(url url: String, settings: AukSettings) {
+  func show(url: String, settings: AukSettings) {
     if settings.placeholderImage != nil {
       placeholderImageView = createAndLayoutImageView(settings)
     }
@@ -544,7 +544,7 @@ final class AukPage: UIView {
   Called when the page is currently visible to user which triggers the image download. The function is called frequently each time scroll view's content offset is changed.
   
   */
-  func visibleNow(settings: AukSettings) {
+  func visibleNow(_ settings: AukSettings) {
     remoteImage?.downloadImage(settings)
   }
   
@@ -584,14 +584,14 @@ final class AukPage: UIView {
   - parameter settings: Auk settings.
   
   */
-  func createAndLayoutImageView(settings: AukSettings) -> UIImageView {
+  func createAndLayoutImageView(_ settings: AukSettings) -> UIImageView {
     let newImageView = AukPage.createImageView(settings)
     addSubview(newImageView)
     AukPage.layoutImageView(newImageView, superview: self)
     return newImageView
   }
   
-  private static func createImageView(settings: AukSettings) -> UIImageView {
+  private static func createImageView(_ settings: AukSettings) -> UIImageView {
     let newImageView = UIImageView()
     newImageView.contentMode = settings.contentMode
     return newImageView
@@ -604,14 +604,14 @@ final class AukPage: UIView {
   - parameter imageView: Image view that is used to create Auto Layout constraints.
   
   */
-  private static func layoutImageView(imageView: UIImageView, superview: UIView) {
+  private static func layoutImageView(_ imageView: UIImageView, superview: UIView) {
     imageView.translatesAutoresizingMaskIntoConstraints = false
     
     iiAutolayoutConstraints.fillParent(imageView, parentView: superview, margin: 0, vertically: false)
     iiAutolayoutConstraints.fillParent(imageView, parentView: superview, margin: 0, vertically: true)
   }
   
-  func makeAccessible(accessibilityLabel: String?) {
+  func makeAccessible(_ accessibilityLabel: String?) {
     isAccessibilityElement = true
     accessibilityTraits = UIAccessibilityTraitImage
     self.accessibilityLabel = accessibilityLabel
@@ -632,7 +632,7 @@ final class AukPageIndicatorContainer: UIView {
   
   deinit {
     pageControl?.removeTarget(self, action: #selector(AukPageIndicatorContainer.didTapPageControl(_:)),
-      forControlEvents: UIControlEvents.ValueChanged)
+      for: UIControlEvents.valueChanged)
   }
   
   var didTapPageControlCallback: ((Int)->())?
@@ -645,7 +645,7 @@ final class AukPageIndicatorContainer: UIView {
   }
   
   // Layouts the view, creates and layouts the page control
-  func setup(settings: AukSettings, scrollView: UIScrollView) {    
+  func setup(_ settings: AukSettings, scrollView: UIScrollView) {    
     styleContainer(settings)
     AukPageIndicatorContainer.layoutContainer(self, settings: settings, scrollView: scrollView)
     
@@ -656,22 +656,22 @@ final class AukPageIndicatorContainer: UIView {
   }
   
   // Update the number of pages showing in the page control
-  func updateNumberOfPages(numberOfPages: Int) {
+  func updateNumberOfPages(_ numberOfPages: Int) {
     pageControl?.numberOfPages = numberOfPages
     updateVisibility()
   }
   
   // Update the current page in the page control
-  func updateCurrentPage(currentPageIndex: Int) {
+  func updateCurrentPage(_ currentPageIndex: Int) {
     pageControl?.currentPage = currentPageIndex
   }
   
-  private func styleContainer(settings: AukSettings) {
+  private func styleContainer(_ settings: AukSettings) {
     backgroundColor = settings.pageControl.backgroundColor
     layer.cornerRadius = CGFloat(settings.pageControl.cornerRadius)
   }
   
-  private static func layoutContainer(pageIndicatorContainer: AukPageIndicatorContainer,
+  private static func layoutContainer(_ pageIndicatorContainer: AukPageIndicatorContainer,
     settings: AukSettings, scrollView: UIScrollView) {
       
     if let superview = pageIndicatorContainer.superview {
@@ -679,16 +679,16 @@ final class AukPageIndicatorContainer: UIView {
         
       // Align bottom of the page view indicator with the bottom of the scroll view
       iiAutolayoutConstraints.alignSameAttributes(pageIndicatorContainer, toItem: scrollView,
-        constraintContainer: superview, attribute: NSLayoutAttribute.Bottom,
+        constraintContainer: superview, attribute: NSLayoutAttribute.bottom,
         margin: CGFloat(-settings.pageControl.marginToScrollViewBottom))
       
       // Center the page view indicator horizontally in relation to the scroll view
       iiAutolayoutConstraints.alignSameAttributes(pageIndicatorContainer, toItem: scrollView,
-        constraintContainer: superview, attribute: NSLayoutAttribute.CenterX, margin: 0)
+        constraintContainer: superview, attribute: NSLayoutAttribute.centerX, margin: 0)
     }
   }
   
-  private func createPageControl(settings: AukSettings) -> UIPageControl {
+  private func createPageControl(_ settings: AukSettings) -> UIPageControl {
     let pageControl = UIPageControl()
     
     if #available(*, iOS 9.0) {
@@ -697,12 +697,12 @@ final class AukPageIndicatorContainer: UIView {
       // When using right-to-left language, flip the page control horizontally in iOS 8 and earlier.
       // That will make it highlight the rightmost dot for the first page.
       if RightToLeft.isRightToLeft(self) {
-        pageControl.transform = CGAffineTransformMakeScale(-1, 1)
+        pageControl.transform = CGAffineTransform(scaleX: -1, y: 1)
       }
     }
     
     pageControl.addTarget(self, action: #selector(AukPageIndicatorContainer.didTapPageControl(_:)),
-      forControlEvents: UIControlEvents.ValueChanged)
+      for: UIControlEvents.valueChanged)
     
     pageControl.pageIndicatorTintColor = settings.pageControl.pageIndicatorTintColor
     pageControl.currentPageIndicatorTintColor = settings.pageControl.currentPageIndicatorTintColor
@@ -711,13 +711,13 @@ final class AukPageIndicatorContainer: UIView {
     return pageControl
   }
   
-  func didTapPageControl(control: UIPageControl) {
+  func didTapPageControl(_ control: UIPageControl) {
     if let currentPage = pageControl?.currentPage {
       didTapPageControlCallback?(currentPage)
     }
   }
   
-  private static func layoutPageControl(pageControl: UIPageControl, superview: UIView,
+  private static func layoutPageControl(_ pageControl: UIPageControl, superview: UIView,
     settings: AukSettings) {
       
     pageControl.translatesAutoresizingMaskIntoConstraints = false
@@ -730,7 +730,7 @@ final class AukPageIndicatorContainer: UIView {
   }
   
   private func updateVisibility() {
-    self.hidden = pageControl?.numberOfPages < 2
+    self.isHidden = pageControl?.numberOfPages < 2
   }
 }
 
@@ -759,8 +759,8 @@ struct AukPageVisibility {
   - returns: True if the page is visible to the user.
   
   */
-  static func isVisible(scrollView: UIScrollView, page: AukPage) -> Bool {
-    return CGRectIntersectsRect(scrollView.bounds, page.frame)
+  static func isVisible(_ scrollView: UIScrollView, page: AukPage) -> Bool {
+    return scrollView.bounds.intersects(page.frame)
   }
   
   /**
@@ -773,9 +773,9 @@ struct AukPageVisibility {
   - returns: True if the page is visible to the user.
   
   */
-  static func isFarOutOfSight(scrollView: UIScrollView, page: AukPage) -> Bool {
-    let parentRectWithIncreasedHorizontalBounds = CGRectInset(scrollView.bounds, -50, 0)
-    return !CGRectIntersectsRect(parentRectWithIncreasedHorizontalBounds, page.frame)
+  static func isFarOutOfSight(_ scrollView: UIScrollView, page: AukPage) -> Bool {
+    let parentRectWithIncreasedHorizontalBounds = scrollView.bounds.insetBy(dx: -50, dy: 0)
+    return !parentRectWithIncreasedHorizontalBounds.intersects(page.frame)
   }
   
   /**
@@ -785,13 +785,13 @@ struct AukPageVisibility {
   - parameter scrollView: Scroll view with the pages.
 
   */
-  static func tellPagesAboutTheirVisibility(scrollView: UIScrollView,
+  static func tellPagesAboutTheirVisibility(_ scrollView: UIScrollView,
                                             settings: AukSettings,
                                             currentPageIndex: Int) {
     
     let pages = AukScrollViewContent.aukPages(scrollView)
 
-    for (index, page) in pages.enumerate() {
+    for (index, page) in pages.enumerated() {
       if isVisible(scrollView, page: page) {
         page.visibleNow(settings)
       } else {
@@ -840,7 +840,7 @@ class AukRemoteImage {
   /// True when image has been successfully downloaded
   var didFinishDownload = false
 
-  func setup(url: String, imageView: UIImageView, placeholderImageView: UIImageView?,
+  func setup(_ url: String, imageView: UIImageView, placeholderImageView: UIImageView?,
     settings: AukSettings) {
 
     self.url = url
@@ -850,7 +850,7 @@ class AukRemoteImage {
   }
 
   /// Sends image download HTTP request.
-  func downloadImage(settings: AukSettings) {
+  func downloadImage(_ settings: AukSettings) {
     if imageView?.moa.url != nil { return } // Download has already started
     if didFinishDownload { return } // Image has already been downloaded
 
@@ -870,7 +870,7 @@ class AukRemoteImage {
     imageView?.moa.url = nil
   }
 
-  func didReceiveImageAsync(image: UIImage, settings: AukSettings) {
+  func didReceiveImageAsync(_ image: UIImage, settings: AukSettings) {
     didFinishDownload = true
 
     iiQ.main { [weak self] in
@@ -883,16 +883,16 @@ class AukRemoteImage {
     }
   }
 
-  private static func animateImageView(imageView: UIImageView, show: Bool, settings: AukSettings) {
+  private static func animateImageView(_ imageView: UIImageView, show: Bool, settings: AukSettings) {
     imageView.alpha = show ? 0: 1
-    let interval = NSTimeInterval(settings.remoteImageAnimationIntervalSeconds)
+    let interval = TimeInterval(settings.remoteImageAnimationIntervalSeconds)
     
-    UIView.animateWithDuration(interval, animations: {
+    UIView.animate(withDuration: interval, animations: {
       imageView.alpha = show ? 1: 0
     })
   }
   
-  private func setPlaceholderImage(settings: AukSettings) {
+  private func setPlaceholderImage(_ settings: AukSettings) {
     if let placeholderImage = settings.placeholderImage,
       placeholderImageView = placeholderImageView {
         
@@ -916,7 +916,7 @@ Scrolling code.
 
 */
 struct AukScrollTo {
-  static func scrollTo(scrollView: UIScrollView, pageIndex: Int, animated: Bool,
+  static func scrollTo(_ scrollView: UIScrollView, pageIndex: Int, animated: Bool,
     numberOfPages: Int) {
       
     let pageWidth = scrollView.bounds.size.width
@@ -924,7 +924,7 @@ struct AukScrollTo {
       numberOfPages: numberOfPages)
   }
   
-  static func scrollTo(scrollView: UIScrollView, pageIndex: Int, pageWidth: CGFloat,
+  static func scrollTo(_ scrollView: UIScrollView, pageIndex: Int, pageWidth: CGFloat,
     animated: Bool, numberOfPages: Int) {
       
     let offsetX = contentOffsetForPage(pageIndex, pageWidth: pageWidth,
@@ -935,7 +935,7 @@ struct AukScrollTo {
     scrollView.setContentOffset(offset, animated: animated)
   }
   
-  static func scrollToNextPage(scrollView: UIScrollView, cycle: Bool, animated: Bool,
+  static func scrollToNextPage(_ scrollView: UIScrollView, cycle: Bool, animated: Bool,
     currentPageIndex: Int, numberOfPages: Int) {
       
     var pageIndex = currentPageIndex + 1
@@ -951,7 +951,7 @@ struct AukScrollTo {
     scrollTo(scrollView, pageIndex: pageIndex, animated: animated, numberOfPages: numberOfPages)
   }
   
-  static func scrollToPreviousPage(scrollView: UIScrollView, cycle: Bool, animated: Bool,
+  static func scrollToPreviousPage(_ scrollView: UIScrollView, cycle: Bool, animated: Bool,
     currentPageIndex: Int, numberOfPages: Int) {
     
     var pageIndex = currentPageIndex - 1
@@ -973,7 +973,7 @@ struct AukScrollTo {
   Ensures that offset is within the content size.
 
   */
-  static func contentOffsetForPage(pageIndex: Int, pageWidth: CGFloat,
+  static func contentOffsetForPage(_ pageIndex: Int, pageWidth: CGFloat,
     numberOfPages: Int, scrollView: UIView) -> CGFloat {
       
     // The index of the page that appears from left to right of the screen.
@@ -1016,7 +1016,7 @@ struct AukScrollViewContent {
   - returns: Array of scroll view pages.
   
   */
-  static func aukPages(scrollView: UIScrollView) -> [AukPage] {
+  static func aukPages(_ scrollView: UIScrollView) -> [AukPage] {
     return scrollView.subviews.filter { $0 is AukPage }.map { $0 as! AukPage }
   }
   
@@ -1025,7 +1025,7 @@ struct AukScrollViewContent {
   - returns: Page at index. Returns nil if index is out of bounds.
  
   */
-  static func pageAt(index: Int, scrollView: UIScrollView) -> AukPage? {
+  static func pageAt(_ index: Int, scrollView: UIScrollView) -> AukPage? {
     let pages = aukPages(scrollView)
     if index < 0 { return nil }
     if index >= pages.count { return nil }
@@ -1037,10 +1037,10 @@ struct AukScrollViewContent {
   Creates Auto Layout constraints for positioning the page view inside the scroll view.
   
   */
-  static func layout(scrollView: UIScrollView) {
+  static func layout(_ scrollView: UIScrollView) {
     let pages = aukPages(scrollView)
 
-    for (index, page) in pages.enumerate() {
+    for (index, page) in pages.enumerated() {
       
       // Delete current constraints by removing the view and adding it back to its superview
       page.removeFromSuperview()
@@ -1057,13 +1057,13 @@ struct AukScrollViewContent {
       if index == 0 {
         // Align the leading edge of the first page to the leading edge of the scroll view.
         iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
-          constraintContainer: scrollView, attribute: NSLayoutAttribute.Leading, margin: 0)
+          constraintContainer: scrollView, attribute: NSLayoutAttribute.leading, margin: 0)
       }
       
       if index == pages.count - 1 {
         // Align the trailing edge of the last page to the trailing edge of the scroll view.
         iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
-          constraintContainer: scrollView, attribute: NSLayoutAttribute.Trailing, margin: 0)
+          constraintContainer: scrollView, attribute: NSLayoutAttribute.trailing, margin: 0)
       }
     }
     
@@ -1100,58 +1100,58 @@ final class AukScrollViewDelegate: NSObject, UIScrollViewDelegate {
   var onScroll: (()->())?
   var onScrollByUser: (()->())?
   
-  func scrollViewDidScroll(scrollView: UIScrollView) {
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
     onScroll?()
     delegate?.scrollViewDidScroll?(scrollView)
   }
   
-  func scrollViewDidZoom(scrollView: UIScrollView) {
+  func scrollViewDidZoom(_ scrollView: UIScrollView) {
     delegate?.scrollViewDidZoom?(scrollView)
   }
   
-  func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+  func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
     delegate?.scrollViewWillBeginDragging?(scrollView)
     onScrollByUser?()
   }
   
-  func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
     
     delegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
   }
   
-  func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     delegate?.scrollViewDidEndDragging?(scrollView, willDecelerate: decelerate)
   }
   
-  func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
+  func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
     delegate?.scrollViewWillBeginDecelerating?(scrollView)
   }
   
-  func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
     delegate?.scrollViewDidEndDecelerating?(scrollView)
   }
   
-  func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+  func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
     delegate?.scrollViewDidEndScrollingAnimation?(scrollView)
   }
   
-  func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-    return delegate?.viewForZoomingInScrollView?(scrollView)
+  func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    return delegate?.viewForZooming?(in: scrollView)
   }
   
-  func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
-    delegate?.scrollViewWillBeginZooming?(scrollView, withView: view)
+  func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+    delegate?.scrollViewWillBeginZooming?(scrollView, with: view)
   }
   
-  func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
-    delegate?.scrollViewDidEndZooming?(scrollView, withView: view, atScale: scale)
+  func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+    delegate?.scrollViewDidEndZooming?(scrollView, with: view, atScale: scale)
   }
   
-  func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {
+  func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
     return delegate?.scrollViewShouldScrollToTop?(scrollView) ?? true
   }
   
-  func scrollViewDidScrollToTop(scrollView: UIScrollView) {
+  func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
     delegate?.scrollViewDidScrollToTop?(scrollView)
   }
 }
@@ -1173,7 +1173,7 @@ Appearance and behavior of the scroll view.
 public struct AukSettings {
   
   /// Determines the stretching and scaling of the image when its proportion are not the same as its  container.
-  public var contentMode = UIViewContentMode.ScaleAspectFit
+  public var contentMode = UIViewContentMode.scaleAspectFit
   
   /// Image to be displayed when remote image download fails.
   public var errorImage: UIImage?
@@ -1333,7 +1333,7 @@ import UIKit
 final class AutoCancellingTimer {
   private var timer: AutoCancellingTimerInstance?
   
-  init(interval: NSTimeInterval, repeats: Bool = false, callback: ()->()) {
+  init(interval: TimeInterval, repeats: Bool = false, callback: ()->()) {
     timer = AutoCancellingTimerInstance(interval: interval, repeats: repeats, callback: callback)
   }
   
@@ -1348,16 +1348,16 @@ final class AutoCancellingTimer {
 
 final class AutoCancellingTimerInstance: NSObject {
   private let repeats: Bool
-  private var timer: NSTimer?
+  private var timer: Timer?
   private var callback: ()->()
   
-  init(interval: NSTimeInterval, repeats: Bool = false, callback: ()->()) {
+  init(interval: TimeInterval, repeats: Bool = false, callback: ()->()) {
     self.repeats = repeats
     self.callback = callback
     
     super.init()
     
-    timer = NSTimer.scheduledTimerWithTimeInterval(interval, target: self,
+    timer = Timer.scheduledTimer(timeInterval: interval, target: self,
       selector: #selector(AutoCancellingTimerInstance.timerFired(_:)), userInfo: nil, repeats: repeats)
   }
   
@@ -1365,7 +1365,7 @@ final class AutoCancellingTimerInstance: NSObject {
     timer?.invalidate()
   }
   
-  func timerFired(timer: NSTimer) {
+  func timerFired(_ timer: Timer) {
     self.callback()
     if !repeats { cancel() }
   }
@@ -1385,7 +1385,7 @@ final class AutoCancellingTimerInstance: NSObject {
 import UIKit
 
 class iiAutolayoutConstraints {
-  class func fillParent(view: UIView, parentView: UIView, margin: CGFloat = 0, vertically: Bool = false) {
+  class func fillParent(_ view: UIView, parentView: UIView, margin: CGFloat = 0, vertically: Bool = false) {
     var marginFormat = ""
 
     if margin != 0 {
@@ -1398,20 +1398,21 @@ class iiAutolayoutConstraints {
       format = "V:" + format
     }
 
-    let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
       options: [], metrics: nil,
       views: ["view": view])
 
     parentView.addConstraints(constraints)
   }
   
-  class func alignSameAttributes(item: AnyObject, toItem: AnyObject,
+  @discardableResult
+  class func alignSameAttributes(_ item: AnyObject, toItem: AnyObject,
     constraintContainer: UIView, attribute: NSLayoutAttribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
       
     let constraint = NSLayoutConstraint(
       item: item,
       attribute: attribute,
-      relatedBy: NSLayoutRelation.Equal,
+      relatedBy: NSLayoutRelation.equal,
       toItem: toItem,
       attribute: attribute,
       multiplier: 1,
@@ -1422,19 +1423,20 @@ class iiAutolayoutConstraints {
     return [constraint]
   }
 
-  class func equalWidth(viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
+  class func equalWidth(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
     
     return equalWidthOrHeight(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, isHeight: false)
   }
   
   // MARK: - Equal height and width
   
-  class func equalHeight(viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
+  class func equalHeight(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
     
     return equalWidthOrHeight(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, isHeight: true)
   }
   
-  class func equalSize(viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
+  @discardableResult
+  class func equalSize(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
     
     var constraints = equalWidthOrHeight(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, isHeight: false)
     
@@ -1443,14 +1445,14 @@ class iiAutolayoutConstraints {
     return constraints
   }
   
-  class func equalWidthOrHeight(viewOne: UIView, viewTwo: UIView, constraintContainer: UIView,
+  class func equalWidthOrHeight(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView,
     isHeight: Bool) -> [NSLayoutConstraint] {
     
     var prefix = ""
     
     if isHeight { prefix = "V:" }
     
-    let constraints = NSLayoutConstraint.constraintsWithVisualFormat("\(prefix)[viewOne(==viewTwo)]",
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: "\(prefix)[viewOne(==viewTwo)]",
       options: [], metrics: nil,
       views: ["viewOne": viewOne, "viewTwo": viewTwo])
         
@@ -1461,7 +1463,8 @@ class iiAutolayoutConstraints {
   
   // MARK: - Align view next to each other
   
-  class func viewsNextToEachOther(views: [UIView],
+  @discardableResult
+  class func viewsNextToEachOther(_ views: [UIView],
     constraintContainer: UIView, margin: CGFloat = 0,
     vertically: Bool = false) -> [NSLayoutConstraint] {
       
@@ -1469,7 +1472,7 @@ class iiAutolayoutConstraints {
     
     var constraints = [NSLayoutConstraint]()
     
-    for (index, view) in views.enumerate() {
+    for (index, view) in views.enumerated() {
       if index >= views.count - 1 { break }
       
       let viewTwo = views[index + 1]
@@ -1481,7 +1484,7 @@ class iiAutolayoutConstraints {
     return constraints
   }
   
-  class func twoViewsNextToEachOther(viewOne: UIView, viewTwo: UIView,
+  class func twoViewsNextToEachOther(_ viewOne: UIView, viewTwo: UIView,
     constraintContainer: UIView, margin: CGFloat = 0,
     vertically: Bool = false) -> [NSLayoutConstraint] {
       
@@ -1497,7 +1500,7 @@ class iiAutolayoutConstraints {
       format = "V:" + format
     }
     
-    let constraints = NSLayoutConstraint.constraintsWithVisualFormat(format,
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
       options: [], metrics: nil,
       views: [ "viewOne": viewOne, "viewTwo": viewTwo ])
     
@@ -1506,24 +1509,24 @@ class iiAutolayoutConstraints {
     return constraints
   }
   
-  class func height(view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
+  class func height(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
     return widthOrHeight(view, value: value, isHeight: true)
   }
   
-  class func width(view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
+  class func width(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
     return widthOrHeight(view, value: value, isHeight: false)
   }
   
-  class func widthOrHeight(view: UIView, value: CGFloat, isHeight: Bool) -> [NSLayoutConstraint] {
+  class func widthOrHeight(_ view: UIView, value: CGFloat, isHeight: Bool) -> [NSLayoutConstraint] {
     
-    let layoutAttribute = isHeight ? NSLayoutAttribute.Height : NSLayoutAttribute.Width
+    let layoutAttribute = isHeight ? NSLayoutAttribute.height : NSLayoutAttribute.width
     
     let constraint = NSLayoutConstraint(
       item: view,
       attribute: layoutAttribute,
-      relatedBy: NSLayoutRelation.Equal,
+      relatedBy: NSLayoutRelation.equal,
       toItem: nil,
-      attribute: NSLayoutAttribute.NotAnAttribute,
+      attribute: NSLayoutAttribute.notAnAttribute,
       multiplier: 1,
       constant: value)
     
@@ -1552,17 +1555,17 @@ class iiAutolayoutConstraints {
 import UIKit
 
 class iiQ {
-  class func async(block: ()->()) {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
+  class func async(_ block: ()->()) {
+    DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosDefault).async(execute: block)
   }
 
-  class func main(block: ()->()) {
-    dispatch_async(dispatch_get_main_queue(), block)
+  class func main(_ block: ()->()) {
+    DispatchQueue.main.async(execute: block)
   }
 
-  class func runAfterDelay(delaySeconds: Double, block: ()->()) {
-    let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delaySeconds * Double(NSEC_PER_SEC)))
-    dispatch_after(time, dispatch_get_main_queue(), block)
+  class func runAfterDelay(_ delaySeconds: Double, block: ()->()) {
+    let time = DispatchTime.now() + Double(Int64(delaySeconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+    DispatchQueue.main.after(when: time, execute: block)
   }
 }
 
@@ -1581,12 +1584,12 @@ Helper functions for dealing with right-to-left languages.
 
 */
 struct RightToLeft {
-  static func isRightToLeft(view: UIView) -> Bool {
+  static func isRightToLeft(_ view: UIView) -> Bool {
     if #available(iOS 9.0, *) {
-      return UIView.userInterfaceLayoutDirectionForSemanticContentAttribute(
-        view.semanticContentAttribute) == .RightToLeft
+      return UIView.userInterfaceLayoutDirection(
+        for: view.semanticContentAttribute) == .rightToLeft
     } else {
-      return UIApplication.sharedApplication().userInterfaceLayoutDirection == .RightToLeft
+      return UIApplication.shared().userInterfaceLayoutDirection == .rightToLeft
     }
   }
 }

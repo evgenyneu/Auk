@@ -8,7 +8,7 @@ Starts and cancels the auto scrolling.
 struct AukAutoscroll {
   var autoscrollTimer: AutoCancellingTimer?
   
-  mutating func startAutoScroll(scrollView: UIScrollView, delaySeconds: Double,
+  mutating func startAutoScroll(_ scrollView: UIScrollView, delaySeconds: Double,
     forward: Bool, cycle: Bool, animated: Bool, auk: Auk) {
       
     // Assign the new instance of AutoCancellingTimer to autoscrollTimer

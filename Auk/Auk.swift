@@ -40,7 +40,7 @@ public class Auk {
   - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode. For example: "Picture of a pony standing in a flower pot.".
 
   */
-  public func show(image image: UIImage, accessibilityLabel: String? = nil) {
+  public func show(image: UIImage, accessibilityLabel: String? = nil) {
     setup()
     let page = createPage(accessibilityLabel)
     page.show(image: image, settings: settings)
@@ -54,7 +54,7 @@ public class Auk {
   - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode. For example: "Picture of a pony standing in a flower pot.".
 
   */
-  public func show(url url: String, accessibilityLabel: String? = nil) {
+  public func show(url: String, accessibilityLabel: String? = nil) {
     setup()
     let page = createPage(accessibilityLabel)
     page.show(url: url, settings: settings)
@@ -77,7 +77,7 @@ public class Auk {
    For example: "Picture of a pony standing in a flower pot.".
    
    */
-  public func updateAt(pageIndex:Int, image: UIImage, accessibilityLabel: String? = nil) {
+  public func updateAt(_ pageIndex:Int, image: UIImage, accessibilityLabel: String? = nil) {
     if let scrollView = scrollView,
       page = AukScrollViewContent.pageAt(pageIndex, scrollView: scrollView) {
       
@@ -97,7 +97,7 @@ public class Auk {
    For example: "Picture of a pony standing in a flower pot.".
    
    */
-  public func updateAt(pageIndex: Int, url: String, accessibilityLabel: String? = nil) {
+  public func updateAt(_ pageIndex: Int, url: String, accessibilityLabel: String? = nil) {
     if let scrollView = scrollView,
       page = AukScrollViewContent.pageAt(pageIndex, scrollView: scrollView) {
       
@@ -128,7 +128,7 @@ public class Auk {
   - parameter animated: The page change will be animated when `true`.
 
   */
-  public func scrollTo(pageIndex: Int, animated: Bool) {
+  public func scrollTo(_ pageIndex: Int, animated: Bool) {
     if let scrollView = scrollView {
       AukScrollTo.scrollTo(scrollView, pageIndex: pageIndex, animated: animated,
         numberOfPages: numberOfPages)
@@ -160,7 +160,7 @@ public class Auk {
   - parameter animated: The page change will be animated when `true`.
 
   */
-  public func scrollTo(pageIndex: Int, pageWidth: CGFloat, animated: Bool) {
+  public func scrollTo(_ pageIndex: Int, pageWidth: CGFloat, animated: Bool) {
     if let scrollView = scrollView {
       AukScrollTo.scrollTo(scrollView, pageIndex: pageIndex, pageWidth: pageWidth,
         animated: animated, numberOfPages: numberOfPages)
@@ -184,7 +184,7 @@ public class Auk {
   - parameter animated: The page change will be animated when `true`.
 
   */
-  public func scrollToNextPage(cycle cycle: Bool, animated: Bool) {
+  public func scrollToNextPage(cycle: Bool, animated: Bool) {
     if let scrollView = scrollView, currentPageIndex = currentPageIndex {
       AukScrollTo.scrollToNextPage(scrollView, cycle: cycle, animated: animated,
         currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
@@ -208,7 +208,7 @@ public class Auk {
   - parameter animated: The page change will be animated when `true`.
 
   */
-  public func scrollToPreviousPage(cycle cycle: Bool, animated: Bool) {
+  public func scrollToPreviousPage(cycle: Bool, animated: Bool) {
     if let scrollView = scrollView, currentPageIndex = currentPageIndex {
       AukScrollTo.scrollToPreviousPage(scrollView, cycle: cycle, animated: animated,
         currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
@@ -300,7 +300,7 @@ public class Auk {
   - parameter delaySeconds: Amount of time in second each page is visible before scrolling to the next.
 
   */
-  public func startAutoScroll(delaySeconds delaySeconds: Double) {
+  public func startAutoScroll(delaySeconds: Double) {
     startAutoScroll(delaySeconds: delaySeconds, forward: true,
       cycle: true, animated: true)
   }
@@ -315,7 +315,7 @@ public class Auk {
   - parameter animated: The page change will be animated when `true`.
 
   */
-  public func startAutoScroll(delaySeconds delaySeconds: Double, forward: Bool,
+  public func startAutoScroll(delaySeconds: Double, forward: Bool,
     cycle: Bool, animated: Bool) {
 
     if let scrollView = scrollView {
@@ -363,11 +363,11 @@ public class Auk {
   func setup() {
     createPageIdicator()
     scrollView?.showsHorizontalScrollIndicator = settings.showsHorizontalScrollIndicator
-    scrollView?.pagingEnabled = settings.pagingEnabled
+    scrollView?.isPagingEnabled = settings.pagingEnabled
   }
     
   /// Create a page, add it to the scroll view content and layout.
-  private func createPage(accessibilityLabel: String? = nil) -> AukPage {
+  private func createPage(_ accessibilityLabel: String? = nil) -> AukPage {
     let page = AukPage()
     page.clipsToBounds = true
     page.makeAccessible(accessibilityLabel)
@@ -419,7 +419,7 @@ public class Auk {
     }
   }
   
-  private func didTapPageControl(pageIndex: Int) {
+  private func didTapPageControl(_ pageIndex: Int) {
     scrollTo(pageIndex, animated: true)
   }
 }

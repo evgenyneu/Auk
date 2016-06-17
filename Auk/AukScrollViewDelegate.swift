@@ -16,58 +16,58 @@ final class AukScrollViewDelegate: NSObject, UIScrollViewDelegate {
   var onScroll: (()->())?
   var onScrollByUser: (()->())?
   
-  func scrollViewDidScroll(scrollView: UIScrollView) {
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
     onScroll?()
     delegate?.scrollViewDidScroll?(scrollView)
   }
   
-  func scrollViewDidZoom(scrollView: UIScrollView) {
+  func scrollViewDidZoom(_ scrollView: UIScrollView) {
     delegate?.scrollViewDidZoom?(scrollView)
   }
   
-  func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+  func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
     delegate?.scrollViewWillBeginDragging?(scrollView)
     onScrollByUser?()
   }
   
-  func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
     
     delegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
   }
   
-  func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     delegate?.scrollViewDidEndDragging?(scrollView, willDecelerate: decelerate)
   }
   
-  func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
+  func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
     delegate?.scrollViewWillBeginDecelerating?(scrollView)
   }
   
-  func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
     delegate?.scrollViewDidEndDecelerating?(scrollView)
   }
   
-  func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+  func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
     delegate?.scrollViewDidEndScrollingAnimation?(scrollView)
   }
   
-  func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-    return delegate?.viewForZoomingInScrollView?(scrollView)
+  func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    return delegate?.viewForZooming?(in: scrollView)
   }
   
-  func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
-    delegate?.scrollViewWillBeginZooming?(scrollView, withView: view)
+  func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+    delegate?.scrollViewWillBeginZooming?(scrollView, with: view)
   }
   
-  func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
-    delegate?.scrollViewDidEndZooming?(scrollView, withView: view, atScale: scale)
+  func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+    delegate?.scrollViewDidEndZooming?(scrollView, with: view, atScale: scale)
   }
   
-  func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {
+  func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
     return delegate?.scrollViewShouldScrollToTop?(scrollView) ?? true
   }
   
-  func scrollViewDidScrollToTop(scrollView: UIScrollView) {
+  func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
     delegate?.scrollViewDidScrollToTop?(scrollView)
   }
 }
