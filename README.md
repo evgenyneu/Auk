@@ -161,10 +161,10 @@ Use the `auk.settings` property to configure behavior and appearance of the scro
 
 ```Swift
 // Make the images fill entire page
-scrollView.auk.settings.contentMode = UIViewContentMode.ScaleAspectFill
+scrollView.auk.settings.contentMode = UIViewContentMode.scaleAspectFill
 
 // Set background color of page indicator
-scrollView.auk.settings.pageControl.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.3)
+scrollView.auk.settings.pageControl.backgroundColor = UIColor.gray().withAlphaComponent(0.3)
 
 // Show placeholder image while remote image is being downloaded.
 scrollView.auk.settings.placeholderImage = UIImage(named: "placeholder.jpg")
