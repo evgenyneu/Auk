@@ -18,5 +18,5 @@ Pod::Spec.new do |s|
   s.screenshots  = "https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_paged_image_scroller_ios.jpg"
   s.source_files = "Auk/**/*.swift"
   s.ios.deployment_target = "8.0"
-  s.dependency "moa", "~> 3.0"
+  s.dependency "moa", "~> 4.0"
 end

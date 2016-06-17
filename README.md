@@ -209,10 +209,10 @@ import moa
 // ...
 
 // By default images are cached according to their response HTTP headers.
-Moa.settings.cache.requestCachePolicy = .UseProtocolCachePolicy
+Moa.settings.cache.requestCachePolicy = .useProtocolCachePolicy
 
 // Use local cache regardless of response HTTP headers.
-Moa.settings.cache.requestCachePolicy = .ReturnCacheDataElseLoad
+Moa.settings.cache.requestCachePolicy = .returnCacheDataElseLoad
 ```
 
 Note: [moa image downloader](https://github.com/evgenyneu/moa) offers other features including request logging and HTTP settings.
