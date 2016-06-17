@@ -47,7 +47,7 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
     pod 'Auk', '~> 3.0'
 
 
-## Legacy Swift versions
+### Legacy Swift versions
 
 Setup a [previous version](https://github.com/evgenyneu/Auk/wiki/Legacy-Swift-versions) of the library if you use an older version of Swift.
 
