@@ -1,5 +1,9 @@
 # Auk version history
 
+## 3.0 (2016-06-17)
+
+* Update to Swift 3.0
+
 ## 2.1.5 (2016-06-01)
 
 * Added support for loading remote images in GIF format and files with non-standard mime-type *image/jpg*.
