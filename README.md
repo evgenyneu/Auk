@@ -234,7 +234,7 @@ If you need to assign a delegate to the scroll view please do so before accessin
 
 Here is what you need to do to add an image tap handler to the scroll view.
 
-1. In the Storyboard drag a *Tag Gesture Recognizer* into your scroll view.
+1. In the Storyboard drag a *Tap Gesture Recognizer* into your scroll view.
 1. Show assistant editor with your view controller code.
 1. Do the control-drag from the tap gesture recognizer in the storyboard into your view controller code.
 1. A dialog will appear, change the *Connection* to *action* and enter the name of the method.
