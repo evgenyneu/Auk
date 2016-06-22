@@ -247,12 +247,7 @@ You can run some code when the scroll view is being scrolled by using `UIScrollV
 
 ## Demo app
 
-The project includes a demo iOS app. If you are seeing the following build error it probably means you are running an older Xcode version.
-
-> Module file was created by an older version of the compiler; rebuild 'moa' and try again
-
-To fix it, use the latest Xcode or [install Carthage](https://github.com/Carthage/Carthage) and run `carthage update` command from the project root directory.
-
+The project includes a demo iOS app.
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_demo_ios_app_2.jpg' width='414' alt='Auk pages scroll view demo iOS app'>
 
