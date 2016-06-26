@@ -208,7 +208,7 @@ Auk uses [moa image downloader](https://github.com/evgenyneu/moa) for getting re
 
 
 ```Swift
-import moa
+import moa // for Carthage and CocoaPods
 
 // ...
 
@@ -226,6 +226,10 @@ Note: [moa image downloader](https://github.com/evgenyneu/moa) offers other feat
 If your remote images are not loading you can use log the network activity to console, as shown in the following example. Please refer to the [moa logging manual](https://github.com/evgenyneu/moa/wiki/Logging-with-Moa) for more information.
 
 ```Swift
+import moa // for Carthage and CocoaPods
+
+// ...
+
 // Log to console
 Moa.logger = MoaConsoleLogger
 
