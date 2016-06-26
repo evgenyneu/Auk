@@ -65,7 +65,7 @@ Auk extends UIScrollView class by creating the `auk` property.
 
 ```Swift
 // Show remote image
-scrollView.auk.show(url: "http://site.com/bird.jpg")
+scrollView.auk.show(url: "https://bit.ly/auk_image")
 
 // Show local image
 if let image = UIImage(named: "bird.jpg") {
@@ -117,7 +117,7 @@ One can pass an image description when calling the `show` methods. This descript
 
 ```Swift
 // Supply accessibility label for the image
-scrollView.auk.show(url: "http://site.com/bird.jpg", accessibilityLabel: "Picture of a bird.")
+scrollView.auk.show(url: "https://bit.ly/auk_image", accessibilityLabel: "Picture of a great auk.")
 ```
 
 #### Replacing existing image
@@ -127,7 +127,7 @@ One can change existing image by calling `updateAt` methods and supplying the pa
 ```Swift
 // Replace the image on a given page with a remote image.
 // The current image is replaced after the new image has finished downloading.
-scrollView.auk.updateAt(0, url: "http://site.com/bird.jpg")
+scrollView.auk.updateAt(0, url: "https://bit.ly/auk_image")
 
 // Replace the image on a given page with a local image.
 if let image = UIImage(named: "bird.jpg") {
@@ -143,7 +143,7 @@ Make sure the scrollView is added to the view tree *before* you call the `show` 
 
 ```Swift
 print(scrollView.superview) // should not be `nil`
-scrollView.auk.show(url: "http://site.com/bird.jpg")
+scrollView.auk.show(url: "https://bit.ly/auk_image")
 ```
 
 The page control is added to the superview of the scroll view when the `show` method is called. That's why page control is not created when the scroll view has no superview.
@@ -168,8 +168,8 @@ scrollView.auk.settings.pageControl.backgroundColor = UIColor.gray().withAlphaCo
 // Show placeholder image while remote image is being downloaded.
 scrollView.auk.settings.placeholderImage = UIImage(named: "placeholder.jpg")
 
-// Show an image after specifying the settings
-scrollView.auk.show(url: "http://site.com/bird.jpg")
+// Show an image AFTER specifying the settings
+scrollView.auk.show(url: "https://bit.ly/auk_image")
 ```
 
 ## Preloading remote images
@@ -181,11 +181,11 @@ By default remote images are loaded after they become visible to user. One can a
 scrollView.auk.settings.preloadRemoteImagesAround = 1
 
 // Add remote images. The first two images will start loading simultaneously.
-scrollView.auk.show(url: "http://site.com/finch.jpg")
-scrollView.auk.show(url: "http://site.com/auk.jpg")
+scrollView.auk.show(url: "https://bit.ly/auk_image")
+scrollView.auk.show(url: "https://bit.ly/moa_image")
 
 // The third image will start loading when the user scrolls to the second page.
-scrollView.auk.show(url: "http://site.com/moa.jpg")
+scrollView.auk.show(url: "https://bit.ly/auks_at_home")
 ```
 
 The `preloadRemoteImagesAround` property defines the number of remote images to preload around the current page. For example, if `preloadRemoteImagesAround = 2` and we are viewing the first page it will preload images on the second and third pages. If we are viewing 5th page then it will preload images on pages 3, 4, 6 and 7 (unless they are already loaded). The default value is 0.
