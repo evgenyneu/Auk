@@ -15,12 +15,11 @@ This is an iOS library that shows an image carousel with a page indicator. Users
 ```
 
 * Allows to specify placeholder and error images for remote sources.
-* Includes ability to simulate and verify image download in unit tests.
 * Supports animated transition during screen orientation change.
 * Includes image caching and logging.
-* Privides unit testing mode for faking network responses.
 * Supports right-to-left languages.
 * Allows to specify accessiblity labels for the images.
+* Includes ability to simulate and verify image download in unit tests.
 
 
 <img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_paged_image_scroller_ios.jpg' alt='Great Auks by John Gerrard Keulemans' width='382'>
