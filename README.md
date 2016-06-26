@@ -240,7 +240,7 @@ MoaSimulator.autorespondWithImage("www.site.com", image: UIImage(named: "35px.jp
 
 ## Scroll view delegate
 
-If you need to assign a delegate to the scroll view please do so before accessing `scrollView.auk` property.
+If you need to assign a delegate to the scroll view please do so **before** accessing `scrollView.auk` property.
 
 ## Respond to image tap
 
