@@ -276,6 +276,19 @@ If `scrollView.superview` is `nil` then you may need to move that code that show
 
 One can [turn on the logger](#logging) to see the network activity in the Xcode console and find the problem with image download.
 
+### Page control is not changing / second remote image is not shown
+
+If you are assigning the scroll view delegate please make sure it is done *before* showing the images.
+
+```Swift
+// Assign the delegate BEFORE showing the images
+scrollView.delegate = self
+
+scrollView.auk.show(url: "https://bit.ly/auk_image")
+scrollView.auk.show(url: "https://bit.ly/moa_image")
+```
+
+
 ## Demo app
 
 The project includes a demo iOS app.
