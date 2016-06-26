@@ -9,6 +9,11 @@
 
 This is an iOS library that shows an image carousel with a page indicator. Users can scroll through local and remote images or watch them scroll automatically.
 
+```Swift
+  scrollView.auk.show(url: "https://bit.ly/auk_image")
+  scrollView.auk.show(url: "https://bit.ly/moa_image")
+```
+
 * Allows to specify placeholder and error images for remote sources.
 * Includes ability to simulate and verify image download in unit tests.
 * Supports animated transition during screen orientation change.
