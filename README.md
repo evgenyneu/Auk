@@ -240,7 +240,7 @@ scrollView.auk.show(url: "https://bit.ly/auk_image")
 scrollView.auk.show(url: "https://bit.ly/missing_auk.jpg")
 ```
 
-<img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_swift_slideshow_logging_console.png' alt='Log Auk remove image download to console'>
+<img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_swift_slideshow_logging_console.png' alt='Log Auk remove image download to console' width='506'>
 
 ## Remote image unit testing
 
