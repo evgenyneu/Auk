@@ -216,6 +216,21 @@ Moa.settings.cache.requestCachePolicy = .returnCacheDataElseLoad
 
 Note: [moa image downloader](https://github.com/evgenyneu/moa) offers other features including request logging and HTTP settings.
 
+## Logging and troubleshooting remote image download
+
+If your remote images are not loading you can use log the network activity to console, as shown in the following example. Please refer to the [moa logging manual](https://github.com/evgenyneu/moa/wiki/Logging-with-Moa) for more information.
+
+```Swift
+// Log to console
+Moa.logger = MoaConsoleLogger
+
+// Show an existing image
+scrollView.auk.show(url: "https://bit.ly/auk_image")
+
+// Attempt to show a missing image
+scrollView.auk.show(url: "https://bit.ly/missing_auk.jpg")
+```
+
 ## Remote image unit testing
 
 One can simulate and verify remote image download in your unit tests. Please refer to the [moa unit testing manual](https://github.com/evgenyneu/moa/wiki/Unit-testing-with-Moa) for more information. Add `import moa` to your source code if you used Carthage or CocoaPods setup methods.
