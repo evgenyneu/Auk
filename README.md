@@ -16,7 +16,7 @@ This is an iOS library that shows an image carousel with a page indicator. Users
 
 * Allows to specify placeholder and error images for remote sources.
 * Supports animated transition during screen orientation change.
-* Includes image caching and logging.
+* Includes caching and logging of remote images.
 * Supports right-to-left languages.
 * Allows to specify accessiblity labels for the images.
 * Includes ability to simulate and verify image download in unit tests.
