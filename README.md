@@ -238,10 +238,6 @@ One can simulate and verify remote image download in your unit tests. Please ref
 MoaSimulator.autorespondWithImage("www.site.com", image: UIImage(named: "35px.jpg")!)
 ```
 
-## Scroll view delegate
-
-If you need to assign a delegate to the scroll view please do so **before** accessing `scrollView.auk` property.
-
 ## Respond to image tap
 
 Here is what you need to do to add an image tap handler to the scroll view.
