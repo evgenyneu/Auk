@@ -240,6 +240,8 @@ scrollView.auk.show(url: "https://bit.ly/auk_image")
 scrollView.auk.show(url: "https://bit.ly/missing_auk.jpg")
 ```
 
+<img src='https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_swift_slideshow_logging_console.png' alt='Log Auk remove image download to console'>
+
 ## Remote image unit testing
 
 One can simulate and verify remote image download in your unit tests. Please refer to the [moa unit testing manual](https://github.com/evgenyneu/moa/wiki/Unit-testing-with-Moa) for more information. Add `import moa` to your source code if you used Carthage or CocoaPods setup methods.
