@@ -207,7 +207,7 @@ Moa.settings.cache.requestCachePolicy = .returnCacheDataElseLoad
 
 Note: [moa image downloader](https://github.com/evgenyneu/moa) offers other features including request logging and HTTP settings.
 
-## Logging of the image download
+## Logging
 
 If you want to know when the remote images are being loaded you can log the network activity to console, as shown in the following example. Please refer to the [moa logging manual](https://github.com/evgenyneu/moa/wiki/Logging-with-Moa) for more information.
 
