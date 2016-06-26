@@ -278,7 +278,7 @@ One can [turn on the logger](#logging) to see the network activity in the Xcode 
 
 ### Page control is not changing / second remote image is not shown
 
-If you are assigning the scroll view delegate please make sure it is done *before* showing the images.
+If you are assigning the scroll view delegate please make sure it is done **before** showing the images.
 
 ```Swift
 // Assign the delegate BEFORE showing the images
