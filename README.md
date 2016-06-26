@@ -274,7 +274,7 @@ If `scrollView.superview` is `nil` then you may need to move that code that show
 
 ### Remote images are not loading
 
-One can [turn on the logger](#logging-and-troubleshooting-remote-image-download) to see the network activity in the Xcode console and find the problem with image download.
+One can [turn on the logger](#logging) to see the network activity in the Xcode console and find the problem with image download.
 
 ## Demo app
 
