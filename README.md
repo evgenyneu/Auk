@@ -140,20 +140,6 @@ if let image = UIImage(named: "bird.jpg") {
 }
 ```
 
-## Common problems
-
-### Page control is not visible
-
-Make sure the scrollView is added to the view tree *before* you call the `show` method. Otherwise the page control will not be created. Quick check:
-
-```Swift
-print(scrollView.superview) // should not be `nil`
-scrollView.auk.show(url: "https://bit.ly/auk_image")
-```
-
-The page control is added to the superview of the scroll view when the `show` method is called. That's why page control is not created when the scroll view has no superview.
-
-If `scrollView.superview` is `nil` then you may need to move that code that shows the images to the `viewDidAppear` method.
 
 ## Loading images from insecure HTTP hosts
 
@@ -269,6 +255,26 @@ Here is what you need to do to add an image tap handler to the scroll view.
 ## Detect page scrolling
 
 You can run some code when the scroll view is being scrolled by using `UIScrollViewDelegate`. See the [detect page scrolling manual](https://github.com/evgenyneu/Auk/wiki/Detect-page-scrolling) for details.
+
+
+## Common problems
+
+### Page control is not visible
+
+Make sure the scrollView is added to the view tree *before* you call the `show` method. Otherwise the page control will not be created. Quick check:
+
+```Swift
+print(scrollView.superview) // should not be `nil`
+scrollView.auk.show(url: "https://bit.ly/auk_image")
+```
+
+The page control is added to the superview of the scroll view when the `show` method is called. That's why page control is not created when the scroll view has no superview.
+
+If `scrollView.superview` is `nil` then you may need to move that code that shows the images to the `viewDidAppear` method.
+
+### Remote images are not loading
+
+One can [turn on the logger](#logging-and-troubleshooting-remote-image-download) to see the network activity in the Xcode console and find the problem with image download.
 
 ## Demo app
 
