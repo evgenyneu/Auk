@@ -12,6 +12,10 @@ This is an iOS library that shows an image carousel with a page indicator. Users
 ```Swift
   scrollView.auk.show(url: "https://bit.ly/auk_image")
   scrollView.auk.show(url: "https://bit.ly/moa_image")
+
+  if let image = UIImage(named: "bird.jpg") {
+    scrollView.auk.show(image: image)
+  }
 ```
 
 * Uses Auto Layout and supports animated transition during screen orientation change.
