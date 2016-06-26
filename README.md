@@ -14,8 +14,8 @@ This is an iOS library that shows an image carousel with a page indicator. Users
   scrollView.auk.show(url: "https://bit.ly/moa_image")
 ```
 
+* Uses Auto Layout and supports animated transition during screen orientation change.
 * Allows to specify placeholder and error images for remote sources.
-* Supports animated transition during screen orientation change.
 * Includes caching and logging for remote images.
 * Supports right-to-left languages.
 * Allows to specify accessiblity labels for the images.
