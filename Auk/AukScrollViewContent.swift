@@ -33,7 +33,7 @@ struct AukScrollViewContent {
   Creates Auto Layout constraints for positioning the page view inside the scroll view.
   
   */
-  static func layout(scrollView: UIScrollView) {
+  static func layout(scrollView: UIScrollView, animated: Bool = false, animationDuration : Double = 0.2) {
     let pages = aukPages(scrollView)
 
     for (index, page) in pages.enumerate() {
@@ -67,6 +67,12 @@ struct AukScrollViewContent {
     iiAutolayoutConstraints.viewsNextToEachOther(pages, constraintContainer: scrollView,
       margin: 0, vertically: false)
     
-    scrollView.layoutIfNeeded()
+    if animated {
+      UIView.animateWithDuration(animationDuration) {
+        scrollView.layoutIfNeeded()
+      }
+    } else {
+      scrollView.layoutIfNeeded()
+    }
   }
 }

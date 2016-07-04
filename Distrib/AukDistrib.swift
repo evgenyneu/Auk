@@ -238,9 +238,9 @@ public class Auk {
   public func removeAll() {
     if let scrollView = scrollView {
       let pages = AukScrollViewContent.aukPages(scrollView)
-
-      for page in pages {
-        page.removeFromSuperview()
+      
+      pages.forEach {
+        $0.removeFromSuperview()
       }
     }
 
@@ -249,6 +249,67 @@ public class Auk {
     if let currentPageIndex = currentPageIndex {
       pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
     }
+  }
+  
+  /**
+ 
+  Removes page at current presented index from the scroll view.
+  Does nothing if there no current page
+  - parameter animated: Boolean indicating if the layout update after the removal of the page should be animated, defaults to false.
+  - parameter layoutUpdateAnimationDuration: Duration of the layout update animation after the page removal, defaults to 0.3 sec. Ignored if animated is set to false.
+  - parameter pageFadeAnimationDuration: Duration of the page fade animation, default to 0.2. Ignored if animated is set to false.
+  - parameter completion: Closure executed when page has been removed and layout updated
+  */
+  
+  public func removeCurrentPage(animated animated: Bool = false, layoutUpdateAnimationDuration: Double = 0.3, pageFadeAnimationDuration: Double = 0.2, completion: (() -> Void)? = nil) -> Bool {
+    if let currentPageIndex = currentPageIndex {
+      return removePageAt(index: currentPageIndex, animated: animated, layoutUpdateAnimationDuration: layoutUpdateAnimationDuration, pageFadeAnimationDuration: pageFadeAnimationDuration, completion: completion)
+    }
+    return false
+  }
+  
+  /**
+   
+  Removes page at the provided index from the scroll view.
+  Does nothing if the index does not represent an existing page.
+  - parameter index: The index of the page your want to remove from the scroll view.
+  - parameter animated: Optional Boolean indicating if the layout update after the removal of the page should be animated, defaults to false.
+  - parameter layoutUpdateAnimationDuration: Duration of the layout update animation after the page removal, defaults to 0.3 sec. Ignored if animated is set to false.
+  - parameter pageFadeAnimationDuration: Duration of the page removal fade animation, defaults to 0.3 sec. Ignored if animated is set to false.
+  - parameter completion: Closure executed when page has been removed and layout updated, defaults to nil
+  */
+  
+  public func removePageAt(index index: Int, animated: Bool = false, layoutUpdateAnimationDuration : Double = 0.3, pageFadeAnimationDuration: Double = 0.2, completion: (() -> Void)? = nil) -> Bool {
+    guard let scrollView = scrollView, let page = AukScrollViewContent.pageAt(index, scrollView: scrollView) else {
+      return false
+    }
+    
+    let updateLayout = { [unowned self] in
+      page.removeFromSuperview()
+      self.pageIndicatorContainer?.updateNumberOfPages(self.numberOfPages)
+      AukScrollViewContent.layout(scrollView, animated: animated, animationDuration: layoutUpdateAnimationDuration)
+      
+      if let currentPageIndex = self.currentPageIndex {
+        self.pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
+      }
+      if let completion = completion {
+        completion()
+      }
+    }
+    
+    // If duration is 0, completion block is called instantly
+    if animated {
+      UIView.animateWithDuration(pageFadeAnimationDuration, animations: {
+        page.alpha = 0
+      }) { (_) in
+        page.alpha = 1 // Set the alpha back in case if somebody is reusing the view somewhere else.
+        updateLayout()
+      }
+    }
+    else {
+      updateLayout()
+    }
+    return true
   }
 
   /// Returns the current number of pages.
@@ -1037,7 +1098,7 @@ struct AukScrollViewContent {
   Creates Auto Layout constraints for positioning the page view inside the scroll view.
   
   */
-  static func layout(scrollView: UIScrollView) {
+  static func layout(scrollView: UIScrollView, animated: Bool = false, animationDuration : Double = 0.2) {
     let pages = aukPages(scrollView)
 
     for (index, page) in pages.enumerate() {
@@ -1071,7 +1132,13 @@ struct AukScrollViewContent {
     iiAutolayoutConstraints.viewsNextToEachOther(pages, constraintContainer: scrollView,
       margin: 0, vertically: false)
     
-    scrollView.layoutIfNeeded()
+    if animated {
+      UIView.animateWithDuration(animationDuration) {
+        scrollView.layoutIfNeeded()
+      }
+    } else {
+      scrollView.layoutIfNeeded()
+    }
   }
 }
 
