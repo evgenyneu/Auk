@@ -69,6 +69,7 @@
 		7EFEEDC41B3E47EF0082488E /* Auk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5B5E1E1B2C2D3000B87E54 /* Auk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7EFEEDC81B3E48130082488E /* moa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E0A9BCF1B3660F300086393 /* moa.framework */; };
 		7EFEEDC91B3E48130082488E /* moa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E0A9BCF1B3660F300086393 /* moa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A79B30421D26D4590083A5F9 /* AukInterfaceRemovePageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B30411D26D4590083A5F9 /* AukInterfaceRemovePageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +176,7 @@
 		7ECB40FA1CA6ACAC00E493E0 /* AukInterfaceUpdateRemoteImageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukInterfaceUpdateRemoteImageTests.swift; sourceTree = "<group>"; };
 		7EFEEDBE1B3E2FA00082488E /* AukPageVisibilityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukPageVisibilityTests.swift; sourceTree = "<group>"; };
 		7EFEEDC01B3E32580082488E /* AukPageVisibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukPageVisibility.swift; sourceTree = "<group>"; };
+		A79B30411D26D4590083A5F9 /* AukInterfaceRemovePageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukInterfaceRemovePageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,6 +381,7 @@
 				7E98FDB81B4782A200192AAF /* AukInterfaceStartAutoScrollTests.swift */,
 				7ECB40F81CA6A3F700E493E0 /* AukInterfaceUpdateLocalImageTests.swift */,
 				7ECB40FA1CA6ACAC00E493E0 /* AukInterfaceUpdateRemoteImageTests.swift */,
+				A79B30411D26D4590083A5F9 /* AukInterfaceRemovePageTests.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 				7E98FDB31B47814900192AAF /* AukInterfaceRemoveAllTests.swift in Sources */,
 				7E98FDB51B47820B00192AAF /* AukInterfaceNumberOfPagesTests.swift in Sources */,
 				7E3A11621BF5565D0031C3E1 /* AukInterfaceImagesTests.swift in Sources */,
+				A79B30421D26D4590083A5F9 /* AukInterfaceRemovePageTests.swift in Sources */,
 				7ECB40FB1CA6ACAC00E493E0 /* AukInterfaceUpdateRemoteImageTests.swift in Sources */,
 				7ECB40F91CA6A3F700E493E0 /* AukInterfaceUpdateLocalImageTests.swift in Sources */,
 				7E98FDAF1B4780C000192AAF /* AukInterfaceScrollToTests.swift in Sources */,
