@@ -91,6 +91,20 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     showCurrentImageDescription()
   }
 
+  @IBAction func onDeleteCurrentButtonTapped(sender: AnyObject) {
+    guard let indexToRemove = scrollView.auk.currentPageIndex else {
+      return
+    }
+    scrollView.auk.stopAutoScroll()
+    
+    if scrollView.auk.removeCurrentPage(animated: true) {
+      if imageDescriptions.count >= scrollView.auk.numberOfPages {
+        imageDescriptions.removeAtIndex(indexToRemove)
+      }
+      showCurrentImageDescription()
+    }
+  }
+  
   @IBAction func onAutoscrollTapped(sender: AnyObject) {
     scrollView.auk.startAutoScroll(delaySeconds: 2)
   }
