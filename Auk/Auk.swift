@@ -246,7 +246,7 @@ public class Auk {
   - parameter completion: Closure executed when page has been removed and layout updated
   */
   
-  public func removeCurrentPage(animated animated: Bool = false, layoutUpdateAnimationDuration: Double = 0.3, pageFadeAnimationDuration: Double = 0.2, completion: (() -> Void)? = nil) -> Bool {
+  public func removeCurrentPage(animated: Bool = false, layoutUpdateAnimationDuration: Double = 0.3, pageFadeAnimationDuration: Double = 0.2, completion: (() -> Void)? = nil) -> Bool {
     if let currentPageIndex = currentPageIndex {
       return removePageAt(index: currentPageIndex, animated: animated, layoutUpdateAnimationDuration: layoutUpdateAnimationDuration, pageFadeAnimationDuration: pageFadeAnimationDuration, completion: completion)
     }
@@ -264,7 +264,7 @@ public class Auk {
   - parameter completion: Closure executed when page has been removed and layout updated, defaults to nil
   */
   
-  public func removePageAt(index index: Int, animated: Bool = false, layoutUpdateAnimationDuration : Double = 0.3, pageFadeAnimationDuration: Double = 0.2, completion: (() -> Void)? = nil) -> Bool {
+  public func removePageAt(index: Int, animated: Bool = false, layoutUpdateAnimationDuration : Double = 0.3, pageFadeAnimationDuration: Double = 0.2, completion: (() -> Void)? = nil) -> Bool {
     guard let scrollView = scrollView, let page = AukScrollViewContent.pageAt(index, scrollView: scrollView) else {
       return false
     }
@@ -284,7 +284,7 @@ public class Auk {
     
     // If duration is 0, completion block is called instantly
     if animated {
-      UIView.animateWithDuration(pageFadeAnimationDuration, animations: {
+      UIView.animate(withDuration: pageFadeAnimationDuration, animations: {
         page.alpha = 0
       }) { (_) in
         page.alpha = 1 // Set the alpha back in case if somebody is reusing the view somewhere else.

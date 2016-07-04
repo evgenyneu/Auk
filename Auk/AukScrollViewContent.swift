@@ -68,7 +68,7 @@ struct AukScrollViewContent {
       margin: 0, vertically: false)
     
     if animated {
-      UIView.animateWithDuration(animationDuration) {
+      UIView.animate(withDuration: animationDuration) {
         scrollView.layoutIfNeeded()
       }
     } else {

@@ -99,7 +99,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     if scrollView.auk.removeCurrentPage(animated: true) {
       if imageDescriptions.count >= scrollView.auk.numberOfPages {
-        imageDescriptions.removeAtIndex(indexToRemove)
+        imageDescriptions.remove(at: indexToRemove)
       }
       showCurrentImageDescription()
     }
