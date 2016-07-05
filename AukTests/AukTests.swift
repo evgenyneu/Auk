@@ -217,4 +217,46 @@ class AukTests: XCTestCase {
     
     XCTAssertEqual(120, scrollView.contentOffset.x)
   }
+  
+  
+  // MARK: - updatePageIndicator
+
+  
+  func testUpdateTestIndicator() {
+    // Layout scroll view
+    // ---------------
+    
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    let aukView1 = AukPage()
+    let aukView2 = AukPage()
+    
+    scrollView.addSubview(aukView1)
+    scrollView.addSubview(aukView2)
+    
+    // Create page indicator
+    // ---------------
+    
+    let pageIndicator = AukPageIndicatorContainer()
+    auk.pageIndicatorContainer = pageIndicator
+    superview.addSubview(pageIndicator)
+    pageIndicator.setup(auk.settings, scrollView: scrollView)
+    
+    superview.layoutIfNeeded()
+    
+    // Verify page indicator is showing the pages
+    // -------------
+    
+    XCTAssertEqual(0, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
+    XCTAssertEqual(-1, auk.pageIndicatorContainer!.pageControl!.currentPage)
+    
+    auk.updatePageIndicator()
+    XCTAssertEqual(2, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
+    XCTAssertEqual(0, auk.pageIndicatorContainer!.pageControl!.currentPage)
+    
+    scrollView.contentOffset = CGPoint(x: 200, y: 0)
+    XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.currentPage)
+    auk.updatePageIndicator()
+  }
 }

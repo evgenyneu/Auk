@@ -458,7 +458,7 @@ public class Auk {
     AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
                                                     currentPageIndex: currentPageIndex)
       
-    updatePageIndicator()
+    pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
   }
 
   private func createPageIdicator() {
@@ -503,9 +503,8 @@ public class Auk {
     )
   }
   
-  // TODO: TEST
-  /// UPdate the page inficator to show the correct number of pages and the current page.
-  private func updatePageIndicator() {
+  /// Show the number of pages and indicate the current page on the page indicator.
+  func updatePageIndicator() {
     pageIndicatorContainer?.updateNumberOfPages(numberOfPages)
     guard let currentPageIndex = currentPageIndex else { return }
     pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
