@@ -34,6 +34,9 @@ public struct AukSettings {
   
   /// Show horizontal scroll indicator.
   public var showsHorizontalScrollIndicator = false
+  
+  /// Horizontal margin on left and right of each page.
+  public var horizontalPageMargin : CGFloat = 0
 }
 
 /**
