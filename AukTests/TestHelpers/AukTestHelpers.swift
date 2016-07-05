@@ -9,7 +9,15 @@ extension XCTestCase {
     return (try! Data(contentsOf: url))
   }
   
-  func uiImage96px() -> UIImage {
+  func createImage35px() -> UIImage {
+    return UIImage(data: nsDataFromFile("35px.jpg"))!
+  }
+  
+  func createImage67px() -> UIImage {
+    return UIImage(data: nsDataFromFile("67px.png"))!
+  }
+  
+  func createImage96px() -> UIImage {
     return UIImage(data: nsDataFromFile("96px.png"))!
   }
   

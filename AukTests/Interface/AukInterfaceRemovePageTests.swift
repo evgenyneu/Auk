@@ -37,7 +37,7 @@ class AukInterfaceRemovePageTests: XCTestCase {
     let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
     superview.addSubview(scrollView)
     
-    let image = uiImage96px()
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -90,7 +90,7 @@ class AukInterfaceRemovePageTests: XCTestCase {
     let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
     superview.addSubview(scrollView)
     
-    let image = uiImage96px()
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -140,7 +140,7 @@ class AukInterfaceRemovePageTests: XCTestCase {
     let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
     superview.addSubview(scrollView)
     
-    let image = uiImage96px()
+    let image = createImage96px()
     auk.show(image: image)
     
     // Remove first page
@@ -154,7 +154,7 @@ class AukInterfaceRemovePageTests: XCTestCase {
     let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
     superview.addSubview(scrollView)
     
-    let image = uiImage96px()
+    let image = createImage96px()
     auk.show(image: image)
     
     var didCallCompletion = false
@@ -173,7 +173,7 @@ class AukInterfaceRemovePageTests: XCTestCase {
     let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
     superview.addSubview(scrollView)
     
-    let image = uiImage96px()
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     
@@ -219,7 +219,7 @@ class AukInterfaceRemovePageTests: XCTestCase {
     let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
     superview.addSubview(scrollView)
     
-    let image = uiImage96px()
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     
@@ -253,7 +253,7 @@ class AukInterfaceRemovePageTests: XCTestCase {
     let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
     superview.addSubview(scrollView)
     
-    let image = uiImage96px()
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
