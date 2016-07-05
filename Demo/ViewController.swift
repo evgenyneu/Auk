@@ -23,7 +23,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     // When you want to display all pages side by side with an horizontal margin,
     // you need the scrollView width to be smaller than it's superview width and to disable clipsToBounds on the scrollView
-    scrollView.clipsToBounds = true // required when using horizontalPageMargin
+    scrollView.clipsToBounds = false // required when using horizontalPageMargin
     scrollView.auk.settings.horizontalPageMargin = 10
     
     showInitialImage()
