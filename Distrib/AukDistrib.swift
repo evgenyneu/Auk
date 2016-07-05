@@ -1116,7 +1116,7 @@ struct AukScrollViewContent {
    
   - parameter animationDurationInSeconds: duration of the layout animation. Ignored if `animated` parameter is false.
 
-  - parameter didFinish: will call this function when layout animation finishes. Called immediately if not animated.
+  - parameter didFinish: function that is called when layout animation finishes. Called immediately if not animated.
   
   */
   static func layout(_ scrollView: UIScrollView, animated: Bool = false,
