@@ -19,10 +19,10 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
   }
   
   func testUpdateLocalImage() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     
-    let image67px = uiImageFromFile("67px.png")
+    let image67px = createImage67px()
     auk.updatePage(atIndex: 0, image: image67px)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
@@ -31,14 +31,14 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
   
   func testUpdateLocalImage_updateOnlyGivenSingePage() {
     // Show two images
-    let image96px = uiImageFromFile("96px.png")
+    let image96px = createImage96px()
     auk.show(image: image96px)
     
-    let image35px = uiImageFromFile("35px.jpg")
+    let image35px = createImage35px()
     auk.show(image: image35px)
     
     // Update image on the second page
-    let image67px = uiImageFromFile("67px.png")
+    let image67px = createImage67px()
     auk.updatePage(atIndex: 1, image: image67px)
     
     XCTAssertEqual(2, aukPages(scrollView).count)
@@ -51,10 +51,10 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
   }
   
   func testUpdateLocalImage_indexLargerThanExist() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     
-    let image67px = uiImageFromFile("67px.png")
+    let image67px = createImage67px()
     auk.updatePage(atIndex: 1, image: image67px)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
@@ -62,10 +62,10 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
   }
   
   func testUpdateLocalImage_indexNegative() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     
-    let image67px = uiImageFromFile("67px.png")
+    let image67px = createImage67px()
     auk.updatePage(atIndex: -1, image: image67px)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
@@ -73,7 +73,7 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
   }
   
   func testUpdateLocalImage_noImages() {
-    let image67px = uiImageFromFile("67px.png")
+    let image67px = createImage67px()
     auk.updatePage(atIndex: 0, image: image67px)
     XCTAssertEqual(0, aukPages(scrollView).count)
   }
@@ -81,10 +81,10 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
   // MARK: - Accessibility
   
   func testUpdateAccessiblePageView_withLabel() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image, accessibilityLabel: "Penguin")
     
-    let image67px = uiImageFromFile("67px.png")
+    let image67px = createImage67px()
     auk.updatePage(atIndex: 0, image: image67px, accessibilityLabel: "White knight riding a wooden horse on wheels.")
     
     let page = aukPage(scrollView, pageIndex: 0)!
@@ -95,10 +95,10 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
   }
   
   func testUpdateAccessiblePageView_removeExistingLabel() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image, accessibilityLabel: "Penguin")
     
-    let image67px = uiImageFromFile("67px.png")
+    let image67px = createImage67px()
     auk.updatePage(atIndex: 0, image: image67px)
     
     let page = aukPage(scrollView, pageIndex: 0)!

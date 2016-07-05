@@ -22,7 +22,7 @@ class AukPageTests: XCTestCase {
   // MARK: - Show image
   
   func testShowImage() {
-    let image = uiImageFromFile("67px.png")
+    let image = createImage67px()
 
     view.show(image: image, settings: settings)
     
@@ -30,7 +30,7 @@ class AukPageTests: XCTestCase {
   }
   
   func testShowImage_setup() {
-    let image = uiImageFromFile("67px.png")
+    let image = createImage67px()
     
     view.show(image: image, settings: settings)
     
@@ -42,14 +42,14 @@ class AukPageTests: XCTestCase {
   
   func testShowImage_useContentMode() {
     settings.contentMode = UIViewContentMode.topRight
-    let image = uiImageFromFile("67px.png")
+    let image = createImage67px()
     view.show(image: image, settings: settings)
     XCTAssertEqual(UIViewContentMode.topRight.rawValue, view.imageView!.contentMode.rawValue)
   }
   
   func testShowImage_doNotcreatePlaceholderImage() {
     settings.placeholderImage = nil
-    let image = uiImageFromFile("67px.png")
+    let image = createImage67px()
     
     view.show(image: image, settings: settings)
     
@@ -105,7 +105,7 @@ class AukPageTests: XCTestCase {
     XCTAssertEqual(1, simulator.downloaders.count)
     XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.first!.url)
     
-    let image = uiImageFromFile("35px.jpg")
+    let image = createImage35px()
     simulator.respondWithImage(image)
     
     XCTAssertEqual(35, imageView.image!.size.width)
@@ -122,7 +122,7 @@ class AukPageTests: XCTestCase {
     view.visibleNow(settings)
     view.visibleNow(settings)
     
-    let image = uiImageFromFile("35px.jpg")
+    let image = createImage35px()
     simulator.respondWithImage(image)
     
     XCTAssertEqual(1, simulator.downloaders.count)
@@ -152,7 +152,7 @@ class AukPageTests: XCTestCase {
   // MARK: - Remove image views
   
   func testRemoveImage() {
-    let image = uiImageFromFile("67px.png")
+    let image = createImage67px()
     view.show(image: image, settings: settings)
     view.removeImageViews()
     
@@ -171,7 +171,7 @@ class AukPageTests: XCTestCase {
   
   func testPrepareForReuse_removesImageView() {
     settings.placeholderImage = UIImage()
-    let image = uiImageFromFile("67px.png")
+    let image = createImage67px()
     view.show(image: image, settings: settings)
     
     view.prepareForReuse()

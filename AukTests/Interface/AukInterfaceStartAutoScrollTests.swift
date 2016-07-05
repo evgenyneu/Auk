@@ -27,7 +27,7 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
   // MARK: - Start auto scroll
   
   func testStartAutoScroll_toPage1() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -41,7 +41,7 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
   }
   
   func testStartAutoScrollMultipleTimes_onlyScrollsOnce() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -59,7 +59,7 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
   }
   
   func testStartAutoScroll_toPage2() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -73,7 +73,7 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
   }
   
   func testStartAutoScroll_cycleToPag0() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -89,7 +89,7 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
   // MARK: - With parameters, forward
   
   func testStartAutoScroll_withParameters_forward_toPage1() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -103,7 +103,7 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
   }
   
   func testStartAutoScroll_withParameters_backwards_toPage2() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -119,7 +119,7 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
   // MARK: - With parameters, forward, cycle
   
   func testStartAutoScroll_withParameters_forward_cycle_toPage1() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -133,7 +133,7 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
   }
   
   func testStartAutoScroll_withParameters_forward_noCycle_toPage1() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -149,7 +149,7 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
   // MARK: - With parameters, backwards, cycle
   
   func testStartAutoScroll_withParameters_backwards_cycle_toPage1() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -163,7 +163,7 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
   }
   
   func testStartAutoScroll_withParameters_backwards_noCycle_toPage1() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -179,7 +179,7 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
   // MARK: - Stop autoscroll
   
   func testStopAutoScroll() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -196,7 +196,7 @@ class AukInterfaceStartAutoScrollTests: XCTestCase {
   // MARK: - Cancel autoscroll when it is scrolled by user.
   
   func testStopAutoScrollWhenScrolledByUser() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)

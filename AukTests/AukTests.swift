@@ -143,7 +143,7 @@ class AukTests: XCTestCase {
     // Show 3 images
     // -------------
     
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -164,7 +164,7 @@ class AukTests: XCTestCase {
     // Show 3 images
     // -------------
     
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -193,7 +193,7 @@ class AukTests: XCTestCase {
     let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
     superview.addSubview(scrollView)
     
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     
@@ -207,7 +207,7 @@ class AukTests: XCTestCase {
     let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
     superview.addSubview(scrollView)
     
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.removeAll()
@@ -219,7 +219,7 @@ class AukTests: XCTestCase {
     let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
     superview.addSubview(scrollView)
     
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
         

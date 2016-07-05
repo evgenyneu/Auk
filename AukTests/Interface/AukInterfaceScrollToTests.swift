@@ -22,7 +22,7 @@ class AukInterfaceScrollToTests: XCTestCase {
   // MARK: - Scroll to offset
   
   func testScrollTo() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -37,7 +37,7 @@ class AukInterfaceScrollToTests: XCTestCase {
   }
   
   func testScrollTo_preventOverscrollingToTheRight() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -47,7 +47,7 @@ class AukInterfaceScrollToTests: XCTestCase {
   }
   
   func testScrollTo_preventOverscrollingToTheLeft() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -59,7 +59,7 @@ class AukInterfaceScrollToTests: XCTestCase {
   // MARK: - Scroll to offset with width
   
   func testScrollToWithWidth() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)

@@ -20,14 +20,14 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
   }
   
   func testSetupIsCalled() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     
     XCTAssertFalse(scrollView.showsHorizontalScrollIndicator)
   }
   
   func testShowLocalImage() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
@@ -35,10 +35,10 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
   }
   
   func testShowLocalImage_layoutSubviews() {
-    let image1 = uiImageFromFile("96px.png")
+    let image1 = createImage96px()
     auk.show(image: image1)
     
-    let image2 = uiImageFromFile("67px.png")
+    let image2 = createImage67px()
     auk.show(image: image2)
     
     scrollView.layoutIfNeeded()
@@ -67,10 +67,10 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
     if #available(iOS 9.0, *) {
       scrollView.semanticContentAttribute = .forceRightToLeft
       
-      let image1 = uiImageFromFile("96px.png")
+      let image1 = createImage96px()
       auk.show(image: image1)
       
-      let image2 = uiImageFromFile("67px.png")
+      let image2 = createImage67px()
       auk.show(image: image2)
       
       scrollView.layoutIfNeeded()
@@ -102,12 +102,12 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
   func testShowLocalImage_contentOffset() {
     XCTAssertEqual(0, scrollView.contentOffset.x)
     
-    let image1 = uiImageFromFile("96px.png")
+    let image1 = createImage96px()
     auk.show(image: image1)
     
     XCTAssertEqual(0, scrollView.contentOffset.x)
     
-    let image2 = uiImageFromFile("67px.png")
+    let image2 = createImage67px()
     auk.show(image: image2)
     
     XCTAssertEqual(0, scrollView.contentOffset.x)
@@ -119,15 +119,15 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
       
       XCTAssertEqual(0, scrollView.contentOffset.x)
       
-      let image1 = uiImageFromFile("96px.png")
+      let image1 = createImage96px()
       auk.show(image: image1)
       XCTAssertEqual(0, scrollView.contentOffset.x)
       
-      let image2 = uiImageFromFile("67px.png")
+      let image2 = createImage67px()
       auk.show(image: image2)
       XCTAssertEqual(120, scrollView.contentOffset.x)
       
-      let image3 = uiImageFromFile("35px.jpg")
+      let image3 = createImage35px()
       auk.show(image: image3)
       XCTAssertEqual(240, scrollView.contentOffset.x)
     }
@@ -136,7 +136,7 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
   // MARK: - Accessibility
   
   func testCreateAccessiblePageView_withLabel() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image, accessibilityLabel: "White knight riding a wooden horse on wheels.")
     
     let page = aukPage(scrollView, pageIndex: 0)!
@@ -147,7 +147,7 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
   }
   
   func testCreateAccessiblePageView_withoutLabel() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     
     let page = aukPage(scrollView, pageIndex: 0)!

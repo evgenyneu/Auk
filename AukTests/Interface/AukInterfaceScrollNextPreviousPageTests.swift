@@ -22,7 +22,7 @@ class AukInterfaceScrollNextPreviousPageTests: XCTestCase {
   // MARK: - Scroll to next page
   
   func testScrollToNextPage() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -38,7 +38,7 @@ class AukInterfaceScrollNextPreviousPageTests: XCTestCase {
   }
   
   func testScrollToNextPage_withParameters_cycle() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -54,7 +54,7 @@ class AukInterfaceScrollNextPreviousPageTests: XCTestCase {
   }
   
   func testScrollToNextPage_withParameters_noCycle() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -72,7 +72,7 @@ class AukInterfaceScrollNextPreviousPageTests: XCTestCase {
   // MARK: - Scroll to previous page
   
   func testScrollToPreviousPage() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -88,7 +88,7 @@ class AukInterfaceScrollNextPreviousPageTests: XCTestCase {
   }
   
   func testScrollToPreviousPage_withParameters_cycle() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
@@ -104,7 +104,7 @@ class AukInterfaceScrollNextPreviousPageTests: XCTestCase {
   }
   
   func testScrollToPreviousPage_withParameters_noCycle() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)

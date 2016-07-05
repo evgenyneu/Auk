@@ -23,7 +23,7 @@ class AukInterfaceNumberOfPagesTests: XCTestCase {
     // Show 2 images
     // -------------
     
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     

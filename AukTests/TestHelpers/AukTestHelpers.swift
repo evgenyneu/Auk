@@ -10,18 +10,18 @@ extension XCTestCase {
   }
   
   func createImage35px() -> UIImage {
-    return UIImage(data: nsDataFromFile("35px.jpg"))!
+    return uiImageFromFile("35px.jpg")
   }
   
   func createImage67px() -> UIImage {
-    return UIImage(data: nsDataFromFile("67px.png"))!
+    return uiImageFromFile("67px.png")
   }
   
   func createImage96px() -> UIImage {
-    return UIImage(data: nsDataFromFile("96px.png"))!
+    return uiImageFromFile("96px.png")
   }
   
-  func uiImageFromFile(_ name: String) -> UIImage {
+  private func uiImageFromFile(_ name: String) -> UIImage {
     return UIImage(data: nsDataFromFile(name))!
   }
   
