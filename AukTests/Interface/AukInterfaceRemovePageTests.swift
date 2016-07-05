@@ -1,11 +1,11 @@
 import XCTest
-import UIKit
 @testable import Auk
 
 class AukInterfaceRemovePageTests: XCTestCase {
   
   var scrollView: UIScrollView!
   var auk: Auk!
+  var fakeAnimator: iiFakeAnimator!
   
   override func setUp() {
     super.setUp()
@@ -17,8 +17,19 @@ class AukInterfaceRemovePageTests: XCTestCase {
     scrollView.bounds = CGRect(origin: CGPoint(), size: size)
     
     auk = Auk(scrollView: scrollView)
+    
+    // Use fake animator
+    fakeAnimator = iiFakeAnimator()
+    iiAnimator.currentAnimator = fakeAnimator
+
   }
-  
+
+  override func tearDown() {
+    super.tearDown()
+    
+    iiAnimator.currentAnimator = nil // Remove the fake animator
+  }
+
   func testRemoveFirstImage() {
     // Layout scroll view
     // ---------------
@@ -123,6 +134,97 @@ class AukInterfaceRemovePageTests: XCTestCase {
     // Expect page control to be synced with scroll view (1 pages left, current page index 0)
     XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
     XCTAssertEqual(0, auk.pageIndicatorContainer!.pageControl!.currentPage)
+  }
+  
+  func testRemovePage_withoutAnimation() {
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    
+    // Remove first page
+    auk.removePage(atIndex: 0)
+    
+    // Expect NOT to use animation by default
+    XCTAssertEqual(123, fakeAnimator.testParameters.count)
+  }
+  
+  func testRemovePage_withAnimation() {
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    auk.show(image: image)
+    
+    auk.removePage(atIndex: 0, animated: true)
+    
+    // Expect fade-out animation
+    XCTAssertEqual(1, fakeAnimator.testParameters.count)
+    XCTAssertEqual("Fade out", fakeAnimator.testParameters[0].name)
+    XCTAssertEqual(0.2, fakeAnimator.testParameters[0].duration) // Default fade out animation
+    
+    let page = aukPage(scrollView, pageIndex: 0)
+    
+    // Page is still visible
+    XCTAssertEqual(1, page?.alpha)
+    
+    // Call fade out animation function
+    fakeAnimator.testParameters[0].animation()
+    XCTAssertEqual(0, page?.alpha) // Hidden
+    
+    // Call fade out animation completion
+    fakeAnimator.testParameters[0].completion!(true)
+    
+    // Expect layout animation
+    XCTAssertEqual(2, fakeAnimator.testParameters.count)
+    XCTAssertEqual("layoutIfNeeded", fakeAnimator.testParameters[1].name)
+    XCTAssertEqual(0.3, fakeAnimator.testParameters[1].duration) // Default layout animation
+
+    XCTAssertEqual(240, scrollView.contentSize.width)
+    
+    // Call layout animation function
+    fakeAnimator.testParameters[1].animation()
+    XCTAssertEqual(120, scrollView.contentSize.width)
+    
+    // Number of pages are not yet updates
+    XCTAssertEqual(2, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
+
+    // Call layout animation completion
+    fakeAnimator.testParameters[1].completion!(true)
+    XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
+  }
+  
+  func testRemovePage_withAnimation_callCompletion() {
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    auk.show(image: image)
+    
+    var didCallCompletion = false
+    auk.removePage(atIndex: 0, animated: true, completion: {
+      didCallCompletion = false
+    })
+    
+    // Not yet called
+    XCTAssertFalse(didCallCompletion)
+    
+    XCTAssertEqual("Fade out", fakeAnimator.testParameters[0].name)
+    // Call fade out animation completion
+    fakeAnimator.testParameters[0].completion!(true)
+    
+    // Not yet called
+    XCTAssertFalse(didCallCompletion)
+    
+    XCTAssertEqual("layoutIfNeeded", fakeAnimator.testParameters[1].name)
+    // Call layout animation completion
+    fakeAnimator.testParameters[1].completion!(true)
+    
+    // Completion called
+    XCTAssertFalse(didCallCompletion)
   }
   
   func testRemoveCurrentImage() {

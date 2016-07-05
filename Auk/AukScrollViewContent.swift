@@ -78,7 +78,7 @@ struct AukScrollViewContent {
       margin: 0, vertically: false)
     
     if animated {
-      iiAnimator.animator.animate(withDuration: animationDurationInSeconds,
+      iiAnimator.animator.animate(name: "layoutIfNeeded", withDuration: animationDurationInSeconds,
         animations: {
           scrollView.layoutIfNeeded()
         },

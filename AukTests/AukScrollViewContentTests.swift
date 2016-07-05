@@ -107,17 +107,17 @@ class AukScrollViewContentTests: XCTestCase {
       }
     )
     
-    XCTAssertEqual(1, fakeAnimator.testDurations.count)
-    XCTAssertEqual(120, fakeAnimator.testDurations[0])
+    XCTAssertEqual(1, fakeAnimator.testParameters.count)
+    XCTAssertEqual(120, fakeAnimator.testParameters[0].duration)
     
     // Animation
     XCTAssertEqual(CGSize(width: 0, height: 0), scrollView.contentSize)
-    fakeAnimator.testAnimations[0]()
+    fakeAnimator.testParameters[0].animation()
     XCTAssertEqual(CGSize(width: 540, height: 120), scrollView.contentSize)
     
     // Completion
     XCTAssertFalse(didCallCompletion)
-    fakeAnimator.testCompletions[0]?(true)
+    fakeAnimator.testParameters[0].completion?(true)
     XCTAssert(didCallCompletion)
   }
   

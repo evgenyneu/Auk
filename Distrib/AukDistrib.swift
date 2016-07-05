@@ -1153,7 +1153,7 @@ struct AukScrollViewContent {
       margin: 0, vertically: false)
     
     if animated {
-      iiAnimator.animator.animate(withDuration: animationDurationInSeconds,
+      iiAnimator.animator.animate(name: "layoutIfNeeded", withDuration: animationDurationInSeconds,
         animations: {
           scrollView.layoutIfNeeded()
         },
@@ -1496,7 +1496,7 @@ class iiAnimator {
   }
   
   /// Animation function. This is a wrapper around UIView.animate to make it easier to unit test.
-  func animate(withDuration duration: TimeInterval, animations: ()->(), completion: ((Bool)->())? = nil) {
+  func animate(name: String, withDuration duration: TimeInterval, animations: ()->(), completion: ((Bool)->())? = nil) {
     UIView.animate(withDuration: duration,
                    animations: animations,
                    completion: completion
@@ -1520,7 +1520,7 @@ class iiAnimator {
   */
   static func fadeOut(view: UIView, animated: Bool, withDuration duration: TimeInterval, completion: ()->()) {
     if animated {
-      animator.animate(withDuration: duration,
+      animator.animate(name: "Fade out", withDuration: duration,
         animations: {
           view.alpha = 0
         },

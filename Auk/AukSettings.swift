@@ -33,10 +33,10 @@ public struct AukSettings {
   public var remoteImageAnimationIntervalSeconds: Double = 0.5
   
   // Duration of the fade out animation when the page is removed.
-  public var removePageFadeOutAnimationDurationSeconds: Double = 0.3
+  public var removePageFadeOutAnimationDurationSeconds: Double = 0.2
   
   // Duration of the layout animation when the page is removed.
-  public var removePageFadeLayoutAnimationDurationSeconds: Double = 0.2
+  public var removePageLayoutAnimationDurationSeconds: Double = 0.3
   
   /// Show horizontal scroll indicator.
   public var showsHorizontalScrollIndicator = false

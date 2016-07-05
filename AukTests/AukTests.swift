@@ -375,7 +375,7 @@ class AukTests: XCTestCase {
     auk.removePage(page: aukView2, animated: true)
     
     // Check the animation
-    XCTAssertEqual(1, fakeAnimator.testAnimations.count)
-    XCTAssertEqual(0.2, fakeAnimator.testDurations[0]) // Default layout animation duration
+    XCTAssertEqual(1, fakeAnimator.testParameters.count)
+    XCTAssertEqual(0.2, fakeAnimator.testParameters[0].duration) // Default layout animation duration
   }
 }

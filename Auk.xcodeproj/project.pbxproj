@@ -14,6 +14,7 @@
 		7E1B4E6F1CD2005000433E80 /* AukPageVisibility_preloadImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B4E6E1CD2005000433E80 /* AukPageVisibility_preloadImageTests.swift */; };
 		7E1D221A1D2B4F9900234495 /* iiAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1D22191D2B4F9900234495 /* iiAnimator.swift */; };
 		7E1D221C1D2B875400234495 /* iiFakeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1D221B1D2B875400234495 /* iiFakeAnimator.swift */; };
+		7E1D221E1D2BA02600234495 /* iiFakeAnimatorParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1D221D1D2BA02600234495 /* iiFakeAnimatorParameter.swift */; };
 		7E333BFB1B3FC44B001BBB57 /* great_auk_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E333BFA1B3FC44B001BBB57 /* great_auk_placeholder.png */; };
 		7E333C001B3FDDCE001BBB57 /* iiQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E333BFF1B3FDDCE001BBB57 /* iiQ.swift */; };
 		7E3A11621BF5565D0031C3E1 /* AukInterfaceImagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3A11611BF5565D0031C3E1 /* AukInterfaceImagesTests.swift */; };
@@ -131,6 +132,7 @@
 		7E1B4E6E1CD2005000433E80 /* AukPageVisibility_preloadImageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukPageVisibility_preloadImageTests.swift; sourceTree = "<group>"; };
 		7E1D22191D2B4F9900234495 /* iiAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iiAnimator.swift; sourceTree = "<group>"; };
 		7E1D221B1D2B875400234495 /* iiFakeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iiFakeAnimator.swift; sourceTree = "<group>"; };
+		7E1D221D1D2BA02600234495 /* iiFakeAnimatorParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iiFakeAnimatorParameter.swift; sourceTree = "<group>"; };
 		7E333BFA1B3FC44B001BBB57 /* great_auk_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = great_auk_placeholder.png; sourceTree = "<group>"; };
 		7E333BFF1B3FDDCE001BBB57 /* iiQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iiQ.swift; sourceTree = "<group>"; };
 		7E3A11611BF5565D0031C3E1 /* AukInterfaceImagesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukInterfaceImagesTests.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 			children = (
 				7E9013C11B2CFCA000DD4406 /* AukTestHelpers.swift */,
 				7E1D221B1D2B875400234495 /* iiFakeAnimator.swift */,
+				7E1D221D1D2BA02600234495 /* iiFakeAnimatorParameter.swift */,
 			);
 			path = TestHelpers;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				7E5DCDC01B6E072900C288CA /* AukScrollToTests.swift in Sources */,
 				7E9013C31B2CFCAE00DD4406 /* AukTestHelpers.swift in Sources */,
 				7EFEEDBF1B3E2FA00082488E /* AukPageVisibilityTests.swift in Sources */,
+				7E1D221E1D2BA02600234495 /* iiFakeAnimatorParameter.swift in Sources */,
 				7E98FDB71B47824800192AAF /* AukInterfaceCurrentPageIndexTests.swift in Sources */,
 				7E98FDB01B4780C000192AAF /* AukInterfaceShowLocalImageTests.swift in Sources */,
 			);

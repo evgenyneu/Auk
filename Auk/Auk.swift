@@ -277,7 +277,7 @@ public class Auk {
       let page = AukScrollViewContent.page(atIndex: index, scrollView: scrollView) else { return }
     
     iiAnimator.fadeOut(view: page, animated: animated,
-      withDuration: settings.remoteImageAnimationIntervalSeconds,
+      withDuration: settings.removePageFadeOutAnimationDurationSeconds,
       completion: { [weak self] in
         // Finish fading out. Now remove the page from the scroll view.
         self?.removePage(page: page, animated: animated, completion: completion)
@@ -477,7 +477,7 @@ public class Auk {
     page.removeFromSuperview()
     
     AukScrollViewContent.layout(scrollView, animated: animated,
-      animationDurationInSeconds: settings.removePageFadeLayoutAnimationDurationSeconds,
+      animationDurationInSeconds: settings.removePageLayoutAnimationDurationSeconds,
       completion: { [weak self] in
         // Finished removing the page. Update the page indicator.
         self?.updatePageIndicator()
