@@ -188,6 +188,7 @@ public class Auk {
   Scrolls to the next page.
 
   - parameter cycle: If `true` it scrolls to the first page from the last one. If `false` the scrolling stops at the last page.
+   
   - parameter animated: The page change will be animated when `true`.
 
   */
@@ -212,6 +213,7 @@ public class Auk {
   Scrolls to the previous page.
 
   - parameter cycle: If true it scrolls to the last page from the first one. If false the scrolling stops at the first page.
+   
   - parameter animated: The page change will be animated when `true`.
 
   */
@@ -284,11 +286,8 @@ public class Auk {
 
   /// Returns the current number of pages.
   public var numberOfPages: Int {
-    if let scrollView = scrollView {
-      return AukScrollViewContent.aukPages(scrollView).count
-    }
-
-    return 0
+    guard let scrollView = scrollView else { return 0 }
+    return AukScrollViewContent.aukPages(scrollView).count
   }
   
   /// Returns array of currently visible images. Placeholder images are not returned here.
@@ -353,8 +352,11 @@ public class Auk {
   Starts auto scrolling of the pages with the given delay in seconds.
 
   - parameter delaySeconds: Amount of time in second each page is visible before scrolling to the next.
+   
   - parameter forward: When true the scrolling is done from left to right direction.
+   
   - parameter cycle: If true it scrolls to the first page from the last one. If false the scrolling stops at the last page.
+   
   - parameter animated: The page change will be animated when `true`.
 
   */
