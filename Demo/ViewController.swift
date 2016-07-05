@@ -114,6 +114,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
   }
   
   private func layoutButtons() {
+    layoutButtons(autoScrollButton, secondView: deleteButton)
     layoutButtons(leftButton, secondView: autoScrollButton)
     layoutButtons(deleteButton, secondView: rightButton)
   }

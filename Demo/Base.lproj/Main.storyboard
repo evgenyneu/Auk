@@ -78,7 +78,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.15976734459400177" green="0.7139209508895874" blue="0.80127716064453125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="XGm-Hv-R70" firstAttribute="leading" secondItem="6Cz-ix-YLV" secondAttribute="trailing" constant="35" id="0gf-0e-uuZ"/>
+                            <constraint firstItem="XGm-Hv-R70" firstAttribute="leading" secondItem="6Cz-ix-YLV" secondAttribute="trailing" constant="35" placeholder="YES" id="0gf-0e-uuZ"/>
                             <constraint firstItem="Ak0-JX-tQy" firstAttribute="leading" secondItem="XGm-Hv-R70" secondAttribute="trailing" constant="35" placeholder="YES" id="0vO-ab-YRc"/>
                             <constraint firstItem="XGm-Hv-R70" firstAttribute="centerY" secondItem="Ak0-JX-tQy" secondAttribute="centerY" id="2eX-B7-tN4"/>
                             <constraint firstItem="6Cz-ix-YLV" firstAttribute="leading" secondItem="xkS-kK-gCM" secondAttribute="trailing" constant="35" placeholder="YES" id="BsQ-1Y-Af1"/>
@@ -102,7 +102,7 @@
                             </connections>
                         </barButtonItem>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vWm-G7-wjO">
-                            <rect key="frame" x="97" y="2.5" width="108" height="39"/>
+                            <rect key="frame" x="97" y="3" width="108" height="39"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" title="Clear">
