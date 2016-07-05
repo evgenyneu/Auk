@@ -147,7 +147,26 @@ class AukInterfaceRemovePageTests: XCTestCase {
     auk.removePage(atIndex: 0)
     
     // Expect NOT to use animation by default
-    XCTAssertEqual(123, fakeAnimator.testParameters.count)
+    XCTAssertEqual(0, fakeAnimator.testParameters.count)
+  }
+  
+  func testRemovePage_withoutAnimation_callCompletion() {
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    let image = uiImageFromFile("96px.png")
+    auk.show(image: image)
+    
+    var didCallCompletion = false
+    
+    auk.removePage(atIndex: 0, completion: {
+      didCallCompletion = true
+    })
+    
+    // Expect NOT to use animation by default
+    XCTAssertEqual(0, fakeAnimator.testParameters.count)
+    
+    XCTAssertTrue(didCallCompletion)
   }
   
   func testRemovePage_withAnimation() {
@@ -206,7 +225,7 @@ class AukInterfaceRemovePageTests: XCTestCase {
     
     var didCallCompletion = false
     auk.removePage(atIndex: 0, animated: true, completion: {
-      didCallCompletion = false
+      didCallCompletion = true
     })
     
     // Not yet called
@@ -224,7 +243,7 @@ class AukInterfaceRemovePageTests: XCTestCase {
     fakeAnimator.testParameters[1].completion!(true)
     
     // Completion called
-    XCTAssertFalse(didCallCompletion)
+    XCTAssert(didCallCompletion)
   }
   
   func testRemoveCurrentImage() {
