@@ -148,14 +148,15 @@ public class Auk {
 
       override func viewWillTransitionToSize(size: CGSize,
         withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-
-          let pageIndex = scrollView.auk.pageIndex
-
-          coordinator.animateAlongsideTransition({ [weak self] _ in
-          self?.scrollToPage(atIndex: pageIndex, pageWidth: size.width, animated: false)
-        }, completion: nil)
+         
+         super.viewWillTransition(to: size, with: coordinator)
+   
+         guard let pageIndex = scrollView.auk.currentPageIndex else { return }
+         let newScrollViewWidth = size.width // Assuming scroll view occupies 100% of the screen width
+         
+         coordinator.animate(alongsideTransition: { [weak self] _ in
+           self?.scrollView.auk.scrollToPage(atIndex: pageIndex, pageWidth: newScrollViewWidth, animated: false)
+         }, completion: nil)
       }
 
   More information: https://github.com/evgenyneu/Auk/wiki/Size-animation
