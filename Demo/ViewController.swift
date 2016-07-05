@@ -22,6 +22,12 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     scrollView.auk.settings.placeholderImage = UIImage(named: "great_auk_placeholder.png")
     scrollView.auk.settings.errorImage = UIImage(named: "error_image.png")
     
+    // Preload the next and previous images
+    scrollView.auk.settings.preloadRemoteImagesAround = 1
+    
+    // Turn on the image logger. The download log will be visible in the Xcode console
+    Moa.logger = MoaConsoleLogger
+    
     showInitialImage()
     showCurrentImageDescription()
   }
