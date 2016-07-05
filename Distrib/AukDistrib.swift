@@ -474,6 +474,13 @@ public class Auk {
     container.setup(settings, scrollView: scrollView)
   }
   
+  /// Show the number of pages and indicate the current page on the page indicator.
+  func updatePageIndicator() {
+    pageIndicatorContainer?.updateNumberOfPages(numberOfPages)
+    guard let currentPageIndex = currentPageIndex else { return }
+    pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
+  }
+  
   private func didTapPageControl(atIndex index: Int) {
     scrollToPage(atIndex: index, animated: true)
   }
@@ -501,14 +508,6 @@ public class Auk {
       }
     )
   }
-  
-  /// Show the number of pages and indicate the current page on the page indicator.
-  func updatePageIndicator() {
-    pageIndicatorContainer?.updateNumberOfPages(numberOfPages)
-    guard let currentPageIndex = currentPageIndex else { return }
-    pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
-  }
-
 }
 
 
@@ -1521,7 +1520,7 @@ class iiAnimator {
   */
   static func fadeOut(view: UIView, animated: Bool, withDuration duration: TimeInterval, completion: ()->()) {
     if animated {
-      UIView.animate(withDuration: duration,
+      animator.animate(withDuration: duration,
         animations: {
           view.alpha = 0
         },

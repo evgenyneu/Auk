@@ -325,4 +325,53 @@ class AukTests: XCTestCase {
     
     XCTAssert(didCallCompletion)
   }
+  
+  func testRemovePage_notifyPagesAboutTheirVisibitliy() {
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    let aukView1 = AukPage()
+    let aukView2 = AukPage()
+    
+    scrollView.addSubview(aukView1)
+    scrollView.addSubview(aukView2)
+    
+    superview.layoutIfNeeded()
+    
+    // Remove page
+    // -------------
+        
+    auk.removePage(page: aukView2, animated: false)
+    
+    XCTAssert(didCallCompletion)
+  }
+  
+  func testRemovePage_animated() {
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    let aukView1 = AukPage()
+    let aukView2 = AukPage()
+    
+    scrollView.addSubview(aukView1)
+    scrollView.addSubview(aukView2)
+    
+    auk.createPageIndicator()
+    superview.layoutIfNeeded()
+    
+    scrollView.contentOffset = CGPoint(x: 200, y: 0)
+    auk.updatePageIndicator()
+    
+    XCTAssertEqual(2, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
+    XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.currentPage)
+    
+    // Remove page
+    // -------------
+    
+    auk.removePage(page: aukView2, animated: true)
+    
+    // Check the animation
+    XCTAssertEqual(1, fakeAnimator.testAnimations.count)
+    XCTAssertEqual(0.2, fakeAnimator.testDurations[0]) // Default layout animation duration
+  }
 }

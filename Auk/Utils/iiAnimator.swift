@@ -41,7 +41,7 @@ class iiAnimator {
   */
   static func fadeOut(view: UIView, animated: Bool, withDuration duration: TimeInterval, completion: ()->()) {
     if animated {
-      UIView.animate(withDuration: duration,
+      animator.animate(withDuration: duration,
         animations: {
           view.alpha = 0
         },

@@ -388,6 +388,7 @@
 				7E3A11611BF5565D0031C3E1 /* AukInterfaceImagesTests.swift */,
 				7E98FDB41B47820B00192AAF /* AukInterfaceNumberOfPagesTests.swift */,
 				7E98FDB21B47814900192AAF /* AukInterfaceRemoveAllTests.swift */,
+				A79B30411D26D4590083A5F9 /* AukInterfaceRemovePageTests.swift */,
 				7E98FDAA1B4780C000192AAF /* AukInterfaceScrollNextPreviousPageTests.swift */,
 				7E98FDAB1B4780C000192AAF /* AukInterfaceScrollToTests.swift */,
 				7E98FDAC1B4780C000192AAF /* AukInterfaceShowLocalImageTests.swift */,
@@ -395,7 +396,6 @@
 				7E98FDB81B4782A200192AAF /* AukInterfaceStartAutoScrollTests.swift */,
 				7ECB40F81CA6A3F700E493E0 /* AukInterfaceUpdateLocalImageTests.swift */,
 				7ECB40FA1CA6ACAC00E493E0 /* AukInterfaceUpdateRemoteImageTests.swift */,
-				A79B30411D26D4590083A5F9 /* AukInterfaceRemovePageTests.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
