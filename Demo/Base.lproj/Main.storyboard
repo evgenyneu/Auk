@@ -75,23 +75,31 @@
                                     <action selector="onDeleteCurrentButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aKh-h6-TO4"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pY7-NG-yXd">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="Ce5-jG-dwX"/>
+                                    <constraint firstAttribute="width" constant="10" id="Rxc-z4-PxA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.15976734459400177" green="0.7139209508895874" blue="0.80127716064453125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="XGm-Hv-R70" firstAttribute="leading" secondItem="6Cz-ix-YLV" secondAttribute="trailing" constant="35" placeholder="YES" id="0gf-0e-uuZ"/>
-                            <constraint firstItem="Ak0-JX-tQy" firstAttribute="leading" secondItem="XGm-Hv-R70" secondAttribute="trailing" constant="35" placeholder="YES" id="0vO-ab-YRc"/>
+                            <constraint firstItem="Ak0-JX-tQy" firstAttribute="left" secondItem="XGm-Hv-R70" secondAttribute="right" constant="35" id="0vO-ab-YRc"/>
                             <constraint firstItem="XGm-Hv-R70" firstAttribute="centerY" secondItem="Ak0-JX-tQy" secondAttribute="centerY" id="2eX-B7-tN4"/>
-                            <constraint firstItem="6Cz-ix-YLV" firstAttribute="leading" secondItem="xkS-kK-gCM" secondAttribute="trailing" constant="35" placeholder="YES" id="BsQ-1Y-Af1"/>
+                            <constraint firstItem="pY7-NG-yXd" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" id="9QU-jX-cvm"/>
+                            <constraint firstItem="6Cz-ix-YLV" firstAttribute="left" secondItem="xkS-kK-gCM" secondAttribute="right" constant="35" id="BsQ-1Y-Af1"/>
                             <constraint firstItem="aWz-f3-FnP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Cny-sB-dCz"/>
                             <constraint firstItem="Ak0-JX-tQy" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" priority="750" id="P6h-3q-fej"/>
                             <constraint firstItem="aWz-f3-FnP" firstAttribute="top" secondItem="6Cz-ix-YLV" secondAttribute="bottom" constant="5" id="Tk8-GY-sRq"/>
                             <constraint firstItem="SrW-bD-PlC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="V4N-me-dMl"/>
                             <constraint firstAttribute="trailing" secondItem="SrW-bD-PlC" secondAttribute="trailing" id="YR5-0D-hJw"/>
+                            <constraint firstItem="pY7-NG-yXd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="c2M-Sd-RBy"/>
                             <constraint firstItem="xkS-kK-gCM" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" priority="750" id="cKN-xL-KH9"/>
                             <constraint firstItem="SrW-bD-PlC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="cee-jg-d7S"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aWz-f3-FnP" secondAttribute="trailing" id="nWl-7l-d1r"/>
-                            <constraint firstItem="6Cz-ix-YLV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-40" id="sfd-GY-Tgu"/>
+                            <constraint firstItem="pY7-NG-yXd" firstAttribute="left" secondItem="6Cz-ix-YLV" secondAttribute="right" constant="14" id="rYT-0n-J1i"/>
                             <constraint firstItem="6Cz-ix-YLV" firstAttribute="top" secondItem="SrW-bD-PlC" secondAttribute="bottom" constant="10" id="t6E-lf-R7N"/>
+                            <constraint firstItem="XGm-Hv-R70" firstAttribute="left" secondItem="pY7-NG-yXd" secondAttribute="right" constant="14" id="whh-YV-d55"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Yub-14-TBn">
@@ -102,7 +110,7 @@
                             </connections>
                         </barButtonItem>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vWm-G7-wjO">
-                            <rect key="frame" x="97" y="3" width="108" height="39"/>
+                            <rect key="frame" x="97" y="2.5" width="108" height="39"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" title="Clear">
@@ -134,7 +142,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1152" y="-358"/>
+            <point key="canvasLocation" x="1151.25" y="-358.75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ibB-gh-zwq">

@@ -16,8 +16,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    layoutButtons()
-    
     scrollView.delegate = self
     scrollView.auk.settings.placeholderImage = UIImage(named: "great_auk_placeholder.png")
     scrollView.auk.settings.errorImage = UIImage(named: "error_image.png")
@@ -117,27 +115,6 @@ class ViewController: UIViewController, UIScrollViewDelegate {
   
   @IBAction func onScrollViewTapped(_ sender: AnyObject) {
     imageDescriptionLabel.text = "Tapped image #\(scrollView.auk.currentPageIndex ?? 42)"
-  }
-  
-  private func layoutButtons() {
-    layoutButtons(autoScrollButton, secondView: deleteButton)
-    layoutButtons(leftButton, secondView: autoScrollButton)
-    layoutButtons(deleteButton, secondView: rightButton)
-  }
-  
-  // Use left/right constraints instead of leading/trailing to prevent
-  // buttons from changing their place for right-to-left languages.
-  private func layoutButtons(_ firstView: UIView, secondView: UIView) {
-    let constraint = NSLayoutConstraint(
-      item: secondView,
-      attribute: NSLayoutAttribute.left,
-      relatedBy: NSLayoutRelation.equal,
-      toItem: firstView,
-      attribute: NSLayoutAttribute.right,
-      multiplier: 1,
-      constant: 35)
-    
-    view.addConstraint(constraint)
   }
   
   // MARK: - Handle orientation change
