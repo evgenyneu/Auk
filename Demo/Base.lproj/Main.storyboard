@@ -62,8 +62,8 @@
                                     <action selector="onShowLeftButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bnx-Yi-260"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SrW-bD-PlC">
-                                <rect key="frame" x="0.0" y="64" width="600" height="265"/>
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SrW-bD-PlC">
+                                <rect key="frame" x="60" y="64" width="480" height="265"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="265" id="Or5-06-LRV"/>
@@ -80,8 +80,9 @@
                             <constraint firstItem="Ak0-JX-tQy" firstAttribute="leading" secondItem="6Cz-ix-YLV" secondAttribute="trailing" constant="35" placeholder="YES" id="IOV-qw-YrA"/>
                             <constraint firstItem="Ak0-JX-tQy" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" priority="750" id="P6h-3q-fej"/>
                             <constraint firstItem="aWz-f3-FnP" firstAttribute="top" secondItem="6Cz-ix-YLV" secondAttribute="bottom" constant="5" id="Tk8-GY-sRq"/>
-                            <constraint firstItem="SrW-bD-PlC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="V4N-me-dMl"/>
-                            <constraint firstAttribute="trailing" secondItem="SrW-bD-PlC" secondAttribute="trailing" id="YR5-0D-hJw"/>
+                            <constraint firstItem="SrW-bD-PlC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="60" id="V4N-me-dMl"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="XGm-Hv-R70" secondAttribute="trailing" constant="15" id="VCQ-qw-aUb"/>
+                            <constraint firstAttribute="trailing" secondItem="SrW-bD-PlC" secondAttribute="trailing" constant="60" id="YR5-0D-hJw"/>
                             <constraint firstItem="xkS-kK-gCM" firstAttribute="centerY" secondItem="6Cz-ix-YLV" secondAttribute="centerY" priority="750" id="cKN-xL-KH9"/>
                             <constraint firstItem="SrW-bD-PlC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="cee-jg-d7S"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aWz-f3-FnP" secondAttribute="trailing" id="nWl-7l-d1r"/>

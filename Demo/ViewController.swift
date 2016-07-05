@@ -21,6 +21,11 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     scrollView.auk.settings.placeholderImage = UIImage(named: "great_auk_placeholder.png")
     scrollView.auk.settings.errorImage = UIImage(named: "error_image.png")
     
+    // When you want to display all pages side by side with an horizontal margin,
+    // you need the scrollView width to be smaller than it's superview width and to disable clipsToBounds on the scrollView
+    scrollView.clipsToBounds = true // required when using horizontalPageMargin
+    scrollView.auk.settings.horizontalPageMargin = 10
+    
     showInitialImage()
     showCurrentImageDescription()
   }
