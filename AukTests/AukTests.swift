@@ -376,6 +376,6 @@ class AukTests: XCTestCase {
     
     // Check the animation
     XCTAssertEqual(1, fakeAnimator.testParameters.count)
-    XCTAssertEqual(0.2, fakeAnimator.testParameters[0].duration) // Default layout animation duration
+    XCTAssertEqual(0.3, fakeAnimator.testParameters[0].duration) // Default layout animation duration
   }
 }

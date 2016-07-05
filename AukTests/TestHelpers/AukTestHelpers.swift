@@ -93,6 +93,14 @@ extension XCTestCase {
   }
   
   /**
+   
+   - returns: The width of the first image the TheAukPage with given index.
+   */
+  func firstAukImageWidth(_ scrollView: UIScrollView, pageIndex: Int) -> CGFloat {
+    return firstAukImage(scrollView, pageIndex: pageIndex)!.size.width
+  }
+  
+  /**
   
   - returns: The second image the TheAukPage with given index. A page can show a placeholder image and a normal image on top.
   
