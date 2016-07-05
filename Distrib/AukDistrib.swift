@@ -244,6 +244,12 @@ public class Auk {
       }
     }
 
+    updatePageIndicator()
+  }
+  
+  // TODO: TEST!!!!!!
+  /// UPdate the page inficator to show the correct number of pages and the current page.
+  private func updatePageIndicator() {
     pageIndicatorContainer?.updateNumberOfPages(numberOfPages)
     
     if let currentPageIndex = currentPageIndex {
@@ -254,62 +260,44 @@ public class Auk {
   /**
  
   Removes page at current presented index from the scroll view.
-  Does nothing if there no current page
-  - parameter animated: Boolean indicating if the layout update after the removal of the page should be animated, defaults to false.
-  - parameter layoutUpdateAnimationDuration: Duration of the layout update animation after the page removal, defaults to 0.3 sec. Ignored if animated is set to false.
-  - parameter pageFadeAnimationDuration: Duration of the page fade animation, default to 0.2. Ignored if animated is set to false.
-  - parameter completion: Closure executed when page has been removed and layout updated
-  */
+  Does nothing if there no current page.
   
-  public func removeCurrentPage(animated: Bool = false, layoutUpdateAnimationDuration: Double = 0.3, pageFadeAnimationDuration: Double = 0.2, completion: (() -> Void)? = nil) -> Bool {
+  - parameter animated: Boolean indicating if the layout update after the removal of the page should be animated, defaults to false.
+  
+  - parameter completion: Closure executed when page has been removed and layout updated.
+  
+  */
+  public func removeCurrentPage(animated: Bool = false, completion: (() -> Void)? = nil) {
+    
     if let currentPageIndex = currentPageIndex {
-      return removePageAt(index: currentPageIndex, animated: animated, layoutUpdateAnimationDuration: layoutUpdateAnimationDuration, pageFadeAnimationDuration: pageFadeAnimationDuration, completion: completion)
+      removePageAt(index: currentPageIndex, animated: animated, completion: completion)
     }
-    return false
   }
   
   /**
    
   Removes page at the provided index from the scroll view.
   Does nothing if the index does not represent an existing page.
-  - parameter index: The index of the page your want to remove from the scroll view.
-  - parameter animated: Optional Boolean indicating if the layout update after the removal of the page should be animated, defaults to false.
-  - parameter layoutUpdateAnimationDuration: Duration of the layout update animation after the page removal, defaults to 0.3 sec. Ignored if animated is set to false.
-  - parameter pageFadeAnimationDuration: Duration of the page removal fade animation, defaults to 0.3 sec. Ignored if animated is set to false.
-  - parameter completion: Closure executed when page has been removed and layout updated, defaults to nil
-  */
   
-  public func removePageAt(index: Int, animated: Bool = false, layoutUpdateAnimationDuration : Double = 0.3, pageFadeAnimationDuration: Double = 0.2, completion: (() -> Void)? = nil) -> Bool {
-    guard let scrollView = scrollView, let page = AukScrollViewContent.pageAt(index, scrollView: scrollView) else {
-      return false
-    }
+  - parameter index: The index of the page your want to remove from the scroll view.
+  
+  - parameter animated: Optional Boolean indicating if the layout update after the removal of the page should be animated, defaults to false.
+  
+  - parameter completion: Closure executed when page has been removed and layout updated, defaults to nil
+  
+  */
+  public func removePageAt(index: Int, animated: Bool = false, completion: (() -> Void)? = nil) {
     
-    let updateLayout = { [unowned self] in
-      page.removeFromSuperview()
-      self.pageIndicatorContainer?.updateNumberOfPages(self.numberOfPages)
-      AukScrollViewContent.layout(scrollView, animated: animated, animationDuration: layoutUpdateAnimationDuration)
-      
-      if let currentPageIndex = self.currentPageIndex {
-        self.pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
-      }
-      if let completion = completion {
-        completion()
-      }
-    }
+    guard let scrollView = scrollView,
+      let page = AukScrollViewContent.pageAt(index, scrollView: scrollView) else { return }
     
-    // If duration is 0, completion block is called instantly
-    if animated {
-      UIView.animate(withDuration: pageFadeAnimationDuration, animations: {
-        page.alpha = 0
-      }) { (_) in
-        page.alpha = 1 // Set the alpha back in case if somebody is reusing the view somewhere else.
-        updateLayout()
+    iiAnimation.fadeOut(view: page, animated: animated,
+      withDuration: settings.remoteImageAnimationIntervalSeconds,
+      didFinish: { [weak self] in
+        // Finish fading out, now remove the page from the scroll view.
+        self?.removePage(page: page, animated: animated);
       }
-    }
-    else {
-      updateLayout()
-    }
-    return true
+    )
   }
 
   /// Returns the current number of pages.
@@ -461,11 +449,7 @@ public class Auk {
       AukScrollViewContent.layout(scrollView)
     }
 
-    pageIndicatorContainer?.updateNumberOfPages(numberOfPages)
-    
-    if let currentPageIndex = currentPageIndex {
-      pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
-    }
+    updatePageIndicator()
 
     return page
   }
@@ -476,7 +460,7 @@ public class Auk {
       AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
                                                       currentPageIndex: currentPageIndex)
       
-      pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
+      updatePageIndicator()
     }
   }
 
@@ -497,6 +481,23 @@ public class Auk {
   
   private func didTapPageControl(_ pageIndex: Int) {
     scrollTo(pageIndex, animated: true)
+  }
+  
+  ///  Removes the page form the scroll view.
+  private func removePage(page: AukPage, animated: Bool, completion: (() -> Void)? = nil) {
+    guard let scrollView = scrollView else { return }
+    
+    // Fade out animation is finished.
+    // Now remove the page from the scroll view.
+    page.removeFromSuperview()
+    AukScrollViewContent.layout(scrollView, animated: animated,
+      animationDurationInSeconds: settings.removePageFadeLayoutAnimationDurationSeconds,
+      didFinish: { [weak self] in
+        // Finished removing the page. Update the page indicator.
+        self?.updatePageIndicator()
+        completion?()
+      }
+    )
   }
 }
 
@@ -1096,9 +1097,19 @@ struct AukScrollViewContent {
   /**
   
   Creates Auto Layout constraints for positioning the page view inside the scroll view.
+   
+  - parameter scrollView: scroll view to layout.
+
+  - parameter animated: will animate the layout if true. Default value: false.
+   
+  - parameter animationDurationInSeconds: duration of the layout animation. Ignored if `animated` parameter is false.
+
+  - parameter didFinish: will call this function when layout animation finishes. Called immediately if not animated.
   
   */
-  static func layout(_ scrollView: UIScrollView, animated: Bool = false, animationDuration : Double = 0.2) {
+  static func layout(_ scrollView: UIScrollView, animated: Bool = false,
+                     animationDurationInSeconds: Double = 0.2, didFinish: (()->())? = nil) {
+    
     let pages = aukPages(scrollView)
 
     for (index, page) in pages.enumerated() {
@@ -1133,11 +1144,17 @@ struct AukScrollViewContent {
       margin: 0, vertically: false)
     
     if animated {
-      UIView.animate(withDuration: animationDuration) {
-        scrollView.layoutIfNeeded()
-      }
+      UIView.animate(withDuration: animationDurationInSeconds,
+        animations: {
+          scrollView.layoutIfNeeded()
+        },
+        completion: { _ in
+          didFinish?()
+        }
+      );
     } else {
       scrollView.layoutIfNeeded()
+      didFinish?()
     }
   }
 }
@@ -1263,6 +1280,12 @@ public struct AukSettings {
   
   /// The duration of the animation that is used to show the remote images.
   public var remoteImageAnimationIntervalSeconds: Double = 0.5
+  
+  // Duration of the fade out animation when the page is removed.
+  public var removePageFadeOutAnimationDurationSeconds: Double = 0.3
+  
+  // Duration of the layout animation when the page is removed.
+  public var removePageFadeLayoutAnimationDurationSeconds: Double = 0.2
   
   /// Show horizontal scroll indicator.
   public var showsHorizontalScrollIndicator = false
@@ -1435,6 +1458,50 @@ final class AutoCancellingTimerInstance: NSObject {
   func timerFired(_ timer: Timer) {
     self.callback()
     if !repeats { cancel() }
+  }
+}
+
+
+// ----------------------------
+//
+// iiAnimation.swift
+//
+// ----------------------------
+
+import UIKit
+
+/**
+ 
+Collection of static function for animation.
+ 
+*/
+class iiAnimation {
+  /**
+  
+  Fades out the view.
+  
+  - parameter view: View to fade out.
+   
+  - parameter animated: animates the fade out then true. Fades out immediately when false.
+   
+  - parameter withDuration: Duration of the fade out animation in seconds.
+   
+  - parameter didFinish: function to be called when the fade out animation is finished. Called immediately when not animated.
+   
+  */
+  static func fadeOut(view: UIView, animated: Bool, withDuration duration: TimeInterval, didFinish: ()->()) {
+    if animated {
+      UIView.animate(withDuration: duration,
+        animations: {
+          view.alpha = 0
+        },
+        completion: { _ in
+           didFinish()
+        }
+      );
+    } else {
+      didFinish()
+    }
   }
 }
 

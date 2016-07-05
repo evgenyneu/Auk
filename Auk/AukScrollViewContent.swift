@@ -31,9 +31,19 @@ struct AukScrollViewContent {
   /**
   
   Creates Auto Layout constraints for positioning the page view inside the scroll view.
+   
+  - parameter scrollView: scroll view to layout.
+
+  - parameter animated: will animate the layout if true. Default value: false.
+   
+  - parameter animationDurationInSeconds: duration of the layout animation. Ignored if `animated` parameter is false.
+
+  - parameter didFinish: will call this function when layout animation finishes. Called immediately if not animated.
   
   */
-  static func layout(_ scrollView: UIScrollView, animated: Bool = false, animationDuration : Double = 0.2) {
+  static func layout(_ scrollView: UIScrollView, animated: Bool = false,
+                     animationDurationInSeconds: Double = 0.2, didFinish: (()->())? = nil) {
+    
     let pages = aukPages(scrollView)
 
     for (index, page) in pages.enumerated() {
@@ -68,11 +78,17 @@ struct AukScrollViewContent {
       margin: 0, vertically: false)
     
     if animated {
-      UIView.animate(withDuration: animationDuration) {
-        scrollView.layoutIfNeeded()
-      }
+      UIView.animate(withDuration: animationDurationInSeconds,
+        animations: {
+          scrollView.layoutIfNeeded()
+        },
+        completion: { _ in
+          didFinish?()
+        }
+      );
     } else {
       scrollView.layoutIfNeeded()
+      didFinish?()
     }
   }
 }
