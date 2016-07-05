@@ -291,9 +291,9 @@ public class Auk {
     guard let scrollView = scrollView,
       let page = AukScrollViewContent.page(atIndex: index, scrollView: scrollView) else { return }
     
-    iiAnimation.fadeOut(view: page, animated: animated,
+    iiAnimator.fadeOut(view: page, animated: animated,
       withDuration: settings.remoteImageAnimationIntervalSeconds,
-      didFinish: { [weak self] in
+      completion: { [weak self] in
         // Finish fading out. Now remove the page from the scroll view.
         self?.removePage(page: page, animated: animated, completion: completion)
       }
@@ -487,7 +487,7 @@ public class Auk {
     
     AukScrollViewContent.layout(scrollView, animated: animated,
       animationDurationInSeconds: settings.removePageFadeLayoutAnimationDurationSeconds,
-      didFinish: { [weak self] in
+      completion: { [weak self] in
         // Finished removing the page. Update the page indicator.
         self?.updatePageIndicator()
         
@@ -633,7 +633,7 @@ final class AukPage: UIView {
      
   /// Removes image views.
   func removeImageViews() {
-    placeholderImageView?.removeFromSuperview();
+    placeholderImageView?.removeFromSuperview()
     placeholderImageView = nil
     
     imageView?.removeFromSuperview()
@@ -1116,11 +1116,11 @@ struct AukScrollViewContent {
    
   - parameter animationDurationInSeconds: duration of the layout animation. Ignored if `animated` parameter is false.
 
-  - parameter didFinish: function that is called when layout animation finishes. Called immediately if not animated.
+  - parameter completion: function that is called when layout animation finishes. Called immediately if not animated.
   
   */
   static func layout(_ scrollView: UIScrollView, animated: Bool = false,
-                     animationDurationInSeconds: Double = 0.2, didFinish: (()->())? = nil) {
+                     animationDurationInSeconds: Double = 0.2, completion: (()->())? = nil) {
     
     let pages = aukPages(scrollView)
 
@@ -1156,17 +1156,17 @@ struct AukScrollViewContent {
       margin: 0, vertically: false)
     
     if animated {
-      UIView.animate(withDuration: animationDurationInSeconds,
+      iiAnimator.animator.animate(withDuration: animationDurationInSeconds,
         animations: {
           scrollView.layoutIfNeeded()
         },
         completion: { _ in
-          didFinish?()
+          completion?()
         }
-      );
+      )
     } else {
       scrollView.layoutIfNeeded()
-      didFinish?()
+      completion?()
     }
   }
 }
@@ -1476,7 +1476,7 @@ final class AutoCancellingTimerInstance: NSObject {
 
 // ----------------------------
 //
-// iiAnimation.swift
+// iiAnimator.swift
 //
 // ----------------------------
 
@@ -1487,7 +1487,27 @@ import UIKit
 Collection of static function for animation.
  
 */
-class iiAnimation {
+class iiAnimator {
+  // The object used for animation. This property is nil usually. In unit tests it contains a fake animator.
+  static var currentAnimator: iiAnimator?
+  
+  // The object used for animation.
+  static var animator: iiAnimator {
+    get {
+      return currentAnimator ?? iiAnimator()
+    }
+  }
+  
+  /// Animation function. This is a wrapper around UIView.animate to make it easier to unit test.
+  func animate(withDuration duration: TimeInterval, animations: ()->(), completion: ((Bool)->())? = nil) {
+    UIView.animate(withDuration: duration,
+                   animations: animations,
+                   completion: completion
+    )
+  }
+  
+  
+  
   /**
   
   Fades out the view.
@@ -1498,21 +1518,21 @@ class iiAnimation {
    
   - parameter withDuration: Duration of the fade out animation in seconds.
    
-  - parameter didFinish: function to be called when the fade out animation is finished. Called immediately when not animated.
+  - parameter completion: function to be called when the fade out animation is finished. Called immediately when not animated.
    
   */
-  static func fadeOut(view: UIView, animated: Bool, withDuration duration: TimeInterval, didFinish: ()->()) {
+  static func fadeOut(view: UIView, animated: Bool, withDuration duration: TimeInterval, completion: ()->()) {
     if animated {
       UIView.animate(withDuration: duration,
         animations: {
           view.alpha = 0
         },
         completion: { _ in
-           didFinish()
+           completion()
         }
-      );
+      )
     } else {
-      didFinish()
+      completion()
     }
   }
 }

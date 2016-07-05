@@ -38,11 +38,11 @@ struct AukScrollViewContent {
    
   - parameter animationDurationInSeconds: duration of the layout animation. Ignored if `animated` parameter is false.
 
-  - parameter didFinish: function that is called when layout animation finishes. Called immediately if not animated.
+  - parameter completion: function that is called when layout animation finishes. Called immediately if not animated.
   
   */
   static func layout(_ scrollView: UIScrollView, animated: Bool = false,
-                     animationDurationInSeconds: Double = 0.2, didFinish: (()->())? = nil) {
+                     animationDurationInSeconds: Double = 0.2, completion: (()->())? = nil) {
     
     let pages = aukPages(scrollView)
 
@@ -78,17 +78,17 @@ struct AukScrollViewContent {
       margin: 0, vertically: false)
     
     if animated {
-      UIView.animate(withDuration: animationDurationInSeconds,
+      iiAnimator.animator.animate(withDuration: animationDurationInSeconds,
         animations: {
           scrollView.layoutIfNeeded()
         },
         completion: { _ in
-          didFinish?()
+          completion?()
         }
-      );
+      )
     } else {
       scrollView.layoutIfNeeded()
-      didFinish?()
+      completion?()
     }
   }
 }
