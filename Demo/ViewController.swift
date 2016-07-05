@@ -8,6 +8,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
   var imageDescriptions = [String]()
   @IBOutlet weak var imageDescriptionLabel: UILabel!
   
+  @IBOutlet weak var deleteButton: UIButton!
   @IBOutlet weak var leftButton: UIButton!
   @IBOutlet weak var rightButton: UIButton!
   @IBOutlet weak var autoScrollButton: UIButton!
@@ -115,7 +116,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
   
   private func layoutButtons() {
     layoutButtons(leftButton, secondView: autoScrollButton)
-    layoutButtons(autoScrollButton, secondView: rightButton)
+    layoutButtons(deleteButton, secondView: rightButton)
   }
   
   // Use left/right constraints instead of leading/trailing to prevent buttons from changing their place for right-to-left languages.

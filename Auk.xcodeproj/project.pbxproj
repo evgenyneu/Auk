@@ -541,6 +541,8 @@
 				TargetAttributes = {
 					7E5B5E1D1B2C2D3000B87E54 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = BS677JRE62;
+						DevelopmentTeamName = "Evgenii Neumerzhitckii";
 						LastSwiftMigration = 0800;
 					};
 					7E5B5E281B2C2D3000B87E54 = {
@@ -549,6 +551,8 @@
 					};
 					7E90138A1B2CF6FB00DD4406 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = BS677JRE62;
+						DevelopmentTeamName = "Evgenii Neumerzhitckii";
 						LastSwiftMigration = 0800;
 					};
 					7E98FDC11B47C10300192AAF = {
@@ -556,8 +560,10 @@
 					};
 					7EFBA3761D1A342800EAFF9D = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = BS677JRE62;
+						DevelopmentTeamName = "Evgenii Neumerzhitckii";
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -968,6 +974,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -992,6 +999,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1063,6 +1071,7 @@
 				7EFBA3821D1A342900EAFF9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
