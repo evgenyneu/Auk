@@ -21,7 +21,7 @@ struct AukScrollViewContent {
   - returns: Page at index. Returns nil if index is out of bounds.
  
   */
-  static func pageAt(_ index: Int, scrollView: UIScrollView) -> AukPage? {
+  static func page(atIndex index: Int, scrollView: UIScrollView) -> AukPage? {
     let pages = aukPages(scrollView)
     if index < 0 { return nil }
     if index >= pages.count { return nil }

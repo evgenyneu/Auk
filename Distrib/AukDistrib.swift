@@ -52,6 +52,7 @@ public class Auk {
   Shows a local image in the scroll view.
 
   - parameter image: Image to be shown in the scroll view.
+   
   - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode. For example: "Picture of a pony standing in a flower pot.".
 
   */
@@ -66,6 +67,7 @@ public class Auk {
   Downloads a remote image and adds it to the scroll view. Use `Moa.settings.cache` property to configure image caching.
 
   - parameter url: Url of the image to be shown.
+   
   - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode. For example: "Picture of a pony standing in a flower pot.".
 
   */
@@ -86,52 +88,54 @@ public class Auk {
    
    Replaces an image on a given page.
    
-   - parameter pageIndex: the index of the image to change. Does nothing if the index is less than zero ir greater than the largest index.
+   - parameter atIndex: the index of the image to change. Does nothing if the index is less than zero ir greater than the largest index.
+   
    - parameter image: Image to be shown in the scroll view.
+   
    - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode.
    For example: "Picture of a pony standing in a flower pot.".
    
    */
-  public func updateAt(_ pageIndex:Int, image: UIImage, accessibilityLabel: String? = nil) {
-    if let scrollView = scrollView,
-      page = AukScrollViewContent.pageAt(pageIndex, scrollView: scrollView) {
+  public func updatePage(atIndex index: Int, image: UIImage, accessibilityLabel: String? = nil) {
+    guard let scrollView = scrollView,
+      page = AukScrollViewContent.page(atIndex: index, scrollView: scrollView) else { return }
       
-      page.prepareForReuse()
-      page.accessibilityLabel = accessibilityLabel
-      page.show(image: image, settings: settings)
-    }
+    page.prepareForReuse()
+    page.accessibilityLabel = accessibilityLabel
+    page.show(image: image, settings: settings)
   }
   
   /**
    
    Downloads an image and uses it to replace an image on a given page. The current image is replaced when the new image has finished downloading. Use `Moa.settings.cache` property to configure image caching.
    
-   - parameter pageIndex: the index of the image to change. Does nothing if the index is less than zero ir greater than the largest index.
+   - parameter atIndex: the index of the image to change. Does nothing if the index is less than zero ir greater than the largest index.
+   
    - parameter url: Url of the image to be shown.
+   
    - parameter accessibilityLabel: Text describing the image that will be spoken in accessibility mode.
    For example: "Picture of a pony standing in a flower pot.".
    
    */
-  public func updateAt(_ pageIndex: Int, url: String, accessibilityLabel: String? = nil) {
-    if let scrollView = scrollView,
-      page = AukScrollViewContent.pageAt(pageIndex, scrollView: scrollView) {
+  public func updatePage(atIndex index: Int, url: String, accessibilityLabel: String? = nil) {
+    guard let scrollView = scrollView,
+      page = AukScrollViewContent.page(atIndex: index, scrollView: scrollView) else { return }
       
-      var updateSettings = settings
-      
-      // Use current image as a placeholder in order to avoid abrupt change
-      // while the new one is being downloaded
-      if let currentImage = page.imageView?.image {
-          updateSettings.placeholderImage = currentImage
-      }
-      
-      page.prepareForReuse()
-      page.accessibilityLabel = accessibilityLabel
-      page.show(url: url, settings: updateSettings)
-      
-      if let currentPageIndex = currentPageIndex {
-        AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
-                                                      currentPageIndex: currentPageIndex)
-      }
+    var updateSettings = settings
+    
+    // Use current image as a placeholder in order to avoid abrupt change
+    // while the new one is being downloaded
+    if let currentImage = page.imageView?.image {
+        updateSettings.placeholderImage = currentImage
+    }
+    
+    page.prepareForReuse()
+    page.accessibilityLabel = accessibilityLabel
+    page.show(url: url, settings: updateSettings)
+    
+    if let currentPageIndex = currentPageIndex {
+      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
+                                                    currentPageIndex: currentPageIndex)
     }
   }
 
@@ -139,15 +143,16 @@ public class Auk {
 
   Changes the current page.
 
-  - parameter pageIndex: Index of the page to show.
+  - parameter atIndex: Index of the page to show.
+   
   - parameter animated: The page change will be animated when `true`.
 
   */
-  public func scrollTo(_ pageIndex: Int, animated: Bool) {
-    if let scrollView = scrollView {
-      AukScrollTo.scrollTo(scrollView, pageIndex: pageIndex, animated: animated,
-        numberOfPages: numberOfPages)
-    }
+  public func scrollToPage(atIndex index: Int, animated: Bool) {
+    guard let scrollView = scrollView else { return }
+    
+    AukScrollTo.scrollToPage(scrollView, atIndex: index, animated: animated,
+                             numberOfPages: numberOfPages)
   }
 
   /**
@@ -164,22 +169,24 @@ public class Auk {
           let pageIndex = scrollView.auk.pageIndex
 
           coordinator.animateAlongsideTransition({ [weak self] _ in
-          self?.scrollView.auk.changePage(pageIndex, pageWidth: size.width, animated: false)
+          self?.scrollToPage(atIndex: pageIndex, pageWidth: size.width, animated: false)
         }, completion: nil)
       }
 
   More information: https://github.com/evgenyneu/Auk/wiki/Size-animation
 
-  - parameter toPageIndex: Index of the page that will be made a current page.
+  - parameter atIndex: Index of the page that will be made a current page.
+   
   - parameter pageWidth: The new page width.
+   
   - parameter animated: The page change will be animated when `true`.
 
   */
-  public func scrollTo(_ pageIndex: Int, pageWidth: CGFloat, animated: Bool) {
-    if let scrollView = scrollView {
-      AukScrollTo.scrollTo(scrollView, pageIndex: pageIndex, pageWidth: pageWidth,
-        animated: animated, numberOfPages: numberOfPages)
-    }
+  public func scrollToPage(atIndex index: Int, pageWidth: CGFloat, animated: Bool) {
+    guard let scrollView = scrollView else { return }
+    
+    AukScrollTo.scrollToPage(scrollView, atIndex: index, pageWidth: pageWidth,
+      animated: animated, numberOfPages: numberOfPages)
   }
 
   /**
@@ -200,10 +207,10 @@ public class Auk {
 
   */
   public func scrollToNextPage(cycle: Bool, animated: Bool) {
-    if let scrollView = scrollView, currentPageIndex = currentPageIndex {
-      AukScrollTo.scrollToNextPage(scrollView, cycle: cycle, animated: animated,
-        currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
-    }
+    guard let scrollView = scrollView, currentPageIndex = currentPageIndex else { return }
+    
+    AukScrollTo.scrollToNextPage(scrollView, cycle: cycle, animated: animated,
+      currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
   }
 
   /**
@@ -247,16 +254,6 @@ public class Auk {
     updatePageIndicator()
   }
   
-  // TODO: TEST!!!!!!
-  /// UPdate the page inficator to show the correct number of pages and the current page.
-  private func updatePageIndicator() {
-    pageIndicatorContainer?.updateNumberOfPages(numberOfPages)
-    
-    if let currentPageIndex = currentPageIndex {
-      pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
-    }
-  }
-  
   /**
  
   Removes page at current presented index from the scroll view.
@@ -270,7 +267,7 @@ public class Auk {
   public func removeCurrentPage(animated: Bool = false, completion: (() -> Void)? = nil) {
     
     if let currentPageIndex = currentPageIndex {
-      removePageAt(index: currentPageIndex, animated: animated, completion: completion)
+      removePage(atIndex: currentPageIndex, animated: animated, completion: completion)
     }
   }
   
@@ -283,19 +280,19 @@ public class Auk {
   
   - parameter animated: Optional Boolean indicating if the layout update after the removal of the page should be animated, defaults to false.
   
-  - parameter completion: Closure executed when page has been removed and layout updated, defaults to nil
+  - parameter completion: Closure executed when page has been removed and layout updated.
   
   */
-  public func removePageAt(index: Int, animated: Bool = false, completion: (() -> Void)? = nil) {
+  public func removePage(atIndex index: Int, animated: Bool = false, completion: (() -> Void)? = nil) {
     
     guard let scrollView = scrollView,
-      let page = AukScrollViewContent.pageAt(index, scrollView: scrollView) else { return }
+      let page = AukScrollViewContent.page(atIndex: index, scrollView: scrollView) else { return }
     
     iiAnimation.fadeOut(view: page, animated: animated,
       withDuration: settings.remoteImageAnimationIntervalSeconds,
       didFinish: { [weak self] in
-        // Finish fading out, now remove the page from the scroll view.
-        self?.removePage(page: page, animated: animated);
+        // Finish fading out. Now remove the page from the scroll view.
+        self?.removePage(page: page, animated: animated, completion: completion)
       }
     )
   }
@@ -330,31 +327,28 @@ public class Auk {
 
   */
   public var currentPageIndex: Int? {
+    guard let scrollView = scrollView else { return nil }
     if numberOfPages == 0 { return nil }
     
-    if let scrollView = scrollView {
-      let width = Double(scrollView.bounds.size.width)
-      let offset = Double(scrollView.contentOffset.x)
-      
-      if width == 0 {
-        print("Auk WARNING: scroll view has zero width.")
-        return nil
-      }
-      
-      var value = Int(round(offset / width))
-      
-      // Page # 0 is the rightmost in the right-to-left language layout
-      if RightToLeft.isRightToLeft(scrollView) {
-        value = numberOfPages - value - 1
-      }
-      
-      if value < 0 { value = 0 }
-      if value > numberOfPages - 1 { value = numberOfPages - 1 }
-      
-      return value
+    let width = Double(scrollView.bounds.size.width)
+    let offset = Double(scrollView.contentOffset.x)
+    
+    if width == 0 {
+      print("Auk WARNING: scroll view has zero width.")
+      return nil
     }
-
-    return nil
+    
+    var value = Int(round(offset / width))
+    
+    // Page # 0 is the rightmost in the right-to-left language layout
+    if RightToLeft.isRightToLeft(scrollView) {
+      value = numberOfPages - value - 1
+    }
+    
+    if value < 0 { value = 0 }
+    if value > numberOfPages - 1 { value = numberOfPages - 1 }
+    
+    return value
   }
 
   /**
@@ -382,10 +376,10 @@ public class Auk {
   public func startAutoScroll(delaySeconds: Double, forward: Bool,
     cycle: Bool, animated: Bool) {
 
-    if let scrollView = scrollView {
-      autoscroll.startAutoScroll(scrollView, delaySeconds: delaySeconds,
-        forward: forward, cycle: cycle, animated: animated, auk: self)
-    }
+    guard let scrollView = scrollView else { return }
+    
+    autoscroll.startAutoScroll(scrollView, delaySeconds: delaySeconds,
+      forward: forward, cycle: cycle, animated: animated, auk: self)
   }
 
   /**
@@ -436,18 +430,18 @@ public class Auk {
     page.clipsToBounds = true
     page.makeAccessible(accessibilityLabel)
 
-    if let scrollView = scrollView {
-      // Pages are added to the left of the current page
-      // in the right-to-left language layout.
-      // So we need to increase content offset to keep the current page visible.
-      if RightToLeft.isRightToLeft(scrollView) && numberOfPages > 0 {
-        scrollView.contentOffset.x += scrollView.bounds.size.width
-      }
-      
-      scrollView.addSubview(page)
-
-      AukScrollViewContent.layout(scrollView)
+    guard let scrollView = scrollView else { return page }
+    
+    // Pages are added to the left of the current page
+    // in the right-to-left language layout.
+    // So we need to increase content offset to keep the current page visible.
+    if RightToLeft.isRightToLeft(scrollView) && numberOfPages > 0 {
+      scrollView.contentOffset.x += scrollView.bounds.size.width
     }
+    
+    scrollView.addSubview(page)
+
+    AukScrollViewContent.layout(scrollView)
 
     updatePageIndicator()
 
@@ -455,50 +449,65 @@ public class Auk {
   }
 
   func onScroll() {
-    if let scrollView = scrollView,
-      currentPageIndex = currentPageIndex {
-      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
-                                                      currentPageIndex: currentPageIndex)
+    guard let scrollView = scrollView,
+      currentPageIndex = currentPageIndex else { return }
+    
+    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
+                                                    currentPageIndex: currentPageIndex)
       
-      updatePageIndicator()
-    }
+    updatePageIndicator()
   }
 
   private func createPageIdicator() {
     if !settings.pageControl.visible { return }
     if pageIndicatorContainer != nil { return } // Already created a page indicator container
 
-    if let scrollView = scrollView,
-      superview = scrollView.superview {
+    guard let scrollView = scrollView, superview = scrollView.superview else { return }
 
-      let container = AukPageIndicatorContainer()
-      container.didTapPageControlCallback = didTapPageControl
-      superview.insertSubview(container, aboveSubview: scrollView)
-      pageIndicatorContainer = container
-      container.setup(settings, scrollView: scrollView)
-    }
+    let container = AukPageIndicatorContainer()
+    container.didTapPageControlCallback = didTapPageControl
+    superview.insertSubview(container, aboveSubview: scrollView)
+    pageIndicatorContainer = container
+    container.setup(settings, scrollView: scrollView)
   }
   
-  private func didTapPageControl(_ pageIndex: Int) {
-    scrollTo(pageIndex, animated: true)
+  private func didTapPageControl(atIndex index: Int) {
+    scrollToPage(atIndex: index, animated: true)
   }
   
+  // TODO: TEST
   ///  Removes the page form the scroll view.
   private func removePage(page: AukPage, animated: Bool, completion: (() -> Void)? = nil) {
     guard let scrollView = scrollView else { return }
     
-    // Fade out animation is finished.
-    // Now remove the page from the scroll view.
     page.removeFromSuperview()
+    
     AukScrollViewContent.layout(scrollView, animated: animated,
       animationDurationInSeconds: settings.removePageFadeLayoutAnimationDurationSeconds,
       didFinish: { [weak self] in
         // Finished removing the page. Update the page indicator.
         self?.updatePageIndicator()
+        
+        // Tell pages if they are visible.
+        // This will start the download for the page that slided into the view in place of the removed page.
+        if let currentPageIndex = self?.currentPageIndex, settings = self?.settings {
+          AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
+                                                        currentPageIndex: currentPageIndex)
+        }
+        
         completion?()
       }
     )
   }
+  
+  // TODO: TEST
+  /// UPdate the page inficator to show the correct number of pages and the current page.
+  private func updatePageIndicator() {
+    pageIndicatorContainer?.updateNumberOfPages(numberOfPages)
+    guard let currentPageIndex = currentPageIndex else { return }
+    pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
+  }
+
 }
 
 
@@ -978,18 +987,18 @@ Scrolling code.
 
 */
 struct AukScrollTo {
-  static func scrollTo(_ scrollView: UIScrollView, pageIndex: Int, animated: Bool,
+  static func scrollToPage(_ scrollView: UIScrollView, atIndex index: Int, animated: Bool,
     numberOfPages: Int) {
       
     let pageWidth = scrollView.bounds.size.width
-    scrollTo(scrollView, pageIndex: pageIndex, pageWidth: pageWidth, animated: animated,
+    scrollToPage(scrollView, atIndex: index, pageWidth: pageWidth, animated: animated,
       numberOfPages: numberOfPages)
   }
   
-  static func scrollTo(_ scrollView: UIScrollView, pageIndex: Int, pageWidth: CGFloat,
+  static func scrollToPage(_ scrollView: UIScrollView, atIndex index: Int, pageWidth: CGFloat,
     animated: Bool, numberOfPages: Int) {
       
-    let offsetX = contentOffsetForPage(pageIndex, pageWidth: pageWidth,
+    let offsetX = contentOffsetForPage(atIndex: index, pageWidth: pageWidth,
       numberOfPages: numberOfPages, scrollView: scrollView)
     
     let offset = CGPoint(x: offsetX, y: 0)
@@ -1010,7 +1019,7 @@ struct AukScrollTo {
       }
     }
     
-    scrollTo(scrollView, pageIndex: pageIndex, animated: animated, numberOfPages: numberOfPages)
+    scrollToPage(scrollView, atIndex: pageIndex, animated: animated, numberOfPages: numberOfPages)
   }
   
   static func scrollToPreviousPage(_ scrollView: UIScrollView, cycle: Bool, animated: Bool,
@@ -1026,7 +1035,7 @@ struct AukScrollTo {
       }
     }
     
-    scrollTo(scrollView, pageIndex: pageIndex, animated: animated, numberOfPages: numberOfPages)
+    scrollToPage(scrollView, atIndex: pageIndex, animated: animated, numberOfPages: numberOfPages)
   }
   
   /**
@@ -1035,13 +1044,13 @@ struct AukScrollTo {
   Ensures that offset is within the content size.
 
   */
-  static func contentOffsetForPage(_ pageIndex: Int, pageWidth: CGFloat,
+  static func contentOffsetForPage(atIndex index: Int, pageWidth: CGFloat,
     numberOfPages: Int, scrollView: UIView) -> CGFloat {
       
     // The index of the page that appears from left to right of the screen.
     // It is the same as pageIndex for left-to-right languages.
     let pageIndexFromTheLeft = RightToLeft.isRightToLeft(scrollView) ?
-      numberOfPages - pageIndex - 1 : pageIndex
+      numberOfPages - index - 1 : index
       
     var offsetX = CGFloat(pageIndexFromTheLeft) * pageWidth
       
@@ -1087,7 +1096,7 @@ struct AukScrollViewContent {
   - returns: Page at index. Returns nil if index is out of bounds.
  
   */
-  static func pageAt(_ index: Int, scrollView: UIScrollView) -> AukPage? {
+  static func page(atIndex index: Int, scrollView: UIScrollView) -> AukPage? {
     let pages = aukPages(scrollView)
     if index < 0 { return nil }
     if index >= pages.count { return nil }

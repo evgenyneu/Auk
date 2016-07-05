@@ -118,7 +118,8 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     layoutButtons(deleteButton, secondView: rightButton)
   }
   
-  // Use left/right constraints instead of leading/trailing to prevent buttons from changing their place for right-to-left languages.
+  // Use left/right constraints instead of leading/trailing to prevent
+  // buttons from changing their place for right-to-left languages.
   private func layoutButtons(_ firstView: UIView, secondView: UIView) {
     let constraint = NSLayoutConstraint(
       item: secondView,
@@ -144,7 +145,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     let newScrollViewWidth = size.width // Assuming scroll view occupies 100% of the screen width
     
     coordinator.animate(alongsideTransition: { [weak self] _ in
-      self?.scrollView.auk.scrollTo(pageIndex, pageWidth: newScrollViewWidth, animated: false)
+      self?.scrollView.auk.scrollToPage(atIndex: pageIndex, pageWidth: newScrollViewWidth, animated: false)
     }, completion: nil)
   }
   
@@ -161,7 +162,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     guard let pageIndex = scrollView.auk.currentPageIndex else { return }
-    scrollView.auk.scrollTo(pageIndex, pageWidth: screenWidth, animated: false)
+    scrollView.auk.scrollToPage(atIndex: pageIndex, pageWidth: screenWidth, animated: false)
   }
   
   // MARK: - Image description
