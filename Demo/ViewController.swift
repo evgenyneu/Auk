@@ -116,7 +116,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
   }
   
   @IBAction func onScrollViewTapped(_ sender: AnyObject) {
-    imageDescriptionLabel.text = "Tapped image #\(scrollView.auk.currentPageIndex)"
+    imageDescriptionLabel.text = "Tapped image #\(scrollView.auk.currentPageIndex ?? 42)"
   }
   
   private func layoutButtons() {
