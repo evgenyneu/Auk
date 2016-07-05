@@ -6,6 +6,7 @@ class AukTests: XCTestCase {
   
   var scrollView: UIScrollView!
   var auk: Auk!
+  var fakeAnimator: iiFakeAnimator!
   
   override func setUp() {
     super.setUp()
@@ -17,6 +18,16 @@ class AukTests: XCTestCase {
     scrollView.bounds = CGRect(origin: CGPoint(), size: size)
     
     auk = Auk(scrollView: scrollView)
+    
+    // Use fake animator
+    fakeAnimator = iiFakeAnimator()
+    iiAnimator.currentAnimator = fakeAnimator
+  }
+  
+  override func tearDown() {
+    super.tearDown()
+    
+    iiAnimator.currentAnimator = nil // Remove the fake animator
   }
   
   // MARK: - Setup
@@ -220,12 +231,8 @@ class AukTests: XCTestCase {
   
   
   // MARK: - updatePageIndicator
-
   
   func testUpdateTestIndicator() {
-    // Layout scroll view
-    // ---------------
-    
     let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
     superview.addSubview(scrollView)
     
@@ -245,18 +252,77 @@ class AukTests: XCTestCase {
     
     superview.layoutIfNeeded()
     
-    // Verify page indicator is showing the pages
+    // Update page indicator
     // -------------
     
     XCTAssertEqual(0, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
     XCTAssertEqual(-1, auk.pageIndicatorContainer!.pageControl!.currentPage)
     
     auk.updatePageIndicator()
+    
     XCTAssertEqual(2, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
     XCTAssertEqual(0, auk.pageIndicatorContainer!.pageControl!.currentPage)
     
     scrollView.contentOffset = CGPoint(x: 200, y: 0)
     XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.currentPage)
     auk.updatePageIndicator()
+  }
+  
+  // MARK: - removePage
+  
+  func testRemovePage() {
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    let aukView1 = AukPage()
+    let aukView2 = AukPage()
+    
+    scrollView.addSubview(aukView1)
+    scrollView.addSubview(aukView2)
+    
+    auk.createPageIndicator()
+    superview.layoutIfNeeded()
+    
+    scrollView.contentOffset = CGPoint(x: 200, y: 0)
+    auk.updatePageIndicator()
+    
+    XCTAssertEqual(2, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
+    XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.currentPage)
+    
+    // Remove page
+    // -------------
+    
+    auk.removePage(page: aukView2, animated: false)
+    
+    // Page is removed
+    XCTAssertNil(aukView2.superview)
+    
+    // Page indicator is updated
+    XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.numberOfPages)
+    XCTAssertEqual(0, auk.pageIndicatorContainer!.pageControl!.currentPage)
+  }
+  
+  func testRemovePage_callCompletion() {
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    let aukView1 = AukPage()
+    let aukView2 = AukPage()
+    
+    scrollView.addSubview(aukView1)
+    scrollView.addSubview(aukView2)
+    
+    superview.layoutIfNeeded()
+    
+    // Remove page
+    // -------------
+    
+    var didCallCompletion = false
+    
+    auk.removePage(page: aukView2, animated: false, completion: {
+      didCallCompletion = true
+    })
+    
+    XCTAssert(didCallCompletion)
   }
 }

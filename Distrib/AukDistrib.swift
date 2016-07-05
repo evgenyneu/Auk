@@ -422,7 +422,7 @@ public class Auk {
   }
 
   func setup() {
-    createPageIdicator()
+    createPageIndicator()
     scrollView?.showsHorizontalScrollIndicator = settings.showsHorizontalScrollIndicator
     scrollView?.isPagingEnabled = settings.pagingEnabled
   }
@@ -461,7 +461,7 @@ public class Auk {
     pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
   }
 
-  private func createPageIdicator() {
+  func createPageIndicator() {
     if !settings.pageControl.visible { return }
     if pageIndicatorContainer != nil { return } // Already created a page indicator container
 
@@ -478,9 +478,8 @@ public class Auk {
     scrollToPage(atIndex: index, animated: true)
   }
   
-  // TODO: TEST
-  ///  Removes the page form the scroll view.
-  private func removePage(page: AukPage, animated: Bool, completion: (() -> Void)? = nil) {
+  /// Removes the page form the scroll view.
+  func removePage(page: AukPage, animated: Bool, completion: (() -> Void)? = nil) {
     guard let scrollView = scrollView else { return }
     
     page.removeFromSuperview()

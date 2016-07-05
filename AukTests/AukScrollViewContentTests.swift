@@ -12,6 +12,8 @@ class AukScrollViewContentTests: XCTestCase {
     super.setUp()
     
     scrollView = UIScrollView()
+    
+    // Use fake animator
     fakeAnimator = iiFakeAnimator()
     iiAnimator.currentAnimator = fakeAnimator
   }
