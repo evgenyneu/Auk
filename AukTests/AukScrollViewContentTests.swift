@@ -76,15 +76,15 @@ class AukScrollViewContentTests: XCTestCase {
     scrollView.addSubview(aukView1)
     scrollView.addSubview(aukView2)
     
-    var result = AukScrollViewContent.pageAt(0, scrollView: scrollView)
+    var result = AukScrollViewContent.page(atIndex: 0, scrollView: scrollView)
     XCTAssert(result === aukView1)
     
-    result = AukScrollViewContent.pageAt(1, scrollView: scrollView)
+    result = AukScrollViewContent.page(atIndex: 1, scrollView: scrollView)
     XCTAssert(result === aukView2)
   }
   
   func testPageAt_noPages() {
-    let result = AukScrollViewContent.pageAt(0, scrollView: scrollView)
+    let result = AukScrollViewContent.page(atIndex: 0, scrollView: scrollView)
     XCTAssertNil(result)
   }
   
@@ -95,7 +95,7 @@ class AukScrollViewContentTests: XCTestCase {
     scrollView.addSubview(aukView1)
     scrollView.addSubview(aukView2)
     
-    let result = AukScrollViewContent.pageAt(2, scrollView: scrollView)
+    let result = AukScrollViewContent.page(atIndex: 2, scrollView: scrollView)
     XCTAssertNil(result)
   }
   
@@ -106,7 +106,7 @@ class AukScrollViewContentTests: XCTestCase {
     scrollView.addSubview(aukView1)
     scrollView.addSubview(aukView2)
     
-    let result = AukScrollViewContent.pageAt(-1, scrollView: scrollView)
+    let result = AukScrollViewContent.page(atIndex: -1, scrollView: scrollView)
     XCTAssertNil(result)
   }
 

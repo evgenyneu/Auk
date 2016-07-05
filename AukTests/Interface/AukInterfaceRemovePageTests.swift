@@ -35,7 +35,8 @@ class AukInterfaceRemovePageTests: XCTestCase {
     // Current page index is 0, and 4 pages
     
     // Remove first page
-    auk.removePageAt(index: 0)
+    auk.removePage(atIndex: 0)
+    
     // Expect to have 3 pages left
     XCTAssertEqual(3, aukPages(scrollView).count)
     XCTAssertEqual(3, auk.numberOfPages)
@@ -49,7 +50,7 @@ class AukInterfaceRemovePageTests: XCTestCase {
     XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.currentPage)
     
     // Remove first page
-    auk.removePageAt(index: 0)
+    auk.removePage(atIndex: 0)
 
     // Expect to have 2 pages left
     XCTAssertEqual(2, aukPages(scrollView).count)
@@ -60,7 +61,7 @@ class AukInterfaceRemovePageTests: XCTestCase {
     XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.currentPage)
     
     // Remove first page
-    auk.removePageAt(index: 0)
+    auk.removePage(atIndex: 0)
 
     // Expect to have 1 pages left
     XCTAssertEqual(1, aukPages(scrollView).count)
@@ -87,7 +88,8 @@ class AukInterfaceRemovePageTests: XCTestCase {
     // Current page index is 0, and 4 pages
     
     // Remove first page
-    auk.removePageAt(index: auk.numberOfPages - 1)
+    auk.removePage(atIndex: auk.numberOfPages - 1)
+    
     // Expect to have 3 pages left
     XCTAssertEqual(3, aukPages(scrollView).count)
     XCTAssertEqual(3, auk.numberOfPages)
@@ -101,7 +103,7 @@ class AukInterfaceRemovePageTests: XCTestCase {
     XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.currentPage)
     
     // Remove first page
-    auk.removePageAt(index: auk.numberOfPages - 1)
+    auk.removePage(atIndex: auk.numberOfPages - 1)
     
     // Expect to have 2 pages left
     XCTAssertEqual(2, aukPages(scrollView).count)
@@ -112,7 +114,7 @@ class AukInterfaceRemovePageTests: XCTestCase {
     XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.currentPage)
     
     // Remove first page
-    auk.removePageAt(index: auk.numberOfPages - 1)
+    auk.removePage(atIndex: auk.numberOfPages - 1)
     
     // Expect to have 1 pages left
     XCTAssertEqual(1, aukPages(scrollView).count)
@@ -139,7 +141,8 @@ class AukInterfaceRemovePageTests: XCTestCase {
     // Current page index is 0, and 4 pages
     
     // Remove first page
-    auk.removePageAt(index: auk.currentPageIndex!)
+    auk.removePage(atIndex: auk.currentPageIndex!)
+    
     // Expect to have 3 pages left
     XCTAssertEqual(3, aukPages(scrollView).count)
     XCTAssertEqual(3, auk.numberOfPages)
@@ -153,7 +156,7 @@ class AukInterfaceRemovePageTests: XCTestCase {
     XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.currentPage)
     
     // Remove first page
-    auk.removePageAt(index: auk.currentPageIndex!)
+    auk.removePage(atIndex: auk.currentPageIndex!)
     
     // Expect to have 2 pages left
     XCTAssertEqual(2, aukPages(scrollView).count)
@@ -164,7 +167,7 @@ class AukInterfaceRemovePageTests: XCTestCase {
     XCTAssertEqual(1, auk.pageIndicatorContainer!.pageControl!.currentPage)
     
     // Remove first page
-    auk.removePageAt(index: auk.currentPageIndex!)
+    auk.removePage(atIndex: auk.currentPageIndex!)
     
     // Expect to have 1 pages left
     XCTAssertEqual(1, aukPages(scrollView).count)

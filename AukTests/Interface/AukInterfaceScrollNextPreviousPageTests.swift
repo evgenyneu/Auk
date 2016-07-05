@@ -109,7 +109,7 @@ class AukInterfaceScrollNextPreviousPageTests: XCTestCase {
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.scrollTo(2, animated: false)
+    auk.scrollToPage(atIndex: 2, animated: false)
     
     auk.scrollToPreviousPage(cycle: false, animated: true)
     XCTAssertEqual(1, auk.currentPageIndex)

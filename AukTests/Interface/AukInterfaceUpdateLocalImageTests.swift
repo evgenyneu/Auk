@@ -23,7 +23,7 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
     auk.show(image: image)
     
     let image67px = uiImageFromFile("67px.png")
-    auk.updateAt(0, image: image67px)
+    auk.updatePage(atIndex: 0, image: image67px)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
     XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 0)!.size.width)
@@ -39,7 +39,7 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
     
     // Update image on the second page
     let image67px = uiImageFromFile("67px.png")
-    auk.updateAt(1, image: image67px)
+    auk.updatePage(atIndex: 1, image: image67px)
     
     XCTAssertEqual(2, aukPages(scrollView).count)
     
@@ -55,7 +55,7 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
     auk.show(image: image)
     
     let image67px = uiImageFromFile("67px.png")
-    auk.updateAt(1, image: image67px)
+    auk.updatePage(atIndex: 1, image: image67px)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
     XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
@@ -66,7 +66,7 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
     auk.show(image: image)
     
     let image67px = uiImageFromFile("67px.png")
-    auk.updateAt(-1, image: image67px)
+    auk.updatePage(atIndex: -1, image: image67px)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
     XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
@@ -74,7 +74,7 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
   
   func testUpdateLocalImage_noImages() {
     let image67px = uiImageFromFile("67px.png")
-    auk.updateAt(0, image: image67px)
+    auk.updatePage(atIndex: 0, image: image67px)
     XCTAssertEqual(0, aukPages(scrollView).count)
   }
   
@@ -85,7 +85,7 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
     auk.show(image: image, accessibilityLabel: "Penguin")
     
     let image67px = uiImageFromFile("67px.png")
-    auk.updateAt(0, image: image67px, accessibilityLabel: "White knight riding a wooden horse on wheels.")
+    auk.updatePage(atIndex: 0, image: image67px, accessibilityLabel: "White knight riding a wooden horse on wheels.")
     
     let page = aukPage(scrollView, pageIndex: 0)!
     
@@ -99,7 +99,7 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
     auk.show(image: image, accessibilityLabel: "Penguin")
     
     let image67px = uiImageFromFile("67px.png")
-    auk.updateAt(0, image: image67px)
+    auk.updatePage(atIndex: 0, image: image67px)
     
     let page = aukPage(scrollView, pageIndex: 0)!
     

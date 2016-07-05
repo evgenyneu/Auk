@@ -30,7 +30,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     
     let simulator = MoaSimulator.simulate("auk.png")
     
-    auk.updateAt(0, url: "http://site.com/auk.png")
+    auk.updatePage(atIndex: 0, url: "http://site.com/auk.png")
     
     XCTAssertEqual(1, simulator.downloaders.count)
     XCTAssertEqual("http://site.com/auk.png", simulator.downloaders.first!.url)
@@ -61,7 +61,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     let simulator = MoaSimulator.simulate("auk.png")
     
     // Update image on first page with remote image
-    auk.updateAt(0, url: "http://site.com/auk.png")
+    auk.updatePage(atIndex: 0, url: "http://site.com/auk.png")
     
     XCTAssertEqual(1, simulator.downloaders.count)
     XCTAssertEqual("http://site.com/auk.png", simulator.downloaders.first!.url)
@@ -97,7 +97,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     let simulator = MoaSimulator.simulate(".png")
     auk.show(url: "http://site.com/auk.png")
     
-    auk.updateAt(0, url: "http://site.com/moa.png")
+    auk.updatePage(atIndex: 0, url: "http://site.com/moa.png")
     
     XCTAssertEqual(2, simulator.downloaders.count)
     
@@ -128,7 +128,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     
     auk.show(url: "http://site.com/auk.png")
     
-    auk.updateAt(0, url: "http://site.com/moa.png")
+    auk.updatePage(atIndex: 0, url: "http://site.com/moa.png")
     
     let image96px = uiImageFromFile("96px.png")
     simulator.respondWithImage(image96px)
@@ -154,7 +154,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     auk.show(image: image67px)
     
     // Update the second image with remote image
-    auk.updateAt(1, url: "http://site.com/moa.png")
+    auk.updatePage(atIndex: 1, url: "http://site.com/moa.png")
     
     // The updated image download has not started yet because the page is not visible
     XCTAssertEqual(0, simulator.downloaders.count)
@@ -189,7 +189,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     let image = uiImageFromFile("96px.png")
     auk.show(image: image)
     
-    auk.updateAt(1, url: "http://site.com/moa.png")
+    auk.updatePage(atIndex: 1, url: "http://site.com/moa.png")
     
     XCTAssertEqual(0, simulator.downloaders.count)
     XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
@@ -201,7 +201,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     let image = uiImageFromFile("96px.png")
     auk.show(image: image)
     
-    auk.updateAt(-1, url: "http://site.com/moa.png")
+    auk.updatePage(atIndex: -1, url: "http://site.com/moa.png")
     
     XCTAssertEqual(0, simulator.downloaders.count)
     XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
@@ -210,7 +210,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
   func testUpdateRemoteImage_noImagesToUpdate() {
     let simulator = MoaSimulator.simulate(".png")
     
-    auk.updateAt(-1, url: "http://site.com/moa.png")
+    auk.updatePage(atIndex: -1, url: "http://site.com/moa.png")
     
     XCTAssertEqual(0, simulator.downloaders.count)
     XCTAssertEqual(0, aukPages(scrollView).count)
@@ -223,7 +223,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     let image = uiImageFromFile("96px.png")
     auk.show(image: image, accessibilityLabel: "Penguin")
     
-    auk.updateAt(0, url: "http://site.com/auk.png",
+    auk.updatePage(atIndex: 0, url: "http://site.com/auk.png",
                  accessibilityLabel: "White knight riding a wooden horse on wheels.")
 
     let page = aukPage(scrollView, pageIndex: 0)!
@@ -238,7 +238,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     let image = uiImageFromFile("96px.png")
     auk.show(image: image, accessibilityLabel: "Penguin")
     
-    auk.updateAt(0, url: "http://site.com/auk.png")
+    auk.updatePage(atIndex: 0, url: "http://site.com/auk.png")
     
     let page = aukPage(scrollView, pageIndex: 0)!
     
