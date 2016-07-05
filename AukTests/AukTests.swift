@@ -1,5 +1,5 @@
 import XCTest
-import UIKit
+import moa
 @testable import Auk
 
 class AukTests: XCTestCase {
@@ -327,23 +327,27 @@ class AukTests: XCTestCase {
   }
   
   func testRemovePage_notifyPagesAboutTheirVisibitliy() {
+    let simulate = MoaSimulator.simulate("site.com")
+
     let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
     superview.addSubview(scrollView)
     
-    let aukView1 = AukPage()
-    let aukView2 = AukPage()
+    auk.show(url: "http://site.com/one.jpg")
+    auk.show(url: "http://site.com/two.jpg")
+
+    // Dowload the first page initially
+    XCTAssertEqual(1, simulate.downloaders.count)
+    XCTAssertEqual("http://site.com/one.jpg", simulate.downloaders[0].url)
     
-    scrollView.addSubview(aukView1)
-    scrollView.addSubview(aukView2)
-    
-    superview.layoutIfNeeded()
-    
-    // Remove page
+    // Remove first page
     // -------------
-        
-    auk.removePage(page: aukView2, animated: false)
     
-    XCTAssert(didCallCompletion)
+    let page = aukPage(scrollView, pageIndex: 0)!
+    auk.removePage(page: page, animated: false)
+    
+    // Dowload the second page
+    XCTAssertEqual(2, simulate.downloaders.count)
+    XCTAssertEqual("http://site.com/two.jpg", simulate.downloaders[1].url)
   }
   
   func testRemovePage_animated() {
