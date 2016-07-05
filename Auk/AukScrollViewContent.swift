@@ -45,7 +45,7 @@ struct AukScrollViewContent {
       page.translatesAutoresizingMaskIntoConstraints = false
       
       // Make page size equal to the scroll view size
-      scrollView.addConstraint(NSLayoutConstraint(item: page, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Width, multiplier: 1, constant: -settings.horizontalPageMargin * 2))
+      scrollView.addConstraint(NSLayoutConstraint(item: page, attribute: .width, relatedBy: .equal, toItem: scrollView, attribute: .width, multiplier: 1, constant: -settings.horizontalPageMargin * 2))
       iiAutolayoutConstraints.equalHeight(page, viewTwo: scrollView, constraintContainer: scrollView)
       // Stretch the page vertically to fill the height of the scroll view
       iiAutolayoutConstraints.fillParent(page, parentView: scrollView, margin: 0, vertically: true)
