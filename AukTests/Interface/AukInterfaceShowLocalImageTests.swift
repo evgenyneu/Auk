@@ -31,7 +31,7 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
     auk.show(image: image)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
-    XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(96, firstAukImageWidth(scrollView, pageIndex: 0))
   }
   
   func testShowLocalImage_layoutSubviews() {
@@ -86,7 +86,7 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
       let aukView1 = aukPages(scrollView)[0]
       XCTAssertEqual(CGPoint(x: 120, y: 0), aukView1.frame.origin)
       XCTAssertEqual(CGSize(width: 120, height: 90), aukView1.frame.size)
-      XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+      XCTAssertEqual(96, firstAukImageWidth(scrollView, pageIndex: 0))
       
       // View 2
       // -------------
@@ -94,7 +94,7 @@ class AukInterfaceShowLocalImageTests: XCTestCase {
       let aukView2 = aukPages(scrollView)[1]
       XCTAssertEqual(CGPoint(x: 0, y: 0), aukView2.frame.origin)
       XCTAssertEqual(CGSize(width: 120, height: 90), aukView2.frame.size)
-      XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 1)!.size.width)
+      XCTAssertEqual(67, firstAukImageWidth(scrollView, pageIndex: 1))
       
     }
   }

@@ -26,7 +26,7 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
     auk.updatePage(atIndex: 0, image: image67px)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
-    XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(67, firstAukImageWidth(scrollView, pageIndex: 0))
   }
   
   func testUpdateLocalImage_updateOnlyGivenSingePage() {
@@ -44,10 +44,10 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
     XCTAssertEqual(2, aukPages(scrollView).count)
     
     // First page images remains unchanged
-    XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(96, firstAukImageWidth(scrollView, pageIndex: 0))
 
     // Second page image is updated
-    XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 1)!.size.width)
+    XCTAssertEqual(67, firstAukImageWidth(scrollView, pageIndex: 1))
   }
   
   func testUpdateLocalImage_indexLargerThanExist() {
@@ -58,7 +58,7 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
     auk.updatePage(atIndex: 1, image: image67px)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
-    XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(96, firstAukImageWidth(scrollView, pageIndex: 0))
   }
   
   func testUpdateLocalImage_indexNegative() {
@@ -69,7 +69,7 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
     auk.updatePage(atIndex: -1, image: image67px)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
-    XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(96, firstAukImageWidth(scrollView, pageIndex: 0))
   }
   
   func testUpdateLocalImage_noImages() {

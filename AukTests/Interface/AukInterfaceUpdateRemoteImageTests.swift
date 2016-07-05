@@ -44,7 +44,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     XCTAssertEqual(2, numberOfImagesOnPage(scrollView, pageIndex: 0))
     
     // Uses previous image as placeholder
-    XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(96, firstAukImageWidth(scrollView, pageIndex: 0))
     
     // Shows new image on top
     XCTAssertEqual(67, secondAukImage(scrollView, pageIndex: 0)!.size.width)
@@ -78,7 +78,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     XCTAssertEqual(2, numberOfImagesOnPage(scrollView, pageIndex: 0))
     
     // Uses previous image as placeholder
-    XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(96, firstAukImageWidth(scrollView, pageIndex: 0))
     
     // Shows new image on top
     XCTAssertEqual(67, secondAukImage(scrollView, pageIndex: 0)!.size.width)
@@ -90,7 +90,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     XCTAssertEqual(1, numberOfImagesOnPage(scrollView, pageIndex: 1))
     
     // Shows image
-    XCTAssertEqual(35, firstAukImage(scrollView, pageIndex: 1)!.size.width)
+    XCTAssertEqual(35, firstAukImageWidth(scrollView, pageIndex: 1))
   }
   
   func testUpdateRemoteImage_overRemoteImage() {
@@ -117,7 +117,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     XCTAssertEqual(1, numberOfImagesOnPage(scrollView, pageIndex: 0))
 
     // Loads image
-    XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(67, firstAukImageWidth(scrollView, pageIndex: 0))
   }
   
   func testUpdateRemoteImage_withPlaceholderImage() {
@@ -137,7 +137,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     XCTAssertEqual(2, numberOfImagesOnPage(scrollView, pageIndex: 0))
     
     // Shows placeholder image
-    XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(67, firstAukImageWidth(scrollView, pageIndex: 0))
     
     // Shows remote image
     XCTAssertEqual(96, secondAukImage(scrollView, pageIndex: 0)!.size.width)
@@ -177,10 +177,10 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     XCTAssertEqual(2, numberOfImagesOnPage(scrollView, pageIndex: 1))
     
     // Shows placeholder image
-    XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 1)!.size.width)
+    XCTAssertEqual(67, firstAukImageWidth(scrollView, pageIndex: 1))
     
     // Shows remote image
-    XCTAssertEqual(35, secondAukImage(scrollView, pageIndex: 1)!.size.width)
+    XCTAssertEqual(35, secondAukImageWidth(scrollView, pageIndex: 1))
   }
   
   func testUpdateRemoteImage_indexLargerThanExist() {
@@ -192,7 +192,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     auk.updatePage(atIndex: 1, url: "http://site.com/moa.png")
     
     XCTAssertEqual(0, simulator.downloaders.count)
-    XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(96, firstAukImageWidth(scrollView, pageIndex: 0))    
   }
   
   func testUpdateRemoteImage_indexNegative() {
@@ -204,7 +204,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     auk.updatePage(atIndex: -1, url: "http://site.com/moa.png")
     
     XCTAssertEqual(0, simulator.downloaders.count)
-    XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(96, firstAukImageWidth(scrollView, pageIndex: 0))
   }
   
   func testUpdateRemoteImage_noImagesToUpdate() {

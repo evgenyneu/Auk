@@ -52,7 +52,7 @@ class AukInterfaceShowRemoteImageTests: XCTestCase {
     XCTAssertEqual(1, numberOfImagesOnPage(scrollView, pageIndex: 0))
     
     // Loads image
-    XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(67, firstAukImageWidth(scrollView, pageIndex: 0))
   }
   
   func testShowRemoteImageWithPlaceholder() {
@@ -67,7 +67,7 @@ class AukInterfaceShowRemoteImageTests: XCTestCase {
     scrollView.layoutIfNeeded()
     
     // Show placeholder image
-    XCTAssertEqual(35, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(35, firstAukImageWidth(scrollView, pageIndex: 0))
     
     let image = createImage67px()
     simulator.respondWithImage(image)
@@ -78,7 +78,7 @@ class AukInterfaceShowRemoteImageTests: XCTestCase {
     XCTAssertEqual(2, numberOfImagesOnPage(scrollView, pageIndex: 0))
     
     // Show placeholder image
-    XCTAssertEqual(35, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(35, firstAukImageWidth(scrollView, pageIndex: 0))
     
     // Show remote image
     XCTAssertEqual(67, secondAukImage(scrollView, pageIndex: 0)!.size.width)

@@ -95,6 +95,7 @@ extension XCTestCase {
   /**
    
    - returns: The width of the first image the TheAukPage with given index.
+   
    */
   func firstAukImageWidth(_ scrollView: UIScrollView, pageIndex: Int) -> CGFloat {
     return firstAukImage(scrollView, pageIndex: pageIndex)!.size.width
@@ -107,5 +108,14 @@ extension XCTestCase {
   */
   func secondAukImage(_ scrollView: UIScrollView, pageIndex: Int) -> UIImage? {
     return secondAukImageView(scrollView, pageIndex: pageIndex)?.image
+  }
+  
+  /**
+   
+   - returns: The width of the second image the TheAukPage with given index.
+   
+   */
+  func secondAukImageWidth(_ scrollView: UIScrollView, pageIndex: Int) -> CGFloat {
+    return secondAukImage(scrollView, pageIndex: pageIndex)!.size.width
   }
 }
