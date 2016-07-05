@@ -366,6 +366,38 @@ class AukInterfaceRemovePageTests: XCTestCase {
     XCTAssert(didCallCompletion)
   }
   
+  func testRemovePage_cancelImageDownload() {
+    let simulate = MoaSimulator.simulate("site.com")
+    
+    let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
+    superview.addSubview(scrollView)
+    
+    auk.show(url: "http://site.com/one.jpg")
+    auk.show(url: "http://site.com/two.jpg")
+    
+    // Dowload the first page initially
+    XCTAssertEqual(1, simulate.downloaders.count)
+    XCTAssertEqual("http://site.com/one.jpg", simulate.downloaders[0].url)
+    XCTAssertFalse(simulate.downloaders[0].cancelled)
+    
+    auk.removePage(atIndex: 0)
+    
+    XCTAssertEqual(2, simulate.downloaders.count)
+    
+    // Cancel the first image download
+    XCTAssertTrue(simulate.downloaders[0].cancelled)
+    
+    // The second image download is NOT cancelled
+    XCTAssertFalse(simulate.downloaders[1].cancelled)
+  }
+  
+  
+  
+  
+  
+  
+  
+  
   // MARK: - removeCurrentPage
   // ------------------------------
   

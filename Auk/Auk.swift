@@ -474,6 +474,7 @@ public class Auk {
   func removePage(page: AukPage, animated: Bool, completion: (() -> Void)? = nil) {
     guard let scrollView = scrollView else { return }
     
+    page.remoteImage?.cancelDownload()
     page.removeFromSuperview()
     
     AukScrollViewContent.layout(scrollView, animated: animated,
