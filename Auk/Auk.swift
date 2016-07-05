@@ -60,13 +60,7 @@ public class Auk {
     setup()
     let page = createPage(accessibilityLabel)
     page.show(url: url, settings: settings)
-
-    if let scrollView = scrollView,
-      currentPageIndex = currentPageIndex {
-      
-      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
-                                                      currentPageIndex: currentPageIndex)
-    }
+    tellPagesAboutTheirVisibility()
   }
   
   /**
@@ -117,11 +111,7 @@ public class Auk {
     page.prepareForReuse()
     page.accessibilityLabel = accessibilityLabel
     page.show(url: url, settings: updateSettings)
-    
-    if let currentPageIndex = currentPageIndex {
-      AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
-                                                    currentPageIndex: currentPageIndex)
-    }
+    tellPagesAboutTheirVisibility()
   }
 
   /**
@@ -437,12 +427,8 @@ public class Auk {
   }
 
   func onScroll() {
-    guard let scrollView = scrollView,
-      currentPageIndex = currentPageIndex else { return }
-    
-    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
-                                                    currentPageIndex: currentPageIndex)
-      
+    guard let currentPageIndex = currentPageIndex else { return }
+    tellPagesAboutTheirVisibility()
     pageIndicatorContainer?.updateCurrentPage(currentPageIndex)
   }
 
@@ -480,18 +466,31 @@ public class Auk {
     AukScrollViewContent.layout(scrollView, animated: animated,
       animationDurationInSeconds: settings.removePageLayoutAnimationDurationSeconds,
       completion: { [weak self] in
-        // Finished removing the page. Update the page indicator.
+        // Finished removing the page.
+        
+        //Update the page indicator.
         self?.updatePageIndicator()
         
         // Tell pages if they are visible.
         // This will start the download for the page that slided into the view in place of the removed page.
-        if let currentPageIndex = self?.currentPageIndex, settings = self?.settings {
-          AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
-                                                        currentPageIndex: currentPageIndex)
-        }
+        self?.tellPagesAboutTheirVisibility()
         
         completion?()
       }
     )
+  }
+  
+  /**
+   
+  Go through all the scroll view pages and tell them if they are visible or out of sight.
+  The pages, in turn, if they are visible start the download of the image
+  or cancel the download if they are out of sight.
+   
+  */
+  func tellPagesAboutTheirVisibility() {
+    guard let scrollView = scrollView, currentPageIndex = currentPageIndex else { return }
+      
+    AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
+                                                      currentPageIndex: currentPageIndex)
   }
 }
