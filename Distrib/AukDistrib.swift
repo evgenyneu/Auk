@@ -82,7 +82,7 @@ public class Auk {
    
    Replaces an image on a given page.
    
-   - parameter atIndex: the index of the image to change. Does nothing if the index is less than zero ir greater than the largest index.
+   - parameter atIndex: the index of the image to change. Does nothing if the index is less than zero or greater than the largest index.
    
    - parameter image: Image to be shown in the scroll view.
    
@@ -103,7 +103,7 @@ public class Auk {
    
    Downloads an image and uses it to replace an image on a given page. The current image is replaced when the new image has finished downloading. Use `Moa.settings.cache` property to configure image caching.
    
-   - parameter atIndex: the index of the image to change. Does nothing if the index is less than zero ir greater than the largest index.
+   - parameter atIndex: the index of the image to change. Does nothing if the index is less than zero or greater than the largest index.
    
    - parameter url: Url of the image to be shown.
    
