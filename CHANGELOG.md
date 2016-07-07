@@ -1,5 +1,17 @@
 # Auk version history
 
+## 4.0 (2016-07-07)
+
+* Update to Xcode 8 Beta 2 version of Swift.
+
+* [Valpertui](https://github.com/Valpertui) added `removePage` and `removeCurrentPage` methods.
+
+* API change: method `scrollTo(2, animated: true)` renamed to `scrollToPage(atIndex: 2, animated: true)`.
+
+* API change: method `updateAt(0, url: "https://bit.ly/auk_image")` changed to `updatePage(atIndex: 0, url: "https://bit.ly/auk_image")`.
+
+* API change: method `updateAt(1, image: image)` renamed to `updatePage(atIndex: 1, image: image)`.
+
 ## 3.0 (2016-06-17)
 
 * Update to Swift 3.0

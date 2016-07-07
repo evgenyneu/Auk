@@ -74,15 +74,20 @@ Setup a [previous version](https://github.com/evgenyneu/Auk/wiki/Legacy-Swift-ve
 Auk extends UIScrollView class by creating the `auk` property.
 
 ```Swift
-// Show remote image
+// Show remote images
 scrollView.auk.show(url: "https://bit.ly/auk_image")
+scrollView.auk.show(url: "https://bit.ly/moa_image")
 
 // Show local image
 if let image = UIImage(named: "bird.jpg") {
   scrollView.auk.show(image: image)
 }
 
-// Remove all images
+// Remove a page
+scrollView.auk.removePage(atIndex: 0, animated: true, completion: {})
+scrollView.auk.removeCurrentPage(animated: true, completion: {})
+
+// Remove all pages
 scrollView.auk.removeAll()
 
 // Return the number of pages in the scroll view
@@ -100,7 +105,7 @@ scrollView.auk.images
 
 ```Swift
 // Scroll to page
-scrollView.auk.scrollTo(2, animated: true)
+scrollView.auk.scrollToPage(atIndex: 2, animated: true)
 
 // Scroll to the next page
 scrollView.auk.scrollToNextPage()
@@ -137,11 +142,11 @@ One can change existing image by calling `updateAt` methods and supplying the pa
 ```Swift
 // Replace the image on a given page with a remote image.
 // The current image is replaced after the new image has finished downloading.
-scrollView.auk.updateAt(0, url: "https://bit.ly/auk_image")
+scrollView.auk.updatePage(atIndex: 0, url: "https://bit.ly/moa_image")
 
 // Replace the image on a given page with a local image.
 if let image = UIImage(named: "bird.jpg") {
-  scrollView.auk.updateAt(1, image: image)
+  scrollView.auk.updatePage(atIndex: 1, image: image)
 }
 ```
 
