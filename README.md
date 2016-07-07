@@ -145,7 +145,7 @@ scrollView.auk.removeAll()
 ```
 
 
-#### Replacing existing image
+#### Updating pages
 
 One can change existing image by calling `updateAt` methods and supplying the page index.
 
