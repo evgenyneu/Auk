@@ -6,11 +6,11 @@
 
 * [Valpertui](https://github.com/Valpertui) added `removePage` and `removeCurrentPage` methods.
 
-* API change: method `scrollTo(2, animated: true)` renamed to `scrollToPage(atIndex: 2, animated: true)`.
+* API change: method `scrollTo(2, animated: true)` was renamed to `scrollToPage(atIndex: 2, animated: true)`.
 
-* API change: method `updateAt(0, url: "https://bit.ly/auk_image")` changed to `updatePage(atIndex: 0, url: "https://bit.ly/auk_image")`.
+* API change: method `updateAt(0, url: "https://bit.ly/auk_image")` was renamed to `updatePage(atIndex: 0, url: "https://bit.ly/auk_image")`.
 
-* API change: method `updateAt(1, image: image)` renamed to `updatePage(atIndex: 1, image: image)`.
+* API change: method `updateAt(1, image: image)` was renamed to `updatePage(atIndex: 1, image: image)`.
 
 ## 3.0 (2016-06-17)
 
