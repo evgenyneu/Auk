@@ -59,7 +59,7 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
 #### API changes in version 4.0
 
-Please reffer to the [changelog](https://github.com/evgenyneu/Auk/blob/master/CHANGELOG.md).
+Please reffer to the [change log](https://github.com/evgenyneu/Auk/blob/master/CHANGELOG.md).
 
 ### Legacy Swift versions
 
