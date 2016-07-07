@@ -318,6 +318,7 @@ Here is a list of other image slideshow libraries for iOS.
 ## Thanks 👍
 
 * [eyaldar](https://github.com/eyaldar) added `updateAt` method.
+* [Valpertui](https://github.com/Valpertui) added `removePage` and `removeCurrentPage` methods.
 
 ## Image credits
 
