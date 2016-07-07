@@ -110,19 +110,6 @@ scrollView.auk.scrollToNextPage()
 scrollView.auk.scrollToPreviousPage()
 ```
 
-#### Removing pages
-
-```Swift
-// Remove a page at given index
-scrollView.auk.removePage(atIndex: 0, animated: true, completion: {})
-
-// Remove the currently shown page
-scrollView.auk.removeCurrentPage(animated: true, completion: {})
-
-// Remove all pages
-scrollView.auk.removeAll()
-```
-
 #### Auto scrolling
 
 ```Swift
@@ -143,6 +130,20 @@ One can pass an image description when calling the `show` methods. This descript
 // Supply accessibility label for the image
 scrollView.auk.show(url: "https://bit.ly/auk_image", accessibilityLabel: "Picture of a great auk.")
 ```
+
+#### Removing pages
+
+```Swift
+// Remove a page at given index
+scrollView.auk.removePage(atIndex: 0, animated: true, completion: {})
+
+// Remove the currently shown page
+scrollView.auk.removeCurrentPage(animated: true, completion: {})
+
+// Remove all pages
+scrollView.auk.removeAll()
+```
+
 
 #### Replacing existing image
 
