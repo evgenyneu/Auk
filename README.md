@@ -109,7 +109,10 @@ scrollView.auk.scrollToPreviousPage()
 #### Removing pages
 
 ```Swift
+// Remove a page at given index
 scrollView.auk.removePage(atIndex: 0, animated: true, completion: {})
+
+// Remove the currently shown page
 scrollView.auk.removeCurrentPage(animated: true, completion: {})
 
 // Remove all pages
