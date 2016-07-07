@@ -31,7 +31,7 @@ This is an iOS library that shows an image carousel with a page indicator. Users
 *Drawing of the great auk by John Gerrard Keulemans, circa 1900. Source: [Wikimedia Commons](https://en.wikipedia.org/wiki/Great_auk).*
 
 
-## Setup (Swift 3.0)
+## Setup (Swift 3.0 / Xcode 8 beta 2)
 
 There are three ways you can add Auk to your Xcode project.
 
@@ -39,12 +39,12 @@ There are three ways you can add Auk to your Xcode project.
 
 Simply add two files to your project:
 
-1. Moa image downloader [MoaDistrib.swift](https://github.com/evgenyneu/moa/blob/4.0.0/Distrib/MoaDistrib.swift).
+1. Moa image downloader [MoaDistrib.swift](https://github.com/evgenyneu/moa/blob/master/Distrib/MoaDistrib.swift).
 2. Auk image slideshow [AukDistrib.swift](https://github.com/evgenyneu/Auk/blob/master/Distrib/AukDistrib.swift).
 
 #### Setup with Carthage (iOS 8+)
 
-1. Add `github "evgenyneu/Auk" ~> 3.0` to your Cartfile.
+1. Add `github "evgenyneu/Auk" ~> 4.0` to your Cartfile.
 2. Run `carthage update`.
 3. Add `moa` and `Auk` frameworks into your project.
 
@@ -54,7 +54,7 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
     target 'Your target name'
-    pod 'Auk', '~> 3.0'
+    pod 'Auk', '~> 4.0'
 
 
 ### Legacy Swift versions
@@ -74,15 +74,20 @@ Setup a [previous version](https://github.com/evgenyneu/Auk/wiki/Legacy-Swift-ve
 Auk extends UIScrollView class by creating the `auk` property.
 
 ```Swift
-// Show remote image
+// Show remote images
 scrollView.auk.show(url: "https://bit.ly/auk_image")
+scrollView.auk.show(url: "https://bit.ly/moa_image")
 
 // Show local image
 if let image = UIImage(named: "bird.jpg") {
   scrollView.auk.show(image: image)
 }
 
-// Remove all images
+// Remove a page
+scrollView.auk.removePage(atIndex: 0, animated: true, completion: {})
+scrollView.auk.removeCurrentPage(animated: true, completion: {})
+
+// Remove all pages
 scrollView.auk.removeAll()
 
 // Return the number of pages in the scroll view
@@ -100,7 +105,7 @@ scrollView.auk.images
 
 ```Swift
 // Scroll to page
-scrollView.auk.scrollTo(2, animated: true)
+scrollView.auk.scrollToPage(atIndex: 2, animated: true)
 
 // Scroll to the next page
 scrollView.auk.scrollToNextPage()
@@ -137,11 +142,11 @@ One can change existing image by calling `updateAt` methods and supplying the pa
 ```Swift
 // Replace the image on a given page with a remote image.
 // The current image is replaced after the new image has finished downloading.
-scrollView.auk.updateAt(0, url: "https://bit.ly/auk_image")
+scrollView.auk.updatePage(atIndex: 0, url: "https://bit.ly/moa_image")
 
 // Replace the image on a given page with a local image.
 if let image = UIImage(named: "bird.jpg") {
-  scrollView.auk.updateAt(1, image: image)
+  scrollView.auk.updatePage(atIndex: 1, image: image)
 }
 ```
 
@@ -313,6 +318,7 @@ Here is a list of other image slideshow libraries for iOS.
 ## Thanks 👍
 
 * [eyaldar](https://github.com/eyaldar) added `updateAt` method.
+* [Valpertui](https://github.com/Valpertui) added `removePage` and `removeCurrentPage` methods.
 
 ## Image credits
 

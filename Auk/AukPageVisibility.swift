@@ -37,7 +37,9 @@ struct AukPageVisibility {
   
   /**
   
-  Goes through all the scroll view pages and tell them if they are visible or out of sight. The pages, in turn, if they are visible start the download of the image or cancel the download if they are out of sight.
+  Go through all the scroll view pages and tell them if they are visible or out of sight.
+  The pages, in turn, if they are visible start the download of the image
+  or cancel the download if they are out of sight.
   
   - parameter scrollView: Scroll view with the pages.
 

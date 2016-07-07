@@ -9,7 +9,19 @@ extension XCTestCase {
     return (try! Data(contentsOf: url))
   }
   
-  func uiImageFromFile(_ name: String) -> UIImage {
+  func createImage35px() -> UIImage {
+    return uiImageFromFile("35px.jpg")
+  }
+  
+  func createImage67px() -> UIImage {
+    return uiImageFromFile("67px.png")
+  }
+  
+  func createImage96px() -> UIImage {
+    return uiImageFromFile("96px.png")
+  }
+  
+  private func uiImageFromFile(_ name: String) -> UIImage {
     return UIImage(data: nsDataFromFile(name))!
   }
   
@@ -81,11 +93,29 @@ extension XCTestCase {
   }
   
   /**
+   
+   - returns: The width of the first image the TheAukPage with given index.
+   
+   */
+  func firstAukImageWidth(_ scrollView: UIScrollView, pageIndex: Int) -> CGFloat {
+    return firstAukImage(scrollView, pageIndex: pageIndex)!.size.width
+  }
+  
+  /**
   
   - returns: The second image the TheAukPage with given index. A page can show a placeholder image and a normal image on top.
   
   */
   func secondAukImage(_ scrollView: UIScrollView, pageIndex: Int) -> UIImage? {
     return secondAukImageView(scrollView, pageIndex: pageIndex)?.image
+  }
+  
+  /**
+   
+   - returns: The width of the second image the TheAukPage with given index.
+   
+   */
+  func secondAukImageWidth(_ scrollView: UIScrollView, pageIndex: Int) -> CGFloat {
+    return secondAukImage(scrollView, pageIndex: pageIndex)!.size.width
   }
 }

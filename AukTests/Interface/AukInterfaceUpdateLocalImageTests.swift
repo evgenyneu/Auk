@@ -19,73 +19,73 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
   }
   
   func testUpdateLocalImage() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     
-    let image67px = uiImageFromFile("67px.png")
-    auk.updateAt(0, image: image67px)
+    let image67px = createImage67px()
+    auk.updatePage(atIndex: 0, image: image67px)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
-    XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(67, firstAukImageWidth(scrollView, pageIndex: 0))
   }
   
   func testUpdateLocalImage_updateOnlyGivenSingePage() {
     // Show two images
-    let image96px = uiImageFromFile("96px.png")
+    let image96px = createImage96px()
     auk.show(image: image96px)
     
-    let image35px = uiImageFromFile("35px.jpg")
+    let image35px = createImage35px()
     auk.show(image: image35px)
     
     // Update image on the second page
-    let image67px = uiImageFromFile("67px.png")
-    auk.updateAt(1, image: image67px)
+    let image67px = createImage67px()
+    auk.updatePage(atIndex: 1, image: image67px)
     
     XCTAssertEqual(2, aukPages(scrollView).count)
     
     // First page images remains unchanged
-    XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(96, firstAukImageWidth(scrollView, pageIndex: 0))
 
     // Second page image is updated
-    XCTAssertEqual(67, firstAukImage(scrollView, pageIndex: 1)!.size.width)
+    XCTAssertEqual(67, firstAukImageWidth(scrollView, pageIndex: 1))
   }
   
   func testUpdateLocalImage_indexLargerThanExist() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     
-    let image67px = uiImageFromFile("67px.png")
-    auk.updateAt(1, image: image67px)
+    let image67px = createImage67px()
+    auk.updatePage(atIndex: 1, image: image67px)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
-    XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(96, firstAukImageWidth(scrollView, pageIndex: 0))
   }
   
   func testUpdateLocalImage_indexNegative() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     
-    let image67px = uiImageFromFile("67px.png")
-    auk.updateAt(-1, image: image67px)
+    let image67px = createImage67px()
+    auk.updatePage(atIndex: -1, image: image67px)
     
     XCTAssertEqual(1, aukPages(scrollView).count)
-    XCTAssertEqual(96, firstAukImage(scrollView, pageIndex: 0)!.size.width)
+    XCTAssertEqual(96, firstAukImageWidth(scrollView, pageIndex: 0))
   }
   
   func testUpdateLocalImage_noImages() {
-    let image67px = uiImageFromFile("67px.png")
-    auk.updateAt(0, image: image67px)
+    let image67px = createImage67px()
+    auk.updatePage(atIndex: 0, image: image67px)
     XCTAssertEqual(0, aukPages(scrollView).count)
   }
   
   // MARK: - Accessibility
   
   func testUpdateAccessiblePageView_withLabel() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image, accessibilityLabel: "Penguin")
     
-    let image67px = uiImageFromFile("67px.png")
-    auk.updateAt(0, image: image67px, accessibilityLabel: "White knight riding a wooden horse on wheels.")
+    let image67px = createImage67px()
+    auk.updatePage(atIndex: 0, image: image67px, accessibilityLabel: "White knight riding a wooden horse on wheels.")
     
     let page = aukPage(scrollView, pageIndex: 0)!
     
@@ -95,11 +95,11 @@ class AukInterfaceUpdateLocalImageTests: XCTestCase {
   }
   
   func testUpdateAccessiblePageView_removeExistingLabel() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image, accessibilityLabel: "Penguin")
     
-    let image67px = uiImageFromFile("67px.png")
-    auk.updateAt(0, image: image67px)
+    let image67px = createImage67px()
+    auk.updatePage(atIndex: 0, image: image67px)
     
     let page = aukPage(scrollView, pageIndex: 0)!
     

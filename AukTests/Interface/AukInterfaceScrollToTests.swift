@@ -22,49 +22,49 @@ class AukInterfaceScrollToTests: XCTestCase {
   // MARK: - Scroll to offset
   
   func testScrollTo() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.scrollTo(2, animated: false)
+    auk.scrollToPage(atIndex: 2, animated: false)
     XCTAssertEqual(240, scrollView.contentOffset.x)
   }
   
-  func testScrollTo_noPages() {    
-    auk.scrollTo(0, animated: false)
+  func testScrollTo_noPages() {
+    auk.scrollToPage(atIndex: 0, animated: false)
     XCTAssertEqual(0, scrollView.contentOffset.x)
   }
   
   func testScrollTo_preventOverscrollingToTheRight() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.scrollTo(3, animated: false)
+    auk.scrollToPage(atIndex: 3, animated: false)
     XCTAssertEqual(240, scrollView.contentOffset.x)
   }
   
   func testScrollTo_preventOverscrollingToTheLeft() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.scrollTo(-1, animated: false)
+    auk.scrollToPage(atIndex: -1, animated: false)
     XCTAssertEqual(0, scrollView.contentOffset.x)
   }
   
   // MARK: - Scroll to offset with width
   
   func testScrollToWithWidth() {
-    let image = uiImageFromFile("96px.png")
+    let image = createImage96px()
     auk.show(image: image)
     auk.show(image: image)
     auk.show(image: image)
     
-    auk.scrollTo(2, pageWidth: 128, animated: false)
+    auk.scrollToPage(atIndex: 2, pageWidth: 128, animated: false)
     XCTAssertEqual(256, scrollView.contentOffset.x)
   }
 }

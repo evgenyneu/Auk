@@ -8,6 +8,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
   var imageDescriptions = [String]()
   @IBOutlet weak var imageDescriptionLabel: UILabel!
   
+  @IBOutlet weak var deleteButton: UIButton!
   @IBOutlet weak var leftButton: UIButton!
   @IBOutlet weak var rightButton: UIButton!
   @IBOutlet weak var autoScrollButton: UIButton!
@@ -15,11 +16,15 @@ class ViewController: UIViewController, UIScrollViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    layoutButtons()
-    
     scrollView.delegate = self
     scrollView.auk.settings.placeholderImage = UIImage(named: "great_auk_placeholder.png")
     scrollView.auk.settings.errorImage = UIImage(named: "error_image.png")
+    
+    // Preload the next and previous images
+    scrollView.auk.settings.preloadRemoteImagesAround = 1
+    
+    // Turn on the image logger. The download log will be visible in the Xcode console
+    Moa.logger = MoaConsoleLogger
     
     showInitialImage()
     showCurrentImageDescription()
@@ -91,31 +96,25 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     showCurrentImageDescription()
   }
 
+  @IBAction func onDeleteCurrentButtonTapped(_ sender: AnyObject) {
+    guard let indexToRemove = scrollView.auk.currentPageIndex else { return }
+    scrollView.auk.stopAutoScroll()
+    
+    scrollView.auk.removeCurrentPage(animated: true)
+  
+    if imageDescriptions.count >= scrollView.auk.numberOfPages {
+      imageDescriptions.remove(at: indexToRemove)
+    }
+    
+    showCurrentImageDescription()
+  }
+  
   @IBAction func onAutoscrollTapped(_ sender: AnyObject) {
     scrollView.auk.startAutoScroll(delaySeconds: 2)
   }
   
   @IBAction func onScrollViewTapped(_ sender: AnyObject) {
-    imageDescriptionLabel.text = "Tapped image #\(scrollView.auk.currentPageIndex)"
-  }
-  
-  private func layoutButtons() {
-    layoutButtons(leftButton, secondView: autoScrollButton)
-    layoutButtons(autoScrollButton, secondView: rightButton)
-  }
-  
-  // Use left/right constraints instead of leading/trailing to prevent buttons from changing their place for right-to-left languages.
-  private func layoutButtons(_ firstView: UIView, secondView: UIView) {
-    let constraint = NSLayoutConstraint(
-      item: secondView,
-      attribute: NSLayoutAttribute.left,
-      relatedBy: NSLayoutRelation.equal,
-      toItem: firstView,
-      attribute: NSLayoutAttribute.right,
-      multiplier: 1,
-      constant: 35)
-    
-    view.addConstraint(constraint)
+    imageDescriptionLabel.text = "Tapped image #\(scrollView.auk.currentPageIndex ?? 42)"
   }
   
   // MARK: - Handle orientation change
@@ -130,7 +129,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     let newScrollViewWidth = size.width // Assuming scroll view occupies 100% of the screen width
     
     coordinator.animate(alongsideTransition: { [weak self] _ in
-      self?.scrollView.auk.scrollTo(pageIndex, pageWidth: newScrollViewWidth, animated: false)
+      self?.scrollView.auk.scrollToPage(atIndex: pageIndex, pageWidth: newScrollViewWidth, animated: false)
     }, completion: nil)
   }
   
@@ -147,7 +146,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     }
     
     guard let pageIndex = scrollView.auk.currentPageIndex else { return }
-    scrollView.auk.scrollTo(pageIndex, pageWidth: screenWidth, animated: false)
+    scrollView.auk.scrollToPage(atIndex: pageIndex, pageWidth: screenWidth, animated: false)
   }
   
   // MARK: - Image description

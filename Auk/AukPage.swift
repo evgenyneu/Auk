@@ -68,7 +68,7 @@ final class AukPage: UIView {
      
   /// Removes image views.
   func removeImageViews() {
-    placeholderImageView?.removeFromSuperview();
+    placeholderImageView?.removeFromSuperview()
     placeholderImageView = nil
     
     imageView?.removeFromSuperview()

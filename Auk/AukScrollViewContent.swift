@@ -21,7 +21,7 @@ struct AukScrollViewContent {
   - returns: Page at index. Returns nil if index is out of bounds.
  
   */
-  static func pageAt(_ index: Int, scrollView: UIScrollView) -> AukPage? {
+  static func page(atIndex index: Int, scrollView: UIScrollView) -> AukPage? {
     let pages = aukPages(scrollView)
     if index < 0 { return nil }
     if index >= pages.count { return nil }
@@ -31,9 +31,19 @@ struct AukScrollViewContent {
   /**
   
   Creates Auto Layout constraints for positioning the page view inside the scroll view.
+   
+  - parameter scrollView: scroll view to layout.
+
+  - parameter animated: will animate the layout if true. Default value: false.
+   
+  - parameter animationDurationInSeconds: duration of the layout animation. Ignored if `animated` parameter is false.
+
+  - parameter completion: function that is called when layout animation finishes. Called immediately if not animated.
   
   */
-  static func layout(_ scrollView: UIScrollView) {
+  static func layout(_ scrollView: UIScrollView, animated: Bool = false,
+                     animationDurationInSeconds: Double = 0.2, completion: (()->())? = nil) {
+    
     let pages = aukPages(scrollView)
 
     for (index, page) in pages.enumerated() {
@@ -67,6 +77,18 @@ struct AukScrollViewContent {
     iiAutolayoutConstraints.viewsNextToEachOther(pages, constraintContainer: scrollView,
       margin: 0, vertically: false)
     
-    scrollView.layoutIfNeeded()
+    if animated {
+      iiAnimator.animator.animate(name: "layoutIfNeeded", withDuration: animationDurationInSeconds,
+        animations: {
+          scrollView.layoutIfNeeded()
+        },
+        completion: { _ in
+          completion?()
+        }
+      )
+    } else {
+      scrollView.layoutIfNeeded()
+      completion?()
+    }
   }
 }

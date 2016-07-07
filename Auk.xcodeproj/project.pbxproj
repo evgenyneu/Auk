@@ -12,6 +12,9 @@
 		7E11D4781B3F53E60086F36F /* AukPageIndicatorContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E11D4771B3F53E60086F36F /* AukPageIndicatorContainerTests.swift */; };
 		7E11D47A1B3F541D0086F36F /* AukPageIndicatorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E11D4791B3F541D0086F36F /* AukPageIndicatorContainer.swift */; };
 		7E1B4E6F1CD2005000433E80 /* AukPageVisibility_preloadImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B4E6E1CD2005000433E80 /* AukPageVisibility_preloadImageTests.swift */; };
+		7E1D221A1D2B4F9900234495 /* iiAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1D22191D2B4F9900234495 /* iiAnimator.swift */; };
+		7E1D221C1D2B875400234495 /* iiFakeAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1D221B1D2B875400234495 /* iiFakeAnimator.swift */; };
+		7E1D221E1D2BA02600234495 /* iiFakeAnimatorParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1D221D1D2BA02600234495 /* iiFakeAnimatorParameter.swift */; };
 		7E333BFB1B3FC44B001BBB57 /* great_auk_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E333BFA1B3FC44B001BBB57 /* great_auk_placeholder.png */; };
 		7E333C001B3FDDCE001BBB57 /* iiQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E333BFF1B3FDDCE001BBB57 /* iiQ.swift */; };
 		7E3A11621BF5565D0031C3E1 /* AukInterfaceImagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3A11611BF5565D0031C3E1 /* AukInterfaceImagesTests.swift */; };
@@ -69,6 +72,7 @@
 		7EFEEDC11B3E32580082488E /* AukPageVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFEEDC01B3E32580082488E /* AukPageVisibility.swift */; };
 		7EFEEDC31B3E47EF0082488E /* Auk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5B5E1E1B2C2D3000B87E54 /* Auk.framework */; };
 		7EFEEDC41B3E47EF0082488E /* Auk.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5B5E1E1B2C2D3000B87E54 /* Auk.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A79B30421D26D4590083A5F9 /* AukInterfaceRemovePageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79B30411D26D4590083A5F9 /* AukInterfaceRemovePageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +130,9 @@
 		7E11D4791B3F541D0086F36F /* AukPageIndicatorContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukPageIndicatorContainer.swift; sourceTree = "<group>"; };
 		7E1B195D1B47C1F80015B357 /* AukDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukDistrib.swift; sourceTree = "<group>"; };
 		7E1B4E6E1CD2005000433E80 /* AukPageVisibility_preloadImageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukPageVisibility_preloadImageTests.swift; sourceTree = "<group>"; };
+		7E1D22191D2B4F9900234495 /* iiAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iiAnimator.swift; sourceTree = "<group>"; };
+		7E1D221B1D2B875400234495 /* iiFakeAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iiFakeAnimator.swift; sourceTree = "<group>"; };
+		7E1D221D1D2BA02600234495 /* iiFakeAnimatorParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iiFakeAnimatorParameter.swift; sourceTree = "<group>"; };
 		7E333BFA1B3FC44B001BBB57 /* great_auk_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = great_auk_placeholder.png; sourceTree = "<group>"; };
 		7E333BFF1B3FDDCE001BBB57 /* iiQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iiQ.swift; sourceTree = "<group>"; };
 		7E3A11611BF5565D0031C3E1 /* AukInterfaceImagesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukInterfaceImagesTests.swift; sourceTree = "<group>"; };
@@ -184,6 +191,7 @@
 		7EFBA3831D1A346100EAFF9D /* MoaDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoaDistrib.swift; sourceTree = "<group>"; };
 		7EFEEDBE1B3E2FA00082488E /* AukPageVisibilityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukPageVisibilityTests.swift; sourceTree = "<group>"; };
 		7EFEEDC01B3E32580082488E /* AukPageVisibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukPageVisibility.swift; sourceTree = "<group>"; };
+		A79B30411D26D4590083A5F9 /* AukInterfaceRemovePageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukInterfaceRemovePageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +256,7 @@
 				7E5AEDEF1B2D0C0500199C38 /* iiAutolayoutConstraints.swift */,
 				7E98FD991B476DCE00192AAF /* AutoCancellingTimer.swift */,
 				7E5DCDBA1B6DE64500C288CA /* RightToLeft.swift */,
+				7E1D22191D2B4F9900234495 /* iiAnimator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -369,6 +378,8 @@
 			isa = PBXGroup;
 			children = (
 				7E9013C11B2CFCA000DD4406 /* AukTestHelpers.swift */,
+				7E1D221B1D2B875400234495 /* iiFakeAnimator.swift */,
+				7E1D221D1D2BA02600234495 /* iiFakeAnimatorParameter.swift */,
 			);
 			path = TestHelpers;
 			sourceTree = "<group>";
@@ -380,6 +391,7 @@
 				7E3A11611BF5565D0031C3E1 /* AukInterfaceImagesTests.swift */,
 				7E98FDB41B47820B00192AAF /* AukInterfaceNumberOfPagesTests.swift */,
 				7E98FDB21B47814900192AAF /* AukInterfaceRemoveAllTests.swift */,
+				A79B30411D26D4590083A5F9 /* AukInterfaceRemovePageTests.swift */,
 				7E98FDAA1B4780C000192AAF /* AukInterfaceScrollNextPreviousPageTests.swift */,
 				7E98FDAB1B4780C000192AAF /* AukInterfaceScrollToTests.swift */,
 				7E98FDAC1B4780C000192AAF /* AukInterfaceShowLocalImageTests.swift */,
@@ -538,6 +550,8 @@
 				TargetAttributes = {
 					7E5B5E1D1B2C2D3000B87E54 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = BS677JRE62;
+						DevelopmentTeamName = "Evgenii Neumerzhitckii";
 						LastSwiftMigration = 0800;
 					};
 					7E5B5E281B2C2D3000B87E54 = {
@@ -546,6 +560,8 @@
 					};
 					7E90138A1B2CF6FB00DD4406 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = BS677JRE62;
+						DevelopmentTeamName = "Evgenii Neumerzhitckii";
 						LastSwiftMigration = 0800;
 					};
 					7E98FDC11B47C10300192AAF = {
@@ -553,8 +569,10 @@
 					};
 					7EFBA3761D1A342800EAFF9D = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = BS677JRE62;
+						DevelopmentTeamName = "Evgenii Neumerzhitckii";
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -643,6 +661,7 @@
 				7E7E317C1B3658BE004411EB /* AukRemoteImage.swift in Sources */,
 				7E333C001B3FDDCE001BBB57 /* iiQ.swift in Sources */,
 				7E98FDBB1B47837D00192AAF /* AukAutoscroll.swift in Sources */,
+				7E1D221A1D2B4F9900234495 /* iiAnimator.swift in Sources */,
 				7E5DCDBB1B6DE64500C288CA /* RightToLeft.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -657,6 +676,7 @@
 				7E98FDB31B47814900192AAF /* AukInterfaceRemoveAllTests.swift in Sources */,
 				7E98FDB51B47820B00192AAF /* AukInterfaceNumberOfPagesTests.swift in Sources */,
 				7E3A11621BF5565D0031C3E1 /* AukInterfaceImagesTests.swift in Sources */,
+				A79B30421D26D4590083A5F9 /* AukInterfaceRemovePageTests.swift in Sources */,
 				7ECB40FB1CA6ACAC00E493E0 /* AukInterfaceUpdateRemoteImageTests.swift in Sources */,
 				7ECB40F91CA6A3F700E493E0 /* AukInterfaceUpdateLocalImageTests.swift in Sources */,
 				7E98FDAF1B4780C000192AAF /* AukInterfaceScrollToTests.swift in Sources */,
@@ -667,9 +687,11 @@
 				7E98FDB11B4780C000192AAF /* AukInterfaceShowRemoteImageTests.swift in Sources */,
 				7E0A9BD31B36625D00086393 /* AukRemoteImageTests.swift in Sources */,
 				7E5AEDF51B2D0E7A00199C38 /* AukScrollViewContentTests.swift in Sources */,
+				7E1D221C1D2B875400234495 /* iiFakeAnimator.swift in Sources */,
 				7E5DCDC01B6E072900C288CA /* AukScrollToTests.swift in Sources */,
 				7E9013C31B2CFCAE00DD4406 /* AukTestHelpers.swift in Sources */,
 				7EFEEDBF1B3E2FA00082488E /* AukPageVisibilityTests.swift in Sources */,
+				7E1D221E1D2BA02600234495 /* iiFakeAnimatorParameter.swift in Sources */,
 				7E98FDB71B47824800192AAF /* AukInterfaceCurrentPageIndexTests.swift in Sources */,
 				7E98FDB01B4780C000192AAF /* AukInterfaceShowLocalImageTests.swift in Sources */,
 			);
@@ -964,6 +986,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -988,6 +1011,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1059,6 +1083,7 @@
 				7EFBA3821D1A342900EAFF9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

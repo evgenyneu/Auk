@@ -35,7 +35,7 @@ class AukRemoteImageTests: XCTestCase {
     XCTAssertEqual(1, simulator.downloaders.count)
     XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.first!.url)
     
-    simulator.respondWithImage(uiImageFromFile("96px.png"))
+    simulator.respondWithImage(createImage96px())
     
     XCTAssertEqual(96, imageView.image!.size.width)
   }
@@ -50,7 +50,7 @@ class AukRemoteImageTests: XCTestCase {
     obj.downloadImage(settings)
     obj.downloadImage(settings)
     
-    simulator.respondWithImage(uiImageFromFile("96px.png"))
+    simulator.respondWithImage(createImage96px())
     
     XCTAssertEqual(1, simulator.downloaders.count)
   }
@@ -88,7 +88,7 @@ class AukRemoteImageTests: XCTestCase {
     XCTAssertEqual("http://site.com/auk.jpg", simulator.downloaders.last!.url)
     XCTAssertFalse(simulator.downloaders.last!.cancelled)
     
-    simulator.respondWithImage(uiImageFromFile("67px.png"))
+    simulator.respondWithImage(createImage67px())
     
     XCTAssertEqual(67, imageView.image!.size.width)
   }
@@ -102,7 +102,7 @@ class AukRemoteImageTests: XCTestCase {
     obj.downloadImage(settings)
     
     // Respond with image
-    simulator.respondWithImage(uiImageFromFile("96px.png"))
+    simulator.respondWithImage(createImage96px())
     
     // Call download again
     obj.downloadImage(settings)
@@ -120,7 +120,7 @@ class AukRemoteImageTests: XCTestCase {
     obj.downloadImage(settings)
     
     // Respond with image
-    simulator.respondWithImage(uiImageFromFile("96px.png"))
+    simulator.respondWithImage(createImage96px())
     
     // Call cancelDownload (which does not actually cancel anything, because image has already been downloaded)
     obj.cancelDownload()
@@ -145,7 +145,7 @@ class AukRemoteImageTests: XCTestCase {
   // MARK: - Show placeholder image before image is download
   
   func testShowPlaceholderImage() {
-    settings.placeholderImage = uiImageFromFile("35px.jpg")
+    settings.placeholderImage = createImage35px()
     let placeholderImageView = UIImageView()
 
     obj.setup("http://site.com/auk.jpg", imageView: imageView,
@@ -158,7 +158,7 @@ class AukRemoteImageTests: XCTestCase {
   // MARK: - Show error image
   
   func testShowErrorImage() {
-    settings.errorImage = uiImageFromFile("35px.jpg")
+    settings.errorImage = createImage35px()
     let simulator = MoaSimulator.simulate("auk.jpg")
     
     let errorExpectation = expectation(withDescription: "error expectation")
