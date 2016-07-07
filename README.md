@@ -31,7 +31,7 @@ This is an iOS library that shows an image carousel with a page indicator. Users
 *Drawing of the great auk by John Gerrard Keulemans, circa 1900. Source: [Wikimedia Commons](https://en.wikipedia.org/wiki/Great_auk).*
 
 
-## Setup (Swift 3.0)
+## Setup (Swift 3.0 / Xcode 8 beta 2)
 
 There are three ways you can add Auk to your Xcode project.
 
