@@ -83,13 +83,6 @@ if let image = UIImage(named: "bird.jpg") {
   scrollView.auk.show(image: image)
 }
 
-// Remove a page
-scrollView.auk.removePage(atIndex: 0, animated: true, completion: {})
-scrollView.auk.removeCurrentPage(animated: true, completion: {})
-
-// Remove all pages
-scrollView.auk.removeAll()
-
 // Return the number of pages in the scroll view
 scrollView.auk.numberOfPages
 
@@ -99,7 +92,6 @@ scrollView.auk.currentPageIndex
 // Return currently displayed images
 scrollView.auk.images
 ```
-
 
 #### Scrolling from code
 
@@ -112,6 +104,17 @@ scrollView.auk.scrollToNextPage()
 
 // Scroll to the previous page
 scrollView.auk.scrollToPreviousPage()
+```
+
+#### Removing pages
+
+```Swift
+// Remove a page
+scrollView.auk.removePage(atIndex: 0, animated: true, completion: {})
+scrollView.auk.removeCurrentPage(animated: true, completion: {})
+
+// Remove all pages
+scrollView.auk.removeAll()
 ```
 
 #### Auto scrolling
