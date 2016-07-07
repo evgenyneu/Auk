@@ -57,6 +57,10 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
     pod 'Auk', '~> 4.0'
 
 
+#### API changes in version 4.0
+
+Please reffer to [CHANGELOG.md](https://github.com/evgenyneu/Auk/blob/master/CHANGELOG.md).
+
 ### Legacy Swift versions
 
 Setup a [previous version](https://github.com/evgenyneu/Auk/wiki/Legacy-Swift-versions) of the library if you use an older version of Swift.
