@@ -25,6 +25,7 @@
 		7E5B5E241B2C2D3000B87E54 /* Auk.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E5B5E231B2C2D3000B87E54 /* Auk.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E5B5E2A1B2C2D3000B87E54 /* Auk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5B5E1E1B2C2D3000B87E54 /* Auk.framework */; };
 		7E5B5E311B2C2D3000B87E54 /* AukTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5B5E301B2C2D3000B87E54 /* AukTests.swift */; };
+		7E5DAE4A1D4AC20400F7760E /* AukObjCBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DAE481D4AC1FC00F7760E /* AukObjCBridge.swift */; };
 		7E5DCDBB1B6DE64500C288CA /* RightToLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCDBA1B6DE64500C288CA /* RightToLeft.swift */; };
 		7E5DCDC01B6E072900C288CA /* AukScrollToTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5DCDBF1B6E072900C288CA /* AukScrollToTests.swift */; };
 		7E7E317C1B3658BE004411EB /* AukRemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E317B1B3658BE004411EB /* AukRemoteImage.swift */; };
@@ -146,6 +147,7 @@
 		7E5B5E291B2C2D3000B87E54 /* AukTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AukTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E5B5E2F1B2C2D3000B87E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E5B5E301B2C2D3000B87E54 /* AukTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AukTests.swift; sourceTree = "<group>"; };
+		7E5DAE481D4AC1FC00F7760E /* AukObjCBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukObjCBridge.swift; sourceTree = "<group>"; };
 		7E5DCDBA1B6DE64500C288CA /* RightToLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightToLeft.swift; sourceTree = "<group>"; };
 		7E5DCDBF1B6E072900C288CA /* AukScrollToTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukScrollToTests.swift; sourceTree = "<group>"; };
 		7E7E317B1B3658BE004411EB /* AukRemoteImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AukRemoteImage.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				7E5A33201B34E3F700B6D2AC /* Images */,
+				7E5DAE481D4AC1FC00F7760E /* AukObjCBridge.swift */,
 				7E90138F1B2CF6FB00DD4406 /* AppDelegate.swift */,
 				7EBD03D11B34E45700957205 /* DemoConstants.swift */,
 				7E9013911B2CF6FB00DD4406 /* ViewController.swift */,
@@ -703,6 +706,7 @@
 			files = (
 				7ECF14001B76DE34007E407B /* RightToLeft.swift in Sources */,
 				7EBD03D21B34E45700957205 /* DemoConstants.swift in Sources */,
+				7E5DAE4A1D4AC20400F7760E /* AukObjCBridge.swift in Sources */,
 				7E9013921B2CF6FB00DD4406 /* ViewController.swift in Sources */,
 				7E9013901B2CF6FB00DD4406 /* AppDelegate.swift in Sources */,
 			);
