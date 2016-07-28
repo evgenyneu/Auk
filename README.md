@@ -272,6 +272,10 @@ Here is what you need to do to add an image tap handler to the scroll view.
 
 You can run some code when the scroll view is being scrolled by using `UIScrollViewDelegate`. See the [detect page scrolling manual](https://github.com/evgenyneu/Auk/wiki/Detect-page-scrolling) for details.
 
+## Using Auk from Objective-C
+
+(This manual)[https://github.com/evgenyneu/Auk/wiki/Using-Auk-in-Objective-C-project] describes how to use Auk messages in Objective-C apps.
+
 
 ## Common problems
 
