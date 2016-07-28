@@ -274,7 +274,7 @@ You can run some code when the scroll view is being scrolled by using `UIScrollV
 
 ## Using Auk from Objective-C
 
-(This manual)[https://github.com/evgenyneu/Auk/wiki/Using-Auk-in-Objective-C-project] describes how to use Auk messages in Objective-C apps.
+[This manual](https://github.com/evgenyneu/Auk/wiki/Using-Auk-in-Objective-C-project) describes how to use Auk messages in Objective-C apps.
 
 
 ## Common problems
