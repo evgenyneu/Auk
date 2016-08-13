@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "Auk"
-  s.version     = "4.0.0"
+  s.version     = "5.0.0"
   s.license     = { :type => "MIT" }
   s.homepage    = "https://github.com/evgenyneu/Auk"
   s.summary     = "An image slideshow for iOS written in Swift."
@@ -18,5 +18,4 @@ Pod::Spec.new do |s|
   s.screenshots  = "https://raw.githubusercontent.com/evgenyneu/Auk/master/Graphics/Screenshots/auk_paged_image_scroller_ios.jpg"
   s.source_files = "Auk/**/*.swift"
   s.ios.deployment_target = "8.0"
-  s.dependency "moa", "~> 5.0"
 end

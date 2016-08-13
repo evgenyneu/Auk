@@ -15,7 +15,7 @@
 
 import Foundation
 
-enum MoaError: ErrorProtocol {
+enum MoaError: Error {
   /// Incorrect URL is supplied. Error code: 0.
   case invalidUrlString
   
@@ -168,7 +168,7 @@ struct MoaHttpImage {
       return
     }
     
-    if let data = data, image = MoaImage(data: data) {
+    if let data = data, let image = MoaImage(data: data) {
       onSuccess(image)
     } else {
       // Failed to convert response data to UIImage
@@ -228,7 +228,7 @@ final class MoaHttpImageDownloader: MoaImageDownloader {
                                        onError: { [weak self] error, response in
                                         self?.canLogCancel = false
                                         
-                                        if let currentSelf = self where !currentSelf.cancelled {
+                                        if let currentSelf = self , !currentSelf.cancelled {
                                           // Do not report error if task was manually cancelled
                                           self?.logger?(.responseError, url, response?.statusCode, error)
                                           onError(error, response)
@@ -708,7 +708,7 @@ public final class Moa {
   private func handleSuccessMainQueue(_ image: MoaImage?) {
     var imageForView: MoaImage? = image
     
-    if let onSuccess = onSuccess, image = image {
+    if let onSuccess = onSuccess, let image = image {
       imageForView = onSuccess(image)
     }
     
@@ -1136,9 +1136,9 @@ struct MoaTime {
   /// Converts date to format used in logs in UTC time zone.
   static func logTime(_ date: Date) -> String {
     let dateFormatter = DateFormatter()
-    let timeZone =  TimeZone(name: "UTC")
+    let timeZone = TimeZone(identifier: "UTC")
     dateFormatter.timeZone = timeZone
-    let enUSPosixLocale = Locale(localeIdentifier: "en_US_POSIX")
+    let enUSPosixLocale = Locale(identifier: "en_US_POSIX")
     dateFormatter.locale = enUSPosixLocale
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
     

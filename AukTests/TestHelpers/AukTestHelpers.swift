@@ -5,8 +5,8 @@ import XCTest
 /// Test helpers
 extension XCTestCase {
   func nsDataFromFile(_ name: String) -> Data {
-    let url = Bundle(for: self.dynamicType).urlForResource(name, withExtension: nil)!
-    return (try! Data(contentsOf: url))
+    let url = Bundle(for: self.dynamicType).url(forResource: name, withExtension: nil)
+    return (try! Data(contentsOf: url!))
   }
   
   func createImage35px() -> UIImage {

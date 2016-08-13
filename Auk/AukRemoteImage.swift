@@ -70,7 +70,7 @@ class AukRemoteImage {
   
   private func setPlaceholderImage(_ settings: AukSettings) {
     if let placeholderImage = settings.placeholderImage,
-      placeholderImageView = placeholderImageView {
+      let placeholderImageView = placeholderImageView {
         
       placeholderImageView.image = placeholderImage
     }

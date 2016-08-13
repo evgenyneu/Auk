@@ -92,7 +92,7 @@ public class Auk {
    */
   public func updatePage(atIndex index: Int, image: UIImage, accessibilityLabel: String? = nil) {
     guard let scrollView = scrollView,
-      page = AukScrollViewContent.page(atIndex: index, scrollView: scrollView) else { return }
+      let page = AukScrollViewContent.page(atIndex: index, scrollView: scrollView) else { return }
       
     page.prepareForReuse()
     page.accessibilityLabel = accessibilityLabel
@@ -113,7 +113,7 @@ public class Auk {
    */
   public func updatePage(atIndex index: Int, url: String, accessibilityLabel: String? = nil) {
     guard let scrollView = scrollView,
-      page = AukScrollViewContent.page(atIndex: index, scrollView: scrollView) else { return }
+      let page = AukScrollViewContent.page(atIndex: index, scrollView: scrollView) else { return }
       
     var updateSettings = settings
     
@@ -199,7 +199,7 @@ public class Auk {
 
   */
   public func scrollToNextPage(cycle: Bool, animated: Bool) {
-    guard let scrollView = scrollView, currentPageIndex = currentPageIndex else { return }
+    guard let scrollView = scrollView, let currentPageIndex = currentPageIndex else { return }
     
     AukScrollTo.scrollToNextPage(scrollView, cycle: cycle, animated: animated,
       currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
@@ -224,7 +224,7 @@ public class Auk {
 
   */
   public func scrollToPreviousPage(cycle: Bool, animated: Bool) {
-    if let scrollView = scrollView, currentPageIndex = currentPageIndex {
+    if let scrollView = scrollView, let currentPageIndex = currentPageIndex {
       AukScrollTo.scrollToPreviousPage(scrollView, cycle: cycle, animated: animated,
         currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
     }
@@ -451,7 +451,7 @@ public class Auk {
     if !settings.pageControl.visible { return }
     if pageIndicatorContainer != nil { return } // Already created a page indicator container
 
-    guard let scrollView = scrollView, superview = scrollView.superview else { return }
+    guard let scrollView = scrollView, let superview = scrollView.superview else { return }
 
     let container = AukPageIndicatorContainer()
     container.didTapPageControlCallback = didTapPageControl
@@ -503,7 +503,7 @@ public class Auk {
    
   */
   func tellPagesAboutTheirVisibility() {
-    guard let scrollView = scrollView, currentPageIndex = currentPageIndex else { return }
+    guard let scrollView = scrollView, let currentPageIndex = currentPageIndex else { return }
       
     AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
                                                       currentPageIndex: currentPageIndex)
@@ -967,7 +967,7 @@ class AukRemoteImage {
   
   private func setPlaceholderImage(_ settings: AukSettings) {
     if let placeholderImage = settings.placeholderImage,
-      placeholderImageView = placeholderImageView {
+      let placeholderImageView = placeholderImageView {
         
       placeholderImageView.image = placeholderImage
     }
@@ -1723,7 +1723,7 @@ import UIKit
 
 class iiQ {
   class func async(_ block: ()->()) {
-    DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosDefault).async(execute: block)
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: block)
   }
 
   class func main(_ block: ()->()) {
@@ -1732,7 +1732,7 @@ class iiQ {
 
   class func runAfterDelay(_ delaySeconds: Double, block: ()->()) {
     let time = DispatchTime.now() + Double(Int64(delaySeconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-    DispatchQueue.main.after(when: time, execute: block)
+    DispatchQueue.main.asyncAfter(deadline: time, execute: block)
   }
 }
 
@@ -1756,7 +1756,7 @@ struct RightToLeft {
       return UIView.userInterfaceLayoutDirection(
         for: view.semanticContentAttribute) == .rightToLeft
     } else {
-      return UIApplication.shared().userInterfaceLayoutDirection == .rightToLeft
+      return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
     }
   }
 }
