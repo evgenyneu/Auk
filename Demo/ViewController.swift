@@ -140,9 +140,9 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     
     super.willRotate(to: toInterfaceOrientation, duration: duration)
     
-    var screenWidth = UIScreen.main().bounds.height
+    var screenWidth = UIScreen.main.bounds.height
     if UIInterfaceOrientationIsPortrait(toInterfaceOrientation) {
-      screenWidth = UIScreen.main().bounds.width
+      screenWidth = UIScreen.main.bounds.width
     }
     
     guard let pageIndex = scrollView.auk.currentPageIndex else { return }

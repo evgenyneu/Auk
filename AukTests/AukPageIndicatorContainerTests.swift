@@ -24,12 +24,12 @@ class AukPageIndicatorTests: XCTestCase {
   
   func testSetup_stylePageContainer() {
     settings.pageControl.cornerRadius = 14
-    settings.pageControl.backgroundColor = UIColor.purple()
+    settings.pageControl.backgroundColor = UIColor.purple
     
     container.setup(settings, scrollView: scrollView)
     
     XCTAssertEqual(14, container.layer.cornerRadius)
-    XCTAssertEqual(UIColor.purple(), container.backgroundColor!)
+    XCTAssertEqual(UIColor.purple, container.backgroundColor!)
     XCTAssert(container.isHidden)
   }
   
@@ -72,8 +72,8 @@ class AukPageIndicatorTests: XCTestCase {
     let superview = UIView(frame: CGRect(origin: CGPoint(), size: CGSize(width: 300, height: 300)))
     superview.addSubview(scrollView)
     
-    settings.pageControl.pageIndicatorTintColor = UIColor.blue()
-    settings.pageControl.currentPageIndicatorTintColor = UIColor.red()
+    settings.pageControl.pageIndicatorTintColor = UIColor.blue
+    settings.pageControl.currentPageIndicatorTintColor = UIColor.red
     
     // Create the views
     container.setup(settings, scrollView: scrollView)
@@ -83,8 +83,8 @@ class AukPageIndicatorTests: XCTestCase {
     // Verify page control layout
     // ---------------
     
-    XCTAssertEqual(UIColor.blue(), pageControl.pageIndicatorTintColor!)
-    XCTAssertEqual(UIColor.red(), pageControl.currentPageIndicatorTintColor!)
+    XCTAssertEqual(UIColor.blue, pageControl.pageIndicatorTintColor!)
+    XCTAssertEqual(UIColor.red, pageControl.currentPageIndicatorTintColor!)
   }
   
   func testSetup_layoutPageControl() {

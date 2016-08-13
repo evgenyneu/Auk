@@ -11,7 +11,7 @@ import UIKit
 
 class iiQ {
   class func async(_ block: ()->()) {
-    DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosDefault).async(execute: block)
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: block)
   }
 
   class func main(_ block: ()->()) {
@@ -20,6 +20,6 @@ class iiQ {
 
   class func runAfterDelay(_ delaySeconds: Double, block: ()->()) {
     let time = DispatchTime.now() + Double(Int64(delaySeconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-    DispatchQueue.main.after(when: time, execute: block)
+    DispatchQueue.main.asyncAfter(deadline: time, execute: block)
   }
 }

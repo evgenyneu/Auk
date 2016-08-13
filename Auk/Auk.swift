@@ -77,7 +77,7 @@ public class Auk {
    */
   public func updatePage(atIndex index: Int, image: UIImage, accessibilityLabel: String? = nil) {
     guard let scrollView = scrollView,
-      page = AukScrollViewContent.page(atIndex: index, scrollView: scrollView) else { return }
+      let page = AukScrollViewContent.page(atIndex: index, scrollView: scrollView) else { return }
       
     page.prepareForReuse()
     page.accessibilityLabel = accessibilityLabel
@@ -98,7 +98,7 @@ public class Auk {
    */
   public func updatePage(atIndex index: Int, url: String, accessibilityLabel: String? = nil) {
     guard let scrollView = scrollView,
-      page = AukScrollViewContent.page(atIndex: index, scrollView: scrollView) else { return }
+      let page = AukScrollViewContent.page(atIndex: index, scrollView: scrollView) else { return }
       
     var updateSettings = settings
     
@@ -184,7 +184,7 @@ public class Auk {
 
   */
   public func scrollToNextPage(cycle: Bool, animated: Bool) {
-    guard let scrollView = scrollView, currentPageIndex = currentPageIndex else { return }
+    guard let scrollView = scrollView, let currentPageIndex = currentPageIndex else { return }
     
     AukScrollTo.scrollToNextPage(scrollView, cycle: cycle, animated: animated,
       currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
@@ -209,7 +209,7 @@ public class Auk {
 
   */
   public func scrollToPreviousPage(cycle: Bool, animated: Bool) {
-    if let scrollView = scrollView, currentPageIndex = currentPageIndex {
+    if let scrollView = scrollView, let currentPageIndex = currentPageIndex {
       AukScrollTo.scrollToPreviousPage(scrollView, cycle: cycle, animated: animated,
         currentPageIndex: currentPageIndex, numberOfPages: numberOfPages)
     }
@@ -436,7 +436,7 @@ public class Auk {
     if !settings.pageControl.visible { return }
     if pageIndicatorContainer != nil { return } // Already created a page indicator container
 
-    guard let scrollView = scrollView, superview = scrollView.superview else { return }
+    guard let scrollView = scrollView, let superview = scrollView.superview else { return }
 
     let container = AukPageIndicatorContainer()
     container.didTapPageControlCallback = didTapPageControl
@@ -488,7 +488,7 @@ public class Auk {
    
   */
   func tellPagesAboutTheirVisibility() {
-    guard let scrollView = scrollView, currentPageIndex = currentPageIndex else { return }
+    guard let scrollView = scrollView, let currentPageIndex = currentPageIndex else { return }
       
     AukPageVisibility.tellPagesAboutTheirVisibility(scrollView, settings: settings,
                                                       currentPageIndex: currentPageIndex)
