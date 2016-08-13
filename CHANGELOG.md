@@ -1,5 +1,9 @@
 # Auk version history
 
+## 5.0 (2016-08-13)
+
+* Update to Xcode 8 Beta 5 version of Swift.
+
 ## 4.0 (2016-07-07)
 
 * Update to Xcode 8 Beta 2 version of Swift.
