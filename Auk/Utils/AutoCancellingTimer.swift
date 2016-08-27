@@ -31,7 +31,7 @@ import UIKit
 final class AutoCancellingTimer {
   private var timer: AutoCancellingTimerInstance?
   
-  init(interval: TimeInterval, repeats: Bool = false, callback: ()->()) {
+  init(interval: TimeInterval, repeats: Bool = false, callback: @escaping ()->()) {
     timer = AutoCancellingTimerInstance(interval: interval, repeats: repeats, callback: callback)
   }
   
@@ -47,9 +47,9 @@ final class AutoCancellingTimer {
 final class AutoCancellingTimerInstance: NSObject {
   private let repeats: Bool
   private var timer: Timer?
-  private var callback: ()->()
+  private var callback: @escaping ()->()
   
-  init(interval: TimeInterval, repeats: Bool = false, callback: ()->()) {
+  init(interval: TimeInterval, repeats: Bool = false, callback: @escaping ()->()) {
     self.repeats = repeats
     self.callback = callback
     

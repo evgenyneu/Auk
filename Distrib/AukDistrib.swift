@@ -801,7 +801,9 @@ final class AukPageIndicatorContainer: UIView {
   }
   
   private func updateVisibility() {
-    self.isHidden = pageControl?.numberOfPages < 2
+    if let pageControl = pageControl {
+      self.isHidden = pageControl.numberOfPages < 2
+    }
   }
 }
 
@@ -1434,7 +1436,7 @@ import UIKit
 final class AutoCancellingTimer {
   private var timer: AutoCancellingTimerInstance?
   
-  init(interval: TimeInterval, repeats: Bool = false, callback: ()->()) {
+  init(interval: TimeInterval, repeats: Bool = false, callback: @escaping ()->()) {
     timer = AutoCancellingTimerInstance(interval: interval, repeats: repeats, callback: callback)
   }
   
@@ -1450,9 +1452,9 @@ final class AutoCancellingTimer {
 final class AutoCancellingTimerInstance: NSObject {
   private let repeats: Bool
   private var timer: Timer?
-  private var callback: ()->()
+  private var callback: @escaping ()->()
   
-  init(interval: TimeInterval, repeats: Bool = false, callback: ()->()) {
+  init(interval: TimeInterval, repeats: Bool = false, callback: @escaping ()->()) {
     self.repeats = repeats
     self.callback = callback
     
@@ -1498,7 +1500,7 @@ class iiAnimator {
   }
   
   /// Animation function. This is a wrapper around UIView.animate to make it easier to unit test.
-  func animate(name: String, withDuration duration: TimeInterval, animations: ()->(), completion: ((Bool)->())? = nil) {
+  func animate(name: String, withDuration duration: TimeInterval, animations: @escaping ()->(), completion: ((Bool)->())? = nil) {
     UIView.animate(withDuration: duration,
                    animations: animations,
                    completion: completion
@@ -1520,7 +1522,7 @@ class iiAnimator {
   - parameter completion: function to be called when the fade out animation is finished. Called immediately when not animated.
    
   */
-  static func fadeOut(view: UIView, animated: Bool, withDuration duration: TimeInterval, completion: ()->()) {
+  static func fadeOut(view: UIView, animated: Bool, withDuration duration: TimeInterval, completion: @escaping ()->()) {
     if animated {
       animator.animate(name: "Fade out", withDuration: duration,
         animations: {
@@ -1722,15 +1724,15 @@ class iiAutolayoutConstraints {
 import UIKit
 
 class iiQ {
-  class func async(_ block: ()->()) {
+  class func async(_ block: @escaping ()->()) {
     DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async(execute: block)
   }
 
-  class func main(_ block: ()->()) {
+  class func main(_ block: @escaping ()->()) {
     DispatchQueue.main.async(execute: block)
   }
 
-  class func runAfterDelay(_ delaySeconds: Double, block: ()->()) {
+  class func runAfterDelay(_ delaySeconds: Double, block: @escaping ()->()) {
     let time = DispatchTime.now() + Double(Int64(delaySeconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
     DispatchQueue.main.asyncAfter(deadline: time, execute: block)
   }

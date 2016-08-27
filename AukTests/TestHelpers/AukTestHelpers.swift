@@ -5,7 +5,7 @@ import XCTest
 /// Test helpers
 extension XCTestCase {
   func nsDataFromFile(_ name: String) -> Data {
-    let url = Bundle(for: self.dynamicType).url(forResource: name, withExtension: nil)
+    let url = Bundle(for: type(of: self)).url(forResource: name, withExtension: nil)
     return (try! Data(contentsOf: url!))
   }
   

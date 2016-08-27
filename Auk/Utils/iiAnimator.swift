@@ -17,7 +17,7 @@ class iiAnimator {
   }
   
   /// Animation function. This is a wrapper around UIView.animate to make it easier to unit test.
-  func animate(name: String, withDuration duration: TimeInterval, animations: ()->(), completion: ((Bool)->())? = nil) {
+  func animate(name: String, withDuration duration: TimeInterval, animations: @escaping ()->(), completion: ((Bool)->())? = nil) {
     UIView.animate(withDuration: duration,
                    animations: animations,
                    completion: completion
@@ -39,7 +39,7 @@ class iiAnimator {
   - parameter completion: function to be called when the fade out animation is finished. Called immediately when not animated.
    
   */
-  static func fadeOut(view: UIView, animated: Bool, withDuration duration: TimeInterval, completion: ()->()) {
+  static func fadeOut(view: UIView, animated: Bool, withDuration duration: TimeInterval, completion: @escaping ()->()) {
     if animated {
       animator.animate(name: "Fade out", withDuration: duration,
         animations: {
