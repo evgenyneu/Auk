@@ -6,7 +6,7 @@ class iiFakeAnimator: iiAnimator {
   var testParameters = [iiFakeAnimatorParameter]()
   
   /// A fake animation function that will be called instead of the real one in unit tests
-  override func animate(name: String, withDuration duration: TimeInterval, animations: ()->(), completion: ((Bool)->())? = nil) {
+  override func animate(name: String, withDuration duration: TimeInterval, animations: @escaping ()->(), completion: ((Bool)->())? = nil) {
     
     let parameter = iiFakeAnimatorParameter(name: name, duration: duration,
                                             animation: animations, completion: completion)

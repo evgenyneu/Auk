@@ -103,6 +103,8 @@ final class AukPageIndicatorContainer: UIView {
   }
   
   private func updateVisibility() {
-    self.isHidden = pageControl?.numberOfPages < 2
+    if let pageControl = pageControl {
+      self.isHidden = pageControl.numberOfPages < 2
+    }
   }
 }
