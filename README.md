@@ -44,7 +44,7 @@ Simply add two files to your project:
 
 #### Setup with Carthage (iOS 8+)
 
-1. Add `github "evgenyneu/Auk" ~> 6.0` to your Cartfile.
+1. Add `github "evgenyneu/Auk" ~> 7.0` to your Cartfile.
 2. Run `carthage update`.
 3. Add `moa` and `Auk` frameworks into your project.
 
@@ -55,7 +55,7 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
     use_frameworks!
     target 'Your target name'
     pod 'moa', git: 'https://github.com/evgenyneu/moa.git', tag: '8.0.0'
-    pod 'Auk', git: 'https://github.com/evgenyneu/Auk.git', tag: '6.0.0'
+    pod 'Auk', git: 'https://github.com/evgenyneu/Auk.git', tag: '7.0.0'
 
 
 #### API changes in version 4.0
