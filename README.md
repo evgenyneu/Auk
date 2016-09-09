@@ -54,8 +54,8 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
     target 'Your target name'
-    pod 'moa', git: 'https://github.com/evgenyneu/moa.git', tag: '8.0.0'
-    pod 'Auk', git: 'https://github.com/evgenyneu/Auk.git', tag: '7.0.0'
+    pod 'moa', '~> 8.0'
+    pod 'Auk', '~> 7.0'
 
 
 #### API changes in version 4.0
