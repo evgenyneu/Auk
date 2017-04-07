@@ -1,11 +1,9 @@
 # Auk, an image slideshow for iOS / Swift
 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)][carthage]
-[![CocoaPods Version](https://img.shields.io/cocoapods/v/Auk.svg?style=flat)][cocoadocs]
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CocoaPods Version](https://img.shields.io/cocoapods/v/Auk.svg?style=flat)](http://cocoadocs.org/docsets/Auk)
 [![License](https://img.shields.io/cocoapods/l/Auk.svg?style=flat)](LICENSE)
-[![Platform](https://img.shields.io/cocoapods/p/Auk.svg?style=flat)][cocoadocs]
-[cocoadocs]: http://cocoadocs.org/docsets/Auk
-[carthage]: https://github.com/Carthage/Carthage
+[![Platform](https://img.shields.io/cocoapods/p/Auk.svg?style=flat)](http://cocoadocs.org/docsets/Auk)
 
 This is an iOS library that shows an image carousel with a page indicator. Users can scroll through local and remote images or watch them scroll automatically.
 
