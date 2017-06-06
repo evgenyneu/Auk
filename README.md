@@ -70,9 +70,8 @@ Please refer to the [change log](https://github.com/evgenyneu/Auk/blob/master/CH
 
 **File**
 
-[MoaDistrib.swift](https://github.com/evgenyneu/moa/blob/swift-4.0/Distrib/MoaDistrib.swift)
-
-[AukDistrib.swift](https://github.com/evgenyneu/Auk/blob/swift-4.0/Distrib/AukDistrib.swift)
+1. [MoaDistrib.swift](https://github.com/evgenyneu/moa/blob/swift-4.0/Distrib/MoaDistrib.swift)
+1. [AukDistrib.swift](https://github.com/evgenyneu/Auk/blob/swift-4.0/Distrib/AukDistrib.swift)
 
 **Carthage**
 
