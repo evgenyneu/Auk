@@ -68,16 +68,16 @@ Please refer to the [change log](https://github.com/evgenyneu/Auk/blob/master/CH
 
 *Branch:* swift-4.0
 
-*File*
+**File**
 
 [MoaDistrib.swift](https://github.com/evgenyneu/moa/swift-4.0/master/Distrib/MoaDistrib.swift)
 [AukDistrib.swift](https://github.com/evgenyneu/Auk/swift-4.0/master/Distrib/AukDistrib.swift)
 
-*Carthage*
+**Carthage**
 
 `github "evgenyneu/Auk" "swift-4.0"`
 
-*CocoaPods*
+**CocoaPods**
 
 ```
 pod 'moa', git: 'https://github.com/evgenyneu/moa.git', branch: 'swift-4.0'
