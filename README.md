@@ -29,7 +29,8 @@ This is an iOS library that shows an image carousel with a page indicator. Users
 *Drawing of the great auk by John Gerrard Keulemans, circa 1900. Source: [Wikimedia Commons](https://en.wikipedia.org/wiki/Great_auk).*
 
 
-## Setup (Swift 3.0 / Xcode 8)
+
+## Setup
 
 There are three ways you can add Auk to your Xcode project.
 
@@ -59,6 +60,29 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 #### API changes in version 4.0
 
 Please refer to the [change log](https://github.com/evgenyneu/Auk/blob/master/CHANGELOG.md).
+
+
+
+
+#### Swift 4.0 / Xcode 9.0 beta version
+
+*Branch:* swift-4.0
+
+*File*
+
+[MoaDistrib.swift](https://github.com/evgenyneu/moa/swift-4.0/master/Distrib/MoaDistrib.swift)
+[AukDistrib.swift](https://github.com/evgenyneu/Auk/swift-4.0/master/Distrib/AukDistrib.swift)
+
+*Carthage*
+
+`github "evgenyneu/Auk" "swift-4.0"`
+
+*CocoaPods*
+
+```
+pod 'moa', git: 'https://github.com/evgenyneu/moa.git', branch: 'swift-4.0'
+pod 'Auk', git: 'https://github.com/evgenyneu/Auk.git', branch: 'swift-4.0'
+```
 
 
 ### Legacy Swift versions
