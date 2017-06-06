@@ -63,7 +63,7 @@ final class AutoCancellingTimerInstance: NSObject {
     timer?.invalidate()
   }
   
-  func timerFired(_ timer: Timer) {
+  @objc func timerFired(_ timer: Timer) {
     self.callback()
     if !repeats { cancel() }
   }
