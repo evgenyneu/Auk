@@ -782,7 +782,7 @@ final class AukPageIndicatorContainer: UIView {
     return pageControl
   }
   
-  func didTapPageControl(_ control: UIPageControl) {
+  @objc func didTapPageControl(_ control: UIPageControl) {
     if let currentPage = pageControl?.currentPage {
       didTapPageControlCallback?(currentPage)
     }
@@ -1468,7 +1468,7 @@ final class AutoCancellingTimerInstance: NSObject {
     timer?.invalidate()
   }
   
-  func timerFired(_ timer: Timer) {
+  @objc func timerFired(_ timer: Timer) {
     self.callback()
     if !repeats { cancel() }
   }

@@ -84,7 +84,7 @@ final class AukPageIndicatorContainer: UIView {
     return pageControl
   }
   
-  func didTapPageControl(_ control: UIPageControl) {
+  @objc func didTapPageControl(_ control: UIPageControl) {
     if let currentPage = pageControl?.currentPage {
       didTapPageControlCallback?(currentPage)
     }
