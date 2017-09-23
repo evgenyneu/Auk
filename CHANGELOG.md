@@ -1,5 +1,11 @@
 # Auk version history
 
+
+## 8.0 (2017-09-23)
+
+* Update to Swift 4.0.
+
+
 ## 7.0 (2016-09-09)
 
 * Update to Xcode 8 GM version of Swift.

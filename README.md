@@ -43,7 +43,7 @@ Simply add two files to your project:
 
 #### Setup with Carthage (iOS 8+)
 
-1. Add `github "evgenyneu/Auk" ~> 7.0` to your Cartfile.
+1. Add `github "evgenyneu/Auk" ~> 8.0` to your Cartfile.
 2. Run `carthage update`.
 3. Add `moa` and `Auk` frameworks into your project.
 
@@ -53,36 +53,8 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
     target 'Your target name'
-    pod 'moa', '~> 8.0'
-    pod 'Auk', '~> 7.0'
-
-
-#### API changes in version 4.0
-
-Please refer to the [change log](https://github.com/evgenyneu/Auk/blob/master/CHANGELOG.md).
-
-
-
-
-#### Swift 4.0 / Xcode 9.0 beta version
-
-*Branch:* swift-4.0
-
-**File**
-
-1. [MoaDistrib.swift](https://github.com/evgenyneu/moa/blob/swift-4.0/Distrib/MoaDistrib.swift)
-1. [AukDistrib.swift](https://github.com/evgenyneu/Auk/blob/swift-4.0/Distrib/AukDistrib.swift)
-
-**Carthage**
-
-`github "evgenyneu/Auk" "swift-4.0"`
-
-**CocoaPods**
-
-```
-pod 'moa', git: 'https://github.com/evgenyneu/moa.git', branch: 'swift-4.0'
-pod 'Auk', git: 'https://github.com/evgenyneu/Auk.git', branch: 'swift-4.0'
-```
+    pod 'moa', '~> 9.0'
+    pod 'Auk', '~> 8.0'
 
 
 ### Legacy Swift versions
