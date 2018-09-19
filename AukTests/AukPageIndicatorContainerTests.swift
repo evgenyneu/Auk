@@ -46,10 +46,10 @@ class AukPageIndicatorTests: XCTestCase {
     iiAutolayoutConstraints.width(scrollView, value: 100)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.left, margin: 0)
+                                                constraintContainer: superview, attribute: NSLayoutConstraint.Attribute.left, margin: 0)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.top, margin: 10)
+                                                constraintContainer: superview, attribute: NSLayoutConstraint.Attribute.top, margin: 10)
     
     settings.pageControl.marginToScrollViewBottom = 13
     
@@ -100,10 +100,10 @@ class AukPageIndicatorTests: XCTestCase {
     iiAutolayoutConstraints.width(scrollView, value: 100)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.left, margin: 0)
+                                                constraintContainer: superview, attribute: NSLayoutConstraint.Attribute.left, margin: 0)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.top, margin: 10)
+                                                constraintContainer: superview, attribute: NSLayoutConstraint.Attribute.top, margin: 10)
     
     settings.pageControl.innerPadding = CGSize(width: 13, height: 18)
     

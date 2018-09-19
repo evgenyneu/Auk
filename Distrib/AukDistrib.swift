@@ -9,6 +9,226 @@
 
 // ----------------------------
 //
+// AukPageVisibility.swift
+//
+// ----------------------------
+
+import UIKit
+
+/**
+
+Helper functions that tell if the scroll view page is currently visible to the user.
+
+*/
+struct AukPageVisibility {
+  /**
+  
+  Check if the given page is currently visible to user.
+  
+  - parameter scrollView: Scroll view containing the page.
+  - parameter page: A scroll view page which visibility will be checked.
+  
+  - returns: True if the page is visible to the user.
+  
+  */
+  static func isVisible(_ scrollView: UIScrollView, page: AukPage) -> Bool {
+    return scrollView.bounds.intersects(page.frame)
+  }
+  
+  /**
+  
+  Tells if the page is way out of sight. This is done to prevent cancelling download of the image for the page that is not very far out of sight.
+  
+  - parameter scrollView: Scroll view containing the page.
+  - parameter page: A scroll view page which visibility will be checked.
+  
+  - returns: True if the page is visible to the user.
+  
+  */
+  static func isFarOutOfSight(_ scrollView: UIScrollView, page: AukPage) -> Bool {
+    let parentRectWithIncreasedHorizontalBounds = scrollView.bounds.insetBy(dx: -50, dy: 0)
+    return !parentRectWithIncreasedHorizontalBounds.intersects(page.frame)
+  }
+  
+  /**
+  
+  Go through all the scroll view pages and tell them if they are visible or out of sight.
+  The pages, in turn, if they are visible start the download of the image
+  or cancel the download if they are out of sight.
+  
+  - parameter scrollView: Scroll view with the pages.
+
+  */
+  static func tellPagesAboutTheirVisibility(_ scrollView: UIScrollView,
+                                            settings: AukSettings,
+                                            currentPageIndex: Int) {
+    
+    let pages = AukScrollViewContent.aukPages(scrollView)
+
+    for (index, page) in pages.enumerated() {
+      if isVisible(scrollView, page: page) {
+        page.visibleNow(settings)
+      } else {
+        if abs(index - currentPageIndex) <= settings.preloadRemoteImagesAround {
+          // Preload images for the pages around the current page
+          page.visibleNow(settings)
+        } else {
+          /*
+          The image is not visible to user and is not preloaded - cancel its download.
+           
+          Now, this is a bit nuanced so let me explain. When we scroll into a new page we sometimes see a little bit of the next page. The scroll view animation overshoots a little bit to show the next page and then slides back to the current page. This is probably done on purpose for more natural spring bouncing effect.
+
+          When the scroll view overshoots and shows the next page, we call `isVisible` on it and it starts downloading its image. But because scroll view bounces back in a moment the page becomes invisible again very soon. If we just call `outOfSightNow()` the next page download will be canceled even though it has just been started. That is probably not very efficient use of network, so we call `isFarOutOfSight` function to check if the next page is way out of sight (and not just a little bit). If the page is out of sight but just by a little margin we still let it download the image.
+
+          */
+          if isFarOutOfSight(scrollView, page: page) {
+            page.outOfSightNow()
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// ----------------------------
+//
+// AukPage.swift
+//
+// ----------------------------
+
+import UIKit
+
+/// The view for an individual page of the scroll view containing an image.
+final class AukPage: UIView {
+  
+  // Image view for showing a placeholder image while remote image is being downloaded.
+  // The view is only created when a placeholder image is specified in settings.
+  weak var placeholderImageView: UIImageView?
+
+  // Image view for showing local and remote images
+  weak var imageView: UIImageView?
+  
+  // Contains a URL for the remote image, if any.
+  var remoteImage: AukRemoteImage?
+  
+  /**
+  
+  Shows an image.
+  
+  - parameter image: The image to be shown
+  - parameter settings: Auk settings.
+  
+  */
+  func show(image: UIImage, settings: AukSettings) {
+    imageView = createAndLayoutImageView(settings)
+    imageView?.image = image
+  }
+  
+  /**
+  
+  Shows a remote image. The image download stars if/when the page becomes visible to the user.
+  
+  - parameter url: The URL to the image to be displayed.
+  - parameter settings: Auk settings.
+  
+  */
+  func show(url: String, settings: AukSettings) {
+    if settings.placeholderImage != nil {
+      placeholderImageView = createAndLayoutImageView(settings)
+    }
+        
+    imageView = createAndLayoutImageView(settings)
+    
+    if let imageView = imageView {
+      remoteImage = AukRemoteImage()
+      remoteImage?.setup(url, imageView: imageView, placeholderImageView: placeholderImageView,
+        settings: settings)
+    }
+  }
+  
+  /**
+
+  Called when the page is currently visible to user which triggers the image download. The function is called frequently each time scroll view's content offset is changed.
+  
+  */
+  func visibleNow(_ settings: AukSettings) {
+    remoteImage?.downloadImage(settings)
+  }
+  
+  /**
+  
+  Called when the page is currently not visible to user which cancels the image download. The method called frequently each time scroll view's content offset is changed and the page is out of sight.
+  
+  */
+  func outOfSightNow() {
+    remoteImage?.cancelDownload()
+  }
+     
+  /// Removes image views.
+  func removeImageViews() {
+    placeholderImageView?.removeFromSuperview()
+    placeholderImageView = nil
+    
+    imageView?.removeFromSuperview()
+    imageView = nil
+  }
+  
+  /**
+  
+  Prepares the page view for reuse. Clears current content from the page and stops download.
+   
+  */
+  func prepareForReuse() {
+    removeImageViews()
+    remoteImage?.cancelDownload()
+    remoteImage = nil
+  }
+    
+  /**
+  
+  Create and layout the remote image view.
+  
+  - parameter settings: Auk settings.
+  
+  */
+  func createAndLayoutImageView(_ settings: AukSettings) -> UIImageView {
+    let newImageView = AukPage.createImageView(settings)
+    addSubview(newImageView)
+    AukPage.layoutImageView(newImageView, superview: self)
+    return newImageView
+  }
+  
+  private static func createImageView(_ settings: AukSettings) -> UIImageView {
+    let newImageView = UIImageView()
+    newImageView.contentMode = settings.contentMode
+    return newImageView
+  }
+  
+  /**
+  
+  Creates Auto Layout constrains for the image view.
+  
+  - parameter imageView: Image view that is used to create Auto Layout constraints.
+  
+  */
+  private static func layoutImageView(_ imageView: UIImageView, superview: UIView) {
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    
+    iiAutolayoutConstraints.fillParent(imageView, parentView: superview, margin: 0, vertically: false)
+    iiAutolayoutConstraints.fillParent(imageView, parentView: superview, margin: 0, vertically: true)
+  }
+  
+  func makeAccessible(_ accessibilityLabel: String?) {
+    isAccessibilityElement = true
+    accessibilityTraits = UIAccessibilityTraits.image
+    self.accessibilityLabel = accessibilityLabel
+  }
+}
+
+
+// ----------------------------
+//
 // Auk.swift
 //
 // ----------------------------
@@ -513,7 +733,7 @@ public class Auk {
 
 // ----------------------------
 //
-// AukAutoscroll.swift
+// AukSettings.swift
 //
 // ----------------------------
 
@@ -521,172 +741,72 @@ import UIKit
 
 /**
 
-Starts and cancels the auto scrolling.
+Appearance and behavior of the scroll view.
 
 */
-struct AukAutoscroll {
-  var autoscrollTimer: AutoCancellingTimer?
+public struct AukSettings {
   
-  mutating func startAutoScroll(_ scrollView: UIScrollView, delaySeconds: Double,
-    forward: Bool, cycle: Bool, animated: Bool, auk: Auk) {
-      
-    // Assign the new instance of AutoCancellingTimer to autoscrollTimer
-    // The previous instance deinitializes and cancels its timer.
-      
-    autoscrollTimer = AutoCancellingTimer(interval: delaySeconds, repeats: true) {
-      guard let currentPageIndex = auk.currentPageIndex else { return }
-      
-      if forward {
-        AukScrollTo.scrollToNextPage(scrollView, cycle: cycle,
-          animated: animated, currentPageIndex: currentPageIndex,
-          numberOfPages: auk.numberOfPages)
-      } else {
-        AukScrollTo.scrollToPreviousPage(scrollView, cycle: cycle,
-          animated: animated, currentPageIndex: currentPageIndex,
-          numberOfPages: auk.numberOfPages)
-      }
-    }
-  }
+  /// Determines the stretching and scaling of the image when its proportion are not the same as its  container.
+  public var contentMode = UIView.ContentMode.scaleAspectFit
   
-  mutating func stopAutoScroll() {
-    autoscrollTimer = nil // Cancels the timer on deinit
-  }
-}
-
-
-// ----------------------------
-//
-// AukPage.swift
-//
-// ----------------------------
-
-import UIKit
-
-/// The view for an individual page of the scroll view containing an image.
-final class AukPage: UIView {
+  /// Image to be displayed when remote image download fails.
+  public var errorImage: UIImage?
   
-  // Image view for showing a placeholder image while remote image is being downloaded.
-  // The view is only created when a placeholder image is specified in settings.
-  weak var placeholderImageView: UIImageView?
-
-  // Image view for showing local and remote images
-  weak var imageView: UIImageView?
+  /// Settings for styling the scroll view page indicator.
+  public var pageControl = PageControlSettings()
   
-  // Contains a URL for the remote image, if any.
-  var remoteImage: AukRemoteImage?
+  /// Enable paging for the scroll view. When true the view automatically scrolls to show the whole image.
+  public var pagingEnabled = true
+  
+  /// Image to be displayed while the remote image is being downloaded.
+  public var placeholderImage: UIImage?
   
   /**
-  
-  Shows an image.
-  
-  - parameter image: The image to be shown
-  - parameter settings: Auk settings.
-  
-  */
-  func show(image: UIImage, settings: AukSettings) {
-    imageView = createAndLayoutImageView(settings)
-    imageView?.image = image
-  }
-  
-  /**
-  
-  Shows a remote image. The image download stars if/when the page becomes visible to the user.
-  
-  - parameter url: The URL to the image to be displayed.
-  - parameter settings: Auk settings.
-  
-  */
-  func show(url: String, settings: AukSettings) {
-    if settings.placeholderImage != nil {
-      placeholderImageView = createAndLayoutImageView(settings)
-    }
-        
-    imageView = createAndLayoutImageView(settings)
-    
-    if let imageView = imageView {
-      remoteImage = AukRemoteImage()
-      remoteImage?.setup(url, imageView: imageView, placeholderImageView: placeholderImageView,
-        settings: settings)
-    }
-  }
-  
-  /**
-
-  Called when the page is currently visible to user which triggers the image download. The function is called frequently each time scroll view's content offset is changed.
-  
-  */
-  func visibleNow(_ settings: AukSettings) {
-    remoteImage?.downloadImage(settings)
-  }
-  
-  /**
-  
-  Called when the page is currently not visible to user which cancels the image download. The method called frequently each time scroll view's content offset is changed and the page is out of sight.
-  
-  */
-  func outOfSightNow() {
-    remoteImage?.cancelDownload()
-  }
-     
-  /// Removes image views.
-  func removeImageViews() {
-    placeholderImageView?.removeFromSuperview()
-    placeholderImageView = nil
-    
-    imageView?.removeFromSuperview()
-    imageView = nil
-  }
-  
-  /**
-  
-  Prepares the page view for reuse. Clears current content from the page and stops download.
+   
+  The number of remote images to preload around the current page. For example, if preloadRemoteImagesAround = 2 and we are viewing the first page it will preload images on the second and third pages. If we are viewing 5th page then it will preload images on pages 3, 4, 6 and 7 (unless they are already loaded). The default value is 0, i.e. it only loads the image for the currently visible pages.
    
   */
-  func prepareForReuse() {
-    removeImageViews()
-    remoteImage?.cancelDownload()
-    remoteImage = nil
-  }
-    
-  /**
+  public var preloadRemoteImagesAround = 0
   
-  Create and layout the remote image view.
+  /// The duration of the animation that is used to show the remote images.
+  public var remoteImageAnimationIntervalSeconds: Double = 0.5
   
-  - parameter settings: Auk settings.
+  // Duration of the fade out animation when the page is removed.
+  public var removePageFadeOutAnimationDurationSeconds: Double = 0.2
   
-  */
-  func createAndLayoutImageView(_ settings: AukSettings) -> UIImageView {
-    let newImageView = AukPage.createImageView(settings)
-    addSubview(newImageView)
-    AukPage.layoutImageView(newImageView, superview: self)
-    return newImageView
-  }
+  // Duration of the layout animation when the page is removed.
+  public var removePageLayoutAnimationDurationSeconds: Double = 0.3
   
-  private static func createImageView(_ settings: AukSettings) -> UIImageView {
-    let newImageView = UIImageView()
-    newImageView.contentMode = settings.contentMode
-    return newImageView
-  }
+  /// Show horizontal scroll indicator.
+  public var showsHorizontalScrollIndicator = false
+}
+
+/**
+
+Settings for page indicator.
+
+*/
+public struct PageControlSettings {
+  /// Background color of the page control container view.
+  public var backgroundColor = UIColor(red: 128/256, green: 128/256, blue: 128/256, alpha: 0.4)
   
-  /**
+  /// Corner radius of page control container view.
+  public var cornerRadius: Double = 13
   
-  Creates Auto Layout constrains for the image view.
+  /// Color of the dot representing for the current page.
+  public var currentPageIndicatorTintColor: UIColor? = nil
   
-  - parameter imageView: Image view that is used to create Auto Layout constraints.
+  /// Padding between page indicator and its container
+  public var innerPadding = CGSize(width: 10, height: -5)
   
-  */
-  private static func layoutImageView(_ imageView: UIImageView, superview: UIView) {
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    
-    iiAutolayoutConstraints.fillParent(imageView, parentView: superview, margin: 0, vertically: false)
-    iiAutolayoutConstraints.fillParent(imageView, parentView: superview, margin: 0, vertically: true)
-  }
+  /// Distance between the bottom of the page control view and the bottom of the scroll view.
+  public var marginToScrollViewBottom: Double = 8
   
-  func makeAccessible(_ accessibilityLabel: String?) {
-    isAccessibilityElement = true
-    accessibilityTraits = UIAccessibilityTraitImage
-    self.accessibilityLabel = accessibilityLabel
-  }
+  /// Color of the page indicator dot.
+  public var pageIndicatorTintColor: UIColor? = nil
+  
+  /// When true the page control is visible on screen.
+  public var visible = true
 }
 
 
@@ -703,7 +823,7 @@ final class AukPageIndicatorContainer: UIView {
   
   deinit {
     pageControl?.removeTarget(self, action: #selector(AukPageIndicatorContainer.didTapPageControl(_:)),
-      for: UIControlEvents.valueChanged)
+      for: UIControl.Event.valueChanged)
   }
   
   var didTapPageControlCallback: ((Int)->())?
@@ -750,12 +870,12 @@ final class AukPageIndicatorContainer: UIView {
         
       // Align bottom of the page view indicator with the bottom of the scroll view
       iiAutolayoutConstraints.alignSameAttributes(pageIndicatorContainer, toItem: scrollView,
-        constraintContainer: superview, attribute: NSLayoutAttribute.bottom,
+        constraintContainer: superview, attribute: NSLayoutConstraint.Attribute.bottom,
         margin: CGFloat(-settings.pageControl.marginToScrollViewBottom))
       
       // Center the page view indicator horizontally in relation to the scroll view
       iiAutolayoutConstraints.alignSameAttributes(pageIndicatorContainer, toItem: scrollView,
-        constraintContainer: superview, attribute: NSLayoutAttribute.centerX, margin: 0)
+        constraintContainer: superview, attribute: NSLayoutConstraint.Attribute.centerX, margin: 0)
     }
   }
   
@@ -773,7 +893,7 @@ final class AukPageIndicatorContainer: UIView {
     }
     
     pageControl.addTarget(self, action: #selector(AukPageIndicatorContainer.didTapPageControl(_:)),
-      for: UIControlEvents.valueChanged)
+      for: UIControl.Event.valueChanged)
     
     pageControl.pageIndicatorTintColor = settings.pageControl.pageIndicatorTintColor
     pageControl.currentPageIndicatorTintColor = settings.pageControl.currentPageIndicatorTintColor
@@ -810,7 +930,7 @@ final class AukPageIndicatorContainer: UIView {
 
 // ----------------------------
 //
-// AukPageVisibility.swift
+// AukAutoscroll.swift
 //
 // ----------------------------
 
@@ -818,161 +938,35 @@ import UIKit
 
 /**
 
-Helper functions that tell if the scroll view page is currently visible to the user.
+Starts and cancels the auto scrolling.
 
 */
-struct AukPageVisibility {
-  /**
+struct AukAutoscroll {
+  var autoscrollTimer: AutoCancellingTimer?
   
-  Check if the given page is currently visible to user.
-  
-  - parameter scrollView: Scroll view containing the page.
-  - parameter page: A scroll view page which visibility will be checked.
-  
-  - returns: True if the page is visible to the user.
-  
-  */
-  static func isVisible(_ scrollView: UIScrollView, page: AukPage) -> Bool {
-    return scrollView.bounds.intersects(page.frame)
-  }
-  
-  /**
-  
-  Tells if the page is way out of sight. This is done to prevent cancelling download of the image for the page that is not very far out of sight.
-  
-  - parameter scrollView: Scroll view containing the page.
-  - parameter page: A scroll view page which visibility will be checked.
-  
-  - returns: True if the page is visible to the user.
-  
-  */
-  static func isFarOutOfSight(_ scrollView: UIScrollView, page: AukPage) -> Bool {
-    let parentRectWithIncreasedHorizontalBounds = scrollView.bounds.insetBy(dx: -50, dy: 0)
-    return !parentRectWithIncreasedHorizontalBounds.intersects(page.frame)
-  }
-  
-  /**
-  
-  Go through all the scroll view pages and tell them if they are visible or out of sight.
-  The pages, in turn, if they are visible start the download of the image
-  or cancel the download if they are out of sight.
-  
-  - parameter scrollView: Scroll view with the pages.
-
-  */
-  static func tellPagesAboutTheirVisibility(_ scrollView: UIScrollView,
-                                            settings: AukSettings,
-                                            currentPageIndex: Int) {
-    
-    let pages = AukScrollViewContent.aukPages(scrollView)
-
-    for (index, page) in pages.enumerated() {
-      if isVisible(scrollView, page: page) {
-        page.visibleNow(settings)
+  mutating func startAutoScroll(_ scrollView: UIScrollView, delaySeconds: Double,
+    forward: Bool, cycle: Bool, animated: Bool, auk: Auk) {
+      
+    // Assign the new instance of AutoCancellingTimer to autoscrollTimer
+    // The previous instance deinitializes and cancels its timer.
+      
+    autoscrollTimer = AutoCancellingTimer(interval: delaySeconds, repeats: true) {
+      guard let currentPageIndex = auk.currentPageIndex else { return }
+      
+      if forward {
+        AukScrollTo.scrollToNextPage(scrollView, cycle: cycle,
+          animated: animated, currentPageIndex: currentPageIndex,
+          numberOfPages: auk.numberOfPages)
       } else {
-        if abs(index - currentPageIndex) <= settings.preloadRemoteImagesAround {
-          // Preload images for the pages around the current page
-          page.visibleNow(settings)
-        } else {
-          /*
-          The image is not visible to user and is not preloaded - cancel its download.
-           
-          Now, this is a bit nuanced so let me explain. When we scroll into a new page we sometimes see a little bit of the next page. The scroll view animation overshoots a little bit to show the next page and then slides back to the current page. This is probably done on purpose for more natural spring bouncing effect.
-
-          When the scroll view overshoots and shows the next page, we call `isVisible` on it and it starts downloading its image. But because scroll view bounces back in a moment the page becomes invisible again very soon. If we just call `outOfSightNow()` the next page download will be canceled even though it has just been started. That is probably not very efficient use of network, so we call `isFarOutOfSight` function to check if the next page is way out of sight (and not just a little bit). If the page is out of sight but just by a little margin we still let it download the image.
-
-          */
-          if isFarOutOfSight(scrollView, page: page) {
-            page.outOfSightNow()
-          }
-        }
+        AukScrollTo.scrollToPreviousPage(scrollView, cycle: cycle,
+          animated: animated, currentPageIndex: currentPageIndex,
+          numberOfPages: auk.numberOfPages)
       }
     }
-  }
-}
-
-
-// ----------------------------
-//
-// AukRemoteImage.swift
-//
-// ----------------------------
-
-import UIKit
-
-/**
-
-Downloads and shows a single remote image.
-
-*/
-class AukRemoteImage {
-  var url: String?
-  weak var imageView: UIImageView?
-  weak var placeholderImageView: UIImageView?
-
-  init() { }
-
-  /// True when image has been successfully downloaded
-  var didFinishDownload = false
-
-  func setup(_ url: String, imageView: UIImageView, placeholderImageView: UIImageView?,
-    settings: AukSettings) {
-
-    self.url = url
-    self.imageView = imageView
-    self.placeholderImageView = placeholderImageView
-    setPlaceholderImage(settings)
-  }
-
-  /// Sends image download HTTP request.
-  func downloadImage(_ settings: AukSettings) {
-    if imageView?.moa.url != nil { return } // Download has already started
-    if didFinishDownload { return } // Image has already been downloaded
-
-    imageView?.moa.errorImage = settings.errorImage
-
-    imageView?.moa.onSuccessAsync = { [weak self] image in
-      self?.didReceiveImageAsync(image, settings: settings)
-      return image
-    }
-
-    imageView?.moa.url = url
-  }
-
-  /// Cancel current image download HTTP request.
-  func cancelDownload() {
-    // Cancel current download by setting url to nil
-    imageView?.moa.url = nil
-  }
-
-  func didReceiveImageAsync(_ image: UIImage, settings: AukSettings) {
-    didFinishDownload = true
-
-    iiQ.main { [weak self] in
-      guard let imageView = self?.imageView else { return }
-      AukRemoteImage.animateImageView(imageView, show: true, settings: settings)
-    
-      if let placeholderImageView = self?.placeholderImageView {
-        AukRemoteImage.animateImageView(placeholderImageView, show: false, settings: settings)
-      }
-    }
-  }
-
-  private static func animateImageView(_ imageView: UIImageView, show: Bool, settings: AukSettings) {
-    imageView.alpha = show ? 0: 1
-    let interval = TimeInterval(settings.remoteImageAnimationIntervalSeconds)
-    
-    UIView.animate(withDuration: interval, animations: {
-      imageView.alpha = show ? 1: 0
-    })
   }
   
-  private func setPlaceholderImage(_ settings: AukSettings) {
-    if let placeholderImage = settings.placeholderImage,
-      let placeholderImageView = placeholderImageView {
-        
-      placeholderImageView.image = placeholderImage
-    }
+  mutating func stopAutoScroll() {
+    autoscrollTimer = nil // Cancels the timer on deinit
   }
 }
 
@@ -1073,326 +1067,167 @@ struct AukScrollTo {
 
 // ----------------------------
 //
-// AukScrollViewContent.swift
+// iiAutolayoutConstraints.swift
 //
 // ----------------------------
+
+//
+//  Collection of shortcuts to create autolayout constraints.
+//
 
 import UIKit
 
-/**
+class iiAutolayoutConstraints {
+  class func fillParent(_ view: UIView, parentView: UIView, margin: CGFloat = 0, vertically: Bool = false) {
+    var marginFormat = ""
 
-Collection of static functions that help managing the scroll view content.
-
-*/
-struct AukScrollViewContent {
-  
-  /**
-
-  - returns: Array of scroll view pages.
-  
-  */
-  static func aukPages(_ scrollView: UIScrollView) -> [AukPage] {
-    return scrollView.subviews.filter { $0 is AukPage }.map { $0 as! AukPage }
-  }
-  
-  /**
- 
-  - returns: Page at index. Returns nil if index is out of bounds.
- 
-  */
-  static func page(atIndex index: Int, scrollView: UIScrollView) -> AukPage? {
-    let pages = aukPages(scrollView)
-    if index < 0 { return nil }
-    if index >= pages.count { return nil }
-    return pages[index]
-  }
-  
-  /**
-  
-  Creates Auto Layout constraints for positioning the page view inside the scroll view.
-   
-  - parameter scrollView: scroll view to layout.
-
-  - parameter animated: will animate the layout if true. Default value: false.
-   
-  - parameter animationDurationInSeconds: duration of the layout animation. Ignored if `animated` parameter is false.
-
-  - parameter completion: function that is called when layout animation finishes. Called immediately if not animated.
-  
-  */
-  static func layout(_ scrollView: UIScrollView, animated: Bool = false,
-                     animationDurationInSeconds: Double = 0.2, completion: (()->())? = nil) {
-    
-    let pages = aukPages(scrollView)
-
-    for (index, page) in pages.enumerated() {
-      
-      // Delete current constraints by removing the view and adding it back to its superview
-      page.removeFromSuperview()
-      scrollView.addSubview(page)
-      
-      page.translatesAutoresizingMaskIntoConstraints = false
-      
-      // Make page size equal to the scroll view size
-      iiAutolayoutConstraints.equalSize(page, viewTwo: scrollView, constraintContainer: scrollView)
-      
-      // Stretch the page vertically to fill the height of the scroll view
-      iiAutolayoutConstraints.fillParent(page, parentView: scrollView, margin: 0, vertically: true)
-      
-      if index == 0 {
-        // Align the leading edge of the first page to the leading edge of the scroll view.
-        iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
-          constraintContainer: scrollView, attribute: NSLayoutAttribute.leading, margin: 0)
-      }
-      
-      if index == pages.count - 1 {
-        // Align the trailing edge of the last page to the trailing edge of the scroll view.
-        iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
-          constraintContainer: scrollView, attribute: NSLayoutAttribute.trailing, margin: 0)
-      }
-    }
-    
-    // Align page next to each other
-    iiAutolayoutConstraints.viewsNextToEachOther(pages, constraintContainer: scrollView,
-      margin: 0, vertically: false)
-    
-    if animated {
-      iiAnimator.animator.animate(name: "layoutIfNeeded", withDuration: animationDurationInSeconds,
-        animations: {
-          scrollView.layoutIfNeeded()
-        },
-        completion: { _ in
-          completion?()
-        }
-      )
-    } else {
-      scrollView.layoutIfNeeded()
-      completion?()
-    }
-  }
-}
-
-
-// ----------------------------
-//
-// AukScrollViewDelegate.swift
-//
-// ----------------------------
-
-import UIKit
-
-/**
-
-This delegate detects the scrolling event which is used for loading remote images when their superview becomes visible on screen.
-
-*/
-final class AukScrollViewDelegate: NSObject, UIScrollViewDelegate {
-  /**
-  
-  If scroll view already has delegate it is preserved in this property and all the delegate calls are forwarded to it.
-  
-  */
-  weak var delegate: UIScrollViewDelegate?
-  
-  var onScroll: (()->())?
-  var onScrollByUser: (()->())?
-  
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    onScroll?()
-    delegate?.scrollViewDidScroll?(scrollView)
-  }
-  
-  func scrollViewDidZoom(_ scrollView: UIScrollView) {
-    delegate?.scrollViewDidZoom?(scrollView)
-  }
-  
-  func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-    delegate?.scrollViewWillBeginDragging?(scrollView)
-    onScrollByUser?()
-  }
-  
-  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-    
-    delegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
-  }
-  
-  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-    delegate?.scrollViewDidEndDragging?(scrollView, willDecelerate: decelerate)
-  }
-  
-  func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-    delegate?.scrollViewWillBeginDecelerating?(scrollView)
-  }
-  
-  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-    delegate?.scrollViewDidEndDecelerating?(scrollView)
-  }
-  
-  func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-    delegate?.scrollViewDidEndScrollingAnimation?(scrollView)
-  }
-  
-  func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-    return delegate?.viewForZooming?(in: scrollView)
-  }
-  
-  func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
-    delegate?.scrollViewWillBeginZooming?(scrollView, with: view)
-  }
-  
-  func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-    delegate?.scrollViewDidEndZooming?(scrollView, with: view, atScale: scale)
-  }
-  
-  func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
-    return delegate?.scrollViewShouldScrollToTop?(scrollView) ?? true
-  }
-  
-  func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
-    delegate?.scrollViewDidScrollToTop?(scrollView)
-  }
-}
-
-
-// ----------------------------
-//
-// AukSettings.swift
-//
-// ----------------------------
-
-import UIKit
-
-/**
-
-Appearance and behavior of the scroll view.
-
-*/
-public struct AukSettings {
-  
-  /// Determines the stretching and scaling of the image when its proportion are not the same as its  container.
-  public var contentMode = UIViewContentMode.scaleAspectFit
-  
-  /// Image to be displayed when remote image download fails.
-  public var errorImage: UIImage?
-  
-  /// Settings for styling the scroll view page indicator.
-  public var pageControl = PageControlSettings()
-  
-  /// Enable paging for the scroll view. When true the view automatically scrolls to show the whole image.
-  public var pagingEnabled = true
-  
-  /// Image to be displayed while the remote image is being downloaded.
-  public var placeholderImage: UIImage?
-  
-  /**
-   
-  The number of remote images to preload around the current page. For example, if preloadRemoteImagesAround = 2 and we are viewing the first page it will preload images on the second and third pages. If we are viewing 5th page then it will preload images on pages 3, 4, 6 and 7 (unless they are already loaded). The default value is 0, i.e. it only loads the image for the currently visible pages.
-   
-  */
-  public var preloadRemoteImagesAround = 0
-  
-  /// The duration of the animation that is used to show the remote images.
-  public var remoteImageAnimationIntervalSeconds: Double = 0.5
-  
-  // Duration of the fade out animation when the page is removed.
-  public var removePageFadeOutAnimationDurationSeconds: Double = 0.2
-  
-  // Duration of the layout animation when the page is removed.
-  public var removePageLayoutAnimationDurationSeconds: Double = 0.3
-  
-  /// Show horizontal scroll indicator.
-  public var showsHorizontalScrollIndicator = false
-}
-
-/**
-
-Settings for page indicator.
-
-*/
-public struct PageControlSettings {
-  /// Background color of the page control container view.
-  public var backgroundColor = UIColor(red: 128/256, green: 128/256, blue: 128/256, alpha: 0.4)
-  
-  /// Corner radius of page control container view.
-  public var cornerRadius: Double = 13
-  
-  /// Color of the dot representing for the current page.
-  public var currentPageIndicatorTintColor: UIColor? = nil
-  
-  /// Padding between page indicator and its container
-  public var innerPadding = CGSize(width: 10, height: -5)
-  
-  /// Distance between the bottom of the page control view and the bottom of the scroll view.
-  public var marginToScrollViewBottom: Double = 8
-  
-  /// Color of the page indicator dot.
-  public var pageIndicatorTintColor: UIColor? = nil
-  
-  /// When true the page control is visible on screen.
-  public var visible = true
-}
-
-
-// ----------------------------
-//
-// UIScrollView+Auk.swift
-//
-// ----------------------------
-
-import UIKit
-
-private var xoAukAssociationKey: UInt8 = 0
-
-/**
-
-Scroll view extension for showing series of images with page indicator.
-
-
-Usage:
-
-    // Show remote image
-    scrollView.auk.show(url: "http://site.com/bird.jpg")
-
-    // Show local image
-    if let image = UIImage(named: "bird.jpg") {
-      scrollView.auk.show(image: image)
+    if margin != 0 {
+      marginFormat = "-(\(margin))-"
     }
 
-*/
-public extension UIScrollView {
-  /**
+    var format = "|\(marginFormat)[view]\(marginFormat)|"
+
+    if vertically {
+      format = "V:" + format
+    }
+
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
+      options: [], metrics: nil,
+      views: ["view": view])
+
+    parentView.addConstraints(constraints)
+  }
   
-  Scroll view extension for showing series of images with page indicator.
-  
-  Usage:
-  
-      // Show remote image
-      scrollView.auk.show(url: "http://site.com/bird.jpg")
+  @discardableResult
+  class func alignSameAttributes(_ item: AnyObject, toItem: AnyObject,
+    constraintContainer: UIView, attribute: NSLayoutConstraint.Attribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
       
-      // Show local image
-      if let image = UIImage(named: "bird.jpg") {
-        scrollView.auk.show(image: image)
-      }
+    let constraint = NSLayoutConstraint(
+      item: item,
+      attribute: attribute,
+      relatedBy: NSLayoutConstraint.Relation.equal,
+      toItem: toItem,
+      attribute: attribute,
+      multiplier: 1,
+      constant: margin)
+    
+    constraintContainer.addConstraint(constraint)
+    
+    return [constraint]
+  }
+
+  class func equalWidth(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
+    
+    return equalWidthOrHeight(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, isHeight: false)
+  }
   
-  */
-  public var auk: Auk {
-    get {
-      if let value = objc_getAssociatedObject(self, &xoAukAssociationKey) as? Auk {
-        return value
-      } else {
-        let auk = Auk(scrollView: self)
+  // MARK: - Equal height and width
+  
+  class func equalHeight(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
+    
+    return equalWidthOrHeight(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, isHeight: true)
+  }
+  
+  @discardableResult
+  class func equalSize(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
+    
+    var constraints = equalWidthOrHeight(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, isHeight: false)
+    
+    constraints += equalWidthOrHeight(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, isHeight: true)
+    
+    return constraints
+  }
+  
+  class func equalWidthOrHeight(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView,
+    isHeight: Bool) -> [NSLayoutConstraint] {
+    
+    var prefix = ""
+    
+    if isHeight { prefix = "V:" }
+    
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: "\(prefix)[viewOne(==viewTwo)]",
+      options: [], metrics: nil,
+      views: ["viewOne": viewOne, "viewTwo": viewTwo])
         
-        objc_setAssociatedObject(self, &xoAukAssociationKey, auk,
-          objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
-        
-        return auk
-      }
+    constraintContainer.addConstraints(constraints)
+    
+    return constraints
+  }
+  
+  // MARK: - Align view next to each other
+  
+  @discardableResult
+  class func viewsNextToEachOther(_ views: [UIView],
+    constraintContainer: UIView, margin: CGFloat = 0,
+    vertically: Bool = false) -> [NSLayoutConstraint] {
+      
+    if views.count < 2 { return []  }
+    
+    var constraints = [NSLayoutConstraint]()
+    
+    for (index, view) in views.enumerated() {
+      if index >= views.count - 1 { break }
+      
+      let viewTwo = views[index + 1]
+      
+      constraints += twoViewsNextToEachOther(view, viewTwo: viewTwo,
+        constraintContainer: constraintContainer, margin: margin, vertically: vertically)
     }
     
-    set {
-      objc_setAssociatedObject(self, &xoAukAssociationKey, newValue,
-        objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+    return constraints
+  }
+  
+  class func twoViewsNextToEachOther(_ viewOne: UIView, viewTwo: UIView,
+    constraintContainer: UIView, margin: CGFloat = 0,
+    vertically: Bool = false) -> [NSLayoutConstraint] {
+      
+    var marginFormat = ""
+    
+    if margin != 0 {
+      marginFormat = "-\(margin)-"
     }
+    
+    var format = "[viewOne]\(marginFormat)[viewTwo]"
+    
+    if vertically {
+      format = "V:" + format
+    }
+    
+    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
+      options: [], metrics: nil,
+      views: [ "viewOne": viewOne, "viewTwo": viewTwo ])
+    
+    constraintContainer.addConstraints(constraints)
+    
+    return constraints
+  }
+  
+  @discardableResult
+  class func height(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
+    return widthOrHeight(view, value: value, isHeight: true)
+  }
+  
+  @discardableResult
+  class func width(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
+    return widthOrHeight(view, value: value, isHeight: false)
+  }
+  
+  class func widthOrHeight(_ view: UIView, value: CGFloat, isHeight: Bool) -> [NSLayoutConstraint] {
+    
+    let layoutAttribute = isHeight ? NSLayoutConstraint.Attribute.height : NSLayoutConstraint.Attribute.width
+    
+    let constraint = NSLayoutConstraint(
+      item: view,
+      attribute: layoutAttribute,
+      relatedBy: NSLayoutConstraint.Relation.equal,
+      toItem: nil,
+      attribute: NSLayoutConstraint.Attribute.notAnAttribute,
+      multiplier: 1,
+      constant: value)
+    
+    view.addConstraint(constraint)
+    
+    return [constraint]
   }
 }
 
@@ -1541,173 +1376,6 @@ class iiAnimator {
 
 // ----------------------------
 //
-// iiAutolayoutConstraints.swift
-//
-// ----------------------------
-
-//
-//  Collection of shortcuts to create autolayout constraints.
-//
-
-import UIKit
-
-class iiAutolayoutConstraints {
-  class func fillParent(_ view: UIView, parentView: UIView, margin: CGFloat = 0, vertically: Bool = false) {
-    var marginFormat = ""
-
-    if margin != 0 {
-      marginFormat = "-(\(margin))-"
-    }
-
-    var format = "|\(marginFormat)[view]\(marginFormat)|"
-
-    if vertically {
-      format = "V:" + format
-    }
-
-    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
-      options: [], metrics: nil,
-      views: ["view": view])
-
-    parentView.addConstraints(constraints)
-  }
-  
-  @discardableResult
-  class func alignSameAttributes(_ item: AnyObject, toItem: AnyObject,
-    constraintContainer: UIView, attribute: NSLayoutAttribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
-      
-    let constraint = NSLayoutConstraint(
-      item: item,
-      attribute: attribute,
-      relatedBy: NSLayoutRelation.equal,
-      toItem: toItem,
-      attribute: attribute,
-      multiplier: 1,
-      constant: margin)
-    
-    constraintContainer.addConstraint(constraint)
-    
-    return [constraint]
-  }
-
-  class func equalWidth(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
-    
-    return equalWidthOrHeight(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, isHeight: false)
-  }
-  
-  // MARK: - Equal height and width
-  
-  class func equalHeight(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
-    
-    return equalWidthOrHeight(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, isHeight: true)
-  }
-  
-  @discardableResult
-  class func equalSize(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView) -> [NSLayoutConstraint] {
-    
-    var constraints = equalWidthOrHeight(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, isHeight: false)
-    
-    constraints += equalWidthOrHeight(viewOne, viewTwo: viewTwo, constraintContainer: constraintContainer, isHeight: true)
-    
-    return constraints
-  }
-  
-  class func equalWidthOrHeight(_ viewOne: UIView, viewTwo: UIView, constraintContainer: UIView,
-    isHeight: Bool) -> [NSLayoutConstraint] {
-    
-    var prefix = ""
-    
-    if isHeight { prefix = "V:" }
-    
-    let constraints = NSLayoutConstraint.constraints(withVisualFormat: "\(prefix)[viewOne(==viewTwo)]",
-      options: [], metrics: nil,
-      views: ["viewOne": viewOne, "viewTwo": viewTwo])
-        
-    constraintContainer.addConstraints(constraints)
-    
-    return constraints
-  }
-  
-  // MARK: - Align view next to each other
-  
-  @discardableResult
-  class func viewsNextToEachOther(_ views: [UIView],
-    constraintContainer: UIView, margin: CGFloat = 0,
-    vertically: Bool = false) -> [NSLayoutConstraint] {
-      
-    if views.count < 2 { return []  }
-    
-    var constraints = [NSLayoutConstraint]()
-    
-    for (index, view) in views.enumerated() {
-      if index >= views.count - 1 { break }
-      
-      let viewTwo = views[index + 1]
-      
-      constraints += twoViewsNextToEachOther(view, viewTwo: viewTwo,
-        constraintContainer: constraintContainer, margin: margin, vertically: vertically)
-    }
-    
-    return constraints
-  }
-  
-  class func twoViewsNextToEachOther(_ viewOne: UIView, viewTwo: UIView,
-    constraintContainer: UIView, margin: CGFloat = 0,
-    vertically: Bool = false) -> [NSLayoutConstraint] {
-      
-    var marginFormat = ""
-    
-    if margin != 0 {
-      marginFormat = "-\(margin)-"
-    }
-    
-    var format = "[viewOne]\(marginFormat)[viewTwo]"
-    
-    if vertically {
-      format = "V:" + format
-    }
-    
-    let constraints = NSLayoutConstraint.constraints(withVisualFormat: format,
-      options: [], metrics: nil,
-      views: [ "viewOne": viewOne, "viewTwo": viewTwo ])
-    
-    constraintContainer.addConstraints(constraints)
-    
-    return constraints
-  }
-  
-  @discardableResult
-  class func height(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
-    return widthOrHeight(view, value: value, isHeight: true)
-  }
-  
-  @discardableResult
-  class func width(_ view: UIView, value: CGFloat) -> [NSLayoutConstraint] {
-    return widthOrHeight(view, value: value, isHeight: false)
-  }
-  
-  class func widthOrHeight(_ view: UIView, value: CGFloat, isHeight: Bool) -> [NSLayoutConstraint] {
-    
-    let layoutAttribute = isHeight ? NSLayoutAttribute.height : NSLayoutAttribute.width
-    
-    let constraint = NSLayoutConstraint(
-      item: view,
-      attribute: layoutAttribute,
-      relatedBy: NSLayoutRelation.equal,
-      toItem: nil,
-      attribute: NSLayoutAttribute.notAnAttribute,
-      multiplier: 1,
-      constant: value)
-    
-    view.addConstraint(constraint)
-    
-    return [constraint]
-  }
-}
-
-
-// ----------------------------
-//
 // iiQ.swift
 //
 // ----------------------------
@@ -1759,6 +1427,338 @@ struct RightToLeft {
         for: view.semanticContentAttribute) == .rightToLeft
     } else {
       return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
+    }
+  }
+}
+
+
+// ----------------------------
+//
+// AukScrollViewDelegate.swift
+//
+// ----------------------------
+
+import UIKit
+
+/**
+
+This delegate detects the scrolling event which is used for loading remote images when their superview becomes visible on screen.
+
+*/
+final class AukScrollViewDelegate: NSObject, UIScrollViewDelegate {
+  /**
+  
+  If scroll view already has delegate it is preserved in this property and all the delegate calls are forwarded to it.
+  
+  */
+  weak var delegate: UIScrollViewDelegate?
+  
+  var onScroll: (()->())?
+  var onScrollByUser: (()->())?
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    onScroll?()
+    delegate?.scrollViewDidScroll?(scrollView)
+  }
+  
+  func scrollViewDidZoom(_ scrollView: UIScrollView) {
+    delegate?.scrollViewDidZoom?(scrollView)
+  }
+  
+  func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    delegate?.scrollViewWillBeginDragging?(scrollView)
+    onScrollByUser?()
+  }
+  
+  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    
+    delegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+  }
+  
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    delegate?.scrollViewDidEndDragging?(scrollView, willDecelerate: decelerate)
+  }
+  
+  func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+    delegate?.scrollViewWillBeginDecelerating?(scrollView)
+  }
+  
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    delegate?.scrollViewDidEndDecelerating?(scrollView)
+  }
+  
+  func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    delegate?.scrollViewDidEndScrollingAnimation?(scrollView)
+  }
+  
+  func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    return delegate?.viewForZooming?(in: scrollView)
+  }
+  
+  func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+    delegate?.scrollViewWillBeginZooming?(scrollView, with: view)
+  }
+  
+  func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+    delegate?.scrollViewDidEndZooming?(scrollView, with: view, atScale: scale)
+  }
+  
+  func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
+    return delegate?.scrollViewShouldScrollToTop?(scrollView) ?? true
+  }
+  
+  func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+    delegate?.scrollViewDidScrollToTop?(scrollView)
+  }
+}
+
+
+// ----------------------------
+//
+// AukRemoteImage.swift
+//
+// ----------------------------
+
+import UIKit
+
+/**
+
+Downloads and shows a single remote image.
+
+*/
+class AukRemoteImage {
+  var url: String?
+  weak var imageView: UIImageView?
+  weak var placeholderImageView: UIImageView?
+
+  init() { }
+
+  /// True when image has been successfully downloaded
+  var didFinishDownload = false
+
+  func setup(_ url: String, imageView: UIImageView, placeholderImageView: UIImageView?,
+    settings: AukSettings) {
+
+    self.url = url
+    self.imageView = imageView
+    self.placeholderImageView = placeholderImageView
+    setPlaceholderImage(settings)
+  }
+
+  /// Sends image download HTTP request.
+  func downloadImage(_ settings: AukSettings) {
+    if imageView?.moa.url != nil { return } // Download has already started
+    if didFinishDownload { return } // Image has already been downloaded
+
+    imageView?.moa.errorImage = settings.errorImage
+
+    imageView?.moa.onSuccessAsync = { [weak self] image in
+      self?.didReceiveImageAsync(image, settings: settings)
+      return image
+    }
+
+    imageView?.moa.url = url
+  }
+
+  /// Cancel current image download HTTP request.
+  func cancelDownload() {
+    // Cancel current download by setting url to nil
+    imageView?.moa.url = nil
+  }
+
+  func didReceiveImageAsync(_ image: UIImage, settings: AukSettings) {
+    didFinishDownload = true
+
+    iiQ.main { [weak self] in
+      guard let imageView = self?.imageView else { return }
+      AukRemoteImage.animateImageView(imageView, show: true, settings: settings)
+    
+      if let placeholderImageView = self?.placeholderImageView {
+        AukRemoteImage.animateImageView(placeholderImageView, show: false, settings: settings)
+      }
+    }
+  }
+
+  private static func animateImageView(_ imageView: UIImageView, show: Bool, settings: AukSettings) {
+    imageView.alpha = show ? 0: 1
+    let interval = TimeInterval(settings.remoteImageAnimationIntervalSeconds)
+    
+    UIView.animate(withDuration: interval, animations: {
+      imageView.alpha = show ? 1: 0
+    })
+  }
+  
+  private func setPlaceholderImage(_ settings: AukSettings) {
+    if let placeholderImage = settings.placeholderImage,
+      let placeholderImageView = placeholderImageView {
+        
+      placeholderImageView.image = placeholderImage
+    }
+  }
+}
+
+
+// ----------------------------
+//
+// AukScrollViewContent.swift
+//
+// ----------------------------
+
+import UIKit
+
+/**
+
+Collection of static functions that help managing the scroll view content.
+
+*/
+struct AukScrollViewContent {
+  
+  /**
+
+  - returns: Array of scroll view pages.
+  
+  */
+  static func aukPages(_ scrollView: UIScrollView) -> [AukPage] {
+    return scrollView.subviews.filter { $0 is AukPage }.map { $0 as! AukPage }
+  }
+  
+  /**
+ 
+  - returns: Page at index. Returns nil if index is out of bounds.
+ 
+  */
+  static func page(atIndex index: Int, scrollView: UIScrollView) -> AukPage? {
+    let pages = aukPages(scrollView)
+    if index < 0 { return nil }
+    if index >= pages.count { return nil }
+    return pages[index]
+  }
+  
+  /**
+  
+  Creates Auto Layout constraints for positioning the page view inside the scroll view.
+   
+  - parameter scrollView: scroll view to layout.
+
+  - parameter animated: will animate the layout if true. Default value: false.
+   
+  - parameter animationDurationInSeconds: duration of the layout animation. Ignored if `animated` parameter is false.
+
+  - parameter completion: function that is called when layout animation finishes. Called immediately if not animated.
+  
+  */
+  static func layout(_ scrollView: UIScrollView, animated: Bool = false,
+                     animationDurationInSeconds: Double = 0.2, completion: (()->())? = nil) {
+    
+    let pages = aukPages(scrollView)
+
+    for (index, page) in pages.enumerated() {
+      
+      // Delete current constraints by removing the view and adding it back to its superview
+      page.removeFromSuperview()
+      scrollView.addSubview(page)
+      
+      page.translatesAutoresizingMaskIntoConstraints = false
+      
+      // Make page size equal to the scroll view size
+      iiAutolayoutConstraints.equalSize(page, viewTwo: scrollView, constraintContainer: scrollView)
+      
+      // Stretch the page vertically to fill the height of the scroll view
+      iiAutolayoutConstraints.fillParent(page, parentView: scrollView, margin: 0, vertically: true)
+      
+      if index == 0 {
+        // Align the leading edge of the first page to the leading edge of the scroll view.
+        iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
+          constraintContainer: scrollView, attribute: NSLayoutConstraint.Attribute.leading, margin: 0)
+      }
+      
+      if index == pages.count - 1 {
+        // Align the trailing edge of the last page to the trailing edge of the scroll view.
+        iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
+          constraintContainer: scrollView, attribute: NSLayoutConstraint.Attribute.trailing, margin: 0)
+      }
+    }
+    
+    // Align page next to each other
+    iiAutolayoutConstraints.viewsNextToEachOther(pages, constraintContainer: scrollView,
+      margin: 0, vertically: false)
+    
+    if animated {
+      iiAnimator.animator.animate(name: "layoutIfNeeded", withDuration: animationDurationInSeconds,
+        animations: {
+          scrollView.layoutIfNeeded()
+        },
+        completion: { _ in
+          completion?()
+        }
+      )
+    } else {
+      scrollView.layoutIfNeeded()
+      completion?()
+    }
+  }
+}
+
+
+// ----------------------------
+//
+// UIScrollView+Auk.swift
+//
+// ----------------------------
+
+import UIKit
+
+private var xoAukAssociationKey: UInt8 = 0
+
+/**
+
+Scroll view extension for showing series of images with page indicator.
+
+
+Usage:
+
+    // Show remote image
+    scrollView.auk.show(url: "http://site.com/bird.jpg")
+
+    // Show local image
+    if let image = UIImage(named: "bird.jpg") {
+      scrollView.auk.show(image: image)
+    }
+
+*/
+public extension UIScrollView {
+  /**
+  
+  Scroll view extension for showing series of images with page indicator.
+  
+  Usage:
+  
+      // Show remote image
+      scrollView.auk.show(url: "http://site.com/bird.jpg")
+      
+      // Show local image
+      if let image = UIImage(named: "bird.jpg") {
+        scrollView.auk.show(image: image)
+      }
+  
+  */
+  public var auk: Auk {
+    get {
+      if let value = objc_getAssociatedObject(self, &xoAukAssociationKey) as? Auk {
+        return value
+      } else {
+        let auk = Auk(scrollView: self)
+        
+        objc_setAssociatedObject(self, &xoAukAssociationKey, auk,
+          objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+        
+        return auk
+      }
+    }
+    
+    set {
+      objc_setAssociatedObject(self, &xoAukAssociationKey, newValue,
+        objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
     }
   }
 }

@@ -122,7 +122,7 @@ final class AukPage: UIView {
   
   func makeAccessible(_ accessibilityLabel: String?) {
     isAccessibilityElement = true
-    accessibilityTraits = UIAccessibilityTraitImage
+    accessibilityTraits = UIAccessibilityTraits.image
     self.accessibilityLabel = accessibilityLabel
   }
 }

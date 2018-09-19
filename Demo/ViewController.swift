@@ -141,7 +141,7 @@ class ViewController: UIViewController, UIScrollViewDelegate {
     super.willRotate(to: toInterfaceOrientation, duration: duration)
     
     var screenWidth = UIScreen.main.bounds.height
-    if UIInterfaceOrientationIsPortrait(toInterfaceOrientation) {
+    if toInterfaceOrientation.isPortrait {
       screenWidth = UIScreen.main.bounds.width
     }
     

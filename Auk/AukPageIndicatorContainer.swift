@@ -5,7 +5,7 @@ final class AukPageIndicatorContainer: UIView {
   
   deinit {
     pageControl?.removeTarget(self, action: #selector(AukPageIndicatorContainer.didTapPageControl(_:)),
-      for: UIControlEvents.valueChanged)
+      for: UIControl.Event.valueChanged)
   }
   
   var didTapPageControlCallback: ((Int)->())?
@@ -52,12 +52,12 @@ final class AukPageIndicatorContainer: UIView {
         
       // Align bottom of the page view indicator with the bottom of the scroll view
       iiAutolayoutConstraints.alignSameAttributes(pageIndicatorContainer, toItem: scrollView,
-        constraintContainer: superview, attribute: NSLayoutAttribute.bottom,
+        constraintContainer: superview, attribute: NSLayoutConstraint.Attribute.bottom,
         margin: CGFloat(-settings.pageControl.marginToScrollViewBottom))
       
       // Center the page view indicator horizontally in relation to the scroll view
       iiAutolayoutConstraints.alignSameAttributes(pageIndicatorContainer, toItem: scrollView,
-        constraintContainer: superview, attribute: NSLayoutAttribute.centerX, margin: 0)
+        constraintContainer: superview, attribute: NSLayoutConstraint.Attribute.centerX, margin: 0)
     }
   }
   
@@ -75,7 +75,7 @@ final class AukPageIndicatorContainer: UIView {
     }
     
     pageControl.addTarget(self, action: #selector(AukPageIndicatorContainer.didTapPageControl(_:)),
-      for: UIControlEvents.valueChanged)
+      for: UIControl.Event.valueChanged)
     
     pageControl.pageIndicatorTintColor = settings.pageControl.pageIndicatorTintColor
     pageControl.currentPageIndicatorTintColor = settings.pageControl.currentPageIndicatorTintColor

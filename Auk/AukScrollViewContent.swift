@@ -63,13 +63,13 @@ struct AukScrollViewContent {
       if index == 0 {
         // Align the leading edge of the first page to the leading edge of the scroll view.
         iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
-          constraintContainer: scrollView, attribute: NSLayoutAttribute.leading, margin: 0)
+          constraintContainer: scrollView, attribute: NSLayoutConstraint.Attribute.leading, margin: 0)
       }
       
       if index == pages.count - 1 {
         // Align the trailing edge of the last page to the trailing edge of the scroll view.
         iiAutolayoutConstraints.alignSameAttributes(page, toItem: scrollView,
-          constraintContainer: scrollView, attribute: NSLayoutAttribute.trailing, margin: 0)
+          constraintContainer: scrollView, attribute: NSLayoutConstraint.Attribute.trailing, margin: 0)
       }
     }
     

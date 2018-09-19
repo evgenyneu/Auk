@@ -229,7 +229,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     let page = aukPage(scrollView, pageIndex: 0)!
     
     XCTAssert(page.isAccessibilityElement)
-    XCTAssertEqual(page.accessibilityTraits, UIAccessibilityTraitImage)
+    XCTAssertEqual(page.accessibilityTraits, UIAccessibilityTraits.image)
     XCTAssertEqual("White knight riding a wooden horse on wheels.", page.accessibilityLabel!)
   }
   
@@ -243,7 +243,7 @@ class AukInterfaceUpdateRemoteImageTests: XCTestCase {
     let page = aukPage(scrollView, pageIndex: 0)!
     
     XCTAssert(page.isAccessibilityElement)
-    XCTAssertEqual(page.accessibilityTraits, UIAccessibilityTraitImage)
+    XCTAssertEqual(page.accessibilityTraits, UIAccessibilityTraits.image)
     XCTAssert(page.accessibilityLabel == nil)
   }
 }

@@ -69,7 +69,7 @@ import UIKit
    
    */
   public class func setup(scrollView: UIScrollView) {
-    scrollView.auk.settings.contentMode = UIViewContentMode.scaleAspectFill
+    scrollView.auk.settings.contentMode = UIView.ContentMode.scaleAspectFill
     scrollView.auk.settings.preloadRemoteImagesAround = 1
   }
 }

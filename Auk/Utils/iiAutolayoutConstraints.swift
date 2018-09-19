@@ -27,12 +27,12 @@ class iiAutolayoutConstraints {
   
   @discardableResult
   class func alignSameAttributes(_ item: AnyObject, toItem: AnyObject,
-    constraintContainer: UIView, attribute: NSLayoutAttribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
+    constraintContainer: UIView, attribute: NSLayoutConstraint.Attribute, margin: CGFloat = 0) -> [NSLayoutConstraint] {
       
     let constraint = NSLayoutConstraint(
       item: item,
       attribute: attribute,
-      relatedBy: NSLayoutRelation.equal,
+      relatedBy: NSLayoutConstraint.Relation.equal,
       toItem: toItem,
       attribute: attribute,
       multiplier: 1,
@@ -141,14 +141,14 @@ class iiAutolayoutConstraints {
   
   class func widthOrHeight(_ view: UIView, value: CGFloat, isHeight: Bool) -> [NSLayoutConstraint] {
     
-    let layoutAttribute = isHeight ? NSLayoutAttribute.height : NSLayoutAttribute.width
+    let layoutAttribute = isHeight ? NSLayoutConstraint.Attribute.height : NSLayoutConstraint.Attribute.width
     
     let constraint = NSLayoutConstraint(
       item: view,
       attribute: layoutAttribute,
-      relatedBy: NSLayoutRelation.equal,
+      relatedBy: NSLayoutConstraint.Relation.equal,
       toItem: nil,
-      attribute: NSLayoutAttribute.notAnAttribute,
+      attribute: NSLayoutConstraint.Attribute.notAnAttribute,
       multiplier: 1,
       constant: value)
     

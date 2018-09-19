@@ -54,10 +54,10 @@ class AukTests: XCTestCase {
     iiAutolayoutConstraints.width(scrollView, value: 100)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.left, margin: 0)
+                                                constraintContainer: superview, attribute: NSLayoutConstraint.Attribute.left, margin: 0)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.top, margin: 0)
+                                                constraintContainer: superview, attribute: NSLayoutConstraint.Attribute.top, margin: 0)
 
     auk = Auk(scrollView: scrollView)
     
@@ -87,10 +87,10 @@ class AukTests: XCTestCase {
     iiAutolayoutConstraints.width(scrollView, value: 100)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.left, margin: 0)
+                                                constraintContainer: superview, attribute: NSLayoutConstraint.Attribute.left, margin: 0)
     
     iiAutolayoutConstraints.alignSameAttributes(scrollView, toItem: superview,
-      constraintContainer: superview, attribute: NSLayoutAttribute.top, margin: 0)
+                                                constraintContainer: superview, attribute: NSLayoutConstraint.Attribute.top, margin: 0)
     
     auk = Auk(scrollView: scrollView)
     
