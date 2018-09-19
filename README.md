@@ -43,7 +43,7 @@ Simply add two files to your project:
 
 #### Setup with Carthage (iOS 8+)
 
-1. Add `github "evgenyneu/Auk" ~> 8.0` to your Cartfile.
+1. Add `github "evgenyneu/Auk" ~> 9.0` to your Cartfile.
 2. Run `carthage update`.
 3. Add `moa` and `Auk` frameworks into your project.
 
@@ -53,8 +53,8 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 
     use_frameworks!
     target 'Your target name'
-    pod 'moa', '~> 9.0'
-    pod 'Auk', '~> 8.0'
+    pod 'moa', '~> 10.0'
+    pod 'Auk', '~> 9.0'
 
 
 ### Legacy Swift versions

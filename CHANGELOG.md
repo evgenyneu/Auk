@@ -1,5 +1,9 @@
 # Auk version history
 
+## 9.0 (2018-09-19)
+
+* Update to Swift 4.2.
+
 
 ## 8.0 (2017-09-23)
 
