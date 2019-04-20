@@ -1742,7 +1742,7 @@ public extension UIScrollView {
       }
   
   */
-  public var auk: Auk {
+  var auk: Auk {
     get {
       if let value = objc_getAssociatedObject(self, &xoAukAssociationKey) as? Auk {
         return value
