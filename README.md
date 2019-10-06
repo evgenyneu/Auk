@@ -33,7 +33,7 @@ This is an iOS library that shows an image carousel with a page indicator. Users
 
 ## Setup
 
-There are three ways you can add Auk to your Xcode project.
+There are multiple ways you can add Auk to your Xcode project.
 
 #### Add source (iOS 7+)
 
