@@ -73,7 +73,7 @@ Setup a [previous version](https://github.com/evgenyneu/Auk/wiki/Legacy-Swift-ve
 
 ## Usage
 
-1. Add `import Auk` to your source code if you used Carthage or CocoaPods setup methods.
+1. Add `import Auk` to your source code ((unless you used the file setup method)).
 1. Add a scroll view to the storyboard and create an outlet property `scrollView` in your view controller.
 1. Clear the **Adjust Scroll View Insets** checkbox in the *Attribute Inspector* of your view controller.
 
