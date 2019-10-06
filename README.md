@@ -2,6 +2,7 @@
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/Auk.svg?style=flat)](http://cocoadocs.org/docsets/Auk)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![License](https://img.shields.io/cocoapods/l/Auk.svg?style=flat)](LICENSE)
 [![Platform](https://img.shields.io/cocoapods/p/Auk.svg?style=flat)](http://cocoadocs.org/docsets/Auk)
 
@@ -55,6 +56,13 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
     target 'Your target name'
     pod 'moa', '~> 11.0'
     pod 'Auk', '~> 10.0'
+
+
+#### Setup with Swift Package Manager
+
+* In Xcode 11+ select *File > Packages > Add Package Dependency...*.
+* Enter **moa** project's URL (image downloader dependency): https://github.com/evgenyneu/moa.git
+* Repeat for Auk URL: https://github.com/evgenyneu/Auk.git
 
 
 ### Legacy Swift versions
