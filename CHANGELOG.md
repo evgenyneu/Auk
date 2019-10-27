@@ -1,5 +1,11 @@
 # Auk version history
 
+
+## 11.0 (2019-10-27)
+
+* Updated `moa` image loader to support images with `application/octet-stream` MIME type in iOS 13 (see [iOS 13 Release Notes](https://developer.apple.com/documentation/ios_ipados_release_notes/ios_13_release_notes)).
+
+
 ## 10.0 (2019-04-20)
 
 * Update to Swift 5.0.
