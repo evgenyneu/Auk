@@ -61,7 +61,7 @@ If you are using CocoaPods add this text to your Podfile and run `pod install`.
 #### Setup with Swift Package Manager
 
 * In Xcode 11+ select *File > Packages > Add Package Dependency...*.
-* Enter **Auk** project's URL: [https://github.com/evgenyneu/moa.git](https://github.com/evgenyneu/Auk.git)
+* Enter **Auk** project's URL: https://github.com/evgenyneu/Auk.git
 
 
 ### Legacy Swift versions
